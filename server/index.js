@@ -1,6 +1,9 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const mongoose = require("mongoose");
+const authRoutes = require("./routes/auth");
+
 dotenv.config();
 
 const app = express();
@@ -8,6 +11,16 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/auth", authRoutes);
+
+// connect to mongoDB
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log(`✅ Connected to DB: ${mongoose.connection.name}`))
+  .catch((err) => console.error(err));
 
 app.get("/", (req, res) => {
   res.send("API is running!!!");
