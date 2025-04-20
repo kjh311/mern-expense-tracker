@@ -13,7 +13,8 @@ import Home from "./components/Home";
 export const LoggedInContext = React.createContext();
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
 
   return (
     <LoggedInContext.Provider value={[loggedIn, setLoggedIn]}>

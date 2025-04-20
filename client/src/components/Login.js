@@ -27,14 +27,22 @@ const Login = () => {
     const data = await response.json();
     console.log(data);
 
-    // in your Login.js or API response handler
-    if (response.ok) {
-      //   localStorage.setItem("token", "loggedIn"); // Use actual token from API
+    if (data.token) {
+      localStorage.setItem("token", data.token);
       setLoggedIn(true);
-      navigate("/dashboard"); // ✅ Navigate after login
+      navigate("/dashboard");
     } else {
       alert(data.message || "Login failed");
     }
+
+    // // in your Login.js or API response handler
+    // if (response.ok) {
+    //   //   localStorage.setItem("token", "loggedIn"); // Use actual token from API
+    //   setLoggedIn(true);
+    //   navigate("/dashboard"); // ✅ Navigate after login
+    // } else {
+    //   alert(data.message || "Login failed");
+    // }
   };
 
   return (
@@ -65,7 +73,7 @@ const Login = () => {
       </form>
       <div>
         <Link to="/register">
-          <button className="p-2 m-2 bg-red-400 border">Register</button>
+          <button className="p-2 m-2 bg-red-400 border">Or Register</button>
         </Link>
       </div>
     </div>
