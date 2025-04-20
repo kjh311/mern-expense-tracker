@@ -1,7 +1,14 @@
 // import logo from "./logo.svg";
 import React, { useState } from "react";
 import "./App.css";
-import AppRouter from "./components/Router";
+// import AppRouter from "./components/Router";
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import Dashboard from "./components/Dashboard"; // example protected page
+import ProtectedRoute from "./components/ProtectedRoute";
+import Home from "./components/Home";
 
 export const LoggedInContext = React.createContext();
 
@@ -10,14 +17,30 @@ function App() {
 
   return (
     <LoggedInContext.Provider value={[loggedIn, setLoggedIn]}>
-      <div className="App">
-        <h1 className="text-3xl font-bold underline bg-blue-400">
+      {/* <div className="App">
+        <h1 className="text-3xl font-bold underline">
           Hello world!
           <br />
-          LoggedIn: {loggedIn ? "true" : "false"}
         </h1>
-        <AppRouter />
-      </div>
+
+      </div> */}
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route
+            exact
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Router>
     </LoggedInContext.Provider>
   );
 }

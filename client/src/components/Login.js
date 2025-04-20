@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { LoggedInContext } from "../App";
 
 const Login = () => {
@@ -63,6 +63,11 @@ const Login = () => {
           Login
         </button>
       </form>
+      <div>
+        <Link to="/register">
+          <button className="p-2 m-2 bg-red-400 border">Register</button>
+        </Link>
+      </div>
     </div>
   );
 };
