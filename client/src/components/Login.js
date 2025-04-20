@@ -16,33 +16,35 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle the login API request here
-    const response = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    const data = await response.json();
-    console.log(data);
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    if (data.token) {
-      localStorage.setItem("token", data.token);
-      setLoggedIn(true);
-      navigate("/dashboard");
-    } else {
-      alert(data.message || "Login failed");
+      if (!response.ok) {
+        throw new Error("Login request failed");
+      }
+
+      const data = await response.json();
+      console.log(data);
+
+      if (data.token === undefined) return;
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        setLoggedIn(true);
+        navigate("/dashboard");
+      } else {
+        alert(data.message || "Login failed");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred. Please try again.");
     }
-
-    // // in your Login.js or API response handler
-    // if (response.ok) {
-    //   //   localStorage.setItem("token", "loggedIn"); // Use actual token from API
-    //   setLoggedIn(true);
-    //   navigate("/dashboard"); // ✅ Navigate after login
-    // } else {
-    //   alert(data.message || "Login failed");
-    // }
   };
 
   return (

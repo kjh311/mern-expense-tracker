@@ -1,0 +1,30 @@
+### Register a new user
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Kevin",
+  "email": "kevin@example.com",
+  "password": "yourPassword"
+}
+
+### Login with registered user
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "kevin@example.com",
+  "password": "yourPassword"
+}
+
+### Add Expense
+POST http://localhost:5000/api/expenses
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODAzY2JmNjA5OWNjZTk5Y2Q2MzJkMzEiLCJpYXQiOjE3NDUxNjY4OTIsImV4cCI6MTc0NTE4NDg5Mn0.hQ986ao51y5V9RclwDzVEtOe-AXduxeXa6wVrcAmo6A
+
+{
+  "amount": 22.50,
+  "description": "Hose",
+  "subcategory": "Gardening",
+  "date": "2025-02-20T12:00:00.000Z"
+}
