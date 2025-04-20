@@ -1,23 +1,26 @@
 // src/Router.js
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./Register";
 import Login from "./Login";
+import Dashboard from "./Dashboard"; // example protected page
+import ProtectedRoute from "./ProtectedRoute";
 
 const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        {" "}
-        {/* Use Routes instead of Switch */}
         <Route exact path="/register" element={<Register />} />{" "}
-        {/* Use element instead of component */}
         <Route exact path="/login" element={<Login />} />
+        <Route
+          exact
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );

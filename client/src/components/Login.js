@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { LoggedInContext } from "../App";
 
 const Login = () => {
+  const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,6 +26,15 @@ const Login = () => {
     });
     const data = await response.json();
     console.log(data);
+
+    // in your Login.js or API response handler
+    if (response.ok) {
+      //   localStorage.setItem("token", "loggedIn"); // Use actual token from API
+      setLoggedIn(true);
+      navigate("/dashboard"); // ✅ Navigate after login
+    } else {
+      alert(data.message || "Login failed");
+    }
   };
 
   return (
@@ -29,6 +42,7 @@ const Login = () => {
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <input
+          className="p-2 m-2 border"
           type="email"
           name="email"
           value={formData.email}
@@ -37,6 +51,7 @@ const Login = () => {
           required
         />
         <input
+          className="p-2 m-2 border"
           type="password"
           name="password"
           value={formData.password}
@@ -44,7 +59,9 @@ const Login = () => {
           placeholder="Password"
           required
         />
-        <button type="submit">Login</button>
+        <button className="m-2 p-2 border" type="submit">
+          Login
+        </button>
       </form>
     </div>
   );
