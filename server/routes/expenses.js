@@ -1,6 +1,6 @@
 const express = require("express");
 const Expense = require("../models/Expense");
-const verifyToken = require("../middleware/auth"); // Ensure this is imported correctly
+const verifyToken = require("../middleware/verifyToken"); // Ensure this is imported correctly
 
 const router = express.Router();
 

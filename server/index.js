@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const expensesRoutes = require("./routes/expenses"); // adjust path if needed
+const subcategoriesRoute = require("./routes/subcategories");
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expensesRoutes);
+app.use("/api/subcategories", subcategoriesRoute);
 
 // connect to mongoDB
 mongoose
