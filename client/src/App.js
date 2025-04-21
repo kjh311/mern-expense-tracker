@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard"; // example protected page
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./components/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const LoggedInContext = React.createContext();
 

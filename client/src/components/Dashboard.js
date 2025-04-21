@@ -1,10 +1,19 @@
-import Expenses from "./Expenses";
+import SubCategoriesWithTransactions from "./SubCategoriesWithTransactions";
 
 const Dashboard = () => {
   return (
     <div>
       <h1 className="text-center">Dashboard</h1>
-      <Expenses />
+      <SubCategoriesWithTransactions
+        name={"Expenses Transactions"}
+        category={"expense"}
+      />
+      <br />
+      <SubCategoriesWithTransactions name={"Bills"} category={"bills"} />
+      <br />
+      <SubCategoriesWithTransactions name={"Savings"} category={"savings"} />
+      <br />
+      <SubCategoriesWithTransactions name={"Income"} category={"income"} />
     </div>
   );
 };

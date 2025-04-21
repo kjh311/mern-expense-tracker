@@ -37,8 +37,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "categoryType": "bills",
-  "name": "Netflix"
+  "categoryType": "income",
+  "name": "Trucking"
 }
 
 ### POST TRANSACTION
@@ -47,8 +47,9 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "subcategory": "68068e43e18d18adbfa7b185",
-  "amount": 42.99,
-  "date": "2025-04-21",
-  "description": "Dinner with friends"
+  "subcategory": "6806c34e25e994c63e8206c8",
+  "amount": 412.99,
+  "date": "2025-04-20",
+  "description": "1st Paycheck",
+  "recurring": false
 }

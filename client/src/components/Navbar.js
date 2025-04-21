@@ -7,7 +7,7 @@ const Navbar = () => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
 
   return (
-    <div className="w-100 bg-blue-400 sticky top-0 p-2 text-3xl font-bold flex justify-between">
+    <div className="z-1 w-100 bg-blue-400 sticky top-0 p-2 text-3xl font-bold flex justify-between">
       <p>Navbar</p>
       {loggedIn ? (
         <Logout />
