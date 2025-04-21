@@ -50,12 +50,12 @@ const Dashboard = () => {
           <ul>
             {expenses.map((expense, id) => {
               return (
-                <li key={expense._id}>
+                <li key={expense._id} className="border">
                   <p>{expense.description}</p>
                   <p>Amount: {expense.amount}</p>
                   <p>Subcategory: {expense.subcategory}</p>
                   <p>Date: {new Date(expense.date).toLocaleDateString()}</p>
-                  <p>User ID: {expense.userId}</p>
+                  <p>User ID: {expense.user}</p>
                 </li>
               );
             })}
