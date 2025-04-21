@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const expensesRoutes = require("./routes/expenses"); // adjust path if needed
 const subcategoriesRoute = require("./routes/subcategories");
+const transactionRoutes = require("./routes/transactions");
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expensesRoutes);
 app.use("/api/subcategories", subcategoriesRoute);
+app.use("/api/transactions", transactionRoutes);
 
 // connect to mongoDB
 mongoose

@@ -40,3 +40,15 @@ Authorization: Bearer {{token}}
   "categoryType": "bills",
   "name": "Netflix"
 }
+
+### POST TRANSACTION
+POST http://localhost:5000/api/transactions
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "subcategory": "68068e43e18d18adbfa7b185",
+  "amount": 42.99,
+  "date": "2025-04-21",
+  "description": "Dinner with friends"
+}
