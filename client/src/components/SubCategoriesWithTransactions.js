@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import axios from "axios";
+import PostNewSubcategory from "./PostNewSubcategory";
 
 const ExpenseList = ({ name, category }) => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchExpenses = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:5000/api/subcategories/${category}-with-transactions`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        setData(res.data);
-      } catch (err) {
-        console.error("Failed to fetch expenses", err);
-      }
-    };
+  // useEffect(() => {
+  const fetchExpenses = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/api/subcategories/${category}-with-transactions`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      setData(res.data);
+    } catch (err) {
+      console.error("Failed to fetch expenses", err);
+    }
+  };
 
+  // fetchExpenses();
+  // }, [category]);
+
+  useEffect(() => {
     fetchExpenses();
   }, [category]);
 
@@ -109,6 +114,7 @@ const ExpenseList = ({ name, category }) => {
             </Accordion.Body>
           </Accordion.Item>
         ))}
+        <PostNewSubcategory fetchExpenses={fetchExpenses} />
       </Accordion>
     </div>
   );
