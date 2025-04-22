@@ -3,6 +3,8 @@ import Accordion from "react-bootstrap/Accordion";
 import axios from "axios";
 import PostNewSubcategory from "./PostNewSubcategory";
 import PostNewTransaction from "./PostNewTransaction";
+import CategoryBreakdown from "./CategoryBreakdown";
+// import GetBudget from "./GetBudget";
 
 const ExpenseList = ({ name, category }) => {
   const [data, setData] = useState([]);
@@ -36,8 +38,17 @@ const ExpenseList = ({ name, category }) => {
     <div className="bg-white border rounded-lg shadow-md m-2 p-2">
       <Accordion>
         <Accordion.Header>
-          <h2 className="text-2xl font-bold text-indigo-600 m-4">{name}</h2>
+          <div className="flex flex-col items-center w-full">
+            <h2 className="text-center text-2xl font-bold text-indigo-600 m-4">
+              {name}
+            </h2>
+            <CategoryBreakdown
+              category={category}
+              fetchExpenses={fetchExpenses}
+            />
+          </div>
         </Accordion.Header>
+
         <Accordion.Body>
           <Accordion>
             {data.map((sub, idx) => (

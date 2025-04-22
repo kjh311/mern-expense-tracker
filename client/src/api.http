@@ -50,17 +50,22 @@ Authorization: Bearer {{token}}
 {
   "subcategory": "6807495561d8ab719844c1ae",
   "amount": 212.99,
-  "date": "2025-04-21",
-  "description": "Air Compressor",
+  "date": "2025-04-22",
+  "description": "Screw Driver",
   "recurring": false
 }
 
 ### Set or Update Budget
 POST http://localhost:5000/api/budget
 Content-Type: application/json
-Authorization: Bearer YOUR_JWT_TOKEN_HERE
+Authorization: Bearer {{token}}
 
 {
-  "category": "expenses",
+  "category": "bills",
   "amount": 1200
 }
+
+###Get Budget
+GET http://localhost:5000/api/budget
+Content-Type: application/json
+Authorization: Bearer {{token}}
