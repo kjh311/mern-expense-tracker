@@ -4,10 +4,7 @@ const Dashboard = () => {
   return (
     <div>
       <h1 className="text-center">Dashboard</h1>
-      <SubCategoriesWithTransactions
-        name={"Expenses Transactions"}
-        category={"expense"}
-      />
+      <SubCategoriesWithTransactions name={"Expenses"} category={"expense"} />
       <br />
       <SubCategoriesWithTransactions name={"Bills"} category={"bills"} />
       <br />

@@ -1,26 +1,29 @@
 import React, { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
+import AccordionItem from "react-bootstrap/esm/AccordionItem";
 import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
 import AccordionBody from "react-bootstrap/esm/AccordionBody";
 import axios from "axios";
 
-const PostNewSubcategory = ({ fetchExpenses }) => {
-  //   const [data, setData] = useState([]);
+const PostNewSubcategory = ({
+  fetchExpenses,
+  category,
+  activeKey,
+  setActiveKey,
+}) => {
   const [name, setName] = useState("");
-  const [categoryType, setCategoryType] = useState("");
   const [budget, setBudget] = useState("");
 
   const handlePost = (e) => {
     e.preventDefault();
-    console.log("name", name, "categoryType", categoryType, "budget", budget);
 
     const postSub = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:5000/api/subcategories", // Adjust your endpoint as needed
+          "http://localhost:5000/api/subcategories",
           {
             name,
-            categoryType,
+            categoryType: category, // use the prop here!
             budget,
           },
           {
@@ -32,25 +35,20 @@ const PostNewSubcategory = ({ fetchExpenses }) => {
         );
 
         console.log("Subcategory posted:", res.data);
-        fetchExpenses();
+        fetchExpenses(); // trigger parent update
+        setActiveKey(null);
       } catch (err) {
         console.error("Failed to post subcategory", err);
       }
     };
 
     postSub();
-
     setName("");
-    setCategoryType("");
     setBudget("");
   };
 
-  const handleDropDownChange = (e) => {
-    setCategoryType(e.target.value);
-  };
-
   return (
-    <Accordion className="text-center">
+    <AccordionItem eventKey="new">
       <AccordionHeader className="bg-gray-100 py-3">
         <h1 className="text-lg font-semibold text-gray-700">
           Add New Subcategory +
@@ -70,21 +68,6 @@ const PostNewSubcategory = ({ fetchExpenses }) => {
             onChange={(e) => setName(e.target.value)}
           />
 
-          <select
-            className="w-full max-w-md border border-gray-300 p-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-            onChange={handleDropDownChange}
-            name="category"
-            id="category-dropdown"
-            value={categoryType}
-            required
-          >
-            <option value="">-- Select a Category --</option>
-            <option value="expense">Expenses</option>
-            <option value="savings">Savings</option>
-            <option value="income">Income</option>
-            <option value="bills">Bills</option>
-          </select>
-
           <input
             type="number"
             value={budget}
@@ -102,7 +85,7 @@ const PostNewSubcategory = ({ fetchExpenses }) => {
           </button>
         </form>
       </AccordionBody>
-    </Accordion>
+    </AccordionItem>
   );
 };
 

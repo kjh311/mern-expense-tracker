@@ -1,3 +1,3 @@
-Expense / Income Tracker
-Mern Stack
-.
+# Expense / Income Tracker
+
+## Mern Stack
