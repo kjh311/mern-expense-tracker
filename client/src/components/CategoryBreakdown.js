@@ -3,7 +3,6 @@ import axios from "axios";
 
 const CategoryBreakdown = ({ category, fetchExpenses }) => {
   const [data, setData] = useState([]);
-  const [totalTransactions, setTotalTransactions] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,18 +38,23 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
   const totalBudget = data.reduce((acc, sub) => acc + (sub.budget || 0), 0);
 
   return (
-    <div className="text-sm text-gray-600 font-medium p-2 flex flex-col sm:flex-row justify-around w-full">
+    <div className=" text-center text-sm text-gray-600 font-medium p-2 flex flex-col sm:flex-row justify-around w-full ">
       <p>
         Total Budget: <br /> ${totalBudget.toFixed(2)}
       </p>
       <p>
-        Total Spent: <br />${totalSpent.toFixed(2)}
+        Total {category === "income" ? "Earned" : "Spent"}: <br />$
+        {totalSpent.toFixed(2)}
       </p>
       <p>
-        Left to Spend: <br />{" "}
+        Left to {category === "income" ? "Earn" : "Spend"} <br />{" "}
         <span
           className={`${
-            totalBudget - totalSpent < 0 ? "text-red-500" : "text-gray-600"
+            category === "income" && totalBudget - totalSpent > 0
+              ? "text-red-500 text-lg"
+              : totalBudget - totalSpent < 0
+              ? "text-red-500 text-lg"
+              : "text-green-600"
           }`}
         >
           ${(totalBudget - totalSpent).toFixed(2)}

@@ -2,7 +2,7 @@ import SubCategoriesWithTransactions from "./SubCategoriesWithTransactions";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className="bg-gray-100 p-4">
       <h1 className="text-center">Dashboard</h1>
       <SubCategoriesWithTransactions name={"Expenses"} category={"expense"} />
       <br />

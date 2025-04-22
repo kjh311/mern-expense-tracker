@@ -35,10 +35,10 @@ const ExpenseList = ({ name, category }) => {
   }, [category]);
 
   return (
-    <div className="bg-white border rounded-lg shadow-md m-2 p-2">
-      <Accordion>
-        <Accordion.Header>
-          <div className="flex flex-col items-center w-full">
+    <div className="max-w-[1200px] myBorder mx-auto bg-red-300 shadow-md m-2 p-4 ">
+      <Accordion className="">
+        <Accordion.Header className="">
+          <div className="flex flex-col items-center w-full ">
             <h2 className="text-center text-2xl font-bold text-indigo-600 m-4">
               {name}
             </h2>
@@ -58,29 +58,33 @@ const ExpenseList = ({ name, category }) => {
                 className="mb-3 border rounded-lg overflow-hidden"
               >
                 <Accordion.Header>
-                  <div className="flex flex-col w-full gap-1 px-2">
-                    {/* NAME & TOTAL SPENT */}
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full">
+                  <div className="flex flex-col w-full gap-4 px-2 ">
+                    {/* NAME */}
+                    <div className="flex justify-center items-center w-full mb-4 ">
                       <span className="text-lg font-medium text-gray-700">
                         {sub.name}
                       </span>
+                    </div>
 
-                      <span className="text-gray-500 font-bold sm:text-right">
+                    {/* TOTAL SPENT, BUDGET, and LEFT TO SPEND/ EARN */}
+                    <div className="flex flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 ">
+                      {/* Total Spent */}
+                      <span className="text-gray-500 font-bold">
                         Total Spent: $
                         {sub.transactions
                           .reduce((sum, tx) => sum + tx.amount, 0)
                           .toFixed(2)}
                       </span>
-                    </div>
 
-                    {/* BUDGET */}
-                    {sub.budget && (
-                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full">
+                      {/* Budget */}
+                      {sub.budget && (
                         <span className="text-sm text-gray-500">
                           Budget: ${sub.budget.toFixed(2)}
                         </span>
+                      )}
 
-                        {/* LEFT TO SPEND / EARN */}
+                      {/* Left to Spend/Earn */}
+                      {sub.budget && (
                         <span
                           className={`text-sm ${
                             (
@@ -92,7 +96,7 @@ const ExpenseList = ({ name, category }) => {
                             ).toFixed(2) < 0
                               ? "text-red-400 font-bold"
                               : "text-green-600"
-                          } sm:text-right`}
+                          }`}
                         >
                           Left to {category === "income" ? "earn" : "spend"}: $
                           {(
@@ -103,12 +107,12 @@ const ExpenseList = ({ name, category }) => {
                             )
                           ).toFixed(2)}
                         </span>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </Accordion.Header>
 
-                <Accordion.Body className="bg-gray-50">
+                <Accordion.Body className="bg-blue-200">
                   <PostNewTransaction
                     subcategory={sub._id}
                     fetchExpenses={fetchExpenses}
