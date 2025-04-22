@@ -45,11 +45,12 @@ const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
   return (
     <Accordion className="my-4">
       <AccordionItem eventKey="newTransaction">
-        <AccordionHeader className="bg-gray-100 py-3">
-          <h2 className="text-sm font-semibold text-gray-700">
-            Add Transaction +
+        <AccordionHeader className="bg-gray-100 w-full flex justify-center items-center">
+          <h2 className="text-lg font-semibold text-gray-700 text-center w-full">
+            Add New Transaction <span className="text-3xl">+</span>
           </h2>
         </AccordionHeader>
+
         <AccordionBody className="bg-white px-6 py-4">
           <form
             onSubmit={handlePostTransaction}

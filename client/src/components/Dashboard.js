@@ -4,13 +4,13 @@ const Dashboard = () => {
   return (
     <div className="bg-gray-100 p-4">
       <h1 className="text-center">Dashboard</h1>
-      <SubCategoriesWithTransactions name={"Expenses"} category={"expense"} />
+      <SubCategoriesWithTransactions name={"EXPENSES"} category={"expense"} />
       <br />
-      <SubCategoriesWithTransactions name={"Bills"} category={"bills"} />
+      <SubCategoriesWithTransactions name={"BILLS"} category={"bills"} />
       <br />
-      <SubCategoriesWithTransactions name={"Savings"} category={"savings"} />
+      <SubCategoriesWithTransactions name={"SAVINGS"} category={"savings"} />
       <br />
-      <SubCategoriesWithTransactions name={"Income"} category={"income"} />
+      <SubCategoriesWithTransactions name={"INCOME"} category={"income"} />
     </div>
   );
 };

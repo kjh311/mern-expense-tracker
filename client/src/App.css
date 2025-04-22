@@ -32,3 +32,14 @@ button.accordion-button::after {
 button.accordion-button:not(.collapsed)::after {
   transform: rotate(-180deg) scale(1.5); /* Rotate + scale */
 }
+
+.accordion-header:hover {
+  background-color: #bfdbfe !important;
+  /* transform: scale(1.05) !important; */
+  outline: 3px solid black !important;
+}
+
+.accordion-header {
+  outline: 3px solid rgba(0, 0, 0, 0) !important;
+  background-color: white !important;
+}

@@ -23,7 +23,7 @@ const PostNewSubcategory = ({
           "http://localhost:5000/api/subcategories",
           {
             name,
-            categoryType: category, // use the prop here!
+            categoryType: category,
             budget,
           },
           {
@@ -49,10 +49,10 @@ const PostNewSubcategory = ({
 
   return (
     <AccordionItem eventKey="new">
-      <AccordionHeader className="bg-gray-100 py-3">
-        <h1 className="text-lg font-semibold text-gray-700">
-          Add New Subcategory +
-        </h1>
+      <AccordionHeader className="bg-gray-100 w-full flex justify-center items-center">
+        <h2 className="text-lg font-semibold text-gray-700 text-center w-full">
+          Add New SubCategory <span className="text-3xl">+</span>
+        </h2>
       </AccordionHeader>
       <AccordionBody className="bg-white p-6">
         <form

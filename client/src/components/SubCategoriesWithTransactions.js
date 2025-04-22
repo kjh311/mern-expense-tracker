@@ -5,6 +5,7 @@ import PostNewSubcategory from "./PostNewSubcategory";
 import PostNewTransaction from "./PostNewTransaction";
 import CategoryBreakdown from "./CategoryBreakdown";
 // import GetBudget from "./GetBudget";
+import { getActionWord, getActionWordPassedTense } from "./ActionWords";
 
 const ExpenseList = ({ name, category }) => {
   const [data, setData] = useState([]);
@@ -55,7 +56,7 @@ const ExpenseList = ({ name, category }) => {
               <Accordion.Item
                 eventKey={idx.toString()}
                 key={sub._id}
-                className="mb-3 border rounded-lg overflow-hidden"
+                className="mb-3 border rounded-lg overflow-hidden accordion-item transition-all duration-300 ease-in-out hover:bg-blue-200 "
               >
                 <Accordion.Header>
                   <div className="flex flex-col w-full gap-4 px-2 ">
@@ -70,7 +71,7 @@ const ExpenseList = ({ name, category }) => {
                     <div className="flex flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 ">
                       {/* Total Spent */}
                       <span className="text-gray-500 font-bold">
-                        Total Spent: $
+                        Total {getActionWordPassedTense(category)}: $
                         {sub.transactions
                           .reduce((sum, tx) => sum + tx.amount, 0)
                           .toFixed(2)}
@@ -98,7 +99,7 @@ const ExpenseList = ({ name, category }) => {
                               : "text-green-600"
                           }`}
                         >
-                          Left to {category === "income" ? "earn" : "spend"}: $
+                          Left to {getActionWord(category)}: $
                           {(
                             sub.budget -
                             sub.transactions.reduce(
@@ -125,19 +126,24 @@ const ExpenseList = ({ name, category }) => {
                       {sub.transactions.map((tx) => (
                         <li
                           key={tx._id}
-                          className="border border-gray-200 rounded-md p-3 bg-white shadow-sm"
+                          className="text-center border border-gray-200 rounded-md p-3 bg-white shadow-sm"
                         >
-                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
-                            <span className="font-semibold text-green-600 text-base sm:text-lg">
+                          {/* Description on top */}
+                          <div>
+                            <span className="font-semibold text-green-600 text-base sm:text-lg block text-center sm:text-left">
                               {tx.description}
+                            </span>
+                          </div>
+
+                          {/* Amount and Date below, spaced around */}
+                          <div className="flex flex-col sm:flex-row sm:justify-around sm:items-center mt-2 gap-1">
+                            <span className="text-gray-700 text-sm sm:text-base">
+                              ${tx.amount.toFixed(2)}
                             </span>
                             <span className="text-sm text-gray-500">
                               {new Date(tx.date).toLocaleDateString()}
                             </span>
                           </div>
-                          <p className="text-gray-700 text-sm sm:text-base">
-                            ${tx.amount.toFixed(2)}
-                          </p>
                         </li>
                       ))}
                     </ul>

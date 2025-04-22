@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { getActionWord, getActionWordPassedTense } from "./ActionWords";
 
 const CategoryBreakdown = ({ category, fetchExpenses }) => {
   const [data, setData] = useState([]);
@@ -43,11 +44,11 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
         Total Budget: <br /> ${totalBudget.toFixed(2)}
       </p>
       <p>
-        Total {category === "income" ? "Earned" : "Spent"}: <br />$
+        Total {getActionWordPassedTense(category)}: <br />$
         {totalSpent.toFixed(2)}
       </p>
       <p>
-        Left to {category === "income" ? "Earn" : "Spend"} <br />{" "}
+        Left to {getActionWord(category)} <br />{" "}
         <span
           className={`${
             category === "income" && totalBudget - totalSpent > 0
