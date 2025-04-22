@@ -1,4 +1,5 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODAzY2JmNjA5OWNjZTk5Y2Q2MzJkMzEiLCJpYXQiOjE3NDUzMDc2NzgsImV4cCI6MTc0NTMyNTY3OH0.Pxx_MPF9rwzSgawHPUCYeJ6y3vErEOdiU85G1GCgBIs
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODAzY2JmNjA5OWNjZTk5Y2Q2MzJkMzEiLCJpYXQiOjE3NDUzNDE5MzIsImV4cCI6MTc0NTM1OTkzMn0.coqCW9_w06Ddy76aAYrqzaEFyC6c0V4M5M5s3Hk42T4
+
 ### Register a new user
 POST http://localhost:5000/api/auth/register
 Content-Type: application/json
@@ -48,8 +49,18 @@ Authorization: Bearer {{token}}
 
 {
   "subcategory": "6807495561d8ab719844c1ae",
-  "amount": 12.99,
+  "amount": 212.99,
   "date": "2025-04-21",
-  "description": "Hammer",
+  "description": "Air Compressor",
   "recurring": false
+}
+
+### Set or Update Budget
+POST http://localhost:5000/api/budget
+Content-Type: application/json
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+{
+  "category": "expenses",
+  "amount": 1200
 }

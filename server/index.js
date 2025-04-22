@@ -6,6 +6,7 @@ const authRoutes = require("./routes/auth");
 const expensesRoutes = require("./routes/expenses"); // adjust path if needed
 const subcategoriesRoute = require("./routes/subcategories");
 const transactionRoutes = require("./routes/transactions");
+const budgetRoutes = require("./routes/budget");
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expensesRoutes);
 app.use("/api/subcategories", subcategoriesRoute);
 app.use("/api/transactions", transactionRoutes);
+app.use("/api/budget", budgetRoutes);
 
 // connect to mongoDB
 mongoose
