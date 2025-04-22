@@ -112,15 +112,17 @@ const ExpenseList = ({ name, category }) => {
                           key={tx._id}
                           className="border border-gray-200 rounded-md p-3 bg-white shadow-sm"
                         >
-                          <div className="flex justify-between items-center">
-                            <span className="font-semibold text-green-600">
-                              ${tx.amount.toFixed(2)}
+                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
+                            <span className="font-semibold text-green-600 text-base sm:text-lg">
+                              {tx.description}
                             </span>
                             <span className="text-sm text-gray-500">
                               {new Date(tx.date).toLocaleDateString()}
                             </span>
                           </div>
-                          <p className="text-gray-700">{tx.description}</p>
+                          <p className="text-gray-700 text-sm sm:text-base">
+                            ${tx.amount.toFixed(2)}
+                          </p>
                         </li>
                       ))}
                     </ul>
