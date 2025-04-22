@@ -5,7 +5,7 @@ const verifyToken = require("../middleware/verifyToken");
 
 // POST NEW TRANSACTION
 router.post("/", verifyToken, async (req, res) => {
-  const { subcategory, amount, date, description } = req.body;
+  const { subcategory, amount, date, description, recurring } = req.body;
 
   try {
     const newTransaction = new Transaction({
@@ -14,6 +14,7 @@ router.post("/", verifyToken, async (req, res) => {
       amount,
       date,
       description,
+      recurring,
     });
 
     const saved = await newTransaction.save();

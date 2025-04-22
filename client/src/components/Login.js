@@ -25,22 +25,15 @@ const Login = () => {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        throw new Error("Login request failed");
-      }
+      if (!response.ok) throw new Error("Login request failed");
 
       const data = await response.json();
-      console.log(data);
 
-      if (data.token === undefined) return;
+      if (!data.token) return alert(data.message || "Login failed");
 
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-        setLoggedIn(true);
-        navigate("/dashboard");
-      } else {
-        alert(data.message || "Login failed");
-      }
+      localStorage.setItem("token", data.token);
+      setLoggedIn(true);
+      navigate("/dashboard");
     } catch (error) {
       console.error(error);
       alert("An error occurred. Please try again.");
@@ -48,35 +41,43 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="p-2 m-2 border"
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Email"
-          required
-        />
-        <input
-          className="p-2 m-2 border"
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          placeholder="Password"
-          required
-        />
-        <button className="m-2 p-2 border" type="submit">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-500">
+      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
+        <h2 className="text-2xl font-bold text-center mb-6 text-indigo-600">
           Login
-        </button>
-      </form>
-      <div>
-        <Link to="/register">
-          <button className="p-2 m-2 bg-red-400 border">Or Register</button>
-        </Link>
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email"
+            required
+          />
+          <input
+            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Password"
+            required
+          />
+          <button
+            type="submit"
+            className="w-full bg-indigo-600 text-white py-3 rounded-md hover:bg-indigo-700 transition duration-200"
+          >
+            Login
+          </button>
+        </form>
+        <p className="text-center text-sm text-gray-500 mt-4">
+          Don’t have an account?
+          <Link to="/register" className="text-indigo-600 hover:underline ml-1">
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );

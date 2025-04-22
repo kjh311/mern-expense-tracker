@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import "./App.css";
 // import AppRouter from "./components/Router";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./components/Register";
@@ -14,7 +15,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export const LoggedInContext = React.createContext();
 
 function App() {
-  // const [loggedIn, setLoggedIn] = useState(false);
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
 
   return (

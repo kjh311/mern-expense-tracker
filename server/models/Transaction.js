@@ -12,6 +12,7 @@ const transactionSchema = new mongoose.Schema(
     amount: { type: Number, required: true },
     description: { type: String },
     date: { type: Date, default: Date.now },
+    recurring: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

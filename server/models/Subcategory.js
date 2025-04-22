@@ -9,6 +9,7 @@ const subcategorySchema = new mongoose.Schema(
       required: true,
     },
     name: { type: String, required: true },
+    budget: { type: Number, required: true },
   },
   { timestamps: true }
 );

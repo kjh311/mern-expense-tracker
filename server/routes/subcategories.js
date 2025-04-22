@@ -2,18 +2,20 @@ const express = require("express");
 const router = express.Router();
 const Subcategory = require("../models/Subcategory");
 const verifyToken = require("../middleware/verifyToken");
+const Transaction = require("../models/Transaction");
 
 // POST NEW SUBCATEGORY
 
 // * UserID or user?? *
 router.post("/", verifyToken, async (req, res) => {
-  const { categoryType, name } = req.body;
+  const { categoryType, name, budget } = req.body;
 
   try {
     const newSubcategory = new Subcategory({
       user: req.userId,
       categoryType,
       name,
+      budget,
     });
 
     const saved = await newSubcategory.save();
@@ -30,6 +32,122 @@ router.get("/", verifyToken, async (req, res) => {
   try {
     const subs = await Subcategory.find({ user: req.userId });
     res.json(subs);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
+  }
+});
+
+//Get all EXPENSE sucategories with their transactions
+
+router.get("/expense-with-transactions", verifyToken, async (req, res) => {
+  try {
+    const expenseSubs = await Subcategory.find({
+      user: req.userId,
+      categoryType: "expense",
+    });
+
+    const subsWithTransactions = await Promise.all(
+      expenseSubs.map(async (sub) => {
+        const transactions = await Transaction.find({
+          user: req.userId,
+          subcategory: sub._id,
+        }).sort({ date: -1 });
+
+        return {
+          ...sub._doc,
+          transactions,
+        };
+      })
+    );
+
+    res.json(subsWithTransactions);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
+  }
+});
+
+//Get all BILLS sucategories with their transactions
+
+router.get("/bills-with-transactions", verifyToken, async (req, res) => {
+  try {
+    const expenseSubs = await Subcategory.find({
+      user: req.userId,
+      categoryType: "bills",
+    });
+
+    const subsWithTransactions = await Promise.all(
+      expenseSubs.map(async (sub) => {
+        const transactions = await Transaction.find({
+          user: req.userId,
+          subcategory: sub._id,
+        }).sort({ date: -1 });
+
+        return {
+          ...sub._doc,
+          transactions,
+        };
+      })
+    );
+
+    res.json(subsWithTransactions);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
+  }
+});
+
+//Get all INCOME sucategories with their transactions
+
+router.get("/income-with-transactions", verifyToken, async (req, res) => {
+  try {
+    const expenseSubs = await Subcategory.find({
+      user: req.userId,
+      categoryType: "income",
+    });
+
+    const subsWithTransactions = await Promise.all(
+      expenseSubs.map(async (sub) => {
+        const transactions = await Transaction.find({
+          user: req.userId,
+          subcategory: sub._id,
+        }).sort({ date: -1 });
+
+        return {
+          ...sub._doc,
+          transactions,
+        };
+      })
+    );
+
+    res.json(subsWithTransactions);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
+  }
+});
+
+//Get all SAVINGS sucategories with their transactions
+
+router.get("/savings-with-transactions", verifyToken, async (req, res) => {
+  try {
+    const expenseSubs = await Subcategory.find({
+      user: req.userId,
+      categoryType: "savings",
+    });
+
+    const subsWithTransactions = await Promise.all(
+      expenseSubs.map(async (sub) => {
+        const transactions = await Transaction.find({
+          user: req.userId,
+          subcategory: sub._id,
+        }).sort({ date: -1 });
+
+        return {
+          ...sub._doc,
+          transactions,
+        };
+      })
+    );
+
+    res.json(subsWithTransactions);
   } catch (err) {
     res.status(500).json({ err: err.message });
   }
