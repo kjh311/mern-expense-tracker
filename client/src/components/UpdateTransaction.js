@@ -12,12 +12,10 @@ const UpdateTransaction = ({
   date,
   amount,
   description,
-  subCategory,
   recurring,
-  editMode,
-  setEditMode,
+  editModeTransaction,
+  setEditModeTransaction,
 }) => {
-  const [subCategoryInput, setSubCategoryInput] = useState(subCategory);
   const [amountInput, setAmountInput] = useState(amount);
   const [descriptionInput, setDescriptionInput] = useState(description);
   const [recurringInput, setRecurringInput] = useState(recurring);
@@ -26,7 +24,7 @@ const UpdateTransaction = ({
   const [startDate, setStartDate] = useState(date);
 
   const handleEdit = () => {
-    setEditMode(true);
+    setEditModeTransaction(true);
   };
 
   const handleUpdateSubmit = async (e) => {
@@ -53,34 +51,32 @@ const UpdateTransaction = ({
       console.error("Failed to update transaction", err);
     }
 
-    console.log(
-      "subcategory: ",
-      subCategoryInput,
-      "amount: ",
-      amountInput,
-      "description: ",
-      descriptionInput,
-      "Recurring: ",
-      recurringInput,
-      "date: ",
-      dateInput
-    );
+    // console.log(
+    //   "amount: ",
+    //   amountInput,
+    //   "description: ",
+    //   descriptionInput,
+    //   "Recurring: ",
+    //   recurringInput,
+    //   "date: ",
+    //   dateInput
+    // );
 
-    setEditMode(false);
-    setAmountInput(amount);
-    setDescriptionInput(description);
-    setDateInput(date);
-    setRecurringInput(recurring);
+    setEditModeTransaction(false);
+    // setAmountInput(amountInput);
+    // setDescriptionInput(descriptionI);
+    // setDateInput(date);
+    // setRecurringInput(recurring);
   };
 
   const handleClose = (e) => {
     e.preventDefault();
-    setEditMode(false);
+    setEditModeTransaction(false);
   };
 
   return (
     <>
-      {!editMode && (
+      {!editModeTransaction && (
         <button onClick={handleEdit}>
           <FaEdit
             className="react-icon text-blue-500 hover:text-blue-700 transition-all duration-200 absolute bottom-4 right-2 "
@@ -89,7 +85,7 @@ const UpdateTransaction = ({
         </button>
       )}
 
-      {editMode && (
+      {editModeTransaction && (
         <form onSubmit={handleUpdateSubmit} className="text-center">
           <div className="">
             {" "}
@@ -114,7 +110,7 @@ const UpdateTransaction = ({
           <label>Amount:</label>
           <input
             type="number"
-            value={amountInput}
+            value={amountInput.toFixed(2)}
             className="p-2 m-2 border"
             onChange={(e) => setAmountInput(e.target.value)}
           />

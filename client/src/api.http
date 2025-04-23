@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODAzY2JmNjA5OWNjZTk5Y2Q2MzJkMzEiLCJpYXQiOjE3NDUzNDE5MzIsImV4cCI6MTc0NTM1OTkzMn0.coqCW9_w06Ddy76aAYrqzaEFyC6c0V4M5M5s3Hk42T4
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODAzY2JmNjA5OWNjZTk5Y2Q2MzJkMzEiLCJpYXQiOjE3NDU0MTUwNDYsImV4cCI6MTc0NTQzMzA0Nn0.Rx2E7t9S7EplVbpvuP7ptYk335HGolRrlQR6BtMdsCI
 
 ### Register a new user
 POST http://localhost:5000/api/auth/register
@@ -30,6 +30,18 @@ Authorization: Bearer {{token}}
   "subcategory": "Food",
   "date": "2025-01-20T12:00:00.000Z"
 }
+
+### PUT SUBCATEGORY
+# POST http://localhost:5000/api/subcategory
+# Content-Type: application/json
+# Authorization: Bearer {{token}}
+
+# {
+#   "amount": 22.50,
+#   "description": "Snacks",
+#   "subcategory": "Food",
+#   "date": "2025-01-20T12:00:00.000Z"
+# }
 
 ### Create a new subcategory
 POST http://localhost:5000/api/subcategories

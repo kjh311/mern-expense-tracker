@@ -8,6 +8,8 @@ import CategoryBreakdown from "./CategoryBreakdown";
 import { getActionWord, getActionWordPassedTense } from "./ActionWords";
 import DeleteTransaction from "./DeleteTransaction";
 import UpdateTransaction from "./UpdateTransaction";
+import DeleteSubcategory from "./DeleteSubcategory";
+import UpdateSubcategory from "./UpdateSubcategory";
 
 const ExpenseList = ({ name, category, backgroundColor }) => {
   const [data, setData] = useState([]);
@@ -15,7 +17,8 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
   // const [isDeleting, setIsDeleting] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
   const [animatingId, setAnimatingId] = useState(null);
-  const [editMode, setEditMode] = useState(false);
+  const [editModeTransaction, setEditModeTransaction] = useState(false);
+  const [editModeSubcategory, setEditModeSubcategory] = useState(false);
 
   // useEffect(() => {
   const fetchExpenses = async () => {
@@ -68,6 +71,13 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
               >
                 <Accordion.Header>
                   <div className="flex flex-col w-full gap-4 px-2 ">
+                    {/* <UpdateSubcategory
+                      id={sub._id}
+                      name={sub.name}
+                      categoryType={category}
+                      editModeSubcategory={editModeSubcategory}
+                      setEditModeSubcategory={setEditModeSubcategory}
+                    /> */}
                     {/* NAME */}
                     <div className="flex justify-center items-center w-full   ">
                       <span className="lg:text-2xl sm:text-lg   text-gray-700">
@@ -122,6 +132,27 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
                 </Accordion.Header>
 
                 <Accordion.Body className="bg-blue-200">
+                  <div className="flex justify-around">
+                    {!editModeSubcategory && (
+                      <DeleteSubcategory
+                        id={sub._id}
+                        fetchExpenses={fetchExpenses}
+                        deletingId={deletingId}
+                        setDeletingId={setDeletingId}
+                        setAnimatingId={setAnimatingId}
+                        animatingId={animatingId}
+                      />
+                    )}
+                    <UpdateSubcategory
+                      id={sub._id}
+                      fetchExpenses={fetchExpenses}
+                      categoryType={category}
+                      name={sub.name}
+                      budget={sub.budget}
+                      editModeSubcategory={editModeSubcategory}
+                      setEditModeSubcategory={setEditModeSubcategory}
+                    />
+                  </div>
                   <PostNewTransaction
                     subcategory={sub._id}
                     fetchExpenses={fetchExpenses}
@@ -141,7 +172,7 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
                           }`}
                         >
                           {/* Top: Description */}
-                          {!editMode && (
+                          {!editModeTransaction && (
                             <>
                               <div>
                                 <span className="font-semibold text-green-600 text-base sm:text-lg lg:text-2xl block text-center sm:text-left">
@@ -176,8 +207,8 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
                             description={tx.description}
                             subcategory={tx.subcategory}
                             recurring={tx.recurring}
-                            editMode={editMode}
-                            setEditMode={setEditMode}
+                            editModeTransaction={editModeTransaction}
+                            setEditModeTransaction={setEditModeTransaction}
                           />
                         </li>
                       ))}

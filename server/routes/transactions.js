@@ -69,4 +69,6 @@ router.delete("/:id", verifyToken, async (req, res) => {
   }
 });
 
+//DELETE ALL SUBCATEGORIES OF A SUBCOMPONENT
+
 module.exports = router;

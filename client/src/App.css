@@ -103,8 +103,18 @@ ul {
 }
 
 .animate-button {
-  background-color: #0081a8;
+  /* background-color: #0081a8; */
   border: 2px solid rgba(0, 0, 0, 0);
+}
+
+.animate-button-blue {
+  background-color: #0081a8;
+  /* border: 2px solid rgba(0, 0, 0, 0); */
+}
+
+.animate-button-red {
+  background-color: #e33232;
+  /* border: 2px solid rgba(0, 0, 0, 0); */
 }
 
 .animate-button:hover {
