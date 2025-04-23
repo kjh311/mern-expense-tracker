@@ -47,3 +47,7 @@ button.accordion-button:not(.collapsed)::after {
   background-color: white !important;
   transition: all 0.3s ease-in-out;
 }
+
+ul {
+  padding-left: 0 !important;
+}

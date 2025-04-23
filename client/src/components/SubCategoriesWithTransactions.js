@@ -7,10 +7,14 @@ import CategoryBreakdown from "./CategoryBreakdown";
 // import GetBudget from "./GetBudget";
 import { getActionWord, getActionWordPassedTense } from "./ActionWords";
 import DeleteTransaction from "./DeleteTransaction";
+import UpdateTransaction from "./UpdateTransaction";
 
 const ExpenseList = ({ name, category }) => {
   const [data, setData] = useState([]);
   const [activeKey, setActiveKey] = useState(null);
+  // const [isDeleting, setIsDeleting] = useState(null);
+  const [deletingId, setDeletingId] = useState(null);
+  const [animatingId, setAnimatingId] = useState(null);
 
   // useEffect(() => {
   const fetchExpenses = async () => {
@@ -127,26 +131,42 @@ const ExpenseList = ({ name, category }) => {
                       {sub.transactions.map((tx) => (
                         <li
                           key={tx._id}
-                          className="text-center border border-gray-200 rounded-md p-3 bg-white shadow-sm"
+                          className={`relative border border-gray-200 rounded-md p-3 bg-white shadow-sm transition-all duration-300 ease-in-out ${
+                            animatingId === tx._id
+                              ? "opacity-0 -translate-y-2 scale-95"
+                              : ""
+                          }`}
                         >
-                          {/* Description on top */}
+                          {/* Top: Description */}
                           <div>
                             <span className="font-semibold text-green-600 text-base sm:text-lg block text-center sm:text-left">
                               {tx.description}
                             </span>
                           </div>
 
-                          {/* Amount and Date below, spaced around */}
-                          <div className="flex flex-col sm:flex-row sm:justify-around sm:items-center mt-2 gap-1">
+                          {/* Bottom: Amount & Date */}
+                          <div className="flex flex-col sm:flex-row justify-around items-center mt-2 gap-1 pr-10">
                             <span className="text-gray-700 text-sm sm:text-base">
                               ${tx.amount.toFixed(2)}
                             </span>
                             <span className="text-sm text-gray-500">
                               {new Date(tx.date).toLocaleDateString()}
                             </span>
+                          </div>
+
+                          {/* Icons: Absolute on the right */}
+                          <div className="absolute top-2 right-2 flex gap-2">
+                            <UpdateTransaction
+                              id={tx._id}
+                              fetchExpenses={fetchExpenses}
+                            />
                             <DeleteTransaction
                               id={tx._id}
                               fetchExpenses={fetchExpenses}
+                              deletingId={deletingId}
+                              setDeletingId={setDeletingId}
+                              txId={tx._id}
+                              setAnimatingId={setAnimatingId}
                             />
                           </div>
                         </li>
