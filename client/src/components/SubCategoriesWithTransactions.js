@@ -157,31 +157,28 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
                                   {new Date(tx.date).toLocaleDateString()}
                                 </span>
                               </div>
+
+                              <DeleteTransaction
+                                id={tx._id}
+                                fetchExpenses={fetchExpenses}
+                                deletingId={deletingId}
+                                setDeletingId={setDeletingId}
+                                txId={tx._id}
+                                setAnimatingId={setAnimatingId}
+                              />
                             </>
                           )}
-
-                          {/* Icons: Absolute on the right */}
-                          <div className="">
-                            <UpdateTransaction
-                              id={tx._id}
-                              fetchExpenses={fetchExpenses}
-                              date={tx.date}
-                              amount={tx.amount}
-                              description={tx.description}
-                              subcategory={tx.subcategory}
-                              recurring={tx.recurring}
-                              editMode={editMode}
-                              setEditMode={setEditMode}
-                            />
-                            <DeleteTransaction
-                              id={tx._id}
-                              fetchExpenses={fetchExpenses}
-                              deletingId={deletingId}
-                              setDeletingId={setDeletingId}
-                              txId={tx._id}
-                              setAnimatingId={setAnimatingId}
-                            />
-                          </div>
+                          <UpdateTransaction
+                            id={tx._id}
+                            fetchExpenses={fetchExpenses}
+                            date={tx.date}
+                            amount={tx.amount}
+                            description={tx.description}
+                            subcategory={tx.subcategory}
+                            recurring={tx.recurring}
+                            editMode={editMode}
+                            setEditMode={setEditMode}
+                          />
                         </li>
                       ))}
                     </ul>

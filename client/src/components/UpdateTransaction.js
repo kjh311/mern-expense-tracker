@@ -4,6 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "./Button";
+import { IoCloseCircle } from "react-icons/io5";
 
 const UpdateTransaction = ({
   id,
@@ -72,18 +73,35 @@ const UpdateTransaction = ({
     setRecurringInput(recurring);
   };
 
+  const handleClose = (e) => {
+    e.preventDefault();
+    setEditMode(false);
+  };
+
   return (
     <>
-      <button onClick={handleEdit}>
-        <FaEdit
-          className="react-icon text-blue-500 hover:text-blue-700 transition-all duration-200 absolute bottom-4 right-2 "
-          size={25}
-        />
-      </button>
+      {!editMode && (
+        <button onClick={handleEdit}>
+          <FaEdit
+            className="react-icon text-blue-500 hover:text-blue-700 transition-all duration-200 absolute bottom-4 right-2 "
+            size={25}
+          />
+        </button>
+      )}
 
       {editMode && (
         <form onSubmit={handleUpdateSubmit} className="text-center">
+          <div className="">
+            {" "}
+            <button
+              onClick={handleClose}
+              className={`react-icon text-red-500 text-4xl   transition-all duration-200 absolute top-2 right-2`}
+            >
+              <IoCloseCircle />
+            </button>
+          </div>
           <h2>Update transaction:</h2>
+
           <label htmlFor="descriptionInput">Description:</label>
           <input
             type="text"
