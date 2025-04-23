@@ -1,19 +1,125 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Button from "./Button";
 
-const handleEdit = () => {
-  alert("update this transaction?");
-};
+const UpdateTransaction = ({
+  id,
+  fetchExpenses,
+  date,
+  amount,
+  description,
+  subCategory,
+  recurring,
+  editMode,
+  setEditMode,
+}) => {
+  const [subCategoryInput, setSubCategoryInput] = useState(subCategory);
+  const [amountInput, setAmountInput] = useState(amount);
+  const [descriptionInput, setDescriptionInput] = useState(description);
+  const [recurringInput, setRecurringInput] = useState(recurring);
+  const [dateInput, setDateInput] = useState(date);
 
-const UpdateTransaction = ({ id, fetchExpenses }) => {
+  const [startDate, setStartDate] = useState(date);
+
+  const handleEdit = () => {
+    setEditMode(true);
+  };
+
+  const handleUpdateSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/api/transactions/${id}`,
+        {
+          description: descriptionInput,
+          amount: amountInput,
+          date: dateInput,
+          recurring: recurringInput,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("Transaction updated:", res.data);
+    } catch (err) {
+      console.error("Failed to update transaction", err);
+    }
+
+    console.log(
+      "subcategory: ",
+      subCategoryInput,
+      "amount: ",
+      amountInput,
+      "description: ",
+      descriptionInput,
+      "Recurring: ",
+      recurringInput,
+      "date: ",
+      dateInput
+    );
+
+    setEditMode(false);
+    setAmountInput(amount);
+    setDescriptionInput(description);
+    setDateInput(date);
+    setRecurringInput(recurring);
+  };
+
   return (
-    <button onClick={handleEdit}>
-      <FaEdit
-        className="react-icon text-blue-500 hover:text-blue-700 transition-all duration-200 absolute bottom-4 right-2 "
-        size={25}
-      />
-    </button>
+    <>
+      <button onClick={handleEdit}>
+        <FaEdit
+          className="react-icon text-blue-500 hover:text-blue-700 transition-all duration-200 absolute bottom-4 right-2 "
+          size={25}
+        />
+      </button>
+
+      {editMode && (
+        <form onSubmit={handleUpdateSubmit} className="text-center">
+          <h2>Update transaction:</h2>
+          <label htmlFor="descriptionInput">Description:</label>
+          <input
+            type="text"
+            name="descriptionInput"
+            value={descriptionInput}
+            className="p-2 m-2 border"
+            onChange={(e) => setDescriptionInput(e.target.value)}
+          />
+          <br />
+          <label>Amount:</label>
+          <input
+            type="number"
+            value={amountInput}
+            className="p-2 m-2 border"
+            onChange={(e) => setAmountInput(e.target.value)}
+          />
+          <br />
+          <label>Date:</label>
+          <DatePicker
+            className="p-2 m-2 border text-center"
+            selected={dateInput}
+            onChange={(dateInput) => setDateInput(dateInput)}
+          />
+          <br />
+          <label>Recurring: </label>
+          <input
+            type="checkbox"
+            value={recurringInput}
+            onChange={(e) => setRecurringInput(e.target.value)}
+          />
+          <br />
+          <br />
+          <Button type={"submit"} text={"Update"} />
+        </form>
+      )}
+    </>
   );
 };
 

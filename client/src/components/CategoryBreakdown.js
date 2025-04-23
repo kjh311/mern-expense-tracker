@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { getActionWord, getActionWordPassedTense } from "./ActionWords";
+import {
+  getActionWord,
+  getActionWordPassedTense,
+  getColorActionWords,
+} from "./ActionWords";
 
 const CategoryBreakdown = ({ category, fetchExpenses }) => {
   const [data, setData] = useState([]);

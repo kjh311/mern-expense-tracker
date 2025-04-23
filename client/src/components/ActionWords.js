@@ -27,3 +27,18 @@ export const getActionWordPassedTense = (category) => {
       return "";
   }
 };
+
+export const getColorActionWords = (category) => {
+  switch (category) {
+    case "savings":
+      return "text-red-500";
+    case "bills":
+      return "text-red-500";
+    case "income":
+      return "text-red-500";
+    case "expense":
+      return "text-green-500";
+    default:
+      return "";
+  }
+};

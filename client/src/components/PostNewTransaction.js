@@ -4,6 +4,7 @@ import AccordionItem from "react-bootstrap/esm/AccordionItem";
 import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
 import AccordionBody from "react-bootstrap/esm/AccordionBody";
 import axios from "axios";
+import Button from "./Button";
 
 const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
   const [description, setDescription] = useState("");
@@ -83,12 +84,7 @@ const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
               Recurring Transaction
             </label>
 
-            <button
-              type="submit"
-              className="animate-button bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md transition duration-200"
-            >
-              Submit
-            </button>
+            <Button type={"submit"} text={"Submit"} />
           </form>
         </AccordionBody>
       </AccordionItem>

@@ -15,6 +15,7 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
   // const [isDeleting, setIsDeleting] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
   const [animatingId, setAnimatingId] = useState(null);
+  const [editMode, setEditMode] = useState(false);
 
   // useEffect(() => {
   const fetchExpenses = async () => {
@@ -140,27 +141,37 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
                           }`}
                         >
                           {/* Top: Description */}
-                          <div>
-                            <span className="font-semibold text-green-600 text-base sm:text-lg lg:text-2xl block text-center sm:text-left">
-                              {tx.description}
-                            </span>
-                          </div>
+                          {!editMode && (
+                            <>
+                              <div>
+                                <span className="font-semibold text-green-600 text-base sm:text-lg lg:text-2xl block text-center sm:text-left">
+                                  {tx.description}
+                                </span>
+                              </div>
 
-                          {/* Bottom: Amount & Date */}
-                          <div className="flex flex-col sm:flex-row justify-around items-center mt-2 gap-1 lg:text-lg sm:text-sm">
-                            <span className="text-gray-500  ">
-                              ${tx.amount.toFixed(2)}
-                            </span>
-                            <span className=" text-gray-500 ">
-                              {new Date(tx.date).toLocaleDateString()}
-                            </span>
-                          </div>
+                              <div className="flex flex-col sm:flex-row justify-around items-center mt-2 gap-1 lg:text-lg sm:text-sm">
+                                <span className="text-gray-500  ">
+                                  ${tx.amount.toFixed(2)}
+                                </span>
+                                <span className=" text-gray-500 ">
+                                  {new Date(tx.date).toLocaleDateString()}
+                                </span>
+                              </div>
+                            </>
+                          )}
 
                           {/* Icons: Absolute on the right */}
                           <div className="">
                             <UpdateTransaction
                               id={tx._id}
                               fetchExpenses={fetchExpenses}
+                              date={tx.date}
+                              amount={tx.amount}
+                              description={tx.description}
+                              subcategory={tx.subcategory}
+                              recurring={tx.recurring}
+                              editMode={editMode}
+                              setEditMode={setEditMode}
                             />
                             <DeleteTransaction
                               id={tx._id}
