@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
 import Button from "./Button";
+import { IoCloseCircle } from "react-icons/io5";
 
 const UpdateSubcategory = ({
   id,
@@ -49,8 +50,15 @@ const UpdateSubcategory = ({
     setEditModeSubcategory(false);
   };
 
+  const handleClose = (e) => {
+    e.preventDefault();
+    setEditModeSubcategory(false);
+  };
+
   return (
     <>
+      {/* {editModeSubcategory && <div className="relative w-100"></div>} */}
+
       {!editModeSubcategory && (
         <Button
           type={"submit"}
@@ -61,27 +69,40 @@ const UpdateSubcategory = ({
       )}
       {/* <div> */}
       {editModeSubcategory && (
-        <form onSubmit={handleSubcategoryUpdate} className="text-center">
-          <label>Subcategory Name:</label>
-          <br />
-          <input
-            className="text-center p-2 m-2 border"
-            type="text"
-            value={nameInput}
-            onChange={(e) => setNameInput(e.target.value)}
-          />
-          <br />
-          <label>Budget for the month:</label>
-          <br />
-          <input
-            type="number"
-            value={budgetInput}
-            className="text-center p-2 m-2 border"
-            onChange={(e) => setBudgetInput(e.target.value)}
-          />
-          <br />
-          <Button type={"submit"} text={"Update SubCategory"} color={"blue"} />
-        </form>
+        <div className="relative text-center bg-gray-100  p-4 outline m-2 rounded-xl w-100">
+          <button
+            onClick={handleClose}
+            className={`react-icon text-red-500 text-4xl   transition-all duration-200 absolute top-2 right-2`}
+          >
+            <IoCloseCircle />
+          </button>
+          <form onSubmit={handleSubcategoryUpdate} className="text-center">
+            <label>Subcategory Name:</label>
+            <br />
+            <input
+              className="text-center p-2 m-2 rounded outline"
+              type="text"
+              value={nameInput}
+              onChange={(e) => setNameInput(e.target.value)}
+            />
+            <br />
+            <label>Budget for the month:</label>
+            <br />
+            <input
+              type="number"
+              value={budgetInput}
+              className="text-center p-2 m-2 outline rounded"
+              onChange={(e) => setBudgetInput(e.target.value)}
+            />
+            <br />
+            <br />
+            <Button
+              type={"submit"}
+              text={"Update SubCategory"}
+              color={"blue"}
+            />
+          </form>
+        </div>
       )}
       {/* </div> */}
     </>

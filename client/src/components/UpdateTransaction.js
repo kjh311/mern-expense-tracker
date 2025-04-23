@@ -130,7 +130,7 @@ const UpdateTransaction = ({
           />
           <br />
           <br />
-          <Button type={"submit"} text={"Update"} />
+          <Button type={"submit"} text={"Update"} color={"blue"} />
         </form>
       )}
     </>

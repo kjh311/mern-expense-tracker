@@ -84,7 +84,7 @@ const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
               Recurring Transaction
             </label>
 
-            <Button type={"submit"} text={"Submit"} />
+            <Button type={"submit"} text={"Submit"} color={"blue"} />
           </form>
         </AccordionBody>
       </AccordionItem>
