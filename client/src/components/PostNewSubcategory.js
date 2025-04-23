@@ -51,7 +51,7 @@ const PostNewSubcategory = ({
     <AccordionItem eventKey="new">
       <AccordionHeader className="bg-gray-100 w-full flex justify-center items-center">
         <h2 className="text-lg font-semibold text-gray-700 text-center w-full">
-          Add New SubCategory <span className="text-3xl">+</span>
+          Add New SubCategory <span className="text-3xl text-red-500">+</span>
         </h2>
       </AccordionHeader>
       <AccordionBody className="bg-white p-6">
@@ -62,7 +62,7 @@ const PostNewSubcategory = ({
           <input
             type="text"
             className="w-full max-w-md border border-gray-300 p-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-            placeholder="Enter name of subcategory"
+            placeholder="Enter Name of Subcategory"
             required
             value={name}
             onChange={(e) => setName(e.target.value)}

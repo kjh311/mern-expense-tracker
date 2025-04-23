@@ -2,15 +2,31 @@ import SubCategoriesWithTransactions from "./SubCategoriesWithTransactions";
 
 const Dashboard = () => {
   return (
-    <div className="bg-gray-100 p-4">
+    <div className="dashboard p-4">
       <h1 className="text-center">Dashboard</h1>
-      <SubCategoriesWithTransactions name={"EXPENSES"} category={"expense"} />
+      <SubCategoriesWithTransactions
+        name={"EXPENSES"}
+        category={"expense"}
+        backgroundColor={"red"}
+      />
       <br />
-      <SubCategoriesWithTransactions name={"BILLS"} category={"bills"} />
+      <SubCategoriesWithTransactions
+        name={"BILLS"}
+        category={"bills"}
+        backgroundColor={"orange"}
+      />
       <br />
-      <SubCategoriesWithTransactions name={"SAVINGS"} category={"savings"} />
+      <SubCategoriesWithTransactions
+        name={"SAVINGS"}
+        category={"savings"}
+        backgroundColor={"yellow"}
+      />
       <br />
-      <SubCategoriesWithTransactions name={"INCOME"} category={"income"} />
+      <SubCategoriesWithTransactions
+        name={"INCOME"}
+        category={"income"}
+        backgroundColor={"green"}
+      />
     </div>
   );
 };

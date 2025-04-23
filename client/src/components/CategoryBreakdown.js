@@ -39,7 +39,7 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
   const totalBudget = data.reduce((acc, sub) => acc + (sub.budget || 0), 0);
 
   return (
-    <div className=" text-center text-sm text-gray-600 font-medium p-2 flex flex-col sm:flex-row justify-around w-full ">
+    <div className=" text-center lg:text-lg xs:text-sm text-gray-600 font-medium p-2 flex flex-col sm:flex-row justify-around w-full ">
       <p>
         Total Budget: <br /> ${totalBudget.toFixed(2)}
       </p>

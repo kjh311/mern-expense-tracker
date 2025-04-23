@@ -48,7 +48,10 @@ const DeleteTransaction = ({
         animatingId === txId ? "opacity-0 translate-y-[-10px]" : ""
       }`}
     >
-      <FaTrash className="text-red-500 hover:text-red-700" />
+      <FaTrash
+        className="react-icon text-red-500 hover:text-red-700 transition-all duration-200 absolute top-4 right-2"
+        size={25}
+      />
     </button>
   );
 };

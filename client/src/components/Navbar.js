@@ -7,13 +7,13 @@ const Navbar = () => {
   const [loggedIn] = useContext(LoggedInContext);
 
   return (
-    <nav className="z-10 w-full bg-blue-600 text-white sticky top-0 shadow-md">
+    <nav className="z-10 w-full  text-white sticky top-0 nav-bar">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link
           to="/"
-          className="text-2xl font-extrabold tracking-wide text-blue-100 hover:text-blue-200 transition"
+          className="nav-bar-text text-2xl font-extrabold tracking-wide text-blue-100 hover:text-blue-200 transition"
         >
-          MyBudgetApp
+          Budget Tracker
         </Link>
 
         <div>

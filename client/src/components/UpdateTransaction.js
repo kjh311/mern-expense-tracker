@@ -9,7 +9,10 @@ const handleEdit = () => {
 const UpdateTransaction = ({ id, fetchExpenses }) => {
   return (
     <button onClick={handleEdit}>
-      <FaEdit className="text-blue-500 hover:text-blue-700" />
+      <FaEdit
+        className="react-icon text-blue-500 hover:text-blue-700 transition-all duration-200 absolute bottom-4 right-2 "
+        size={25}
+      />
     </button>
   );
 };

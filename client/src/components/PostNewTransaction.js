@@ -47,7 +47,7 @@ const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
       <AccordionItem eventKey="newTransaction">
         <AccordionHeader className="bg-gray-100 w-full flex justify-center items-center">
           <h2 className="text-lg font-semibold text-gray-700 text-center w-full">
-            Add New Transaction <span className="text-3xl">+</span>
+            Add New Transaction <span className="text-3xl text-red-500">+</span>
           </h2>
         </AccordionHeader>
 
@@ -85,7 +85,7 @@ const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
 
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md transition duration-200"
+              className="animate-button bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md transition duration-200"
             >
               Submit
             </button>
