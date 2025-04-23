@@ -37,4 +37,36 @@ router.get("/", verifyToken, async (req, res) => {
   }
 });
 
+// UPDATE TRANSACTION
+router.put("/:id", verifyToken, async (req, res) => {
+  try {
+    const updated = await Transaction.findOneAndUpdate(
+      { _id: req.params.id, user: req.userId },
+      req.body,
+      { new: true }
+    );
+    res.json(updated);
+  } catch (err) {
+    res.status(400).json({ err: err.message });
+  }
+});
+
+//DELETE TRANSACTION
+router.delete("/:id", verifyToken, async (req, res) => {
+  try {
+    const deleted = await Transaction.findOneAndDelete({
+      _id: req.params.id,
+      user: req.userId,
+    });
+
+    if (!deleted) {
+      return res.status(404).json({ err: "Transaction not found" });
+    }
+
+    res.json({ message: "Transaction deleted successfully!" });
+  } catch (err) {
+    res.status(500).json({ err: err.message });
+  }
+});
+
 module.exports = router;

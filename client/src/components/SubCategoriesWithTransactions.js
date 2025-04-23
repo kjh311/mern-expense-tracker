@@ -6,6 +6,7 @@ import PostNewTransaction from "./PostNewTransaction";
 import CategoryBreakdown from "./CategoryBreakdown";
 // import GetBudget from "./GetBudget";
 import { getActionWord, getActionWordPassedTense } from "./ActionWords";
+import DeleteTransaction from "./DeleteTransaction";
 
 const ExpenseList = ({ name, category }) => {
   const [data, setData] = useState([]);
@@ -143,6 +144,10 @@ const ExpenseList = ({ name, category }) => {
                             <span className="text-sm text-gray-500">
                               {new Date(tx.date).toLocaleDateString()}
                             </span>
+                            <DeleteTransaction
+                              id={tx._id}
+                              fetchExpenses={fetchExpenses}
+                            />
                           </div>
                         </li>
                       ))}
