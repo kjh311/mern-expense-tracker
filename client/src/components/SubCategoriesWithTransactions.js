@@ -19,8 +19,6 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
   const [editModeTransaction, setEditModeTransaction] = useState(false);
   const [total, setTotal] = useContext(TransactionsTotal);
   const [editModeSubcategory, setEditModeSubcategory] = useState(false);
-  // const [expensesTransactinosTotal, setExpensesTransactionsTotal] =
-  //   useState(null);
 
   const fetchExpenses = async () => {
     try {
@@ -55,8 +53,6 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
             <CategoryBreakdown
               category={category}
               fetchExpenses={fetchExpenses}
-              // expensesTransactinosTotal={expensesTransactinosTotal}
-              // setExpensesTransactionsTotal={setExpensesTransactionsTotal}
             />
             {/* <p>TOTAL SPENT: {total}</p> */}
           </div>

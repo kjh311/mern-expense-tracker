@@ -7,14 +7,8 @@ import {
   getActionWordPassedTense,
   getColorActionWords,
 } from "./ActionWords";
-// import { TransactionsTotal } from "../App";
 
-const CategoryBreakdown = ({
-  category,
-  fetchExpenses,
-  // expensesTransactionsTotal,
-  // setTotal,
-}) => {
+const CategoryBreakdown = ({ category, fetchExpenses }) => {
   const [data, setData] = useState([]);
   const [total, setTotal] = useContext(TransactionsTotal);
 
@@ -42,7 +36,7 @@ const CategoryBreakdown = ({
     fetchExpenses();
   }, [fetchExpenses]);
 
-  //pass totals and budgets to App.js context
+  //pass totals and budgets to App.js Context
   useEffect(() => {
     if (data && data.length > 0) {
       const totalSpent = data.reduce((acc, sub) => {
@@ -62,7 +56,6 @@ const CategoryBreakdown = ({
           [`${category}Budget`]: totalBudget,
         };
 
-        // Optional: skip update if nothing changed
         if (
           prevTotal[`${category}Spent`] !== totalSpent ||
           prevTotal[`${category}Budget`] !== totalBudget
@@ -81,8 +74,6 @@ const CategoryBreakdown = ({
     const subTotal = sub.transactions.reduce((sum, tx) => sum + tx.amount, 0);
     return acc + subTotal;
   }, 0);
-
-  // setTotal(totalSpent);
 
   const totalBudget = data.reduce((acc, sub) => acc + (sub.budget || 0), 0);
 

@@ -92,7 +92,7 @@ const UpdateTransaction = ({
           <label>Amount:</label>
           <input
             type="number"
-            value={amountInput.toFixed(2)}
+            value={amountInput}
             className="p-2 m-2 border"
             onChange={(e) => setAmountInput(e.target.value)}
           />
