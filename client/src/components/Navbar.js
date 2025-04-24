@@ -5,6 +5,7 @@ import Logout from "./Logout";
 
 const Navbar = () => {
   const [loggedIn] = useContext(LoggedInContext);
+  // console.log("Name: " + data.user.name);
 
   return (
     <nav className="z-10 w-full  text-white sticky top-0 nav-bar">

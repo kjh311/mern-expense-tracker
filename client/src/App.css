@@ -40,12 +40,14 @@
 }
 
 button.accordion-button::after {
-  transform: scale(1.5);
+  transform: scale(2);
+  font-weight: bold !important;
   transition: transform 0.3s ease;
 }
 
 button.accordion-button:not(.collapsed)::after {
-  transform: rotate(-180deg) scale(1.5);
+  transform: rotate(-180deg) scale(2);
+  font-weight: 900 !important;
 }
 
 .accordion-header:hover,

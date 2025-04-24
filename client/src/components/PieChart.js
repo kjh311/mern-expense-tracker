@@ -31,13 +31,13 @@ const PieChart = ({ totals }) => {
   };
 
   const data = {
-    labels: ["Expense", "Savings", "Bills"],
+    labels: ["Expenses", "Savings", "Bills"],
 
     datasets: [
       {
         label: "Spent",
         data: [totals.expenseSpent, totals.savingsSpent, totals.billsSpent],
-        backgroundColor: ["#ef4444", "#3b82f6", "#10b981"],
+        backgroundColor: ["#c1121f", "#ffb703", "#fb8500"],
 
         borderWidth: 1,
       },

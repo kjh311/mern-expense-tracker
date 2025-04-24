@@ -29,6 +29,7 @@ const Login = () => {
       if (!response.ok) throw new Error("Login request failed");
 
       const data = await response.json();
+      // console.log("Name: " + data.user.name);
 
       if (!data.token) return alert(data.message || "Login failed");
 

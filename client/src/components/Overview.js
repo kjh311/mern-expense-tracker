@@ -41,8 +41,12 @@ const Overview = () => {
           </p>
           <p>
             Cashflow: $
-            {total.incomeSpent -
-              (total.billsSpent + total.savingsSpent + total.expenseSpent)}
+            {(
+              total.incomeSpent -
+              total.billsSpent +
+              total.savingsSpent +
+              total.expenseSpent
+            ).toFixed(2)}
           </p>
           <p>Total Budget:</p>
           <p>
