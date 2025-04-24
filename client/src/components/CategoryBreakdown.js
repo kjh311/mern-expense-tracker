@@ -1,14 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import DeleteSubcategory from "./DeleteSubcategory";
+import { TransactionsTotal } from "../App";
 import {
   getActionWord,
   getActionWordPassedTense,
   getColorActionWords,
 } from "./ActionWords";
+// import { TransactionsTotal } from "../App";
 
-const CategoryBreakdown = ({ category, fetchExpenses }) => {
+const CategoryBreakdown = ({
+  category,
+  fetchExpenses,
+  // expensesTransactionsTotal,
+  // setTotal,
+}) => {
   const [data, setData] = useState([]);
+  const [total, setTotal] = useContext(TransactionsTotal);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,12 +42,47 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
     fetchExpenses();
   }, [fetchExpenses]);
 
+  //pass totals and budgets to App.js context
+  useEffect(() => {
+    if (data && data.length > 0) {
+      const totalSpent = data.reduce((acc, sub) => {
+        const subTotal = sub.transactions.reduce(
+          (sum, tx) => sum + (tx.amount || 0),
+          0
+        );
+        return acc + subTotal;
+      }, 0);
+
+      const totalBudget = data.reduce((acc, sub) => acc + (sub.budget || 0), 0);
+
+      setTotal((prevTotal) => {
+        const newTotal = {
+          ...prevTotal,
+          [`${category}Spent`]: totalSpent,
+          [`${category}Budget`]: totalBudget,
+        };
+
+        // Optional: skip update if nothing changed
+        if (
+          prevTotal[`${category}Spent`] !== totalSpent ||
+          prevTotal[`${category}Budget`] !== totalBudget
+        ) {
+          return newTotal;
+        }
+
+        return prevTotal;
+      });
+    }
+  }, [data, category, setTotal]);
+
   if (!data || data.length === 0) return <p>No data</p>;
 
   const totalSpent = data.reduce((acc, sub) => {
     const subTotal = sub.transactions.reduce((sum, tx) => sum + tx.amount, 0);
     return acc + subTotal;
   }, 0);
+
+  // setTotal(totalSpent);
 
   const totalBudget = data.reduce((acc, sub) => acc + (sub.budget || 0), 0);
 

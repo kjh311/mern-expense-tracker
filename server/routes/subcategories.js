@@ -153,24 +153,6 @@ router.get("/savings-with-transactions", verifyToken, async (req, res) => {
   }
 });
 
-//DELETE SUBCATEGORY
-// router.delete("/:id", verifyToken, async (req, res) => {
-//   try {
-//     const deleted = await Subcategory.findOneAndDelete({
-//       _id: req.params.id,
-//       user: req.userId,
-//     });
-
-//     if (!deleted) {
-//       return res.status(404).json({ err: "Subcategory not found" });
-//     }
-
-//     res.json({ message: "Subcategory deleted successfully!" });
-//   } catch (err) {
-//     res.status(500).json({ err: err.message });
-//   }
-// });
-
 // DELETE SUBCATEGORY AND TRANSACTIONS
 router.delete("/:id", verifyToken, async (req, res) => {
   const subCategoryId = req.params.id;
@@ -188,7 +170,7 @@ router.delete("/:id", verifyToken, async (req, res) => {
   }
 });
 
-// UPDATE SUBCATEGORIES
+// UPDATE SUBCATEGORY
 router.put("/:id", verifyToken, async (req, res) => {
   try {
     const updated = await Subcategory.findOneAndUpdate(

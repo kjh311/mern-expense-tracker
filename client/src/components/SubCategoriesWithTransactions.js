@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import axios from "axios";
 import PostNewSubcategory from "./PostNewSubcategory";
@@ -9,6 +9,7 @@ import DeleteTransaction from "./DeleteTransaction";
 import UpdateTransaction from "./UpdateTransaction";
 import DeleteSubcategory from "./DeleteSubcategory";
 import UpdateSubcategory from "./UpdateSubcategory";
+import { TransactionsTotal } from "../App";
 
 const ExpenseList = ({ name, category, backgroundColor }) => {
   const [data, setData] = useState([]);
@@ -16,7 +17,10 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
   const [deletingId, setDeletingId] = useState(null);
   const [animatingId, setAnimatingId] = useState(null);
   const [editModeTransaction, setEditModeTransaction] = useState(false);
+  const [total, setTotal] = useContext(TransactionsTotal);
   const [editModeSubcategory, setEditModeSubcategory] = useState(false);
+  // const [expensesTransactinosTotal, setExpensesTransactionsTotal] =
+  //   useState(null);
 
   const fetchExpenses = async () => {
     try {
@@ -51,7 +55,10 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
             <CategoryBreakdown
               category={category}
               fetchExpenses={fetchExpenses}
+              // expensesTransactinosTotal={expensesTransactinosTotal}
+              // setExpensesTransactionsTotal={setExpensesTransactionsTotal}
             />
+            {/* <p>TOTAL SPENT: {total}</p> */}
           </div>
         </Accordion.Header>
 
