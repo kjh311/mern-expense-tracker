@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Accordion from "react-bootstrap/Accordion";
 import AccordionItem from "react-bootstrap/esm/AccordionItem";
 import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
 import AccordionBody from "react-bootstrap/esm/AccordionBody";
 import axios from "axios";
+import Input from "./Input";
 
 const PostNewSubcategory = ({
   fetchExpenses,
@@ -35,7 +35,7 @@ const PostNewSubcategory = ({
         );
 
         console.log("Subcategory posted:", res.data);
-        fetchExpenses(); // trigger parent update
+        fetchExpenses();
         setActiveKey(null);
       } catch (err) {
         console.error("Failed to post subcategory", err);
@@ -59,21 +59,19 @@ const PostNewSubcategory = ({
           onSubmit={handlePost}
           className="flex flex-col items-center gap-4"
         >
-          <input
-            type="text"
-            className="w-full max-w-md border border-gray-300 p-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-            placeholder="Enter Name of Subcategory"
+          <Input
+            type={"text"}
+            placeholder={"Enter Name of Subcategory"}
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
 
-          <input
-            type="number"
+          <Input
+            type={"number"}
             value={budget}
-            placeholder="Enter Monthly Budget"
+            placeholder={"Enter Monthly Budget"}
             required
-            className="w-full max-w-md border border-gray-300 p-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={(e) => setBudget(parseFloat(e.target.value) || 0)}
           />
 

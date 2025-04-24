@@ -5,6 +5,7 @@ import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
 import AccordionBody from "react-bootstrap/esm/AccordionBody";
 import axios from "axios";
 import Button from "./Button";
+import Input from "./Input";
 
 const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
   const [description, setDescription] = useState("");
@@ -20,7 +21,7 @@ const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
         {
           description,
           amount,
-          subcategory, // This can be an ID or full object depending on backend expectations
+          subcategory,
           recurring,
         },
         {
@@ -57,20 +58,18 @@ const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
             onSubmit={handlePostTransaction}
             className="flex flex-col gap-4 items-center"
           >
-            <input
-              type="text"
+            <Input
+              type={"text"}
               value={description}
-              className="w-full max-w-md border border-gray-300 p-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="Enter Description"
+              placeholder={"Enter Description"}
               onChange={(e) => setDescription(e.target.value)}
               required
             />
 
-            <input
-              type="number"
+            <Input
+              type={"number"}
               value={amount}
-              className="w-full max-w-md border border-gray-300 p-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="Enter Amount"
+              placeholder={"Enter Amount"}
               onChange={(e) => setAmount(e.target.value)}
               required
             />

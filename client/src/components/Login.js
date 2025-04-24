@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { LoggedInContext } from "../App";
+import Input from "./Input";
 
 const Login = () => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
@@ -47,22 +48,20 @@ const Login = () => {
           Login
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-            type="email"
-            name="email"
+          <Input
+            type={"email"}
+            name={"email"}
             value={formData.email}
             onChange={handleChange}
-            placeholder="Email"
+            placeholder={"Email"}
             required
           />
-          <input
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-            type="password"
-            name="password"
+          <Input
+            type={"password"}
+            name={"password"}
             value={formData.password}
             onChange={handleChange}
-            placeholder="Password"
+            placeholder={"Password"}
             required
           />
           <button

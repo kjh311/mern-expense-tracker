@@ -31,17 +31,6 @@ Authorization: Bearer {{token}}
   "date": "2025-01-20T12:00:00.000Z"
 }
 
-### PUT SUBCATEGORY
-# POST http://localhost:5000/api/subcategory
-# Content-Type: application/json
-# Authorization: Bearer {{token}}
-
-# {
-#   "amount": 22.50,
-#   "description": "Snacks",
-#   "subcategory": "Food",
-#   "date": "2025-01-20T12:00:00.000Z"
-# }
 
 ### Create a new subcategory
 POST http://localhost:5000/api/subcategories

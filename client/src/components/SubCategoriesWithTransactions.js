@@ -4,7 +4,6 @@ import axios from "axios";
 import PostNewSubcategory from "./PostNewSubcategory";
 import PostNewTransaction from "./PostNewTransaction";
 import CategoryBreakdown from "./CategoryBreakdown";
-// import GetBudget from "./GetBudget";
 import { getActionWord, getActionWordPassedTense } from "./ActionWords";
 import DeleteTransaction from "./DeleteTransaction";
 import UpdateTransaction from "./UpdateTransaction";
@@ -14,13 +13,11 @@ import UpdateSubcategory from "./UpdateSubcategory";
 const ExpenseList = ({ name, category, backgroundColor }) => {
   const [data, setData] = useState([]);
   const [activeKey, setActiveKey] = useState(null);
-  // const [isDeleting, setIsDeleting] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
   const [animatingId, setAnimatingId] = useState(null);
   const [editModeTransaction, setEditModeTransaction] = useState(false);
   const [editModeSubcategory, setEditModeSubcategory] = useState(false);
 
-  // useEffect(() => {
   const fetchExpenses = async () => {
     try {
       const res = await axios.get(
@@ -36,9 +33,6 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
       console.error("Failed to fetch expenses", err);
     }
   };
-
-  // fetchExpenses();
-  // }, [category]);
 
   useEffect(() => {
     fetchExpenses();
@@ -71,13 +65,6 @@ const ExpenseList = ({ name, category, backgroundColor }) => {
               >
                 <Accordion.Header>
                   <div className="flex flex-col w-full gap-4 px-2 ">
-                    {/* <UpdateSubcategory
-                      id={sub._id}
-                      name={sub.name}
-                      categoryType={category}
-                      editModeSubcategory={editModeSubcategory}
-                      setEditModeSubcategory={setEditModeSubcategory}
-                    /> */}
                     {/* NAME */}
                     <div className="flex justify-center items-center w-full   ">
                       <span className="lg:text-2xl sm:text-lg   text-gray-700">

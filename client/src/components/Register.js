@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Input from "./Input";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -35,26 +36,23 @@ const Register = () => {
           Create an Account
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400"
-            type="text"
-            placeholder="Name"
+          <Input
+            type={"text"}
+            placeholder={"Name"}
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
-          <input
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400"
-            type="email"
-            placeholder="Email"
+          <Input
+            type={"email"}
+            placeholder={"Email"}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <input
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400"
-            type="password"
-            placeholder="Password"
+          <Input
+            type={"password"}
+            placeholder={"Password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

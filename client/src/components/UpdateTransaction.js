@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
 import DatePicker from "react-datepicker";
@@ -8,7 +8,6 @@ import { IoCloseCircle } from "react-icons/io5";
 
 const UpdateTransaction = ({
   id,
-  fetchExpenses,
   date,
   amount,
   description,
@@ -20,8 +19,6 @@ const UpdateTransaction = ({
   const [descriptionInput, setDescriptionInput] = useState(description);
   const [recurringInput, setRecurringInput] = useState(recurring);
   const [dateInput, setDateInput] = useState(date);
-
-  const [startDate, setStartDate] = useState(date);
 
   const handleEdit = () => {
     setEditModeTransaction(true);
@@ -51,22 +48,7 @@ const UpdateTransaction = ({
       console.error("Failed to update transaction", err);
     }
 
-    // console.log(
-    //   "amount: ",
-    //   amountInput,
-    //   "description: ",
-    //   descriptionInput,
-    //   "Recurring: ",
-    //   recurringInput,
-    //   "date: ",
-    //   dateInput
-    // );
-
     setEditModeTransaction(false);
-    // setAmountInput(amountInput);
-    // setDescriptionInput(descriptionI);
-    // setDateInput(date);
-    // setRecurringInput(recurring);
   };
 
   const handleClose = (e) => {

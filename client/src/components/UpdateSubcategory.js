@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { FaEdit } from "react-icons/fa";
 import Button from "./Button";
 import { IoCloseCircle } from "react-icons/io5";
 
@@ -14,14 +13,11 @@ const UpdateSubcategory = ({
 }) => {
   const fixedBudget = budget.toFixed(2);
   const [nameInput, setNameInput] = useState(name);
-  const [categoryTypeInput, setCategoryTypeInput] = useState(categoryType);
   const [budgetInput, setBudgetInput] = useState(fixedBudget);
 
   const handleEdit = (e) => {
     e.stopPropagation();
     setEditModeSubcategory(true);
-    console.log("edit mode");
-    // console.log(typeof budget, budget.toFixed(2));
   };
 
   const handleSubcategoryUpdate = async (e) => {
@@ -57,8 +53,6 @@ const UpdateSubcategory = ({
 
   return (
     <>
-      {/* {editModeSubcategory && <div className="relative w-100"></div>} */}
-
       {!editModeSubcategory && (
         <Button
           type={"submit"}
@@ -67,12 +61,12 @@ const UpdateSubcategory = ({
           color={"blue"}
         />
       )}
-      {/* <div> */}
+
       {editModeSubcategory && (
-        <div className="relative text-center bg-gray-100  p-4 outline m-2 rounded-xl w-100">
+        <div className="relative text-center bg-gray-100 p-4 outline m-2 rounded-xl w-100">
           <button
             onClick={handleClose}
-            className={`react-icon text-red-500 text-4xl   transition-all duration-200 absolute top-2 right-2`}
+            className={`react-icon text-red-500 text-4xl transition-all duration-200 absolute top-2 right-2`}
           >
             <IoCloseCircle />
           </button>
@@ -104,7 +98,6 @@ const UpdateSubcategory = ({
           </form>
         </div>
       )}
-      {/* </div> */}
     </>
   );
 };
