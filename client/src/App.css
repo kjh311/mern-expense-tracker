@@ -120,3 +120,8 @@ ul {
 .react-icon:hover {
   transform: scale(1.2);
 }
+
+.pie-chart {
+  max-width: 500px !important;
+  max-height: 500px;
+}

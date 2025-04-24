@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { TransactionsTotal } from "../App";
+import PieChart from "./PieChart";
 
 const Overview = () => {
   const [total, setTotal] = useContext(TransactionsTotal);
@@ -7,6 +8,7 @@ const Overview = () => {
   return (
     <div className="text-center p-2 m-2 outline rounded bg-blue-200 text-center">
       <h1>OverView</h1>
+      <PieChart totals={total} />
       <div className=" flex justify-evenly">
         {/* <div className="outline p-2 m-2 rounded bg-white">
           <p>Total Expenses:</p>
