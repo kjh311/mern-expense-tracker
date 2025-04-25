@@ -26,7 +26,7 @@ ChartJS.register(
   ChartDataLabels
 );
 
-const ExpenseLineChart = ({ transactions, subcategoryName }) => {
+const ExpenseLineChart = ({ transactions }) => {
   const sorted = [...transactions].sort(
     (a, b) => new Date(a.date) - new Date(b.date)
   );
@@ -48,9 +48,14 @@ const ExpenseLineChart = ({ transactions, subcategoryName }) => {
   };
 
   const options = {
+    layout: {
+      padding: {
+        top: 30,
+      },
+    },
     animation: {
       duration: 1500,
-      easing: "easeOutQuart", // smooth and polished
+      easing: "easeOutQuart",
     },
     elements: {
       point: {
@@ -63,36 +68,60 @@ const ExpenseLineChart = ({ transactions, subcategoryName }) => {
     },
     responsive: true,
     plugins: {
+      title: {
+        display: false,
+      },
+      legend: {
+        display: false,
+      },
       datalabels: {
         display: true,
         align: "top",
         anchor: "end",
         formatter: function (value, context) {
           const tx = sorted[context.dataIndex];
-          return `$${Number(tx.amount).toFixed(2)}\n${subcategoryName}`;
+          const wrapAt = 20; // characters per line
+          const words = tx.description.split(" ");
+          const lines = [];
+          let line = "";
+
+          for (const word of words) {
+            if ((line + word).length <= wrapAt) {
+              line += word + " ";
+            } else {
+              lines.push(line.trim());
+              line = word + " ";
+            }
+          }
+          if (line) lines.push(line.trim());
+
+          lines.push(`$${Number(tx.amount).toFixed(2)}`);
+          return lines;
         },
         font: {
-          size: 12,
+          size: 14,
           weight: "bold",
         },
         color: "#444",
       },
-      legend: {
-        labels: {
-          font: {
-            size: 16, // Legend font size
+
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            const index = context.dataIndex;
+            const tx = sorted[index];
+            return `${tx.description}: $${Number(tx.amount).toFixed(2)}`;
           },
         },
-      },
-      tooltip: {
         bodyFont: {
-          size: 14, // Tooltip text size
+          size: 14,
         },
         titleFont: {
-          size: 16, // Tooltip title font size
+          size: 16,
         },
       },
     },
+
     scales: {
       x: {
         ticks: {

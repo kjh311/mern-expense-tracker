@@ -139,7 +139,7 @@ const ExpenseList = ({
                   </Accordion.Header>
 
                   <Accordion.Body className="bg-blue-200">
-                    <div className="flex justify-around">
+                    <div className="flex justify-around flex-wrap">
                       {!editModeSubcategory && (
                         <DeleteSubcategory
                           id={sub._id}
@@ -160,6 +160,11 @@ const ExpenseList = ({
                         setEditModeSubcategory={setEditModeSubcategory}
                       />
                     </div>
+
+                    {/* LINE CHART */}
+                    {sub.transactions.length > 0 && (
+                      <ExpenseLineChart transactions={sub.transactions} />
+                    )}
 
                     <PostNewTransaction
                       subcategory={sub._id}
@@ -222,12 +227,6 @@ const ExpenseList = ({
                         ))}
                       </ul>
                     )}
-
-                    {/* LINE CHART */}
-                    <ExpenseLineChart
-                      transactions={sub.transactions}
-                      subcategoryName={sub.name}
-                    />
                   </Accordion.Body>
                 </Accordion.Item>
               ))}

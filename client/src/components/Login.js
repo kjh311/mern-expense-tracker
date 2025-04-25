@@ -5,6 +5,7 @@ import Input from "./Input";
 
 const Login = () => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
+  // const [userName, setUserName] = useContext(UserName);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -36,6 +37,8 @@ const Login = () => {
       localStorage.setItem("token", data.token);
       setLoggedIn(true);
       navigate("/dashboard");
+      // setUserName(data.user.name);
+      localStorage.setItem("expense-tracker-username", data.user.name);
     } catch (error) {
       console.error(error);
       alert("An error occurred. Please try again.");

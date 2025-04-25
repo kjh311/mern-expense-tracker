@@ -55,6 +55,7 @@ const UpdateSubcategory = ({
     <>
       {!editModeSubcategory && (
         <Button
+          id="update-subcategory"
           type={"submit"}
           onClick={handleEdit}
           text={"Update SubCategory"}

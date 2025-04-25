@@ -45,49 +45,52 @@ const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
   };
 
   return (
-    <Accordion className="my-4">
-      <AccordionItem eventKey="newTransaction">
-        <AccordionHeader className="bg-gray-100 w-full flex justify-center items-center">
-          <h2 className="text-lg font-semibold text-gray-700 text-center w-full">
-            Add New Transaction <span className="text-3xl text-red-500">+</span>
-          </h2>
-        </AccordionHeader>
+    <div className="flex justify-center">
+      <Accordion className="my-4 lg:w-50 sm:w-full">
+        <AccordionItem eventKey="newTransaction">
+          <AccordionHeader className="bg-gray-100 w-full flex justify-center items-center">
+            <h2 className="text-lg font-semibold text-gray-700 text-center w-full">
+              Add New Transaction{" "}
+              <span className="text-3xl text-red-500">+</span>
+            </h2>
+          </AccordionHeader>
 
-        <AccordionBody className="bg-white px-6 py-4">
-          <form
-            onSubmit={handlePostTransaction}
-            className="flex flex-col gap-4 items-center"
-          >
-            <Input
-              type={"text"}
-              value={description}
-              placeholder={"Enter Description"}
-              onChange={(e) => setDescription(e.target.value)}
-              required
-            />
-
-            <Input
-              type={"number"}
-              value={amount}
-              placeholder={"Enter Amount"}
-              onChange={(e) => setAmount(e.target.value)}
-              required
-            />
-
-            <label className="flex items-center gap-2 text-sm text-gray-600">
-              <input
-                type="checkbox"
-                checked={recurring}
-                onChange={(e) => setRecurring(e.target.checked)}
+          <AccordionBody className="bg-white px-6 py-4">
+            <form
+              onSubmit={handlePostTransaction}
+              className="flex flex-col gap-4 items-center"
+            >
+              <Input
+                type={"text"}
+                value={description}
+                placeholder={"Enter Description"}
+                onChange={(e) => setDescription(e.target.value)}
+                required
               />
-              Recurring Transaction
-            </label>
 
-            <Button type={"submit"} text={"Submit"} color={"blue"} />
-          </form>
-        </AccordionBody>
-      </AccordionItem>
-    </Accordion>
+              <Input
+                type={"number"}
+                value={amount}
+                placeholder={"Enter Amount"}
+                onChange={(e) => setAmount(e.target.value)}
+                required
+              />
+
+              <label className="flex items-center gap-2 text-sm text-gray-600">
+                <input
+                  type="checkbox"
+                  checked={recurring}
+                  onChange={(e) => setRecurring(e.target.checked)}
+                />
+                Recurring Transaction
+              </label>
+
+              <Button type={"submit"} text={"Submit"} color={"blue"} />
+            </form>
+          </AccordionBody>
+        </AccordionItem>
+      </Accordion>
+    </div>
   );
 };
 

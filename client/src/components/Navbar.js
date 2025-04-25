@@ -5,11 +5,12 @@ import Logout from "./Logout";
 
 const Navbar = () => {
   const [loggedIn] = useContext(LoggedInContext);
+
   // console.log("Name: " + data.user.name);
 
   return (
     <nav className="z-10 w-full  text-white sticky top-0 nav-bar">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-evenly">
         <Link
           to="/"
           className="nav-bar-text text-2xl font-extrabold tracking-wide text-blue-100 hover:text-blue-200 transition"

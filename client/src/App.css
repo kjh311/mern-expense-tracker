@@ -131,4 +131,9 @@ ul {
 .line-chart {
   max-height: 200px;
   margin-top: 40px;
+  margin-bottom: 40px;
 }
+
+/* #update-subcategory {
+  margin-top: 20px !important;
+} */

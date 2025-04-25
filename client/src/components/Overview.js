@@ -51,7 +51,14 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
               <div className="text-center flex flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
                 <span className="text-blue-800 font-semibold">
                   💵 Cashflow:
-                  <br /> ${cashflow}
+                  <br />
+                  <span
+                    className={`${
+                      cashflow > 0 ? "text-blue-800" : "text-red-500"
+                    }`}
+                  >
+                    ${cashflow}
+                  </span>
                 </span>
                 <span className="text-blue-800 font-semibold">
                   📊 Total Budget:

@@ -1,14 +1,17 @@
+import { useState } from "react";
 import SubCategoriesWithTransactions from "./SubCategoriesWithTransactions";
 import Overview from "./Overview";
-import { useState } from "react";
 
 const Dashboard = () => {
   const [mainAccordionKey, setMainAccordionKey] = useState(null);
+  const [userName, setUserName] = useState(
+    localStorage.getItem("expense-tracker-username")
+  );
 
   return (
     <>
       <div className="dashboard p-4">
-        <h1 className="text-center">Dashboard</h1>
+        {userName && <h3 className="text-center">Welcome {userName}!</h3>}
         <Overview
           mainKey="0"
           mainAccordionKey={mainAccordionKey}
