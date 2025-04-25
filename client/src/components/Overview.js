@@ -26,19 +26,17 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
   const totalExpenses =
     total.billsSpent + total.savingsSpent + total.expenseSpent;
 
-  const cashflow = (
+  const cashflow =
     total.incomeSpent -
-    (total.billsSpent + total.savingsSpent + total.expenseSpent)
-  ).toFixed(2);
-
-  const totalIncome = total.incomeSpent.toFixed(2);
+    (total.billsSpent + total.savingsSpent + total.expenseSpent);
+  const totalIncome = total.incomeSpent;
 
   const totalBudget =
     total.billsBudget + total.savingsBudget + total.expenseBudget;
 
   return (
     <div
-      className={` max-w-[1400px]  mx-auto   m-10 p-4 rounded ${
+      className={` max-w-[1400px]  w-full  m-10  p-4 rounded ${
         dayTheme ? "category-card-day" : "category-card-night"
       }`}
     >
@@ -80,7 +78,10 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                       cashflow > 0 ? "text-blue-800" : "text-red-500"
                     }`}
                   >
-                    ${cashflow}
+                    $
+                    {cashflow.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                    })}
                   </span>
                 </span>
                 <span
@@ -89,7 +90,10 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                   } font-semibold`}
                 >
                   <span className="text-3xl">📊</span> Total Budget:
-                  <br /> ${totalBudget}
+                  <br /> $
+                  {totalBudget.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                  })}
                 </span>
                 <span
                   className={`${
@@ -97,7 +101,10 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                   } font-semibold`}
                 >
                   <span className="text-3xl">💰</span> Total Income:
-                  <br /> ${totalIncome}
+                  <br /> $
+                  {totalIncome.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                  })}
                 </span>
                 <span
                   className={`${
@@ -105,7 +112,10 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                   } font-semibold`}
                 >
                   <span className="text-3xl">💸</span> Total Expenses:
-                  <br /> ${totalExpenses}
+                  <br /> $
+                  {totalExpenses.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                  })}
                 </span>
               </div>
             </div>

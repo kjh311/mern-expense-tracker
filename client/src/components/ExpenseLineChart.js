@@ -36,7 +36,9 @@ const ExpenseLineChart = ({ transactions }) => {
     datasets: [
       {
         label: "Expense Amount",
-        data: sorted.map((tx) => tx.amount.toFixed(2)),
+        data: sorted.map((tx) =>
+          tx.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })
+        ),
         fill: false,
         borderColor: "rgb(75, 192, 192)",
         tension: 0.3,
@@ -95,7 +97,11 @@ const ExpenseLineChart = ({ transactions }) => {
           }
           if (line) lines.push(line.trim());
 
-          lines.push(`$${Number(tx.amount).toFixed(2)}`);
+          lines.push(
+            `$${Number(tx.amount).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}`
+          );
           return lines;
         },
         font: {
@@ -110,7 +116,10 @@ const ExpenseLineChart = ({ transactions }) => {
           label: function (context) {
             const index = context.dataIndex;
             const tx = sorted[index];
-            return `${tx.description}: $${Number(tx.amount).toFixed(2)}`;
+            return `${tx.description}: $${Number(tx.amount).toLocaleString(
+              undefined,
+              { minimumFractionDigits: 2 }
+            )}`;
           },
         },
         bodyFont: {

@@ -13,7 +13,7 @@ const Dashboard = () => {
   return (
     <>
       <div
-        className={` min-h-screen p-4  ${
+        className={` min-h-screen p-4 flex items-center flex-column ${
           dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
         }`}
       >

@@ -140,6 +140,10 @@
   outline: 4px solid #c6f2ff;
 }
 
+.category-card-night:hover {
+  box-shadow: 0 0 25px 15px white !important;
+}
+
 .day-text {
   color: #0081a8;
   transition: all 0.3s ease;
@@ -168,7 +172,7 @@
 .accordion-header-night .accordion-button[aria-expanded="false"],
 .accordion-header-night,
 .overview-accordion-body-night {
-  outline: 5px solid white !important;
+  outline: 2px solid white !important;
   box-shadow: 0 0 15px 5px white !important;
   transition: all 0.3s ease;
   background-color: #013745 !important;

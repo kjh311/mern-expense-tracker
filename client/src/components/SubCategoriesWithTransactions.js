@@ -54,7 +54,7 @@ const ExpenseList = ({
 
   return (
     <div
-      className={`category-card max-w-[1400px] myBorder mx-auto ${backgroundColor} shadow-md m-2 p-4 `}
+      className={`category-card max-w-[1400px] myBorder w-full mx-auto ${backgroundColor} shadow-md m-2 p-4 `}
     >
       <Accordion
         activeKey={isOpen ? "main" : null}
@@ -100,13 +100,18 @@ const ExpenseList = ({
                           💵 Total {getActionWordPassedTense(category)}: $
                           {sub.transactions
                             .reduce((sum, tx) => sum + tx.amount, 0)
-                            .toFixed(2)}
+                            .toLocaleString(undefined, {
+                              minimumFractionDigits: 2,
+                            })}
                         </span>
 
                         {/* Budget */}
                         {sub.budget && (
                           <span className=" text-gray-500">
-                            💰 Budget: ${sub.budget.toFixed(2)}
+                            💰 Budget: $
+                            {sub.budget.toLocaleString(undefined, {
+                              minimumFractionDigits: 2,
+                            })}
                           </span>
                         )}
 
@@ -120,7 +125,9 @@ const ExpenseList = ({
                                   (sum, tx) => sum + tx.amount,
                                   0
                                 )
-                              ).toFixed(2) < 0
+                              ).toLocaleString(undefined, {
+                                minimumFractionDigits: 2,
+                              }) < 0
                                 ? "text-red-400 font-bold"
                                 : "text-green-600"
                             }`}
@@ -132,7 +139,9 @@ const ExpenseList = ({
                                 (sum, tx) => sum + tx.amount,
                                 0
                               )
-                            ).toFixed(2)}
+                            ).toLocaleString(undefined, {
+                              minimumFractionDigits: 2,
+                            })}
                           </span>
                         )}
                       </div>
@@ -195,7 +204,10 @@ const ExpenseList = ({
 
                                 <div className="flex flex-col sm:flex-row justify-around items-center mt-2 gap-1 lg:text-lg sm:text-sm">
                                   <span className="text-gray-500  ">
-                                    💲{tx.amount.toFixed(2)}
+                                    💲
+                                    {tx.amount.toLocaleString(undefined, {
+                                      minimumFractionDigits: 2,
+                                    })}
                                   </span>
                                   <span className=" text-gray-500 ">
                                     {new Date(tx.date).toLocaleDateString()} 📅

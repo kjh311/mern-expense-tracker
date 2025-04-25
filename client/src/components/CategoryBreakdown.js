@@ -80,11 +80,12 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
   return (
     <div className=" text-center lg:text-xl  xs:text-sm text-gray-600 font-medium p-2 flex flex-col sm:flex-row justify-around w-full ">
       <p>
-        📊 Monthly Budget: <br /> ${totalBudget.toFixed(2)}
+        📊 Monthly Budget: <br /> $
+        {totalBudget.toLocaleString(undefined, { minimumFractionDigits: 2 })}
       </p>
       <p>
         Total {getActionWordPassedTense(category)} this month: <br />$
-        {totalSpent.toFixed(2)}
+        {totalSpent.toLocaleString(undefined, { minimumFractionDigits: 2 })}
       </p>
       <p>
         Left to {getActionWord(category)}: <br />{" "}
@@ -97,7 +98,10 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
               : "text-red-500"
           }`}
         >
-          ${(totalBudget - totalSpent).toFixed(2)}
+          $
+          {(totalBudget - totalSpent).toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+          })}
         </span>
       </p>
     </div>

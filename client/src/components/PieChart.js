@@ -25,7 +25,9 @@ const PieChart = ({ totals }) => {
         },
         formatter: (value, context) => {
           const label = context.chart.data.labels[context.dataIndex];
-          return `${label}\n$${value.toFixed(2)}`;
+          return `${label}\n$${value.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+          })}`;
         },
       },
     },
