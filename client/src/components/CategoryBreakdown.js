@@ -78,7 +78,7 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
   const totalBudget = data.reduce((acc, sub) => acc + (sub.budget || 0), 0);
 
   return (
-    <div className=" text-center lg:text-lg xs:text-sm text-gray-600 font-medium p-2 flex flex-col sm:flex-row justify-around w-full ">
+    <div className=" text-center lg:text-xl  xs:text-sm text-gray-600 font-medium p-2 flex flex-col sm:flex-row justify-around w-full ">
       <p>
         📊 Monthly Budget: <br /> ${totalBudget.toFixed(2)}
       </p>
@@ -90,11 +90,11 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
         Left to {getActionWord(category)}: <br />{" "}
         <span
           className={`${
-            category === "income" && totalBudget - totalSpent > 0
-              ? "text-red-500 text-lg"
+            category === "expense" && totalBudget - totalSpent > 0
+              ? "text-green-500 "
               : totalBudget - totalSpent < 0
-              ? "text-red-500 text-lg"
-              : "text-green-600"
+              ? "text-green-500 "
+              : "text-red-500"
           }`}
         >
           ${(totalBudget - totalSpent).toFixed(2)}

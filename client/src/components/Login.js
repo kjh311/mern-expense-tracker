@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { LoggedInContext } from "../App";
+import { LoggedInContext, DayTheme } from "../App";
 import Input from "./Input";
 
 const Login = () => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
-  // const [userName, setUserName] = useContext(UserName);
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -37,8 +37,13 @@ const Login = () => {
       localStorage.setItem("token", data.token);
       setLoggedIn(true);
       navigate("/dashboard");
-      // setUserName(data.user.name);
       localStorage.setItem("expense-tracker-username", data.user.name);
+      if (!localStorage.getItem("Expense-Tracker-DayTheme")) {
+        localStorage.setItem("Expense-Tracker-DayTheme", true);
+        setDayTheme(true);
+      } else {
+        setDayTheme(localStorage.getItem("Expense-Tracker-DayTheme"));
+      }
     } catch (error) {
       console.error(error);
       alert("An error occurred. Please try again.");

@@ -24,7 +24,7 @@ const PieChart = ({ totals }) => {
         },
         formatter: (value, context) => {
           const label = context.chart.data.labels[context.dataIndex];
-          return `${label}\n$${value}`;
+          return `${label}\n$${value.toFixed(2)}`;
         },
       },
     },

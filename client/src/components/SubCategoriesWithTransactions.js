@@ -12,6 +12,7 @@ import UpdateSubcategory from "./UpdateSubcategory";
 import { TransactionsTotal } from "../App";
 import ExpenseLineChart from "./ExpenseLineChart";
 import { AccordionBody, AccordionHeader, AccordionItem } from "react-bootstrap";
+import SubcategoryBarChart from "./SubCategoryBarChart";
 
 const ExpenseList = ({
   name,
@@ -137,7 +138,6 @@ const ExpenseList = ({
                       </div>
                     </div>
                   </Accordion.Header>
-
                   <Accordion.Body className="bg-blue-200">
                     <div className="flex justify-around flex-wrap">
                       {!editModeSubcategory && (

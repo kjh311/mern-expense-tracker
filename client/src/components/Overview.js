@@ -11,7 +11,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
 
   useEffect(() => {
     if (isOpen && mainAccordionRef.current) {
-      const yOffset = -80; // Adjust this to your navbar height
+      const yOffset = -80;
       const y =
         mainAccordionRef.current.getBoundingClientRect().top +
         window.pageYOffset +
@@ -19,7 +19,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
 
       setTimeout(() => {
         window.scrollTo({ top: y, behavior: "smooth" });
-      }, 150); // slight delay ensures accordion is expanded first
+      }, 150);
     }
   }, [isOpen]);
 

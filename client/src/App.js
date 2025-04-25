@@ -12,9 +12,16 @@ import Footer from "./components/Footer";
 
 export const LoggedInContext = React.createContext();
 export const TransactionsTotal = React.createContext();
+export const DayTheme = React.createContext();
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
+  const [dayTheme, setDayTheme] = useState(() => {
+    const stored = localStorage.getItem("Expense-Tracker-DayTheme");
+    return stored === "true"; // ensures a proper boolean
+  });
+
+  console.log("Daytheme from appjs: ", dayTheme);
   const [total, setTotal] = useState({
     expenseSpent: 0,
     incomeSpent: 0,
@@ -28,28 +35,30 @@ function App() {
 
   return (
     <div className="App">
-      <TransactionsTotal.Provider value={[total, setTotal]}>
-        <LoggedInContext.Provider value={[loggedIn, setLoggedIn]}>
-          <Router>
-            <Navbar />
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/register" element={<Register />} />
-              <Route exact path="/login" element={<Login />} />
-              <Route
-                exact
-                path="/dashboard"
-                element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                }
-              />
-            </Routes>
-          </Router>
-          <Footer />
-        </LoggedInContext.Provider>
-      </TransactionsTotal.Provider>
+      <DayTheme.Provider value={[dayTheme, setDayTheme]}>
+        <TransactionsTotal.Provider value={[total, setTotal]}>
+          <LoggedInContext.Provider value={[loggedIn, setLoggedIn]}>
+            <Router>
+              <Navbar />
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/register" element={<Register />} />
+                <Route exact path="/login" element={<Login />} />
+                <Route
+                  exact
+                  path="/dashboard"
+                  element={
+                    <ProtectedRoute>
+                      <Dashboard />
+                    </ProtectedRoute>
+                  }
+                />
+              </Routes>
+            </Router>
+            <Footer />
+          </LoggedInContext.Provider>
+        </TransactionsTotal.Provider>
+      </DayTheme.Provider>
     </div>
   );
 }

@@ -137,3 +137,9 @@ ul {
 /* #update-subcategory {
   margin-top: 20px !important;
 } */
+
+.day-theme-button {
+  position: absolute;
+  right: 15px;
+  top: 20px;
+}

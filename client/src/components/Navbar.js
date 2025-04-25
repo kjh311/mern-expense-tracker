@@ -2,14 +2,17 @@ import React, { useContext } from "react";
 import { LoggedInContext } from "../App";
 import { Link } from "react-router-dom";
 import Logout from "./Logout";
+import DayThemeToggle from "./DayThemeToggle";
 
 const Navbar = () => {
   const [loggedIn] = useContext(LoggedInContext);
+  // const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   // console.log("Name: " + data.user.name);
+  // console.log("Daytheme from Navbar: ", dayTheme);
 
   return (
-    <nav className="z-10 w-full  text-white sticky top-0 nav-bar">
+    <nav className="z-10 w-full  text-white sticky top-0 nav-bar relative">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-evenly">
         <Link
           to="/"
@@ -30,6 +33,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
+      <DayThemeToggle />
     </nav>
   );
 };
