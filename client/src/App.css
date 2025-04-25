@@ -127,3 +127,8 @@ ul {
   max-width: 500px !important;
   max-height: 500px;
 }
+
+.line-chart {
+  max-height: 200px;
+  margin-top: 40px;
+}

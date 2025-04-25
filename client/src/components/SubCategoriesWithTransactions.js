@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import axios from "axios";
 import PostNewSubcategory from "./PostNewSubcategory";
@@ -10,6 +10,8 @@ import UpdateTransaction from "./UpdateTransaction";
 import DeleteSubcategory from "./DeleteSubcategory";
 import UpdateSubcategory from "./UpdateSubcategory";
 import { TransactionsTotal } from "../App";
+import ExpenseLineChart from "./ExpenseLineChart";
+import { AccordionBody, AccordionHeader, AccordionItem } from "react-bootstrap";
 
 const ExpenseList = ({
   name,
@@ -27,6 +29,7 @@ const ExpenseList = ({
   const [total, setTotal] = useContext(TransactionsTotal);
   const [editModeSubcategory, setEditModeSubcategory] = useState(false);
   const isOpen = mainAccordionKey === mainKey;
+  const allTransactions = data.flatMap((sub) => sub.transactions);
 
   const fetchExpenses = async () => {
     try {
@@ -66,7 +69,6 @@ const ExpenseList = ({
                 category={category}
                 fetchExpenses={fetchExpenses}
               />
-              {/* <p>TOTAL SPENT: {total}</p> */}
             </div>
           </Accordion.Header>
 
@@ -84,17 +86,17 @@ const ExpenseList = ({
                   <Accordion.Header>
                     <div className="flex flex-col w-full gap-4 px-2 ">
                       {/* NAME */}
-                      <div className="flex justify-center items-center w-full   ">
-                        <span className="lg:text-2xl sm:text-lg   text-gray-700">
-                          {sub.name}
+                      <div className="flex justify-center items-center w-full">
+                        <span className="lg:text-2xl sm:text-lg text-gray-700">
+                          {sub.name} 🏷️
                         </span>
                       </div>
 
                       {/* TOTAL SPENT, BUDGET, and LEFT TO SPEND/ EARN */}
                       <div className="text-center flex flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
                         {/* Total Spent */}
-                        <span className="text-gray-500  ">
-                          Total {getActionWordPassedTense(category)}: $
+                        <span className="text-gray-500">
+                          💵 Total {getActionWordPassedTense(category)}: $
                           {sub.transactions
                             .reduce((sum, tx) => sum + tx.amount, 0)
                             .toFixed(2)}
@@ -103,7 +105,7 @@ const ExpenseList = ({
                         {/* Budget */}
                         {sub.budget && (
                           <span className=" text-gray-500">
-                            Budget: ${sub.budget.toFixed(2)}
+                            💰 Budget: ${sub.budget.toFixed(2)}
                           </span>
                         )}
 
@@ -122,7 +124,7 @@ const ExpenseList = ({
                                 : "text-green-600"
                             }`}
                           >
-                            Left to {getActionWord(category)}: $
+                            🏦 Left to {getActionWord(category)}: $
                             {(
                               sub.budget -
                               sub.transactions.reduce(
@@ -158,13 +160,14 @@ const ExpenseList = ({
                         setEditModeSubcategory={setEditModeSubcategory}
                       />
                     </div>
+
                     <PostNewTransaction
                       subcategory={sub._id}
                       fetchExpenses={fetchExpenses}
                     />
 
                     {sub.transactions.length === 0 ? (
-                      <p className="text-gray-500 italic">No Transactions</p>
+                      <p className="text-gray-500 italic">No Transactions 📉</p>
                     ) : (
                       <ul className="space-y-2">
                         {sub.transactions.map((tx) => (
@@ -187,10 +190,10 @@ const ExpenseList = ({
 
                                 <div className="flex flex-col sm:flex-row justify-around items-center mt-2 gap-1 lg:text-lg sm:text-sm">
                                   <span className="text-gray-500  ">
-                                    ${tx.amount.toFixed(2)}
+                                    💲{tx.amount.toFixed(2)}
                                   </span>
                                   <span className=" text-gray-500 ">
-                                    {new Date(tx.date).toLocaleDateString()}
+                                    {new Date(tx.date).toLocaleDateString()} 📅
                                   </span>
                                 </div>
 
@@ -219,9 +222,16 @@ const ExpenseList = ({
                         ))}
                       </ul>
                     )}
+
+                    {/* LINE CHART */}
+                    <ExpenseLineChart
+                      transactions={sub.transactions}
+                      subcategoryName={sub.name}
+                    />
                   </Accordion.Body>
                 </Accordion.Item>
               ))}
+
               <PostNewSubcategory
                 fetchExpenses={fetchExpenses}
                 category={category}
