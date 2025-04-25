@@ -18,7 +18,7 @@ const DayThemeToggle = () => {
     <button
       onClick={handleClick}
       aria-label="Toggle Theme"
-      className="day-theme-button relative w-10 h-10"
+      className=" day-theme-button relative w-10 h-10"
     >
       <FaSun
         className={`text-yellow-400 text-3xl absolute top-0 left-0 transition-all duration-500 ease-in-out transform ${

@@ -54,7 +54,7 @@ const ExpenseList = ({
 
   return (
     <div
-      className={`category-card max-w-[1200px] myBorder mx-auto ${backgroundColor} shadow-md m-2 p-4 `}
+      className={`category-card max-w-[1400px] myBorder mx-auto ${backgroundColor} shadow-md m-2 p-4 `}
     >
       <Accordion
         activeKey={isOpen ? "main" : null}
@@ -82,7 +82,7 @@ const ExpenseList = ({
                 <Accordion.Item
                   eventKey={idx.toString()}
                   key={sub._id}
-                  className="mb-3 border rounded-lg overflow-hidden accordion-item transition-all duration-300 ease-in-out hover:bg-blue-200 "
+                  className="mb-3 border rounded-lg overflow-hidden accordion-item transition-all duration-300 ease-in-out  "
                 >
                   <Accordion.Header>
                     <div className="flex flex-col w-full gap-4 px-2 ">

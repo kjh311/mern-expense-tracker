@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
 import { Accordion } from "react-bootstrap";
-import { TransactionsTotal } from "../App";
+import { TransactionsTotal, DayTheme } from "../App";
 import PieChart from "./PieChart";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useContext } from "react";
 
 const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
   const [total] = useContext(TransactionsTotal);
   const isOpen = mainAccordionKey === mainKey;
   const mainAccordionRef = useRef(null);
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   useEffect(() => {
     if (isOpen && mainAccordionRef.current) {
@@ -37,20 +37,43 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
     total.billsBudget + total.savingsBudget + total.expenseBudget;
 
   return (
-    <div className="category-card max-w-[1200px] myBorder mx-auto bg-blue-100 shadow-md  m-10 p-4 rounded">
+    <div
+      className={` max-w-[1400px]  mx-auto   m-10 p-4 rounded ${
+        dayTheme ? "category-card-day" : "category-card-night"
+      }`}
+    >
       <Accordion
+        className="accordion-day"
         activeKey={isOpen ? "main" : null}
         onSelect={() => setMainAccordionKey(isOpen ? null : mainKey)}
       >
-        <Accordion.Item eventKey="main" ref={mainAccordionRef}>
-          <Accordion.Header>
-            <div className="flex flex-col items-center w-full">
-              <h2 className="text-center lg:text-4xl xs:text-2xl font-bold text-indigo-600 m-4">
+        <Accordion.Item
+          eventKey="main"
+          ref={mainAccordionRef}
+          className={`${
+            dayTheme ? "overview-item-day" : "overview-item-night"
+          }`}
+        >
+          <Accordion.Header
+            className={`${
+              dayTheme ? "accordion-header-day" : "accordion-header-night"
+            }`}
+          >
+            <div
+              className={`flex flex-col items-center w-full transition-all duration-300 ${
+                dayTheme ? "day-text" : "text-white"
+              }`}
+            >
+              <h2 className="text-center lg:text-4xl xs:text-2xl font-bold  m-4">
                 💼 Monthly Overview
               </h2>
-              <div className="text-center flex flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
-                <span className="text-blue-800 font-semibold">
-                  💵 Cashflow:
+              <div className="text-center flex animation-all duration-300 flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
+                <span
+                  className={`${
+                    dayTheme ? "day-text" : "text-white"
+                  } font-semibold`}
+                >
+                  <span className="text-3xl">💵</span> Cashflow:
                   <br />
                   <span
                     className={`${
@@ -60,25 +83,48 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                     ${cashflow}
                   </span>
                 </span>
-                <span className="text-blue-800 font-semibold">
-                  📊 Total Budget:
+                <span
+                  className={`${
+                    dayTheme ? "day-text" : "text-white"
+                  } font-semibold`}
+                >
+                  <span className="text-3xl">📊</span> Total Budget:
                   <br /> ${totalBudget}
                 </span>
-                <span className="text-blue-800 font-semibold">
-                  📊 Total Income:
+                <span
+                  className={`${
+                    dayTheme ? "day-text" : "text-white"
+                  } font-semibold`}
+                >
+                  <span className="text-3xl">💰</span> Total Income:
                   <br /> ${totalIncome}
                 </span>
-                <span className="text-blue-800 font-semibold">
-                  💸 Total Expenses:
+                <span
+                  className={`${
+                    dayTheme ? "day-text" : "text-white"
+                  } font-semibold`}
+                >
+                  <span className="text-3xl">💸</span> Total Expenses:
                   <br /> ${totalExpenses}
                 </span>
               </div>
             </div>
           </Accordion.Header>
-          <Accordion.Body className="bg-blue-200">
-            <div className="p-4 bg-white rounded shadow-md">
-              <h2 className="text-xl font-bold mb-4 text-center text-blue-700">
-                Overview Chart
+
+          <Accordion.Body
+            className={`${
+              dayTheme
+                ? "overview-accordion-body-day"
+                : "overview-accordion-body-night"
+            }`}
+          >
+            <div className="p-4  rounded shadow-md">
+              <h2
+                className={`text-xl font-bold mb-4 text-center transition-all duration-300 ${
+                  dayTheme ? "day-text" : "text-white"
+                }`}
+              >
+                Overview Charts
               </h2>
               <PieChart totals={total} />
             </div>

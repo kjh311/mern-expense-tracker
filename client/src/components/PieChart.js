@@ -14,6 +14,7 @@ const PieChart = ({ totals }) => {
     responsive: true,
     plugins: {
       legend: {
+        display: false,
         position: "bottom",
       },
       datalabels: {

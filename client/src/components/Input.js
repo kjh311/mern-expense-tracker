@@ -11,7 +11,7 @@ const Input = ({
 }) => {
   return (
     <input
-      className="w-full max-w-md border border-gray-300 p-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+      className="text-black placeholder-gray-400 w-full max-w-md border  p-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
       type={type}
       value={value}
       placeholder={placeholder}

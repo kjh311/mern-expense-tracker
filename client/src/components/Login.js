@@ -53,13 +53,13 @@ const Login = () => {
 
   return (
     <div
-      className={`login-container ${
+      className={`login-container  ${
         dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
       }`}
     >
       <div
         className={`login-card ${
-          dayTheme ? "day-theme-card" : "night-theme-card"
+          dayTheme ? "day-theme-card" : "night-theme-card "
         }`}
       >
         <h2
@@ -71,7 +71,7 @@ const Login = () => {
         </h2>
         <form
           onSubmit={handleSubmit}
-          className="space-y-4 flex justify-center flex-column"
+          className="space-y-4 flex justify-center flex-column "
         >
           <Input
             type={"email"}
@@ -97,7 +97,12 @@ const Login = () => {
           }`}
         >
           Don’t have an account?
-          <Link to="/register" className="ml-1 hover:underline">
+          <Link
+            to="/register"
+            className={`ml-1 hover:underline ${
+              dayTheme ? "day-theme-link" : "night-theme-link"
+            }`}
+          >
             Register
           </Link>
         </p>

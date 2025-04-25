@@ -1,3 +1,5 @@
+@import url("./styles/dayTheme.css");
+
 .App {
   min-height: 100vh;
   position: relative;
@@ -8,21 +10,19 @@
 }
 
 .dashboard {
-  background-color: #f1faee;
+  /* background-color: #f1faee; */
 }
 
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #0081a7;
-  border-top: 2px solid black;
 }
 
 .nav-bar {
-  background-color: #0081a7;
-  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
-  border-bottom: 2px solid black;
+  /* background-color: #0081a7; */
+
+  /* border-bottom: 2px solid black; */
 }
 
 .nav-bar-text {
@@ -30,7 +30,7 @@
 }
 
 .sub-categories {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -39,10 +39,16 @@
   border-radius: 6px !important;
 }
 
-button.accordion-button::after {
+.accordion-button::after {
   transform: scale(2);
-  font-weight: bold !important;
+  /* font-weight: bold !important; */
   transition: transform 0.3s ease;
+}
+
+.accordion-button:hover::after,
+button.accordion-button:not(.collapsed):hover::after {
+  /* transform: scale(2.5) !important;
+  transition: transform 0.3s ease; */
 }
 
 button.accordion-button:not(.collapsed)::after {
@@ -52,8 +58,8 @@ button.accordion-button:not(.collapsed)::after {
 
 .accordion-header:hover,
 .accordion-button:hover {
-  background-color: #bfdbfe !important;
-  outline: 3px solid black !important;
+  /* background-color: #bfdbfe !important; */
+  /* outline: 3px solid black !important; */
   transition: all 0.3s ease-in-out;
 }
 
@@ -63,21 +69,17 @@ button.accordion-button:not(.collapsed)::after {
 
 .accordion-header,
 .accordion-button {
-  outline: 3px solid rgba(0, 0, 0, 0) !important;
+  /* outline: 3px solid rgba(0, 0, 0, 0) !important; */
   transition: all 0.3s ease-in-out;
 }
 
 .accordion-item,
 .transaction-item {
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7) !important;
+  /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7) !important; */
 }
 
 ul {
   padding-left: 0 !important;
-}
-
-.category-card {
-  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
 }
 
 .red {
@@ -154,72 +156,6 @@ ul {
   top: 20px;
 }
 
-/* login themes */
-
-.login-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.login-day-theme-bg {
-  background: linear-gradient(45deg, #7c3aed, #c4b0f4);
-  transition: all 0.3s ease;
-}
-
-.login-night-theme-bg {
-  background: linear-gradient(45deg, #050558, #a4a4ed); /* dark shades */
-  transition: all 0.3s ease;
-}
-
-.login-card {
-  width: 100%;
-  max-width: 400px;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-}
-
-.day-theme-card {
-  background-color: white;
-  color: #4b0082;
-  outline: 2px solid #5c426a;
-}
-
-.night-theme-card {
-  background-color: #2c2c3e;
-  color: #eee;
-  outline: 2px solid #dcadf6;
-}
-
-.login-heading {
-  text-align: center;
-  font-size: 1.75rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-}
-
-.login-day-theme-heading {
-  color: #5b21b6;
-}
-
-.login-night-theme-heading {
-  color: #c084fc;
-}
-
-.link-text {
-  text-align: center;
-  font-size: 0.9rem;
-  margin-top: 1rem;
-}
-
-.day-theme-link a {
-  color: #5b21b6;
-}
-
-.night-theme-link a {
-  color: #c084fc;
+.outer-glow {
+  box-shadow: 0 0 15px 5px white !important;
 }

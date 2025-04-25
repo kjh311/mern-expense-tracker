@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Input from "./Input";
 import Button from "./Button";
+import { DayTheme } from "../App";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,11 +33,24 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-400 to-blue-500">
-      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-6 text-green-600">
+    <div
+      className={`register-container flex items-center justify-center ${
+        dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
+      }`}
+    >
+      <div
+        className={`rounded-xl  p-8 w-full max-w-md transition-all duration-300 ${
+          dayTheme ? "day-theme-card" : "night-theme-card"
+        }`}
+      >
+        <h2
+          className={`text-2xl font-bold text-center mb-6 ${
+            dayTheme ? "login-day-theme-heading" : "login-night-theme-heading"
+          }`}
+        >
           Create an Account
         </h2>
+
         <form
           onSubmit={handleSubmit}
           className="space-y-4 flex justify-center flex-column"
@@ -74,9 +89,13 @@ const Register = () => {
           <p className="text-center mt-4 text-sm text-gray-700">{message}</p>
         )}
 
-        <p className="text-center text-sm text-gray-500 mt-4">
+        <p
+          className={`text-center text-sm mt-4 ${
+            dayTheme ? "day-theme-link" : "night-theme-link"
+          }`}
+        >
           Already have an account?
-          <Link to="/login" className="text-green-600 hover:underline ml-1">
+          <Link to="/login" className="ml-1 hover:underline">
             Login
           </Link>
         </p>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { LoggedInContext } from "../App";
+import { LoggedInContext, DayTheme } from "../App";
 import { Link } from "react-router-dom";
 import Logout from "./Logout";
 import DayThemeToggle from "./DayThemeToggle";
@@ -7,17 +7,23 @@ import Button from "./Button";
 
 const Navbar = () => {
   const [loggedIn] = useContext(LoggedInContext);
-  // const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   // console.log("Name: " + data.user.name);
   // console.log("Daytheme from Navbar: ", dayTheme);
 
   return (
-    <nav className="z-10 w-full  text-white sticky top-0 nav-bar relative">
+    <nav
+      className={`z-10 w-full sticky top-0 nav-bar relative transition-all duration-300 ${
+        dayTheme ? "day-nav text-white" : "night-nav text-blue-100"
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-around">
         <Link
           to="/"
-          className="nav-bar-text text-2xl font-extrabold tracking-wide text-blue-100 hover:text-blue-200 transition"
+          className={`nav-bar-text text-2xl font-extrabold tracking-wide  transition ${
+            dayTheme ? "text-white" : "night-footer-link"
+          }`}
         >
           Budget Tracker
         </Link>

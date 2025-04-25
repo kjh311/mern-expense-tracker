@@ -1,0 +1,215 @@
+/* login themes */
+
+.login-container,
+.register-container {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-day-theme-bg {
+  /* background: linear-gradient(45deg, #3a3aed, #f9f2a9); */
+  background-color: #81d7f1;
+  transition: all 0.3s ease;
+}
+
+.login-night-theme-bg {
+  /* background: linear-gradient(45deg, #050558, #c3c3f8);  */
+  background-color: #050558;
+  transition: all 0.3s ease;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.day-theme-card {
+  background-color: white;
+  color: #0f0082;
+  outline: 2px solid #52426a;
+  /* box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5) !important; */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7) !important;
+}
+
+.night-theme-card {
+  background-color: #19193b;
+  color: #eee;
+  outline: 2px solid #efe4fa;
+  box-shadow: 0 0 15px 5px white !important;
+  transition: all 0.3s ease;
+}
+
+.login-heading {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.login-day-theme-heading {
+  color: #0081a8;
+  transition: all 0.3s ease;
+}
+
+.login-night-theme-heading {
+  color: #c084fc;
+  transition: all 0.3s ease;
+}
+
+.link-text {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.day-theme-link a {
+  color: #0081a7;
+  transition: all 0.3s ease;
+}
+
+.night-theme-link a,
+.night-theme-link {
+  color: #c084fc;
+  transition: all 0.3s ease;
+}
+
+/* Navbar */
+.day-nav {
+  border-bottom: 2px solid black;
+  background-color: #0081a7;
+  transition: all 0.3s ease;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
+}
+
+.night-nav {
+  border-bottom: 2px solid #dbbef9;
+  background-color: #390099;
+  transition: all 0.3s ease;
+  box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.7);
+}
+
+/* FOOTER */
+
+.day-footer {
+  background-color: #0081a7;
+  border-top: 2px solid black;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+.night-footer {
+  background-color: #390099;
+  border-top: 2px solid #dbbef9;
+  transition: all 0.3s ease;
+  color: #c084fc;
+}
+
+.day-footer-link {
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.night-footer-link {
+  color: #c084fc;
+  transition: all 0.3s ease;
+}
+
+.night-footer-link:hover {
+  color: #d5b6f5;
+}
+
+/* OVERVIEW */
+.category-card-day {
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
+  background-color: #0081a8;
+  transition: all 0.3s;
+  outline: 4px solid black;
+}
+
+.category-card-night {
+  box-shadow: 0 0 15px 5px white !important;
+  background-color: #025b74;
+  transition: all 0.3s;
+  outline: 4px solid #c6f2ff;
+}
+
+.day-text {
+  color: #0081a8;
+  transition: all 0.3s ease;
+}
+
+.night-text {
+  color: #390099;
+  transition: all 0.3s ease;
+}
+
+.overview-item-day,
+.accordion-header-day .accordion-button[aria-expanded="true"],
+.overview-accordion-body-day {
+  outline: 5px solid black !important;
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  background-color: white !important;
+}
+
+.overview-item-day:hover {
+  background-color: #cee2ff !important;
+}
+
+.overview-item-night,
+.accordion-header-night .accordion-button[aria-expanded="true"],
+.accordion-header-night .accordion-button[aria-expanded="false"],
+.accordion-header-night,
+.overview-accordion-body-night {
+  outline: 5px solid white !important;
+  box-shadow: 0 0 15px 5px white !important;
+  transition: all 0.3s ease;
+  background-color: #013745 !important;
+}
+
+.accordion-header-night .accordion-button::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z' stroke='%23ffffff' stroke-width='2'/></svg>") !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-day .accordion-button::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z' stroke='%23000000' stroke-width='2'/></svg>") !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-night .accordion-button::after:hover,
+.accordion-button::after:hover {
+  transform: scale(4) !important;
+}
+
+/* On night theme */
+.accordion-button.night-theme::after {
+  color: #d1d5db; /* Example light color for the caret in night theme */
+}
+
+.accordion-day,
+.--bs-accordion-bg {
+  /* background-color: red !important; */
+}
+
+/* .accordion-header-day,
+.accordion-button {
+  outline: 2px solid black !important;
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+} */
+
+.accordion-header-day:hover,
+.accordion-button:hover {
+  /* background-color: #bfdbfe !important; */
+  /* outline: 3px solid black !important; */
+
+  /* background-color: #6eceeb; */
+}

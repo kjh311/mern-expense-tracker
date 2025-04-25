@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import SubCategoriesWithTransactions from "./SubCategoriesWithTransactions";
 import Overview from "./Overview";
+import { DayTheme } from "../App";
 
 const Dashboard = () => {
   const [mainAccordionKey, setMainAccordionKey] = useState(null);
   const [userName, setUserName] = useState(
     localStorage.getItem("expense-tracker-username")
   );
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   return (
     <>
-      <div className="dashboard p-4">
-        {userName && <h3 className="text-center">Welcome {userName}!</h3>}
+      <div
+        className={` min-h-screen p-4  ${
+          dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
+        }`}
+      >
+        {userName && (
+          <h3
+            className={`text-center transition-all duration-300 ${
+              dayTheme ? "text-black" : "night-theme-link"
+            }`}
+          >
+            Welcome {userName}!
+          </h3>
+        )}
         <Overview
           mainKey="0"
           mainAccordionKey={mainAccordionKey}
