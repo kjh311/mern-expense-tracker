@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { LoggedInContext, DayTheme } from "../App";
 import Input from "./Input";
+import Button from "./Button";
 
 const Login = () => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
@@ -51,12 +52,27 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-500">
-      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-6 text-indigo-600">
+    <div
+      className={`login-container ${
+        dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
+      }`}
+    >
+      <div
+        className={`login-card ${
+          dayTheme ? "day-theme-card" : "night-theme-card"
+        }`}
+      >
+        <h2
+          className={`login-heading ${
+            dayTheme ? "login-day-theme-heading" : "login-night-theme-heading"
+          }`}
+        >
           Login
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 flex justify-center flex-column"
+        >
           <Input
             type={"email"}
             name={"email"}
@@ -73,16 +89,15 @@ const Login = () => {
             placeholder={"Password"}
             required
           />
-          <button
-            type="submit"
-            className="w-full bg-indigo-600 text-white py-3 rounded-md hover:bg-indigo-700 transition duration-200"
-          >
-            Login
-          </button>
+          <Button type={"submit"} text={"Login"} color={"blue"} />
         </form>
-        <p className="text-center text-sm text-gray-500 mt-4">
+        <p
+          className={`link-text ${
+            dayTheme ? "day-theme-link" : "night-theme-link"
+          }`}
+        >
           Don’t have an account?
-          <Link to="/register" className="text-indigo-600 hover:underline ml-1">
+          <Link to="/register" className="ml-1 hover:underline">
             Register
           </Link>
         </p>

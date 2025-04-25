@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Input from "./Input";
+import Button from "./Button";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -35,7 +36,10 @@ const Register = () => {
         <h2 className="text-2xl font-bold text-center mb-6 text-green-600">
           Create an Account
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 flex justify-center flex-column"
+        >
           <Input
             type={"text"}
             placeholder={"Name"}
@@ -57,12 +61,13 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button
+          <Button type={"submit"} text={"Register"} color={"green"} />
+          {/* <button
             type="submit"
             className="w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition duration-200"
           >
             Register
-          </button>
+          </button> */}
         </form>
 
         {message && (

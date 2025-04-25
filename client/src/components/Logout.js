@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { LoggedInContext } from "../App";
 import { jwtDecode } from "jwt-decode";
+import Button from "./Button";
 
 const Logout = () => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
@@ -26,7 +27,8 @@ const Logout = () => {
     }
   }, []);
 
-  return <button onClick={handleLogout}>Logout</button>;
+  return <Button onClick={handleLogout} text={"Logout"} color={"white"} />;
+  // <button onClick={handleLogout}>Logout</button>;
 };
 
 export default Logout;
