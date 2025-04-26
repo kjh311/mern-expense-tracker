@@ -55,7 +55,7 @@ const SubCategoriesWithTransactions = ({
     } catch (err) {
       console.error("Failed to fetch expenses", err);
     }
-  }, [category, total]);
+  }, [category]);
 
   useEffect(() => {
     fetchExpenses();
@@ -97,8 +97,8 @@ const SubCategoriesWithTransactions = ({
           <Accordion.Body
             className={`transition-all duration-300 ${
               dayTheme
-                ? "overview-accordion-body-day"
-                : "overview-accordion-body-night"
+                ? `transition-all duration-300 accordion-body-day overview-accordion-body-${backgroundColor}`
+                : `transition-all duration-300 accordion-body-night overview-accordion-body-${backgroundColor}`
             }`}
           >
             <Accordion
@@ -162,7 +162,7 @@ const SubCategoriesWithTransactions = ({
                                 ) <
                               0
                                 ? `transition-all duration-300 text-red-${
-                                    dayTheme ? "400" : "800"
+                                    dayTheme ? "600" : "300"
                                   } font-bold`
                                 : `transition-all duration-300 text-green-${
                                     dayTheme ? "700" : "400"

@@ -42,3 +42,49 @@ export const getColorActionWords = (category, dayTheme) => {
       return "";
   }
 };
+
+export const PostNewTransactionHeaderColors = (category, dayTheme) => {
+  let color = "";
+
+  switch (category) {
+    case "savings":
+      color = "yellow";
+      break;
+    case "expense":
+      color = "red";
+      break;
+    case "income":
+      color = "green";
+      break;
+    case "bills":
+      color = "orange";
+      break;
+    default:
+      color = "gray"; // fallback color
+  }
+
+  return `accordion-header-${dayTheme ? "day" : "night"}-${color}`;
+};
+
+export const PostNewTransactionBodyColors = (category, dayTheme) => {
+  let color = "";
+
+  switch (category) {
+    case "savings":
+      color = "yellow";
+      break;
+    case "expense":
+      color = "red";
+      break;
+    case "income":
+      color = "green";
+      break;
+    case "bills":
+      color = "orange";
+      break;
+    default:
+      color = "gray"; // fallback color
+  }
+
+  return `overview-accordion-body-${dayTheme ? "day" : "night"}-${color}`;
+};

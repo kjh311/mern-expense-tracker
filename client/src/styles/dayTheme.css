@@ -201,7 +201,7 @@
 
 .accordion-header-day-green .accordion-button[aria-expanded="true"],
 .accordion-header-day-green .accordion-button[aria-expanded="false"] {
-  background-color: #b3fcf2 !important;
+  background-color: #e4f7f5 !important;
   transition: all 0.3s ease;
 }
 
@@ -219,11 +219,54 @@
 .accordion-header-night .accordion-button[aria-expanded="true"],
 .accordion-header-night .accordion-button[aria-expanded="false"],
 .accordion-header-night,
-.overview-accordion-body-night {
+.accordion-body-night {
   outline: 2px solid white !important;
   box-shadow: 0 0 15px 5px white !important;
   transition: all 0.3s ease;
   background-color: #013745 !important;
+}
+
+.overview-accordion-body-night-red {
+  background-color: #880a12 !important;
+}
+
+.overview-accordion-body-night-orange {
+  background-color: #935209 !important;
+  transition: all 0.3s ease;
+}
+
+.overview-accordion-body-night-yellow {
+  background-color: #976d05 !important;
+  transition: all 0.3s ease;
+}
+
+.overview-accordion-body-night-green {
+  background-color: #136158 !important;
+  transition: all 0.3s ease;
+}
+
+.overview-accordion-body-day-red {
+  background-color: #c1111f !important;
+  transition: all 0.3s ease;
+}
+
+.overview-accordion-body-day-orange {
+  background-color: #fb8500 !important;
+  transition: all 0.3s ease;
+}
+
+.overview-accordion-body-day-yellow {
+  background-color: #ffb704 !important;
+  transition: all 0.3s ease;
+}
+
+.overview-accordion-body-day-green {
+  background-color: #2a9d8f !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-body {
+  background-color: inherit !important;
 }
 
 .accordion-header-night .accordion-button::after {

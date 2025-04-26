@@ -6,6 +6,10 @@ import axios from "axios";
 import Input from "./Input";
 import Button from "./Button";
 import { DayTheme } from "../App";
+import {
+  PostNewTransactionHeaderColors,
+  PostNewTransactionBodyColors,
+} from "./ActionWords";
 
 const PostNewSubcategory = ({
   fetchExpenses,
@@ -53,13 +57,15 @@ const PostNewSubcategory = ({
   return (
     <AccordionItem
       eventKey="new"
-      className={`transition-all duration-300 ${
-        dayTheme ? "overview-item-day" : "overview-item-night"
-      }`}
+      className={`transition-all duration-300 ${PostNewTransactionHeaderColors(
+        category,
+        dayTheme
+      )}`}
     >
       <AccordionHeader
         className={`transition-all duration-300 w-full flex justify-center items-center
-          ${dayTheme ? "accordion-header-day" : "accordion-header-night"}`}
+          ${PostNewTransactionHeaderColors(category, dayTheme)}
+           `}
       >
         <h2
           className={`text-lg font-semibold  text-center w-full transition-all duration-300 ${
@@ -70,11 +76,11 @@ const PostNewSubcategory = ({
         </h2>
       </AccordionHeader>
       <AccordionBody
-        className={`py-6 transition-all duration-300 ${
+        className={`py-6 transition-all duration-300  ${PostNewTransactionBodyColors(
+          category,
           dayTheme
-            ? "overview-accordion-body-day"
-            : "overview-accordion-body-night"
-        }`}
+        )}
+           }`}
       >
         <form
           onSubmit={handlePost}
