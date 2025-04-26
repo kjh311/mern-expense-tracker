@@ -35,7 +35,7 @@ const Dashboard = () => {
         <SubCategoriesWithTransactions
           name={"  💸 EXPENSES"}
           category={"expense"}
-          backgroundColor={"red"}
+          backgroundColor={`${dayTheme ? "day-red" : "night-red"}`}
           mainKey="1"
           mainAccordionKey={mainAccordionKey}
           setMainAccordionKey={setMainAccordionKey}
@@ -44,7 +44,7 @@ const Dashboard = () => {
         <SubCategoriesWithTransactions
           name={"🧾 BILLS"}
           category={"bills"}
-          backgroundColor={"orange"}
+          backgroundColor={`${dayTheme ? "day-orange" : "night-orange"}`}
           mainKey="2"
           mainAccordionKey={mainAccordionKey}
           setMainAccordionKey={setMainAccordionKey}
@@ -53,7 +53,7 @@ const Dashboard = () => {
         <SubCategoriesWithTransactions
           name={"🏦 SAVINGS"}
           category={"savings"}
-          backgroundColor={"yellow"}
+          backgroundColor={`${dayTheme ? "day-yellow" : "night-yellow"}`}
           mainKey="3"
           mainAccordionKey={mainAccordionKey}
           setMainAccordionKey={setMainAccordionKey}
@@ -62,7 +62,7 @@ const Dashboard = () => {
         <SubCategoriesWithTransactions
           name={"💰 INCOME"}
           category={"income"}
-          backgroundColor={"green"}
+          backgroundColor={`${dayTheme ? "day-green" : "night-green"}`}
           mainKey="4"
           mainAccordionKey={mainAccordionKey}
           setMainAccordionKey={setMainAccordionKey}

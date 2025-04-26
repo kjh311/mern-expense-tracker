@@ -82,10 +82,16 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
         <span
           className={`${
             category === "expense" && totalBudget - totalSpent > 0
-              ? "text-green-500 "
+              ? `transition-all duration-300 text-green-${
+                  dayTheme ? "700" : "300"
+                }`
               : totalBudget - totalSpent < 0
-              ? "text-green-500 "
-              : "text-red-500"
+              ? `transition-all duration-300 text-green-${
+                  dayTheme ? "700" : "300"
+                }`
+              : `transition-all duration-300 text-red-${
+                  dayTheme ? "700" : "300"
+                }`
           }`}
         >
           {formattedCurrency(totalBudget - totalSpent)}

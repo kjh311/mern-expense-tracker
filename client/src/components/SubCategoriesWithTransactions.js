@@ -22,7 +22,7 @@ import SubcategoryBarChart from "./SubCategoryBarChart";
 import { formattedCurrency } from "./FormattedCurrency";
 import { DayTheme } from "../App";
 
-const ExpenseList = ({
+const SubCategoriesWithTransactions = ({
   name,
   category,
   backgroundColor,
@@ -55,7 +55,7 @@ const ExpenseList = ({
     } catch (err) {
       console.error("Failed to fetch expenses", err);
     }
-  }, [category]);
+  }, [category, total]);
 
   useEffect(() => {
     fetchExpenses();
@@ -75,8 +75,8 @@ const ExpenseList = ({
           <Accordion.Header
             className={`transition-all duration-300 ${
               dayTheme
-                ? `accordion-header-day-${category}`
-                : `accordion-header-night-${category}`
+                ? `accordion-header-${backgroundColor}`
+                : `accordion-header-${backgroundColor}`
             }`}
           >
             <div
@@ -115,8 +115,8 @@ const ExpenseList = ({
                   <Accordion.Header
                     className={`transition-all duration-300 accordion-header-day ${
                       dayTheme
-                        ? `accordion-header-day-${category}`
-                        : `accordion-header-night-${category}`
+                        ? `accordion-header-${backgroundColor}`
+                        : `accordion-header-${backgroundColor}`
                     }`}
                   >
                     <div
@@ -161,8 +161,12 @@ const ExpenseList = ({
                                   0
                                 ) <
                               0
-                                ? "text-red-400 font-bold"
-                                : "text-green-600"
+                                ? `transition-all duration-300 text-red-${
+                                    dayTheme ? "400" : "800"
+                                  } font-bold`
+                                : `transition-all duration-300 text-green-${
+                                    dayTheme ? "700" : "400"
+                                  }`
                             }`}
                           >
                             <span
@@ -309,4 +313,4 @@ const ExpenseList = ({
   );
 };
 
-export default ExpenseList;
+export default SubCategoriesWithTransactions;

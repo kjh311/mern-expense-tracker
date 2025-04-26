@@ -163,15 +163,51 @@
   /* background-color: white !important; */
 }
 
-.accordion-header-day-expense .accordion-button[aria-expanded="true"],
-.accordion-header-day-expense .accordion-button[aria-expanded="false"] {
+.accordion-header-day-red .accordion-button[aria-expanded="true"],
+.accordion-header-day-red .accordion-button[aria-expanded="false"] {
   background-color: #fadfe2 !important;
   transition: all 0.3s ease;
 }
 
-.accordion-header-night-expense .accordion-button[aria-expanded="true"],
-.accordion-header-night-expense .accordion-button[aria-expanded="false"] {
+.accordion-header-night-red .accordion-button[aria-expanded="true"],
+.accordion-header-night-red .accordion-button[aria-expanded="false"] {
   background-color: #c1111f !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-day-orange .accordion-button[aria-expanded="true"],
+.accordion-header-day-orange .accordion-button[aria-expanded="false"] {
+  background-color: #f9e0c5 !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-night-orange .accordion-button[aria-expanded="true"],
+.accordion-header-night-orange .accordion-button[aria-expanded="false"] {
+  background-color: #fb8500 !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-day-yellow .accordion-button[aria-expanded="true"],
+.accordion-header-day-yellow .accordion-button[aria-expanded="false"] {
+  background-color: #fceabf !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-night-yellow .accordion-button[aria-expanded="true"],
+.accordion-header-night-yellow .accordion-button[aria-expanded="false"] {
+  background-color: #ffb704 !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-day-green .accordion-button[aria-expanded="true"],
+.accordion-header-day-green .accordion-button[aria-expanded="false"] {
+  background-color: #b3fcf2 !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-night-green .accordion-button[aria-expanded="true"],
+.accordion-header-night-green .accordion-button[aria-expanded="false"] {
+  background-color: #2a9d8f !important;
   transition: all 0.3s ease;
 }
 
@@ -228,4 +264,37 @@
   /* outline: 3px solid black !important; */
 
   /* background-color: #6eceeb; */
+}
+
+/* SubCategoriesWithTemplates */
+.day-red {
+  background-color: #c1121f;
+}
+
+.day-orange {
+  background-color: #fb8500;
+}
+
+.day-yellow {
+  background-color: #ffb703;
+}
+
+.day-green {
+  background-color: #2a9d8f;
+}
+
+.night-red {
+  background-color: #880a12;
+}
+
+.night-orange {
+  background-color: #935208;
+}
+
+.night-yellow {
+  background-color: #976d04;
+}
+
+.night-green {
+  background-color: #146158;
 }

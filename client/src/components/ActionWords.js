@@ -28,16 +28,16 @@ export const getActionWordPassedTense = (category) => {
   }
 };
 
-export const getColorActionWords = (category) => {
+export const getColorActionWords = (category, dayTheme) => {
   switch (category) {
     case "savings":
-      return "text-red-500";
+      return "text-red-200";
     case "bills":
-      return "text-red-500";
+      return "text-red-200";
     case "income":
-      return "text-red-500";
+      return "text-red-200";
     case "expense":
-      return "text-green-500";
+      return "text-green-200";
     default:
       return "";
   }
