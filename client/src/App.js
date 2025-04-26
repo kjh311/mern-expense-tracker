@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import Dashboard from "./components/Dashboard"; // example protected page
+import Dashboard from "./components/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./components/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,10 +18,11 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
   const [dayTheme, setDayTheme] = useState(() => {
     const stored = localStorage.getItem("Expense-Tracker-DayTheme");
-    return stored === "true"; // ensures a proper boolean
+    return stored === "true";
   });
 
   console.log("Daytheme from appjs: ", dayTheme);
+
   const [total, setTotal] = useState({
     expenseSpent: 0,
     incomeSpent: 0,

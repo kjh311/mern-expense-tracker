@@ -21,14 +21,14 @@ const DayThemeToggle = () => {
       className=" day-theme-button relative w-10 h-10"
     >
       <FaSun
-        className={`text-yellow-400 text-3xl absolute top-0 left-0 transition-all duration-500 ease-in-out transform ${
+        className={`theme-icon text-yellow-400 text-3xl absolute top-0 left-0 transition-all duration-500 ease-in-out transform ${
           dayTheme
             ? "opacity-100 rotate-0 scale-100"
             : "opacity-0 rotate-180 scale-90"
         }`}
       />
       <FaMoon
-        className={` text-yellow-400 text-3xl absolute top-0 left-0 transition-all duration-500 ease-in-out transform ${
+        className={`theme-icon  text-yellow-400 text-3xl absolute top-0 left-0 transition-all duration-500 ease-in-out transform ${
           dayTheme
             ? "opacity-0 rotate-0 scale-90"
             : "opacity-100 rotate-180 scale-100"

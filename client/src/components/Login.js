@@ -47,7 +47,8 @@ const Login = () => {
         localStorage.setItem("Expense-Tracker-DayTheme", true);
         setDayTheme(true);
       } else {
-        setDayTheme(localStorage.getItem("Expense-Tracker-DayTheme"));
+        // setDayTheme(localStorage.getItem("Expense-Tracker-DayTheme"));
+        console.log("Theme from login: ", dayTheme);
       }
     } catch (error) {
       console.error(error);

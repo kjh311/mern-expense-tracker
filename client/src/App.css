@@ -174,3 +174,13 @@ ul {
 .outer-glow {
   box-shadow: 0 0 15px 5px white !important;
 }
+
+.theme-icon:hover {
+  /* transform: scale(1.2);
+  transition: all 0.3s; */
+}
+
+.subcategory-bar-chart {
+  max-height: 200px;
+  /* max-width: 50%; */
+}

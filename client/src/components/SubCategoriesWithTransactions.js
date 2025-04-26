@@ -18,7 +18,7 @@ import UpdateSubcategory from "./UpdateSubcategory";
 import { TransactionsTotal } from "../App";
 import ExpenseLineChart from "./ExpenseLineChart";
 import { AccordionBody, AccordionHeader, AccordionItem } from "react-bootstrap";
-import SubcategoryBarChart from "./SubCategoryBarChart";
+import SubCategoryBarChart from "./SubCategoryBarChart";
 import { formattedCurrency } from "./FormattedCurrency";
 import { DayTheme } from "../App";
 
@@ -111,6 +111,14 @@ const SubCategoriesWithTransactions = ({
                 : `transition-all duration-300 accordion-body-night overview-accordion-body-${backgroundColor}`
             }`}
           >
+            <SubCategoryBarChart
+              data={data.map((sub) => ({
+                name: sub.name,
+                spent: sub.transactions.reduce((sum, tx) => sum + tx.amount, 0),
+                budget: sub.budget || 0,
+              }))}
+              category={category}
+            />
             <Accordion
               activeKey={activeKey}
               onSelect={(eventKey) => setActiveKey(eventKey)}
