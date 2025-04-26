@@ -8,7 +8,7 @@ import Button from "./Button";
 import Input from "./Input";
 import { DayTheme } from "../App";
 
-const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
+const PostNewTransaction = ({ subcategory, setRefreshFlag, fetchExpenses }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [recurring, setRecurring] = useState(false);
@@ -40,7 +40,8 @@ const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
       setDescription("");
       setAmount("");
       setRecurring(false);
-      fetchExpenses();
+      await fetchExpenses();
+      setRefreshFlag((prev) => !prev);
     } catch (err) {
       console.error("Failed to post transaction", err);
     }

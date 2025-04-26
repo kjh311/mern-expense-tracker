@@ -40,6 +40,7 @@ const SubCategoriesWithTransactions = ({
   const isOpen = mainAccordionKey === mainKey;
   const allTransactions = data.flatMap((sub) => sub.transactions);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [refreshFlag, setRefreshFlag] = useState(false);
 
   const fetchExpenses = useCallback(async () => {
     try {
@@ -52,6 +53,8 @@ const SubCategoriesWithTransactions = ({
         }
       );
       setData(res.data);
+      console.log("Fetch Expenses");
+      // setRefreshFlag((prev) => !prev);
     } catch (err) {
       console.error("Failed to fetch expenses", err);
     }
@@ -89,7 +92,7 @@ const SubCategoriesWithTransactions = ({
               </h2>
               <CategoryBreakdown
                 category={category}
-                fetchExpenses={fetchExpenses}
+                refreshFlag={refreshFlag}
               />
             </div>
           </Accordion.Header>
@@ -204,6 +207,7 @@ const SubCategoriesWithTransactions = ({
                           setDeletingId={setDeletingId}
                           setAnimatingId={setAnimatingId}
                           animatingId={animatingId}
+                          setRefreshFlag={setRefreshFlag}
                         />
                       )}
                       <UpdateSubcategory
@@ -214,6 +218,7 @@ const SubCategoriesWithTransactions = ({
                         budget={sub.budget}
                         editModeSubcategory={editModeSubcategory}
                         setEditModeSubcategory={setEditModeSubcategory}
+                        setRefreshFlag={setRefreshFlag}
                       />
                     </div>
 
@@ -224,6 +229,7 @@ const SubCategoriesWithTransactions = ({
 
                     <PostNewTransaction
                       subcategory={sub._id}
+                      setRefreshFlag={setRefreshFlag}
                       fetchExpenses={fetchExpenses}
                     />
 
@@ -277,6 +283,7 @@ const SubCategoriesWithTransactions = ({
                                   setDeletingId={setDeletingId}
                                   txId={tx._id}
                                   setAnimatingId={setAnimatingId}
+                                  setRefreshFlag={setRefreshFlag}
                                 />
                               </>
                             )}
@@ -290,6 +297,7 @@ const SubCategoriesWithTransactions = ({
                               recurring={tx.recurring}
                               editModeTransaction={editModeTransaction}
                               setEditModeTransaction={setEditModeTransaction}
+                              setRefreshFlag={setRefreshFlag}
                             />
                           </li>
                         ))}
@@ -304,6 +312,7 @@ const SubCategoriesWithTransactions = ({
                 category={category}
                 activeKey={activeKey}
                 setActiveKey={setActiveKey}
+                setRefreshFlag={setRefreshFlag}
               />
             </Accordion>
           </Accordion.Body>

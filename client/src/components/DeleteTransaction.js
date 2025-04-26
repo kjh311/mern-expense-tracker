@@ -4,12 +4,13 @@ import axios from "axios";
 
 const DeleteTransaction = ({
   id,
-  fetchExpenses,
   deletingId,
   setDeletingId,
   txId,
   setAnimatingId,
   animatingId,
+  setRefreshFlag,
+  fetchExpenses,
 }) => {
   const handleDeleteTransaction = async () => {
     if (window.confirm("Delete this transaction?")) {
@@ -29,7 +30,8 @@ const DeleteTransaction = ({
             }
           );
           console.log("Deleted:", res.data);
-          fetchExpenses();
+          await fetchExpenses();
+          setRefreshFlag((prev) => !prev);
 
           // After delete, reset the animatingId to stop animation
           setAnimatingId(null);

@@ -12,10 +12,10 @@ const UpdateSubcategory = ({
   budget,
   editModeSubcategory,
   setEditModeSubcategory,
+  fetchExpenses,
+  setRefreshFlag,
 }) => {
-  const fixedBudget = budget.toLocaleString(undefined, {
-    minimumFractionDigits: 2,
-  });
+  const fixedBudget = budget;
   const [nameInput, setNameInput] = useState(name);
   const [budgetInput, setBudgetInput] = useState(fixedBudget);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
@@ -44,6 +44,8 @@ const UpdateSubcategory = ({
         }
       );
       console.log("Subcategory updated:", res.data);
+      await fetchExpenses();
+      setRefreshFlag((prev) => !prev);
     } catch (err) {
       console.error("Error updating subcategories", err);
     }

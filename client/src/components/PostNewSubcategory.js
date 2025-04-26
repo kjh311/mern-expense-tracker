@@ -42,7 +42,7 @@ const PostNewSubcategory = ({
         );
 
         console.log("Subcategory posted:", res.data);
-        fetchExpenses();
+        await fetchExpenses();
         setActiveKey(null);
       } catch (err) {
         console.error("Failed to post subcategory", err);

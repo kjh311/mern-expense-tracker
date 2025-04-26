@@ -16,6 +16,8 @@ const UpdateTransaction = ({
   recurring,
   editModeTransaction,
   setEditModeTransaction,
+  fetchExpenses,
+  setRefreshFlag,
 }) => {
   const [amountInput, setAmountInput] = useState(amount);
   const [descriptionInput, setDescriptionInput] = useState(description);
@@ -47,6 +49,8 @@ const UpdateTransaction = ({
         }
       );
       console.log("Transaction updated:", res.data);
+      await fetchExpenses();
+      setRefreshFlag((prev) => !prev);
     } catch (err) {
       console.error("Failed to update transaction", err);
     }

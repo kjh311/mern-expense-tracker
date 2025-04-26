@@ -9,7 +9,7 @@ import {
   getColorActionWords,
 } from "./ActionWords";
 
-const CategoryBreakdown = ({ category, fetchExpenses }) => {
+const CategoryBreakdown = ({ category, refreshFlag }) => {
   const [data, setData] = useState([]);
   const [total, setTotal] = useContext(TransactionsTotal);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
@@ -32,11 +32,7 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
     };
 
     fetchData();
-  }, [category, fetchExpenses]);
-
-  useEffect(() => {
-    fetchExpenses();
-  }, [fetchExpenses]);
+  }, [category, refreshFlag]);
 
   //pass totals and budgets to App.js Context
   useEffect(() => {
@@ -46,6 +42,7 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
           (sum, tx) => sum + (tx.amount || 0),
           0
         );
+
         return acc + subTotal;
       }, 0);
 
@@ -57,6 +54,7 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
         [`${category}Budget`]: totalBudget,
       }));
     }
+    console.log("Category Breakdown UseEffect Ran");
   }, [data, category, setTotal]);
 
   if (!data || data.length === 0) return <p>No data</p>;

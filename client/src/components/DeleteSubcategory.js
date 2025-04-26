@@ -10,6 +10,7 @@ const DeleteSubcategory = ({
   setDeletingId,
   setAnimatingId,
   animatingId,
+  setRefreshFlag,
 }) => {
   const handleDeleteSubcategory = async () => {
     // event.stopPropagation();
@@ -30,7 +31,8 @@ const DeleteSubcategory = ({
           }
         );
         console.log("Deleted:", res.data);
-        fetchExpenses();
+        await fetchExpenses();
+        setRefreshFlag((prev) => !prev);
 
         // After delete, reset the animatingId to stop animation
         //   setAnimatingId(null);
