@@ -160,7 +160,11 @@
   outline: 5px solid black !important;
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
-  background-color: white !important;
+  /* background-color: white !important; */
+}
+
+.accordion-header-day-expense {
+  background-color: red !important;
 }
 
 .overview-item-day:hover {

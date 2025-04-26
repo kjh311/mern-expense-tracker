@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import Button from "./Button";
 import { IoCloseCircle } from "react-icons/io5";
 import { formattedCurrency } from "./FormattedCurrency";
+import { DayTheme } from "../App";
 
 const UpdateSubcategory = ({
   id,
@@ -12,9 +13,12 @@ const UpdateSubcategory = ({
   editModeSubcategory,
   setEditModeSubcategory,
 }) => {
-  const fixedBudget = formattedCurrency(budget);
+  const fixedBudget = budget.toLocaleString(undefined, {
+    minimumFractionDigits: 2,
+  });
   const [nameInput, setNameInput] = useState(name);
   const [budgetInput, setBudgetInput] = useState(fixedBudget);
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   const handleEdit = (e) => {
     e.stopPropagation();
@@ -65,7 +69,11 @@ const UpdateSubcategory = ({
       )}
 
       {editModeSubcategory && (
-        <div className="relative text-center bg-gray-100 p-4 outline m-2 rounded-xl w-100">
+        <div
+          className={`relative text-center p-4 outline m-2 rounded-xl w-100 transition-all duration-300 ${
+            dayTheme ? "accordion-header-day" : "accordion-header-night"
+          }`}
+        >
           <button
             onClick={handleClose}
             className={`react-icon text-red-500 text-4xl transition-all duration-200 absolute top-2 right-2`}
@@ -73,7 +81,13 @@ const UpdateSubcategory = ({
             <IoCloseCircle />
           </button>
           <form onSubmit={handleSubcategoryUpdate} className="text-center">
-            <label>Subcategory Name:</label>
+            <label
+              className={`transition-all duration-300 ${
+                dayTheme ? "day-text" : "text-white"
+              }`}
+            >
+              Subcategory Name:
+            </label>
             <br />
             <input
               className="text-center p-2 m-2 rounded outline"
@@ -82,7 +96,13 @@ const UpdateSubcategory = ({
               onChange={(e) => setNameInput(e.target.value)}
             />
             <br />
-            <label>Budget for the month:</label>
+            <label
+              className={`transition-all duration-300 ${
+                dayTheme ? "day-text" : "text-white"
+              }`}
+            >
+              Budget for the month:
+            </label>
             <br />
             <input
               type="number"

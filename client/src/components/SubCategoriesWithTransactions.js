@@ -1,4 +1,10 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, {
+  useEffect,
+  useState,
+  useContext,
+  useRef,
+  useCallback,
+} from "react";
 import Accordion from "react-bootstrap/Accordion";
 import axios from "axios";
 import PostNewSubcategory from "./PostNewSubcategory";
@@ -35,7 +41,7 @@ const ExpenseList = ({
   const allTransactions = data.flatMap((sub) => sub.transactions);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
 
-  const fetchExpenses = async () => {
+  const fetchExpenses = useCallback(async () => {
     try {
       const res = await axios.get(
         `http://localhost:5000/api/subcategories/${category}-with-transactions`,
@@ -49,10 +55,6 @@ const ExpenseList = ({
     } catch (err) {
       console.error("Failed to fetch expenses", err);
     }
-  };
-
-  useEffect(() => {
-    fetchExpenses();
   }, [category]);
 
   return (
@@ -68,7 +70,9 @@ const ExpenseList = ({
         <Accordion.Item eventKey="main">
           <Accordion.Header
             className={`transition-all duration-300 ${
-              dayTheme ? "accordion-header-day" : "accordion-header-night"
+              dayTheme
+                ? `accordion-header-day-${category}`
+                : "accordion-header-night"
             }`}
           >
             <div
@@ -222,7 +226,11 @@ const ExpenseList = ({
                         {sub.transactions.map((tx) => (
                           <li
                             key={tx._id}
-                            className={`transaction-item relative border border-gray-200 rounded-md p-3 bg-white transition-all duration-300 ease-in-out ${
+                            className={`transaction-item relative  rounded-md p-3  transition-all duration-300 ease-in-out ${
+                              dayTheme
+                                ? "overview-accordion-body-day"
+                                : "overview-accordion-body-night"
+                            } ${
                               animatingId === tx._id
                                 ? "opacity-0 -translate-y-2 scale-95"
                                 : ""
@@ -232,17 +240,24 @@ const ExpenseList = ({
                             {!editModeTransaction && (
                               <>
                                 <div>
-                                  <span className="font-semibold text-green-600 text-base sm:text-lg lg:text-2xl block text-center sm:text-left">
+                                  <span
+                                    className={`font-semibold  text-base sm:text-lg lg:text-2xl block text-center sm:text-left transition-all duration-300 ${
+                                      dayTheme ? "day-text" : "text-white"
+                                    }`}
+                                  >
                                     {tx.description}
                                   </span>
                                 </div>
 
-                                <div className="flex flex-col sm:flex-row justify-around items-center mt-2 gap-1 lg:text-lg sm:text-sm">
-                                  <span className="text-gray-500  ">
-                                    💲
+                                <div
+                                  className={`flex flex-col sm:flex-row justify-around items-center mt-2 gap-1 lg:text-lg sm:text-sm transition-all duration-300 ${
+                                    dayTheme ? "day-text" : "text-white"
+                                  }`}
+                                >
+                                  <span className="  ">
                                     {formattedCurrency(tx.amount)}
                                   </span>
-                                  <span className=" text-gray-500 ">
+                                  <span className="  ">
                                     {new Date(tx.date).toLocaleDateString()} 📅
                                   </span>
                                 </div>

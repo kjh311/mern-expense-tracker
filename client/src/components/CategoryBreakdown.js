@@ -51,22 +51,11 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
 
       const totalBudget = data.reduce((acc, sub) => acc + (sub.budget || 0), 0);
 
-      setTotal((prevTotal) => {
-        const newTotal = {
-          ...prevTotal,
-          [`${category}Spent`]: totalSpent,
-          [`${category}Budget`]: totalBudget,
-        };
-
-        if (
-          prevTotal[`${category}Spent`] !== totalSpent ||
-          prevTotal[`${category}Budget`] !== totalBudget
-        ) {
-          return newTotal;
-        }
-
-        return prevTotal;
-      });
+      setTotal((prevTotal) => ({
+        ...prevTotal,
+        [`${category}Spent`]: totalSpent,
+        [`${category}Budget`]: totalBudget,
+      }));
     }
   }, [data, category, setTotal]);
 

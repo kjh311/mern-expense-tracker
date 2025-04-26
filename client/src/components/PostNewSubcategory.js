@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AccordionItem from "react-bootstrap/esm/AccordionItem";
 import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
 import AccordionBody from "react-bootstrap/esm/AccordionBody";
 import axios from "axios";
 import Input from "./Input";
+import Button from "./Button";
+import { DayTheme } from "../App";
 
 const PostNewSubcategory = ({
   fetchExpenses,
@@ -13,6 +15,7 @@ const PostNewSubcategory = ({
 }) => {
   const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   const handlePost = (e) => {
     e.preventDefault();
@@ -48,13 +51,31 @@ const PostNewSubcategory = ({
   };
 
   return (
-    <AccordionItem eventKey="new">
-      <AccordionHeader className="bg-gray-100 w-full flex justify-center items-center">
-        <h2 className="text-lg font-semibold text-gray-700 text-center w-full">
+    <AccordionItem
+      eventKey="new"
+      className={`transition-all duration-300 ${
+        dayTheme ? "overview-item-day" : "overview-item-night"
+      }`}
+    >
+      <AccordionHeader
+        className={`transition-all duration-300 w-full flex justify-center items-center
+          ${dayTheme ? "accordion-header-day" : "accordion-header-night"}`}
+      >
+        <h2
+          className={`text-lg font-semibold  text-center w-full transition-all duration-300 ${
+            dayTheme ? "day-text" : "text-white"
+          }`}
+        >
           Add New SubCategory <span className="text-3xl text-red-500">+</span>
         </h2>
       </AccordionHeader>
-      <AccordionBody className="bg-white p-6">
+      <AccordionBody
+        className={`py-6 transition-all duration-300 ${
+          dayTheme
+            ? "overview-accordion-body-day"
+            : "overview-accordion-body-night"
+        }`}
+      >
         <form
           onSubmit={handlePost}
           className="flex flex-col items-center gap-4"

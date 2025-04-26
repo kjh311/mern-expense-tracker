@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import AccordionItem from "react-bootstrap/esm/AccordionItem";
 import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
@@ -6,11 +6,13 @@ import AccordionBody from "react-bootstrap/esm/AccordionBody";
 import axios from "axios";
 import Button from "./Button";
 import Input from "./Input";
+import { DayTheme } from "../App";
 
 const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [recurring, setRecurring] = useState(false);
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   const handlePostTransaction = async (e) => {
     e.preventDefault();
@@ -47,15 +49,33 @@ const PostNewTransaction = ({ subcategory, fetchExpenses }) => {
   return (
     <div className="flex justify-center">
       <Accordion className="my-4 lg:w-50 sm:w-full">
-        <AccordionItem eventKey="newTransaction">
-          <AccordionHeader className="bg-gray-100 w-full flex justify-center items-center">
-            <h2 className="text-lg font-semibold text-gray-700 text-center w-full">
+        <AccordionItem
+          eventKey="newTransaction"
+          className={`transition-all duration-300 ${
+            dayTheme ? "overview-item-day" : "overview-item-night"
+          }`}
+        >
+          <AccordionHeader
+            className={`transition-all duration-300 w-full flex justify-center items-center
+          ${dayTheme ? "accordion-header-day" : "accordion-header-night"}`}
+          >
+            <h2
+              className={`transition-all duration-300 text-lg font-semibold text-center w-full ${
+                dayTheme ? "day-text" : "text-white"
+              }`}
+            >
               Add New Transaction{" "}
               <span className="text-3xl text-red-500">+</span>
             </h2>
           </AccordionHeader>
 
-          <AccordionBody className="bg-white px-6 py-4">
+          <AccordionBody
+            className={`py-4 transition-all duration-300 ${
+              dayTheme
+                ? "overview-accordion-body-day"
+                : "overview-accordion-body-night"
+            }`}
+          >
             <form
               onSubmit={handlePostTransaction}
               className="flex flex-col gap-4 items-center"
