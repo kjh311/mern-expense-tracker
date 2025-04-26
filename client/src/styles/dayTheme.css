@@ -163,8 +163,16 @@
   /* background-color: white !important; */
 }
 
-.accordion-header-day-expense {
-  background-color: red !important;
+.accordion-header-day-expense .accordion-button[aria-expanded="true"],
+.accordion-header-day-expense .accordion-button[aria-expanded="false"] {
+  background-color: #fadfe2 !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-night-expense .accordion-button[aria-expanded="true"],
+.accordion-header-night-expense .accordion-button[aria-expanded="false"] {
+  background-color: #c1111f !important;
+  transition: all 0.3s ease;
 }
 
 .overview-item-day:hover {

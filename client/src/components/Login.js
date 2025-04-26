@@ -12,6 +12,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,7 +29,10 @@ const Login = () => {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) throw new Error("Login request failed");
+      if (!response.ok) {
+        setMessage("Login request failed");
+        throw new Error("Login request failed");
+      }
 
       const data = await response.json();
       // console.log("Name: " + data.user.name);
@@ -47,7 +51,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error(error);
-      alert("An error occurred. Please try again.");
+      // alert("An error occurred. Please try again.");
     }
   };
 
@@ -89,13 +93,15 @@ const Login = () => {
             placeholder={"Password"}
             required
           />
-          <Button type={"submit"} text={"Login"} color={"blue"} />
+          <Button
+            type={"submit"}
+            text={"Login"}
+            color={dayTheme ? "blue" : "purple"}
+          />
         </form>
-        <p
-          className={`link-text ${
-            dayTheme ? "day-theme-link" : "night-theme-link"
-          }`}
-        >
+        {message && <p className="text-center mt-4 text-sm">{message}</p>}
+
+        <p className={`link-text`}>
           Don’t have an account?
           <Link
             to="/register"

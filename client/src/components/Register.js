@@ -53,7 +53,9 @@ const Register = () => {
 
         <form
           onSubmit={handleSubmit}
-          className="space-y-4 flex justify-center flex-column"
+          className={`transition-all duration-300 ${
+            dayTheme ? "register-form-day" : "register-form-night"
+          } space-y-4 flex justify-center flex-column`}
         >
           <Input
             type={"text"}
@@ -76,7 +78,12 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <Button type={"submit"} text={"Register"} color={"green"} />
+          <Button
+            type={"submit"}
+            text={"Register"}
+            color={dayTheme ? "blue" : "purple"}
+          />
+
           {/* <button
             type="submit"
             className="w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition duration-200"
@@ -85,9 +92,7 @@ const Register = () => {
           </button> */}
         </form>
 
-        {message && (
-          <p className="text-center mt-4 text-sm text-gray-700">{message}</p>
-        )}
+        {message && <p className="text-center mt-4 text-sm ">{message}</p>}
 
         <p
           className={`text-center text-sm mt-4 ${

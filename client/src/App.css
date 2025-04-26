@@ -99,8 +99,6 @@ ul {
 }
 
 .animate-button {
-  border: 2px solid rgba(0, 0, 0, 0);
-  color: #fff;
 }
 
 .animate-button-blue {
@@ -115,20 +113,53 @@ ul {
   background-color: #34ad7b;
 }
 
+.animate-button-purple:hover {
+  background-color: #390099;
+}
+
+.animate-button-purple {
+  background-color: #c084fc;
+}
+
 .animate-button-white {
   background-color: #fff;
   color: #2563eb !important;
 }
 
-.animate-button:hover {
-  transform: scale(1.1);
+.button-shadow:hover {
+  transform: scale(1.05);
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
   border: 2px solid black;
 }
 
+.button-shadow {
+  border: 2px solid rgba(0, 0, 0, 0);
+  color: #fff;
+}
+
+.button-glow:hover {
+  transform: scale(1.05);
+  border: 2px solid white;
+  box-shadow: 0 0 15px 5px white !important;
+}
+
+.button-glow {
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+
+.register-form-day + p {
+  color: #0081a8 !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.register-form-night + p {
+  color: white !important;
+  transition: all 0.3s ease-in-out;
+}
+
 .animate-button:active {
   transform: scale(1);
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+  /* box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7); */
 }
 
 .react-icon:hover {

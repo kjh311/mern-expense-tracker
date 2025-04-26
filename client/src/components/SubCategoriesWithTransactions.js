@@ -57,6 +57,10 @@ const ExpenseList = ({
     }
   }, [category]);
 
+  useEffect(() => {
+    fetchExpenses();
+  }, [fetchExpenses]);
+
   return (
     <div
       className={`category-card max-w-[1400px] myBorder w-full mx-auto ${backgroundColor} shadow-md m-2 p-4 transition-all duration-300 ${
@@ -72,7 +76,7 @@ const ExpenseList = ({
             className={`transition-all duration-300 ${
               dayTheme
                 ? `accordion-header-day-${category}`
-                : "accordion-header-night"
+                : `accordion-header-night-${category}`
             }`}
           >
             <div
@@ -109,10 +113,10 @@ const ExpenseList = ({
                   className="mb-3 border rounded-lg overflow-hidden accordion-item transition-all duration-300 ease-in-out  "
                 >
                   <Accordion.Header
-                    className={`transition-all duration-300 ${
+                    className={`transition-all duration-300 accordion-header-day ${
                       dayTheme
-                        ? "accordion-header-day"
-                        : "accordion-header-night"
+                        ? `accordion-header-day-${category}`
+                        : `accordion-header-night-${category}`
                     }`}
                   >
                     <div
