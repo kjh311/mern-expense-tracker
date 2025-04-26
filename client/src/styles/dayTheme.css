@@ -144,6 +144,10 @@
   box-shadow: 0 0 25px 15px white !important;
 }
 
+.category-card-day:hover {
+  box-shadow: 25px 25px 40px 1px rgba(0, 0, 0, 1);
+}
+
 .day-text {
   color: #0081a8;
   transition: all 0.3s ease;
@@ -221,9 +225,41 @@
 .accordion-header-night,
 .accordion-body-night {
   outline: 2px solid white !important;
-  box-shadow: 0 0 15px 5px white !important;
+  box-shadow: 0 0 5px 2px white !important;
   transition: all 0.3s ease;
+  /* background-color: #013745 !important; */
+}
+
+.accordion-header-night-overview .accordion-button[aria-expanded="true"],
+.accordion-header-night-overview .accordion-button[aria-expanded="false"] {
   background-color: #013745 !important;
+}
+
+.overview-accordion-body-day {
+  background-color: white !important;
+}
+
+.accordion-header-day-overview .accordion-button[aria-expanded="true"],
+.accordion-header-day-overview .accordion-button[aria-expanded="false"] {
+  background-color: white !important;
+}
+
+.accordion-item-day {
+  border: 4px solid black !important;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}
+
+.accordion-item-day {
+  border: 4px solid black !important;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}
+
+.overview-accordion-body-night {
+  background-color: #013745 !important;
+  transition: all 0.3s ease;
+  border: 4px solid white !important;
 }
 
 .overview-accordion-body-night-red {
@@ -265,18 +301,20 @@
   transition: all 0.3s ease;
 }
 
-.accordion-body {
-  background-color: inherit !important;
-}
-
-.accordion-header-night .accordion-button::after {
+.accordion-header-night .accordion-button::after,
+.accordion-header-night-overview .accordion-button::after {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z' stroke='%23ffffff' stroke-width='2'/></svg>") !important;
   transition: all 0.3s ease;
 }
 
-.accordion-header-day .accordion-button::after {
+.accordion-header-day .accordion-button::after,
+.accordion-header-day-overview .accordion-button::after {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z' stroke='%23000000' stroke-width='2'/></svg>") !important;
   transition: all 0.3s ease;
+}
+
+.accordion-header-day-overview {
+  background-color: white !important;
 }
 
 .accordion-header-night .accordion-button::after:hover,

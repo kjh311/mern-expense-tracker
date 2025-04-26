@@ -74,9 +74,16 @@ const SubCategoriesWithTransactions = ({
         activeKey={isOpen ? "main" : null}
         onSelect={() => setMainAccordionKey(isOpen ? null : mainKey)}
       >
-        <Accordion.Item eventKey="main">
+        <Accordion.Item
+          eventKey="main"
+          className={`transition-all duration-300 ${
+            dayTheme ? "accordion-item-day" : "accordion-item-night"
+          }`}
+        >
           <Accordion.Header
-            className={`transition-all duration-300 ${
+            className={`transition-all duration-300 accordion-header-${
+              dayTheme ? "day" : "night"
+            } ${
               dayTheme
                 ? `accordion-header-${backgroundColor}`
                 : `accordion-header-${backgroundColor}`
@@ -113,10 +120,14 @@ const SubCategoriesWithTransactions = ({
                 <Accordion.Item
                   eventKey={idx.toString()}
                   key={sub._id}
-                  className="mb-3 border rounded-lg overflow-hidden accordion-item transition-all duration-300 ease-in-out  "
+                  className={`mx-2 my-4 transition-all duration-300 ${
+                    dayTheme ? "accordion-item-day" : "accordion-item-night"
+                  }`}
                 >
                   <Accordion.Header
-                    className={`transition-all duration-300 accordion-header-day ${
+                    className={`transition-all duration-300  accordion-header-${
+                      dayTheme ? "day" : "night"
+                    } ${
                       dayTheme
                         ? `accordion-header-${backgroundColor}`
                         : `accordion-header-${backgroundColor}`
@@ -194,8 +205,8 @@ const SubCategoriesWithTransactions = ({
                   <Accordion.Body
                     className={`transition-all duration-300 ${
                       dayTheme
-                        ? "overview-accordion-body-day"
-                        : "overview-accordion-body-night"
+                        ? `transition-all duration-300 accordion-body-day overview-accordion-body-${backgroundColor}`
+                        : `transition-all duration-300 accordion-body-night overview-accordion-body-${backgroundColor}`
                     }`}
                   >
                     <div className="flex justify-around flex-wrap">

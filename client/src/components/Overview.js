@@ -55,7 +55,9 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
         >
           <Accordion.Header
             className={`transition-all duration-300 ${
-              dayTheme ? "accordion-header-day" : "accordion-header-night"
+              dayTheme
+                ? "accordion-header-day-overview"
+                : "accordion-header-night-overview"
             }`}
           >
             <div
@@ -113,7 +115,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
           </Accordion.Header>
 
           <Accordion.Body
-            className={`transition-all duration-300${
+            className={`transition-all duration-300 ${
               dayTheme
                 ? "overview-accordion-body-day"
                 : "overview-accordion-body-night"

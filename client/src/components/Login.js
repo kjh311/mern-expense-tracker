@@ -51,7 +51,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error(error);
-      // alert("An error occurred. Please try again.");
+      alert("An error occurred. Please try again.");
     }
   };
 
