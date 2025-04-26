@@ -2,6 +2,7 @@ import { Accordion } from "react-bootstrap";
 import { TransactionsTotal, DayTheme } from "../App";
 import PieChart from "./PieChart";
 import { useRef, useEffect, useContext } from "react";
+import { formattedCurrency } from "./FormattedCurrency";
 
 const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
   const [total] = useContext(TransactionsTotal);
@@ -78,10 +79,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                       cashflow > 0 ? "text-blue-800" : "text-red-500"
                     }`}
                   >
-                    $
-                    {cashflow.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                    })}
+                    {formattedCurrency(cashflow)}
                   </span>
                 </span>
                 <span
@@ -90,10 +88,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                   } font-semibold`}
                 >
                   <span className="text-3xl">📊</span> Total Budget:
-                  <br /> $
-                  {totalBudget.toLocaleString(undefined, {
-                    minimumFractionDigits: 2,
-                  })}
+                  <br /> {formattedCurrency(totalBudget)}
                 </span>
                 <span
                   className={`${
@@ -101,10 +96,8 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                   } font-semibold`}
                 >
                   <span className="text-3xl">💰</span> Total Income:
-                  <br /> $
-                  {totalIncome.toLocaleString(undefined, {
-                    minimumFractionDigits: 2,
-                  })}
+                  <br />
+                  {formattedCurrency(totalIncome)}
                 </span>
                 <span
                   className={`${
@@ -112,10 +105,8 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                   } font-semibold`}
                 >
                   <span className="text-3xl">💸</span> Total Expenses:
-                  <br /> $
-                  {totalExpenses.toLocaleString(undefined, {
-                    minimumFractionDigits: 2,
-                  })}
+                  <br />
+                  {formattedCurrency(totalExpenses)}
                 </span>
               </div>
             </div>

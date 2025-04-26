@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   Chart as ChartJS,
@@ -14,6 +14,8 @@ import {
 import { Line } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import { formattedCurrency } from "./FormattedCurrency";
+import { DayTheme } from "../App";
 
 ChartJS.register(
   CategoryScale,
@@ -30,15 +32,14 @@ const ExpenseLineChart = ({ transactions }) => {
   const sorted = [...transactions].sort(
     (a, b) => new Date(a.date) - new Date(b.date)
   );
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   const data = {
     labels: sorted.map((tx) => new Date(tx.date).toLocaleDateString()),
     datasets: [
       {
         label: "Expense Amount",
-        data: sorted.map((tx) =>
-          tx.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })
-        ),
+        data: sorted.map((tx) => tx.amount.toFixed(2)),
         fill: false,
         borderColor: "rgb(75, 192, 192)",
         tension: 0.3,
@@ -48,6 +49,8 @@ const ExpenseLineChart = ({ transactions }) => {
       },
     ],
   };
+
+  const fontColor = dayTheme ? "#333" : "#fff";
 
   const options = {
     layout: {
@@ -75,14 +78,30 @@ const ExpenseLineChart = ({ transactions }) => {
       },
       legend: {
         display: false,
+        labels: {
+          color: fontColor,
+        },
       },
       datalabels: {
         display: true,
-        align: "top",
+        align: "middle",
+        borderColor: dayTheme ? "#333" : "#fff",
+        borderWidth: 1, // thickness of the border
+        borderRadius: 4,
         anchor: "end",
+        backgroundColor: dayTheme
+          ? "rgba(0, 129, 168, 1)"
+          : "rgba(0, 0, 0, 0.7)", // translucent bg
+        borderRadius: 4,
+        padding: {
+          top: 2,
+          bottom: 2,
+          left: 4,
+          right: 4,
+        },
         formatter: function (value, context) {
           const tx = sorted[context.dataIndex];
-          const wrapAt = 20; // characters per line
+          const wrapAt = 20;
           const words = tx.description.split(" ");
           const lines = [];
           let line = "";
@@ -96,19 +115,14 @@ const ExpenseLineChart = ({ transactions }) => {
             }
           }
           if (line) lines.push(line.trim());
-
-          lines.push(
-            `$${Number(tx.amount).toLocaleString(undefined, {
-              minimumFractionDigits: 2,
-            })}`
-          );
+          lines.push(`$${Number(tx.amount).toFixed(2)}`);
           return lines;
         },
         font: {
           size: 14,
           weight: "bold",
         },
-        color: "#444",
+        color: "white",
       },
 
       tooltip: {
@@ -118,10 +132,15 @@ const ExpenseLineChart = ({ transactions }) => {
             const tx = sorted[index];
             return `${tx.description}: $${Number(tx.amount).toLocaleString(
               undefined,
-              { minimumFractionDigits: 2 }
+              {
+                minimumFractionDigits: 2,
+              }
             )}`;
           },
         },
+        // bodyColor: fontColor,
+        // titleColor: fontColor,
+        // backgroundColor: dayTheme ? "#fff" : "#222",
         bodyFont: {
           size: 14,
         },
@@ -134,30 +153,40 @@ const ExpenseLineChart = ({ transactions }) => {
     scales: {
       x: {
         ticks: {
+          color: fontColor,
           font: {
-            size: 14, // X-axis labels
+            size: 14,
           },
         },
         title: {
           display: true,
           text: "Date",
+          color: fontColor,
           font: {
             size: 16,
           },
         },
+        grid: {
+          color: dayTheme ? "#ddd" : "#444",
+        },
       },
       y: {
         ticks: {
+          color: fontColor,
           font: {
-            size: 14, // Y-axis labels
+            size: 14,
           },
         },
         title: {
           display: true,
           text: "Amount ($)",
+          color: fontColor,
           font: {
             size: 16,
           },
+        },
+        grid: {
+          color: dayTheme ? "#ddd" : "#444",
         },
       },
     },

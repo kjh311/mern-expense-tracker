@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Button from "./Button";
 import { IoCloseCircle } from "react-icons/io5";
+import { formattedCurrency } from "./FormattedCurrency";
 
 const UpdateSubcategory = ({
   id,
@@ -11,7 +12,7 @@ const UpdateSubcategory = ({
   editModeSubcategory,
   setEditModeSubcategory,
 }) => {
-  const fixedBudget = budget.toFixed(2);
+  const fixedBudget = formattedCurrency(budget);
   const [nameInput, setNameInput] = useState(name);
   const [budgetInput, setBudgetInput] = useState(fixedBudget);
 

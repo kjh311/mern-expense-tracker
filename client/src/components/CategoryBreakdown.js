@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import DeleteSubcategory from "./DeleteSubcategory";
-import { TransactionsTotal } from "../App";
+import { TransactionsTotal, DayTheme } from "../App";
+import { formattedCurrency } from "./FormattedCurrency";
 import {
   getActionWord,
   getActionWordPassedTense,
@@ -11,6 +12,7 @@ import {
 const CategoryBreakdown = ({ category, fetchExpenses }) => {
   const [data, setData] = useState([]);
   const [total, setTotal] = useContext(TransactionsTotal);
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,14 +80,13 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
   const totalBudget = data.reduce((acc, sub) => acc + (sub.budget || 0), 0);
 
   return (
-    <div className=" text-center lg:text-xl  xs:text-sm text-gray-600 font-medium p-2 flex flex-col sm:flex-row justify-around w-full ">
+    <div className=" text-center lg:text-xl  xs:text-sm  font-medium p-2 flex flex-col sm:flex-row justify-around w-full ">
       <p>
-        📊 Monthly Budget: <br /> $
-        {totalBudget.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+        📊 Monthly Budget: <br /> {formattedCurrency(totalBudget)}
       </p>
       <p>
-        Total {getActionWordPassedTense(category)} this month: <br />$
-        {totalSpent.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+        Total {getActionWordPassedTense(category)} this month: <br />
+        {formattedCurrency(totalSpent)}
       </p>
       <p>
         Left to {getActionWord(category)}: <br />{" "}
@@ -98,10 +99,7 @@ const CategoryBreakdown = ({ category, fetchExpenses }) => {
               : "text-red-500"
           }`}
         >
-          $
-          {(totalBudget - totalSpent).toLocaleString(undefined, {
-            minimumFractionDigits: 2,
-          })}
+          {formattedCurrency(totalBudget - totalSpent)}
         </span>
       </p>
     </div>

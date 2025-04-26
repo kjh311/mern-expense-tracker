@@ -44,7 +44,9 @@ const SubcategoryBarChart = ({ transactions, selectedCategory }) => {
       tooltip: {
         callbacks: {
           label: (context) =>
-            `$${Number(context.raw).toFixed(2)} - ${context.label}`,
+            `$${Number(context.raw).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })} - ${context.label}`,
         },
       },
     },

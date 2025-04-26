@@ -13,6 +13,8 @@ import { TransactionsTotal } from "../App";
 import ExpenseLineChart from "./ExpenseLineChart";
 import { AccordionBody, AccordionHeader, AccordionItem } from "react-bootstrap";
 import SubcategoryBarChart from "./SubCategoryBarChart";
+import { formattedCurrency } from "./FormattedCurrency";
+import { DayTheme } from "../App";
 
 const ExpenseList = ({
   name,
@@ -31,6 +33,7 @@ const ExpenseList = ({
   const [editModeSubcategory, setEditModeSubcategory] = useState(false);
   const isOpen = mainAccordionKey === mainKey;
   const allTransactions = data.flatMap((sub) => sub.transactions);
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   const fetchExpenses = async () => {
     try {
@@ -54,16 +57,26 @@ const ExpenseList = ({
 
   return (
     <div
-      className={`category-card max-w-[1400px] myBorder w-full mx-auto ${backgroundColor} shadow-md m-2 p-4 `}
+      className={`category-card max-w-[1400px] myBorder w-full mx-auto ${backgroundColor} shadow-md m-2 p-4 transition-all duration-300 ${
+        dayTheme ? "category-card-day" : "category-card-night"
+      }`}
     >
       <Accordion
         activeKey={isOpen ? "main" : null}
         onSelect={() => setMainAccordionKey(isOpen ? null : mainKey)}
       >
         <Accordion.Item eventKey="main">
-          <Accordion.Header className="">
-            <div className="flex flex-col items-center w-full ">
-              <h2 className="text-center lg:text-4xl xs:text-2xl font-bold text-indigo-600 m-4">
+          <Accordion.Header
+            className={`transition-all duration-300 ${
+              dayTheme ? "accordion-header-day" : "accordion-header-night"
+            }`}
+          >
+            <div
+              className={`transition-all duration-300 flex flex-col items-center w-full ${
+                dayTheme ? "day-text" : "text-white"
+              }`}
+            >
+              <h2 className="text-center lg:text-4xl xs:text-2xl font-bold  m-4">
                 {name}
               </h2>
               <CategoryBreakdown
@@ -73,10 +86,17 @@ const ExpenseList = ({
             </div>
           </Accordion.Header>
 
-          <Accordion.Body>
+          <Accordion.Body
+            className={`transition-all duration-300 ${
+              dayTheme
+                ? "overview-accordion-body-day"
+                : "overview-accordion-body-night"
+            }`}
+          >
             <Accordion
               activeKey={activeKey}
               onSelect={(eventKey) => setActiveKey(eventKey)}
+              className=""
             >
               {data.map((sub, idx) => (
                 <Accordion.Item
@@ -84,11 +104,21 @@ const ExpenseList = ({
                   key={sub._id}
                   className="mb-3 border rounded-lg overflow-hidden accordion-item transition-all duration-300 ease-in-out  "
                 >
-                  <Accordion.Header>
-                    <div className="flex flex-col w-full gap-4 px-2 ">
+                  <Accordion.Header
+                    className={`transition-all duration-300 ${
+                      dayTheme
+                        ? "accordion-header-day"
+                        : "accordion-header-night"
+                    }`}
+                  >
+                    <div
+                      className={`transition-all duration-300 flex flex-col w-full gap-4 px-2 ${
+                        dayTheme ? "day-text" : "text-white"
+                      }`}
+                    >
                       {/* NAME */}
                       <div className="flex justify-center items-center w-full">
-                        <span className="lg:text-2xl sm:text-lg text-gray-700">
+                        <span className="lg:text-2xl sm:text-lg ">
                           {sub.name} 🏷️
                         </span>
                       </div>
@@ -96,58 +126,63 @@ const ExpenseList = ({
                       {/* TOTAL SPENT, BUDGET, and LEFT TO SPEND/ EARN */}
                       <div className="text-center flex flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
                         {/* Total Spent */}
-                        <span className="text-gray-500">
-                          💵 Total {getActionWordPassedTense(category)}: $
-                          {sub.transactions
-                            .reduce((sum, tx) => sum + tx.amount, 0)
-                            .toLocaleString(undefined, {
-                              minimumFractionDigits: 2,
-                            })}
+                        <span className="">
+                          💵 Total {getActionWordPassedTense(category)}:
+                          {formattedCurrency(
+                            sub.transactions.reduce(
+                              (sum, tx) => sum + tx.amount,
+                              0
+                            )
+                          )}
                         </span>
 
                         {/* Budget */}
                         {sub.budget && (
-                          <span className=" text-gray-500">
-                            💰 Budget: $
-                            {sub.budget.toLocaleString(undefined, {
-                              minimumFractionDigits: 2,
-                            })}
+                          <span className=" ">
+                            💰 Budget: {formattedCurrency(sub.budget)}
                           </span>
                         )}
 
                         {/* Left to Spend/Earn */}
                         {sub.budget && (
                           <span
-                            className={` ${
-                              (
-                                sub.budget -
+                            className={`${
+                              sub.budget -
                                 sub.transactions.reduce(
                                   (sum, tx) => sum + tx.amount,
                                   0
-                                )
-                              ).toLocaleString(undefined, {
-                                minimumFractionDigits: 2,
-                              }) < 0
+                                ) <
+                              0
                                 ? "text-red-400 font-bold"
                                 : "text-green-600"
                             }`}
                           >
-                            🏦 Left to {getActionWord(category)}: $
-                            {(
+                            <span
+                              className={`transition-all duration-300 ${
+                                dayTheme ? "day-text" : "text-white"
+                              }`}
+                            >
+                              🏦 Left to {getActionWord(category)}:
+                            </span>{" "}
+                            {formattedCurrency(
                               sub.budget -
-                              sub.transactions.reduce(
-                                (sum, tx) => sum + tx.amount,
-                                0
-                              )
-                            ).toLocaleString(undefined, {
-                              minimumFractionDigits: 2,
-                            })}
+                                sub.transactions.reduce(
+                                  (sum, tx) => sum + tx.amount,
+                                  0
+                                )
+                            )}
                           </span>
                         )}
                       </div>
                     </div>
                   </Accordion.Header>
-                  <Accordion.Body className="bg-blue-200">
+                  <Accordion.Body
+                    className={`transition-all duration-300 ${
+                      dayTheme
+                        ? "overview-accordion-body-day"
+                        : "overview-accordion-body-night"
+                    }`}
+                  >
                     <div className="flex justify-around flex-wrap">
                       {!editModeSubcategory && (
                         <DeleteSubcategory
@@ -205,9 +240,7 @@ const ExpenseList = ({
                                 <div className="flex flex-col sm:flex-row justify-around items-center mt-2 gap-1 lg:text-lg sm:text-sm">
                                   <span className="text-gray-500  ">
                                     💲
-                                    {tx.amount.toLocaleString(undefined, {
-                                      minimumFractionDigits: 2,
-                                    })}
+                                    {formattedCurrency(tx.amount)}
                                   </span>
                                   <span className=" text-gray-500 ">
                                     {new Date(tx.date).toLocaleDateString()} 📅
