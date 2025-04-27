@@ -191,11 +191,11 @@ const SubCategoriesWithTransactions = ({
                                   0
                                 ) <
                               0
-                                ? `transition-all duration-300 text-red-${
-                                    dayTheme ? "600" : "200"
+                                ? `transition-all duration-300 ${
+                                    dayTheme ? "text-red-600" : "text-white"
                                   } font-bold`
-                                : `transition-all duration-300 text-green-${
-                                    dayTheme ? "700" : "300"
+                                : `transition-all duration-300 ${
+                                    dayTheme ? "text-green-600" : "text-white"
                                   }`
                             }`}
                           >
@@ -272,7 +272,13 @@ const SubCategoriesWithTransactions = ({
                     />
 
                     {sub.transactions.length === 0 ? (
-                      <p className="text-gray-500 italic">No Transactions 📉</p>
+                      <p
+                        className={`${
+                          dayTheme ? "day-text" : "text-white"
+                        } italic`}
+                      >
+                        No Transactions 📉
+                      </p>
                     ) : (
                       <ul className="space-y-2">
                         {sub.transactions.map((tx) => (

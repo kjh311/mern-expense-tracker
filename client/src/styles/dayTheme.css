@@ -192,6 +192,7 @@
 
 .text-shadow {
   text-shadow: 1px 1px 2px black;
+  /* -webkit-text-stroke: 1px black; */
 }
 
 .night-text {
@@ -304,6 +305,31 @@
 .accordion-header-night-yellow .accordion-button[aria-expanded="false"] {
   /* background-color: #ffb704 !important; */
   background-color: var(--yellow-5);
+  transition: all 0.3s ease;
+}
+
+.accordion-header-higher-day-yellow .accordion-button[aria-expanded="true"],
+.accordion-header-higher-day-yellow .accordion-button[aria-expanded="false"] {
+  background-color: var(--yellow-10) !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-higher-night-yellow .accordion-button[aria-expanded="true"],
+.accordion-header-higher-night-yellow .accordion-button[aria-expanded="false"] {
+  background-color: var(--yellow-5) !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-highest-day-yellow .accordion-button[aria-expanded="true"],
+.accordion-header-highest-day-yellow .accordion-button[aria-expanded="false"] {
+  background-color: var(--yellow-10) !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-highest-night-yellow .accordion-button[aria-expanded="true"],
+.accordion-header-highest-night-yellow
+  .accordion-button[aria-expanded="false"] {
+  background-color: var(--yellow-5) !important;
   transition: all 0.3s ease;
 }
 
@@ -422,6 +448,22 @@
   transition: all 0.3s ease;
 }
 
+.overview-higher-accordion-body-night-yellow {
+  background-color: var(--yellow-3);
+}
+
+.overview-highest-accordion-body-night-yellow {
+  background-color: var(--yellow-6);
+}
+
+.overview-higher-accordion-body-day-yellow {
+  background-color: var(--yellow-8);
+}
+
+.overview-highest-accordion-body-day-yellow {
+  background-color: var(--yellow-9);
+}
+
 .overview-accordion-body-night-green {
   /* background-color: #136158 !important; */
   background-color: var(--green-3);
@@ -442,7 +484,7 @@
 
 .overview-accordion-body-day-yellow {
   /* background-color: #ffb704 !important; */
-  background-color: var(--yellow-9) !important;
+  background-color: var(--yellow-7) !important;
   transition: all 0.3s ease;
 }
 

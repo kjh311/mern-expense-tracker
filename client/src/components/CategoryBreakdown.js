@@ -82,14 +82,14 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
           className={`${
             category === "expense" && totalBudget - totalSpent > 0
               ? `transition-all duration-300 text-green-${
-                  dayTheme ? "700" : "300"
+                  dayTheme ? "500" : "300"
                 }`
               : totalBudget - totalSpent < 0
               ? `transition-all duration-300 text-green-${
-                  dayTheme ? "700" : "300"
+                  dayTheme ? "500" : "300"
                 }`
               : `transition-all duration-300 text-red-${
-                  dayTheme ? "700" : "200"
+                  dayTheme ? "500" : "100"
                 }`
           }`}
         >
