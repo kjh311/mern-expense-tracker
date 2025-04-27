@@ -90,7 +90,7 @@ const ExpenseLineChart = ({ transactions }) => {
         borderRadius: 4,
         anchor: "end",
         backgroundColor: dayTheme
-          ? "rgba(0, 129, 168, 1)"
+          ? "rgba(0, 129, 168, 0)"
           : "rgba(0, 0, 0, 0.7)", // translucent bg
         borderRadius: 4,
         padding: {

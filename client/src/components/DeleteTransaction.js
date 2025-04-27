@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaTrash } from "react-icons/fa";
 import axios from "axios";
+import { DayTheme } from "../App";
 
 const DeleteTransaction = ({
   id,
@@ -12,6 +13,8 @@ const DeleteTransaction = ({
   setRefreshFlag,
   fetchExpenses,
 }) => {
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
+
   const handleDeleteTransaction = async () => {
     if (window.confirm("Delete this transaction?")) {
       // Set the transaction to animating state
@@ -51,7 +54,9 @@ const DeleteTransaction = ({
       }`}
     >
       <FaTrash
-        className="react-icon text-red-500 hover:text-red-700 transition-all duration-200 absolute top-4 right-2"
+        className={`react-icon ${
+          dayTheme ? "text-red-500" : "text-white"
+        } transition-all duration-200 absolute top-4 right-2`}
         size={25}
       />
     </button>

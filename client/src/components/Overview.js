@@ -65,7 +65,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                 dayTheme ? "day-text" : "text-white"
               }`}
             >
-              <h2 className="text-center lg:text-4xl xs:text-2xl font-bold  m-4">
+              <h2 className="text-center lg:text-4xl xs:text-2xl font-bold text-shadow m-4">
                 💼 Monthly Overview
               </h2>
               <div className="text-center flex animation-all duration-300 flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">

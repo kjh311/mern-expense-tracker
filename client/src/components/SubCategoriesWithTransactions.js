@@ -94,7 +94,7 @@ const SubCategoriesWithTransactions = ({
                 dayTheme ? "day-text" : "text-white"
               }`}
             >
-              <h2 className="text-center lg:text-4xl xs:text-2xl font-bold  m-4">
+              <h2 className="text-center lg:text-4xl xs:text-2xl font-bold text-shadow m-4">
                 {name}
               </h2>
               <CategoryBreakdown
@@ -121,7 +121,7 @@ const SubCategoriesWithTransactions = ({
               dayTheme={dayTheme}
             />
             <h2
-              className={`transition-all duration-300 text-center ${
+              className={`transition-all duration-300 text-center text-shadow ${
                 dayTheme ? "day-text" : "text-white"
               }`}
             >
@@ -156,7 +156,7 @@ const SubCategoriesWithTransactions = ({
                     >
                       {/* NAME */}
                       <div className="flex justify-center items-center w-full">
-                        <span className="lg:text-2xl sm:text-lg ">
+                        <span className="lg:text-3xl sm:text-lg text-shadow">
                           {sub.name} 🏷️
                         </span>
                       </div>
@@ -192,10 +192,10 @@ const SubCategoriesWithTransactions = ({
                                 ) <
                               0
                                 ? `transition-all duration-300 text-red-${
-                                    dayTheme ? "600" : "300"
+                                    dayTheme ? "600" : "200"
                                   } font-bold`
                                 : `transition-all duration-300 text-green-${
-                                    dayTheme ? "700" : "400"
+                                    dayTheme ? "700" : "300"
                                   }`
                             }`}
                           >
@@ -246,6 +246,7 @@ const SubCategoriesWithTransactions = ({
                         editModeSubcategory={editModeSubcategory}
                         setEditModeSubcategory={setEditModeSubcategory}
                         setRefreshFlag={setRefreshFlag}
+                        backgroundColor={backgroundColor}
                       />
                     </div>
 
@@ -255,7 +256,7 @@ const SubCategoriesWithTransactions = ({
                     )}
 
                     <h2
-                      className={`transition-all duration-300 text-center ${
+                      className={`transition-all duration-300 text-center text-shadow ${
                         dayTheme ? "day-text" : "text-white"
                       }`}
                     >
@@ -293,7 +294,7 @@ const SubCategoriesWithTransactions = ({
                               <>
                                 <div>
                                   <span
-                                    className={`font-semibold  text-base sm:text-lg lg:text-2xl block text-center sm:text-left transition-all duration-300 ${
+                                    className={`font-semibold text-shadow text-base sm:text-lg lg:text-3xl block text-center sm:text-left transition-all duration-300 ${
                                       dayTheme ? "day-text" : "text-white"
                                     }`}
                                   >

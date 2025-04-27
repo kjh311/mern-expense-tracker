@@ -89,7 +89,7 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
                   dayTheme ? "700" : "300"
                 }`
               : `transition-all duration-300 text-red-${
-                  dayTheme ? "700" : "300"
+                  dayTheme ? "700" : "200"
                 }`
           }`}
         >

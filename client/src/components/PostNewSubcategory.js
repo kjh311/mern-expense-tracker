@@ -58,7 +58,9 @@ const PostNewSubcategory = ({
   return (
     <AccordionItem eventKey="new" className={`transition-all duration-300 `}>
       <AccordionHeader
-        className={`transition-all duration-300 w-full flex justify-center items-center
+        className={`${
+          dayTheme ? "accordion-header-day" : "accordion-header-night"
+        } transition-all duration-300 w-full flex justify-center items-center
           ${PostNewTransactionHighestHeaderColors(category, dayTheme)}
            `}
       >
@@ -71,7 +73,9 @@ const PostNewSubcategory = ({
         </h2>
       </AccordionHeader>
       <AccordionBody
-        className={`py-6 transition-all duration-300  ${PostNewTransactionHighestBodyColors(
+        className={`${
+          dayTheme ? "accordion-body-day" : "accordion-body-night"
+        } py-6 transition-all duration-300  ${PostNewTransactionHighestBodyColors(
           category,
           dayTheme
         )}
@@ -96,13 +100,11 @@ const PostNewSubcategory = ({
             required
             onChange={(e) => setBudget(parseFloat(e.target.value) || 0)}
           />
-
-          <button
-            type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md transition duration-200"
-          >
-            Submit
-          </button>
+          <Button
+            type={"submit"}
+            color={dayTheme ? "white" : "purple"}
+            text={"Submit"}
+          />
         </form>
       </AccordionBody>
     </AccordionItem>

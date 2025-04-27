@@ -114,14 +114,14 @@ const PostNewTransaction = ({
                 required
               />
 
-              <label className="flex items-center gap-2 text-sm text-gray-600">
+              {/* <label className="flex items-center gap-2 text-sm text-gray-600">
                 <input
                   type="checkbox"
                   checked={recurring}
                   onChange={(e) => setRecurring(e.target.checked)}
                 />
                 Recurring Transaction
-              </label>
+              </label> */}
 
               <Button type={"submit"} text={"Submit"} color={"blue"} />
             </form>

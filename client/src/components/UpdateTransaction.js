@@ -68,7 +68,9 @@ const UpdateTransaction = ({
       {!editModeTransaction && (
         <button onClick={handleEdit}>
           <FaEdit
-            className="react-icon text-blue-500 hover:text-blue-700 transition-all duration-200 absolute bottom-4 right-2 "
+            className={`react-icon ${
+              dayTheme ? "text-blue-500" : "text-white"
+            } transition-all duration-200 absolute bottom-4 right-2`}
             size={25}
           />
         </button>
@@ -80,7 +82,8 @@ const UpdateTransaction = ({
             {" "}
             <button
               onClick={handleClose}
-              className={`react-icon text-red-500 text-4xl transition-all duration-200 absolute top-2 right-2`}
+              className={`react-icon 
+                text-white text-4xl transition-all duration-200 absolute top-2 right-2`}
             >
               <IoCloseCircle />
             </button>
@@ -123,7 +126,7 @@ const UpdateTransaction = ({
           />
           <br />
           <label
-            className={`transition-all duration-300 ${
+            className={`transition-all duration-300 m-2 ${
               dayTheme ? "day-text" : "text-white"
             }`}
           >
@@ -135,7 +138,7 @@ const UpdateTransaction = ({
             onChange={(dateInput) => setDateInput(dateInput)}
           />
           <br />
-          <label
+          {/* <label
             className={`transition-all duration-300 ${
               dayTheme ? "day-text" : "text-white"
             }`}
@@ -146,7 +149,7 @@ const UpdateTransaction = ({
             type="checkbox"
             value={recurringInput}
             onChange={(e) => setRecurringInput(e.target.value)}
-          />
+          /> */}
           <br />
           <br />
           <Button type={"submit"} text={"Update"} color={"blue"} />

@@ -65,11 +65,11 @@ const SubCategoryBarChart = ({ data, category }) => {
         bodyColor: dayTheme ? "black" : "white",
       },
       datalabels: {
-        color: textColor,
+        color: "white",
         anchor: "end",
         align: "end",
         backgroundColor: `${
-          dayTheme ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.8)"
+          dayTheme ? "rgba(0, 129, 168, 1)" : "rgba(0,0,0,0.8)"
         }`,
         borderColor: dayTheme ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.6)",
         borderWidth: 1, // thickness of the border

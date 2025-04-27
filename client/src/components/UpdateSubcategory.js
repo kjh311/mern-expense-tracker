@@ -14,6 +14,7 @@ const UpdateSubcategory = ({
   setEditModeSubcategory,
   fetchExpenses,
   setRefreshFlag,
+  backgroundColor,
 }) => {
   const fixedBudget = budget;
   const [nameInput, setNameInput] = useState(name);
@@ -73,12 +74,14 @@ const UpdateSubcategory = ({
       {editModeSubcategory && (
         <div
           className={`relative text-center p-4 outline m-2 rounded-xl w-100 transition-all duration-300 ${
-            dayTheme ? "accordion-header-day" : "accordion-header-night"
+            dayTheme
+              ? `transition-all duration-300 accordion-body-day overview-accordion-body-${backgroundColor}`
+              : `transition-all duration-300 accordion-body-night overview-accordion-body-${backgroundColor}`
           }`}
         >
           <button
             onClick={handleClose}
-            className={`react-icon text-red-500 text-4xl transition-all duration-200 absolute top-2 right-2`}
+            className={`react-icon text-white text-4xl transition-all duration-200 absolute top-2 right-2`}
           >
             <IoCloseCircle />
           </button>

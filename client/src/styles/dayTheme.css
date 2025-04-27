@@ -186,8 +186,12 @@
 
 .day-text {
   /* color: #0081a8; */
-  color: var(--light-6);
+  color: var(--light-5);
   transition: all 0.3s ease;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 2px black;
 }
 
 .night-text {
@@ -203,8 +207,10 @@
 
 .overview-item-day,
 .accordion-header-day .accordion-button[aria-expanded="true"],
+.accordion-header-day .accordion-button[aria-expanded="false"],
 .overview-accordion-body-day {
-  outline: 5px solid black !important;
+  border: 2px solid black !important;
+  outline: none !important;
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   /* background-color: white !important; */
@@ -259,6 +265,31 @@
 .accordion-header-night-orange .accordion-button[aria-expanded="false"] {
   /* background-color: #fb8500 !important; */
   background-color: var(--orange-6) !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-higher-day-orange .accordion-button[aria-expanded="true"],
+.accordion-header-higher-day-orange .accordion-button[aria-expanded="false"] {
+  background-color: var(--orange-10) !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-higher-night-orange .accordion-button[aria-expanded="true"],
+.accordion-header-higher-night-orange .accordion-button[aria-expanded="false"] {
+  background-color: var(--orange-7) !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-highest-day-orange .accordion-button[aria-expanded="true"],
+.accordion-header-highest-day-orange .accordion-button[aria-expanded="false"] {
+  background-color: var(--orange-10) !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-highest-night-orange .accordion-button[aria-expanded="true"],
+.accordion-header-highest-night-orange
+  .accordion-button[aria-expanded="false"] {
+  background-color: var(--orange-7) !important;
   transition: all 0.3s ease;
 }
 
@@ -360,13 +391,29 @@
 }
 
 .overview-highest-accordion-body-day-red {
-  background-color: var(--red-7);
+  background-color: var(--red-9);
 }
 
 .overview-accordion-body-night-orange {
   /* background-color: #935209 !important; */
   background-color: var(--orange-5);
   transition: all 0.3s ease;
+}
+
+.overview-higher-accordion-body-night-orange {
+  background-color: var(--orange-4);
+}
+
+.overview-highest-accordion-body-night-orange {
+  background-color: var(--orange-6);
+}
+
+.overview-higher-accordion-body-day-orange {
+  background-color: var(--orange-8);
+}
+
+.overview-highest-accordion-body-day-orange {
+  background-color: var(--orange-9);
 }
 
 .overview-accordion-body-night-yellow {
@@ -389,7 +436,7 @@
 
 .overview-accordion-body-day-orange {
   /* background-color: #fb8500 !important; */
-  background-color: var(--orange-9);
+  background-color: var(--orange-7);
   transition: all 0.3s ease;
 }
 
