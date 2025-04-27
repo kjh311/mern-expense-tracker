@@ -68,6 +68,12 @@ const SubCategoryBarChart = ({ data, category }) => {
         color: textColor,
         anchor: "end",
         align: "end",
+        backgroundColor: `${
+          dayTheme ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.8)"
+        }`,
+        borderColor: dayTheme ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.6)",
+        borderWidth: 1, // thickness of the border
+        borderRadius: 4,
         formatter: function (value) {
           return `$${value.toFixed(2)}`;
         },

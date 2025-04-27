@@ -267,7 +267,7 @@ const SubCategoriesWithTransactions = ({
                       subcategory={sub._id}
                       setRefreshFlag={setRefreshFlag}
                       fetchExpenses={fetchExpenses}
-                      backgroundColor={{ backgroundColor }}
+                      backgroundColor={backgroundColor}
                     />
 
                     {sub.transactions.length === 0 ? (
@@ -277,11 +277,12 @@ const SubCategoriesWithTransactions = ({
                         {sub.transactions.map((tx) => (
                           <li
                             key={tx._id}
-                            className={`transaction-item relative  rounded-md p-3  transition-all duration-300 ease-in-out ${
+                            className={`transaction-item relative  rounded-md my-3 p-3  transition-all duration-300 ease-in-out ${
                               dayTheme
-                                ? "overview-accordion-body-day"
-                                : "overview-accordion-body-night"
-                            } ${
+                                ? `transition-all duration-300 accordion-body-day overview-highest-accordion-body-${backgroundColor}`
+                                : `transition-all duration-300 accordion-body-night overview-highest-accordion-body-${backgroundColor}`
+                            }
+                            ${
                               animatingId === tx._id
                                 ? "opacity-0 -translate-y-2 scale-95"
                                 : ""

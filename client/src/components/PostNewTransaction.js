@@ -77,15 +77,21 @@ const PostNewTransaction = ({
               }`}
             >
               Add New Transaction{" "}
-              <span className="text-3xl text-red-500">+</span>
+              <span
+                className={`transition-all duration-300 text-3xl ${
+                  dayTheme ? "text-red-500" : "white"
+                }`}
+              >
+                +
+              </span>
             </h2>
           </AccordionHeader>
 
           <AccordionBody
-            className={`py-4 transition-all duration-300 ${
+            className={`transition-all duration-300 ${
               dayTheme
-                ? "overview-accordion-body-day"
-                : "overview-accordion-body-night"
+                ? `transition-all duration-300 accordion-body-day overview-highest-accordion-body-${backgroundColor}`
+                : `transition-all duration-300 accordion-body-night overview-highest-accordion-body-${backgroundColor}`
             }`}
           >
             <form

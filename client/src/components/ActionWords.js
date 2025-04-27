@@ -66,6 +66,29 @@ export const PostNewTransactionHeaderColors = (category, dayTheme) => {
   return `accordion-header-${dayTheme ? "day" : "night"}-${color}`;
 };
 
+export const PostNewTransactionHighestHeaderColors = (category, dayTheme) => {
+  let color = "";
+
+  switch (category) {
+    case "savings":
+      color = "yellow";
+      break;
+    case "expense":
+      color = "red";
+      break;
+    case "income":
+      color = "green";
+      break;
+    case "bills":
+      color = "orange";
+      break;
+    default:
+      color = "gray"; // fallback color
+  }
+
+  return `accordion-header-highest-${dayTheme ? "day" : "night"}-${color}`;
+};
+
 export const PostNewTransactionBodyColors = (category, dayTheme) => {
   let color = "";
 
@@ -87,4 +110,29 @@ export const PostNewTransactionBodyColors = (category, dayTheme) => {
   }
 
   return `overview-accordion-body-${dayTheme ? "day" : "night"}-${color}`;
+};
+
+export const PostNewTransactionHighestBodyColors = (category, dayTheme) => {
+  let color = "";
+
+  switch (category) {
+    case "savings":
+      color = "yellow";
+      break;
+    case "expense":
+      color = "red";
+      break;
+    case "income":
+      color = "green";
+      break;
+    case "bills":
+      color = "orange";
+      break;
+    default:
+      color = "gray"; // fallback color
+  }
+
+  return `overview-highest-accordion-body-${
+    dayTheme ? "day" : "night"
+  }-${color}`;
 };

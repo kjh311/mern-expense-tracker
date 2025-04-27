@@ -8,7 +8,8 @@ import Button from "./Button";
 import { DayTheme } from "../App";
 import {
   PostNewTransactionHeaderColors,
-  PostNewTransactionBodyColors,
+  PostNewTransactionHighestBodyColors,
+  PostNewTransactionHighestHeaderColors,
 } from "./ActionWords";
 
 const PostNewSubcategory = ({
@@ -55,16 +56,10 @@ const PostNewSubcategory = ({
   };
 
   return (
-    <AccordionItem
-      eventKey="new"
-      className={`transition-all duration-300 ${PostNewTransactionHeaderColors(
-        category,
-        dayTheme
-      )}`}
-    >
+    <AccordionItem eventKey="new" className={`transition-all duration-300 `}>
       <AccordionHeader
         className={`transition-all duration-300 w-full flex justify-center items-center
-          ${PostNewTransactionHeaderColors(category, dayTheme)}
+          ${PostNewTransactionHighestHeaderColors(category, dayTheme)}
            `}
       >
         <h2
@@ -76,7 +71,7 @@ const PostNewSubcategory = ({
         </h2>
       </AccordionHeader>
       <AccordionBody
-        className={`py-6 transition-all duration-300  ${PostNewTransactionBodyColors(
+        className={`py-6 transition-all duration-300  ${PostNewTransactionHighestBodyColors(
           category,
           dayTheme
         )}
