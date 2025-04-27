@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -8,31 +8,51 @@ import {
   Legend,
   Tooltip,
 } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels"; // <-- import datalabels
+import { DayTheme } from "../App";
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Legend, Tooltip);
+ChartJS.register(
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Legend,
+  Tooltip,
+  ChartDataLabels
+);
 
 const SubCategoryBarChart = ({ data, category }) => {
+  const [dayTheme] = useContext(DayTheme);
+
+  const textColor = dayTheme ? "black" : "white"; // for labels and numbers
+
   const chartData = {
     labels: data.map((d) => d.name),
     datasets: [
       {
         label: "Total Spent",
         data: data.map((d) => d.spent),
-        backgroundColor: "rgba(75, 192, 192, 0.6)", // teal
+        backgroundColor: "rgba(75, 192, 192, 1)", // full teal
       },
       {
         label: "Budget",
         data: data.map((d) => d.budget),
-        backgroundColor: "rgba(153, 102, 255, 0.6)", // purple
+        backgroundColor: "rgba(153, 102, 255, 1)", // full purple
       },
     ],
   };
 
   const options = {
     responsive: true,
+    animation: {
+      duration: 300,
+      easing: "easeInOutQuad",
+    },
     plugins: {
       legend: {
         position: "top",
+        labels: {
+          color: textColor,
+        },
       },
       tooltip: {
         callbacks: {
@@ -40,24 +60,56 @@ const SubCategoryBarChart = ({ data, category }) => {
             return `$${context.parsed.y.toFixed(2)}`;
           },
         },
+        backgroundColor: dayTheme ? "white" : "black",
+        titleColor: dayTheme ? "black" : "white",
+        bodyColor: dayTheme ? "black" : "white",
+      },
+      datalabels: {
+        color: textColor,
+        anchor: "end",
+        align: "end",
+        formatter: function (value) {
+          return `$${value.toFixed(2)}`;
+        },
+        font: {
+          weight: "bold",
+        },
       },
     },
     scales: {
       y: {
         beginAtZero: true,
+        ticks: {
+          color: textColor,
+        },
+        grid: {
+          color: dayTheme ? "#555" : "#ddd",
+        },
+      },
+      x: {
+        ticks: {
+          color: textColor,
+        },
+        grid: {
+          color: dayTheme ? "#555" : "#ddd",
+        },
       },
     },
   };
 
   return (
-    <div className="my-8">
-      <h3 className="text-center text-2xl font-bold mb-4">
+    <div className="my-8 transition-all duration-300">
+      <h3
+        className="text-center text-2xl font-bold mb-4"
+        style={{ color: textColor, transition: "color 0.3s ease" }}
+      >
         {category.charAt(0).toUpperCase() + category.slice(1)} Overview 📊
       </h3>
       <Bar
         className="subcategory-bar-chart"
         data={chartData}
         options={options}
+        plugins={[ChartDataLabels]} // <-- attach the datalabels plugin
       />
     </div>
   );

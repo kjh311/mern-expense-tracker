@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import DeleteSubcategory from "./DeleteSubcategory";
 import { TransactionsTotal, DayTheme } from "../App";
 import { formattedCurrency } from "./FormattedCurrency";
 import {
@@ -13,6 +12,8 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
   const [data, setData] = useState([]);
   const [total, setTotal] = useContext(TransactionsTotal);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
+
+  // console.log("categoryBreakdown.js");
 
   useEffect(() => {
     const fetchData = async () => {

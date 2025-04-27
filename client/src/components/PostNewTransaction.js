@@ -7,8 +7,14 @@ import axios from "axios";
 import Button from "./Button";
 import Input from "./Input";
 import { DayTheme } from "../App";
+import { getActionWord, getActionWordPassedTense } from "./ActionWords";
 
-const PostNewTransaction = ({ subcategory, setRefreshFlag, fetchExpenses }) => {
+const PostNewTransaction = ({
+  subcategory,
+  setRefreshFlag,
+  fetchExpenses,
+  backgroundColor,
+}) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [recurring, setRecurring] = useState(false);
@@ -57,8 +63,13 @@ const PostNewTransaction = ({ subcategory, setRefreshFlag, fetchExpenses }) => {
           }`}
         >
           <AccordionHeader
-            className={`transition-all duration-300 w-full flex justify-center items-center
-          ${dayTheme ? "accordion-header-day" : "accordion-header-night"}`}
+            className={`transition-all duration-300  accordion-header-${
+              dayTheme ? "day" : "night"
+            } ${
+              dayTheme
+                ? `accordion-header-higher-${backgroundColor}`
+                : `accordion-header-higher-${backgroundColor}`
+            }`}
           >
             <h2
               className={`transition-all duration-300 text-lg font-semibold text-center w-full ${

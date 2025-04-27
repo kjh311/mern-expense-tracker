@@ -118,6 +118,7 @@ const SubCategoriesWithTransactions = ({
                 budget: sub.budget || 0,
               }))}
               category={category}
+              dayTheme={dayTheme}
             />
             <h2
               className={`transition-all duration-300 text-center ${
@@ -144,8 +145,8 @@ const SubCategoriesWithTransactions = ({
                       dayTheme ? "day" : "night"
                     } ${
                       dayTheme
-                        ? `accordion-header-${backgroundColor}`
-                        : `accordion-header-${backgroundColor}`
+                        ? `accordion-header-higher-${backgroundColor}`
+                        : `accordion-header-higher-${backgroundColor}`
                     }`}
                   >
                     <div
@@ -220,8 +221,8 @@ const SubCategoriesWithTransactions = ({
                   <Accordion.Body
                     className={`transition-all duration-300 ${
                       dayTheme
-                        ? `transition-all duration-300 accordion-body-day overview-accordion-body-${backgroundColor}`
-                        : `transition-all duration-300 accordion-body-night overview-accordion-body-${backgroundColor}`
+                        ? `transition-all duration-300 accordion-body-day overview-higher-accordion-body-${backgroundColor}`
+                        : `transition-all duration-300 accordion-body-night overview-higher-accordion-body-${backgroundColor}`
                     }`}
                   >
                     <div className="flex justify-around flex-wrap">
@@ -266,6 +267,7 @@ const SubCategoriesWithTransactions = ({
                       subcategory={sub._id}
                       setRefreshFlag={setRefreshFlag}
                       fetchExpenses={fetchExpenses}
+                      backgroundColor={{ backgroundColor }}
                     />
 
                     {sub.transactions.length === 0 ? (

@@ -4,9 +4,10 @@ import { DayTheme } from "../App";
 const Button = ({ type, text, onClick, color }) => {
   const [dayTheme, setDayTheme] = useContext(DayTheme);
 
+  // console.log("Button.js");
+
   return (
     <>
-      {/* {color} */}
       <button
         type={type}
         onClick={onClick}
@@ -24,4 +25,4 @@ const Button = ({ type, text, onClick, color }) => {
   );
 };
 
-export default Button;
+export default React.memo(Button);

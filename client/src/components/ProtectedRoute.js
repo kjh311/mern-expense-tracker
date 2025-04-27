@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { LoggedInContext } from "../App";
+import React from "react";
 
 const ProtectedRoute = ({ children }) => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
@@ -10,4 +11,4 @@ const ProtectedRoute = ({ children }) => {
   return token ? children : <Navigate to="/login" />;
 };
 
-export default ProtectedRoute;
+export default React.memo(ProtectedRoute);

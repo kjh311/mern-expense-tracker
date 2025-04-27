@@ -219,6 +219,18 @@
   transition: all 0.3s ease;
 }
 
+.accordion-header-higher-day-red .accordion-button[aria-expanded="true"],
+.accordion-header-higher-day-red .accordion-button[aria-expanded="false"] {
+  background-color: var(--red-9) !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-higher-night-red .accordion-button[aria-expanded="true"],
+.accordion-header-higher-night-red .accordion-button[aria-expanded="false"] {
+  background-color: var(--red-5) !important;
+  transition: all 0.3s ease;
+}
+
 .accordion-header-day-orange .accordion-button[aria-expanded="true"],
 .accordion-header-day-orange .accordion-button[aria-expanded="false"] {
   /* background-color: #f9e0c5 !important; */
@@ -311,6 +323,14 @@
 .overview-accordion-body-night-red {
   /* background-color: #880a12 !important; */
   background-color: var(--red-3) !important;
+}
+
+.overview-higher-accordion-body-night-red {
+  background-color: var(--red-4);
+}
+
+.overview-higher-accordion-body-day-red {
+  background-color: var(--red-6);
 }
 
 .overview-accordion-body-night-orange {
