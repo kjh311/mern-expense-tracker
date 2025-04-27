@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Input from "./Input";
 import Button from "./Button";
 import { DayTheme } from "../App";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -11,6 +12,11 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,13 +77,18 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <Input
-            type={"password"}
-            placeholder={"Password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <div className="password-input-container relative">
+            <Input
+              type={`${showPassword ? "text" : "password"}`}
+              placeholder={"Password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <div onClick={togglePassword} className="eye-icons">
+              {!showPassword ? <FaEyeSlash /> : <FaEye />}
+            </div>
+          </div>
           <Button
             type={"submit"}
             text={"Register"}
@@ -92,15 +103,16 @@ const Register = () => {
           </button> */}
         </form>
 
-        {message && <p className="text-center mt-4 text-sm ">{message}</p>}
+        {message && <p className="text-center mt-4 text-sm">{message}</p>}
 
-        <p
-          className={`text-center text-sm mt-4 ${
-            dayTheme ? "day-theme-link" : "night-theme-link"
-          }`}
-        >
+        <p className={`link-text`}>
           Already have an account?
-          <Link to="/login" className="ml-1 hover:underline">
+          <Link
+            to="/login"
+            className={`ml-1 hover:underline text-center text-sm mt-4 ${
+              dayTheme ? "day-theme-link" : "night-theme-link"
+            }`}
+          >
             Login
           </Link>
         </p>

@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { LoggedInContext, DayTheme } from "../App";
 import Input from "./Input";
 import Button from "./Button";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
@@ -13,6 +14,11 @@ const Login = () => {
     password: "",
   });
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -86,14 +92,19 @@ const Login = () => {
             placeholder={"Email"}
             required
           />
-          <Input
-            type={"password"}
-            name={"password"}
-            value={formData.password}
-            onChange={handleChange}
-            placeholder={"Password"}
-            required
-          />
+          <div className="password-input-container relative">
+            <Input
+              type={`${showPassword ? "text" : "password"}`}
+              name={"password"}
+              value={formData.password}
+              onChange={handleChange}
+              placeholder={"Password"}
+              required
+            />
+            <div onClick={togglePassword} className="eye-icons">
+              {!showPassword ? <FaEyeSlash /> : <FaEye />}
+            </div>
+          </div>
           <Button
             type={"submit"}
             text={"Login"}

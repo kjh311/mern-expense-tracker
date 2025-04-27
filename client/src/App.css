@@ -86,7 +86,13 @@ ul {
 }
 
 .animate-button-blue {
-  background-color: #0081a8;
+  /* background-color: #0081a8; */
+  background-color: var(--light-3);
+}
+
+.animate-button-blue:hover {
+  /* background-color: #0081a8; */
+  background-color: var(--light-2);
 }
 
 .animate-button-red {
@@ -98,11 +104,13 @@ ul {
 }
 
 .animate-button-purple:hover {
-  background-color: #390099;
+  /* background-color: #390099; */
+  background-color: var(--dark-5);
 }
 
 .animate-button-purple {
-  background-color: #c084fc;
+  /* background-color: #c084fc; */
+  background-color: var(--dark-6);
 }
 
 .animate-button-white {
@@ -183,4 +191,18 @@ ul {
 .subcategory-bar-chart {
   max-height: 200px;
   /* max-width: 50%; */
+}
+
+/* .password-input-container{
+
+} */
+
+.eye-icons {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+  color: #666;
 }

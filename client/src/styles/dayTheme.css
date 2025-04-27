@@ -1,3 +1,56 @@
+/* night theme pallets */
+/* 
+#030637
+#3C0753
+#720455
+#910A67
+ */
+
+/* variables */
+
+/* :root {
+  --night-dark: #030637;
+  --night-purple: #3c0753;
+  --night-red: #720455;
+  --night-pink: #910a67;
+} */
+
+/* :root {
+  --night-dark: #00224d;
+  --night-purple: #5d0e41;
+  --night-red: #a0153e;
+  --night-pink: #ff204e;
+} */
+
+/* :root {
+  --night-dark: #1c0140;
+  --night-purple: #310274;
+  --night-red: #5306be;
+  --night-pink: #6804f2;
+} */
+
+:root {
+  --dark-1: #10002b;
+  --dark-2: #240046;
+  --dark-3: #3c096c;
+  --dark-4: #5a189a;
+  --dark-5: #7b2cbf;
+  --dark-6: #9d4edd;
+  --dark-7: #c77dff;
+  --dark-8: #e0aaff;
+
+  --light-1: #7400b8;
+  --light-2: #6930c3;
+  --light-3: #5e60ce;
+  --light-4: #5390d9;
+  --light-5: #4ea8de;
+  --light-6: #48bfe3;
+  --light-7: #56cfe1;
+  --light-8: #64dfdf;
+  --light-9: #72efdd;
+  --light-10: #80ffdb;
+}
+
 /* login themes */
 
 .login-container,
@@ -11,13 +64,15 @@
 
 .login-day-theme-bg {
   /* background: linear-gradient(45deg, #3a3aed, #f9f2a9); */
-  background-color: #81d7f1;
+  /* background-color: #81d7f1; */
+  background-color: var(--light-7);
   transition: all 0.3s ease;
 }
 
 .login-night-theme-bg {
   /* background: linear-gradient(45deg, #050558, #c3c3f8);  */
-  background-color: #050558;
+  /* background-color: #050558; */
+  background-color: var(--dark-1);
   transition: all 0.3s ease;
 }
 
@@ -32,6 +87,7 @@
 
 .day-theme-card {
   background-color: white;
+  /* background-color: var(--light-10); */
   color: #0f0082;
   outline: 2px solid #52426a;
   /* box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5) !important; */
@@ -39,7 +95,8 @@
 }
 
 .night-theme-card {
-  background-color: #19193b;
+  /* background-color: #19193b; */
+  background-color: var(--dark-3);
   color: #eee;
   outline: 2px solid #efe4fa;
   box-shadow: 0 0 15px 5px white !important;
@@ -54,12 +111,14 @@
 }
 
 .login-day-theme-heading {
-  color: #0081a8;
+  /* color: #0081a8; */
+  color: var(--light-4);
   transition: all 0.3s ease;
 }
 
 .login-night-theme-heading {
-  color: #c084fc;
+  /* color: #c084fc; */
+  color: var(--dark-7);
   transition: all 0.3s ease;
 }
 
@@ -69,28 +128,33 @@
   margin-top: 1rem;
 }
 
-.day-theme-link a {
-  color: #0081a7;
+.day-theme-link {
+  /* color: #0081a7; */
+  color: var(--light-5);
   transition: all 0.3s ease;
 }
 
 .night-theme-link a,
 .night-theme-link {
-  color: #c084fc;
+  /* color: #c084fc; */
+  color: var(--dark-7);
   transition: all 0.3s ease;
 }
 
 /* Navbar */
 .day-nav {
   border-bottom: 2px solid black;
-  background-color: #0081a7;
+  /* background-color: #0081a7; */
+  background-color: var(--light-4);
   transition: all 0.3s ease;
-  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.7);
 }
 
 .night-nav {
   border-bottom: 2px solid #dbbef9;
-  background-color: #390099;
+  /* background-color: #390099; */
+  background-color: var(--dark-3);
+
   transition: all 0.3s ease;
   box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.7);
 }
@@ -98,17 +162,20 @@
 /* FOOTER */
 
 .day-footer {
-  background-color: #0081a7;
+  /* background-color: #0081a7; */
+  background-color: var(--light-4);
   border-top: 2px solid black;
   transition: all 0.3s ease;
   color: #fff;
 }
 
 .night-footer {
-  background-color: #390099;
+  /* background-color: #390099; */
+  background-color: var(--dark-3);
   border-top: 2px solid #dbbef9;
   transition: all 0.3s ease;
-  color: #c084fc;
+  /* color: #c084fc; */
+  color: var(--dark-7);
 }
 
 .day-footer-link {
@@ -117,25 +184,29 @@
 }
 
 .night-footer-link {
-  color: #c084fc;
+  /* color: #c084fc; */
+  color: var(--dark-7);
   transition: all 0.3s ease;
 }
 
 .night-footer-link:hover {
-  color: #d5b6f5;
+  /* color: #d5b6f5; */
+  color: var(--dark-8);
 }
 
 /* OVERVIEW */
 .category-card-day {
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
-  background-color: #0081a8;
+  /* background-color: #0081a8; */
+  background-color: var(--light-5);
   transition: all 0.3s;
   outline: 4px solid black;
 }
 
 .category-card-night {
   box-shadow: 0 0 15px 5px white !important;
-  background-color: #025b74;
+  /* background-color: #025b74; */
+  background-color: var(--night-5);
   transition: all 0.3s;
   outline: 4px solid #c6f2ff;
 }
@@ -149,12 +220,14 @@
 }
 
 .day-text {
-  color: #0081a8;
+  /* color: #0081a8; */
+  color: var(--light-6);
   transition: all 0.3s ease;
 }
 
 .night-text {
-  color: #390099;
+  /* color: #390099; */
+  color: var(--night-3);
   transition: all 0.3s ease;
 }
 
