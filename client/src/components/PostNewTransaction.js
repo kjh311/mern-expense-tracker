@@ -55,7 +55,7 @@ const PostNewTransaction = ({
 
   return (
     <div className="flex justify-center">
-      <Accordion className="my-4 lg:w-50 sm:w-full">
+      <Accordion className="mb-2 lg:w-50 sm:w-full">
         <AccordionItem
           eventKey="newTransaction"
           className={`transition-all duration-300 ${

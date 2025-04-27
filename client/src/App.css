@@ -1,6 +1,10 @@
 @import url("./styles/variables.css");
 @import url("./styles/dayTheme.css");
 
+body {
+  margin: 0;
+}
+
 .App {
   min-height: 100vh;
   position: relative;
@@ -213,3 +217,7 @@ ul {
   font-size: 20px;
   color: #666;
 }
+
+/* .home-container {
+  height: 100dvh;
+} */

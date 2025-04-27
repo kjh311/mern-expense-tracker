@@ -5,7 +5,7 @@ import Input from "./Input";
 import Button from "./Button";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-const Login = () => {
+const Login = ({ contentHeight }) => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
   const navigate = useNavigate();
@@ -64,6 +64,7 @@ const Login = () => {
 
   return (
     <div
+      style={{ minHeight: contentHeight }}
       className={`login-container  ${
         dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
       }`}
@@ -82,7 +83,7 @@ const Login = () => {
         </h2>
         <form
           onSubmit={handleSubmit}
-          className="space-y-4 flex justify-center flex-column "
+          className="space-y-4 flex justify-center flex-column form"
         >
           <Input
             type={"email"}

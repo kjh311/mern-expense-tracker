@@ -6,7 +6,7 @@ import Button from "./Button";
 import { DayTheme } from "../App";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-const Register = () => {
+const Register = ({ contentHeight }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,6 +40,7 @@ const Register = () => {
 
   return (
     <div
+      style={{ minHeight: contentHeight }}
       className={`register-container flex items-center justify-center ${
         dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
       }`}

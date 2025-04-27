@@ -3,7 +3,7 @@ import SubCategoriesWithTransactions from "./SubCategoriesWithTransactions";
 import Overview from "./Overview";
 import { DayTheme } from "../App";
 
-const Dashboard = () => {
+const Dashboard = ({ contentHeight }) => {
   const [mainAccordionKey, setMainAccordionKey] = useState(null);
   const [userName, setUserName] = useState(
     localStorage.getItem("expense-tracker-username")
@@ -13,7 +13,8 @@ const Dashboard = () => {
   return (
     <>
       <div
-        className={` min-h-screen p-4 flex items-center flex-column ${
+        style={{ minHeight: contentHeight }}
+        className={`  p-4 flex items-center flex-column ${
           dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
         }`}
       >

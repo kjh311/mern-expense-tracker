@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, forwardRef } from "react";
 import { DayTheme } from "../App";
 
-const Footer = () => {
+const Footer = ({ ref }) => {
   const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   return (
     <footer
+      id="footer"
+      ref={ref}
       className={`footer ${
         dayTheme ? "day-footer" : "night-footer"
       } py-4 px-2 mt-10 shadow-inner`}

@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, forwardRef } from "react";
 import { LoggedInContext, DayTheme } from "../App";
 import { Link } from "react-router-dom";
 import Logout from "./Logout";
 import DayThemeToggle from "./DayThemeToggle";
 import Button from "./Button";
 
-const Navbar = () => {
+const Navbar = ({ ref }) => {
   const [loggedIn] = useContext(LoggedInContext);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
 
@@ -14,6 +14,8 @@ const Navbar = () => {
 
   return (
     <nav
+      ref={ref}
+      id="navbar"
       className={`z-10 w-full sticky top-0 nav-bar relative transition-all duration-300 ${
         dayTheme ? "day-nav text-white" : "night-nav text-blue-100"
       }`}
