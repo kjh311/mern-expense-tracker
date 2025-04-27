@@ -33,7 +33,7 @@ const Navbar = () => {
             <Logout />
           ) : (
             <Link to="/login">
-              <Button text={"Login"} color={"white"} />
+              <Button text={"Login"} color={dayTheme ? "blue" : "purple"} />
               {/* <button className="bg-white text-blue-600 font-semibold px-4 py-2 rounded-md shadow hover:bg-blue-100 transition">
                 Login
               </button> */}

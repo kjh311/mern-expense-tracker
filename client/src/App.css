@@ -1,3 +1,4 @@
+@import url("./styles/variables.css");
 @import url("./styles/dayTheme.css");
 
 .App {
@@ -111,6 +112,7 @@ ul {
 .animate-button-purple {
   /* background-color: #c084fc; */
   background-color: var(--dark-6);
+  color: white;
 }
 
 .animate-button-white {

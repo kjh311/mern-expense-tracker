@@ -3,9 +3,11 @@ import { Navigate } from "react-router-dom";
 import { LoggedInContext } from "../App";
 import { jwtDecode } from "jwt-decode";
 import Button from "./Button";
+import { DayTheme } from "../App";
 
 const Logout = () => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   const handleLogout = () => {
     setLoggedIn(false);
@@ -27,7 +29,13 @@ const Logout = () => {
     }
   }, []);
 
-  return <Button onClick={handleLogout} text={"Logout"} color={"white"} />;
+  return (
+    <Button
+      onClick={handleLogout}
+      text={"Logout"}
+      color={dayTheme ? "white" : "purple"}
+    />
+  );
   // <button onClick={handleLogout}>Logout</button>;
 };
 

@@ -38,7 +38,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
   return (
     <div
       className={` max-w-[1400px]  w-full  m-10  p-4 rounded transition-all duration-300 ${
-        dayTheme ? "category-card-day" : "category-card-night"
+        dayTheme ? "overview-category-card-day" : "overview-category-card-night"
       }`}
     >
       <Accordion
@@ -77,7 +77,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                   <span className="text-3xl">💵</span> Cashflow:
                   <br />
                   <span
-                    className={`${
+                    className={`transition-all duration-300 ${
                       cashflow > 0 ? "text-blue-800" : "text-red-500"
                     }`}
                   >
@@ -89,7 +89,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                     dayTheme ? "day-text" : "text-white"
                   } font-semibold`}
                 >
-                  <span className="text-3xl">📊</span> Total Budget:
+                  <span className="text-3xl">📊</span> Total Spending Budget:
                   <br /> {formattedCurrency(totalBudget)}
                 </span>
                 <span

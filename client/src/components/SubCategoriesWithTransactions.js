@@ -119,6 +119,13 @@ const SubCategoriesWithTransactions = ({
               }))}
               category={category}
             />
+            <h2
+              className={`transition-all duration-300 text-center ${
+                dayTheme ? "day-text" : "text-white"
+              }`}
+            >
+              Categories:
+            </h2>
             <Accordion
               activeKey={activeKey}
               onSelect={(eventKey) => setActiveKey(eventKey)}
@@ -245,6 +252,15 @@ const SubCategoriesWithTransactions = ({
                     {sub.transactions.length > 0 && (
                       <ExpenseLineChart transactions={sub.transactions} />
                     )}
+
+                    <h2
+                      className={`transition-all duration-300 text-center ${
+                        dayTheme ? "day-text" : "text-white"
+                      }`}
+                    >
+                      Transactions:
+                    </h2>
+                    <br />
 
                     <PostNewTransaction
                       subcategory={sub._id}
