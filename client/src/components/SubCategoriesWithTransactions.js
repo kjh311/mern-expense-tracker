@@ -156,7 +156,7 @@ const SubCategoriesWithTransactions = ({
                     >
                       {/* NAME */}
                       <div className="flex justify-center items-center w-full">
-                        <span className="lg:text-3xl sm:text-lg text-shadow">
+                        <span className="sm:text-4xl text-2xl  text-shadow">
                           {sub.name} 🏷️
                         </span>
                       </div>
@@ -304,7 +304,7 @@ const SubCategoriesWithTransactions = ({
                                       dayTheme ? "day-text" : "text-white"
                                     }`}
                                   >
-                                    {tx.description}
+                                    {tx.description} 🛒
                                   </span>
                                 </div>
 

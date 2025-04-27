@@ -12,7 +12,7 @@ const Button = ({ type, text, onClick, color }) => {
         type={type}
         onClick={onClick}
         className={`
-          ${dayTheme ? "button-shadow" : "button-glow"}
+          ${dayTheme ? "button-shadow " : "button-glow text-white"}
           ${
             { color }
               ? `bg-${color}-200 hover:bg-${color}-700 animate-button-${color}`

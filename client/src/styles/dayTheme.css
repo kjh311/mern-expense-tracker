@@ -233,7 +233,7 @@
 
 .accordion-header-higher-day-red .accordion-button[aria-expanded="true"],
 .accordion-header-higher-day-red .accordion-button[aria-expanded="false"] {
-  background-color: var(--red-9) !important;
+  background-color: var(--red-10) !important;
   transition: all 0.3s ease;
 }
 
@@ -347,6 +347,30 @@
   transition: all 0.3s ease;
 }
 
+.accordion-header-higher-day-green .accordion-button[aria-expanded="true"],
+.accordion-header-higher-day-green .accordion-button[aria-expanded="false"] {
+  background-color: var(--green-10) !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-higher-night-green .accordion-button[aria-expanded="true"],
+.accordion-header-higher-night-green .accordion-button[aria-expanded="false"] {
+  background-color: var(--green-5) !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-highest-day-green .accordion-button[aria-expanded="true"],
+.accordion-header-highest-day-green .accordion-button[aria-expanded="false"] {
+  background-color: var(--green-10) !important;
+  transition: all 0.3s ease;
+}
+
+.accordion-header-highest-night-green .accordion-button[aria-expanded="true"],
+.accordion-header-highest-night-green .accordion-button[aria-expanded="false"] {
+  background-color: var(--green-5) !important;
+  transition: all 0.3s ease;
+}
+
 .overview-item-day:hover {
   background-color: #cee2ff !important;
 }
@@ -373,7 +397,7 @@
 }
 
 .overview-accordion-body-day {
-  background-color: var(--blue-10) !important;
+  background-color: var(--blue-9) !important;
 }
 
 .accordion-header-day-overview .accordion-button[aria-expanded="true"],
@@ -468,6 +492,22 @@
   /* background-color: #136158 !important; */
   background-color: var(--green-3);
   transition: all 0.3s ease;
+}
+
+.overview-higher-accordion-body-night-green {
+  background-color: var(--green-3);
+}
+
+.overview-highest-accordion-body-night-green {
+  background-color: var(--green-6);
+}
+
+.overview-higher-accordion-body-day-green {
+  background-color: var(--green-6);
+}
+
+.overview-highest-accordion-body-day-green {
+  background-color: var(--green-8);
 }
 
 .overview-accordion-body-day-red {

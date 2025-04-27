@@ -72,7 +72,7 @@ const PostNewTransaction = ({
             }`}
           >
             <h2
-              className={`transition-all duration-300 text-lg font-semibold text-center w-full ${
+              className={`transition-all duration-300 text-2xl text-shadow font-semibold text-center w-full ${
                 dayTheme ? "day-text" : "text-white"
               }`}
             >
@@ -109,7 +109,7 @@ const PostNewTransaction = ({
               <Input
                 type={"number"}
                 value={amount}
-                placeholder={"Enter Amount"}
+                placeholder={"Enter Amount Spent"}
                 onChange={(e) => setAmount(e.target.value)}
                 required
               />
@@ -123,7 +123,11 @@ const PostNewTransaction = ({
                 Recurring Transaction
               </label> */}
 
-              <Button type={"submit"} text={"Submit"} color={"blue"} />
+              <Button
+                type={"submit"}
+                text={"Submit"}
+                color={dayTheme ? "blue" : "red"}
+              />
             </form>
           </AccordionBody>
         </AccordionItem>

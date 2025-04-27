@@ -65,11 +65,11 @@ const PostNewSubcategory = ({
            `}
       >
         <h2
-          className={`text-lg font-semibold  text-center w-full transition-all duration-300 ${
+          className={`text-2xl text-shadow font-semibold  text-center w-full transition-all duration-300 ${
             dayTheme ? "day-text" : "text-white"
           }`}
         >
-          Add New SubCategory <span className="text-3xl text-red-500">+</span>
+          Add New Category <span className="text-3xl text-red-500">+</span>
         </h2>
       </AccordionHeader>
       <AccordionBody
@@ -87,7 +87,7 @@ const PostNewSubcategory = ({
         >
           <Input
             type={"text"}
-            placeholder={"Enter Name of Subcategory"}
+            placeholder={"Enter Name of Category"}
             required
             value={name}
             onChange={(e) => setName(e.target.value)}

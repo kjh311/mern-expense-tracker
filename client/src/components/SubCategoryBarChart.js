@@ -68,9 +68,7 @@ const SubCategoryBarChart = ({ data, category }) => {
         color: "white",
         anchor: "end",
         align: "end",
-        backgroundColor: `${
-          dayTheme ? "rgba(0, 129, 168, 1)" : "rgba(0,0,0,0.8)"
-        }`,
+        backgroundColor: `${dayTheme ? "rgb(0,129,168,1)" : "rgba(0,0,0,0.8)"}`,
         borderColor: dayTheme ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.6)",
         borderWidth: 1, // thickness of the border
         borderRadius: 4,
@@ -104,7 +102,7 @@ const SubCategoryBarChart = ({ data, category }) => {
   };
 
   return (
-    <div className="my-8 transition-all duration-300">
+    <div className="my-8 transition-all duration-300 hidden sm:block">
       <h3
         className="text-center text-2xl font-bold mb-4"
         style={{ color: textColor, transition: "color 0.3s ease" }}

@@ -49,7 +49,7 @@ const DeleteTransaction = ({
   return (
     <button
       onClick={handleDeleteTransaction}
-      className={`transition-all duration-500 ${
+      className={` ${
         animatingId === txId ? "opacity-0 translate-y-[-10px]" : ""
       }`}
     >
