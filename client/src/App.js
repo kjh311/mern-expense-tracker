@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -15,6 +15,7 @@ import { FadeProvider } from "./components/FadeContext";
 export const LoggedInContext = React.createContext();
 export const TransactionsTotal = React.createContext();
 export const DayTheme = React.createContext();
+export const DateContext = React.createContext();
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
@@ -22,6 +23,11 @@ function App() {
     const stored = localStorage.getItem("Expense-Tracker-DayTheme");
     return stored === "true";
   });
+  const [currentMonthIndex, setCurrentMonthIndex] = useState(
+    new Date().getMonth()
+  );
+
+  console.log("Current month index: ", currentMonthIndex);
 
   // console.log("Daytheme from appjs: ", dayTheme);
 
@@ -36,6 +42,10 @@ function App() {
     billsBudget: 0,
   });
 
+  useEffect(() => {
+    console.log(total);
+  }, [currentMonthIndex]);
+
   const navbarRef = useRef(null);
   const footerRef = useRef(null);
   const [contentHeight, setContentHeight] = useState("100vh");
@@ -43,47 +53,49 @@ function App() {
   return (
     <div className={`App ${dayTheme ? "day-app" : "night-app"}`}>
       <FadeProvider>
-        <DayTheme.Provider value={[dayTheme, setDayTheme]}>
-          <TransactionsTotal.Provider value={[total, setTotal]}>
-            <LoggedInContext.Provider value={[loggedIn, setLoggedIn]}>
-              <Router>
-                <UpdateHeights
-                  navbarRef={navbarRef}
-                  footerRef={footerRef}
-                  setContentHeight={setContentHeight}
-                />
-                <Navbar ref={navbarRef} />
-                <Routes>
-                  <Route
-                    exact
-                    path="/"
-                    element={<Home contentHeight={contentHeight} />}
+        <DateContext.Provider value={[currentMonthIndex, setCurrentMonthIndex]}>
+          <DayTheme.Provider value={[dayTheme, setDayTheme]}>
+            <TransactionsTotal.Provider value={[total, setTotal]}>
+              <LoggedInContext.Provider value={[loggedIn, setLoggedIn]}>
+                <Router>
+                  <UpdateHeights
+                    navbarRef={navbarRef}
+                    footerRef={footerRef}
+                    setContentHeight={setContentHeight}
                   />
-                  <Route
-                    exact
-                    path="/register"
-                    element={<Register contentHeight={contentHeight} />}
-                  />
-                  <Route
-                    exact
-                    path="/login"
-                    element={<Login contentHeight={contentHeight} />}
-                  />
-                  <Route
-                    exact
-                    path="/dashboard"
-                    element={
-                      <ProtectedRoute>
-                        <Dashboard contentHeight={contentHeight} />
-                      </ProtectedRoute>
-                    }
-                  />
-                </Routes>
-              </Router>
-              <Footer ref={navbarRef} />
-            </LoggedInContext.Provider>
-          </TransactionsTotal.Provider>
-        </DayTheme.Provider>
+                  <Navbar ref={navbarRef} />
+                  <Routes>
+                    <Route
+                      exact
+                      path="/"
+                      element={<Home contentHeight={contentHeight} />}
+                    />
+                    <Route
+                      exact
+                      path="/register"
+                      element={<Register contentHeight={contentHeight} />}
+                    />
+                    <Route
+                      exact
+                      path="/login"
+                      element={<Login contentHeight={contentHeight} />}
+                    />
+                    <Route
+                      exact
+                      path="/dashboard"
+                      element={
+                        <ProtectedRoute>
+                          <Dashboard contentHeight={contentHeight} />
+                        </ProtectedRoute>
+                      }
+                    />
+                  </Routes>
+                </Router>
+                <Footer ref={navbarRef} />
+              </LoggedInContext.Provider>
+            </TransactionsTotal.Provider>
+          </DayTheme.Provider>
+        </DateContext.Provider>
       </FadeProvider>
     </div>
   );

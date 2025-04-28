@@ -14,6 +14,7 @@ const GetBudget = ({ category }) => {
           },
         });
         setBudgets(res.data);
+
         console.log("Fetched Budgets:", res.data);
       } catch (err) {
         console.error("Failed to fetch budgets", err);

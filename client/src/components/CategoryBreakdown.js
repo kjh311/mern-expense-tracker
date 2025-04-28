@@ -1,19 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { TransactionsTotal, DayTheme } from "../App";
+import { TransactionsTotal, DayTheme, DateContext } from "../App";
 import { formattedCurrency } from "./FormattedCurrency";
-import {
-  getActionWord,
-  getActionWordPassedTense,
-  getColorActionWords,
-} from "./ActionWords";
+import { getActionWord, getActionWordPassedTense } from "./ActionWords";
 
 const CategoryBreakdown = ({ category, refreshFlag }) => {
   const [data, setData] = useState([]);
   const [total, setTotal] = useContext(TransactionsTotal);
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
-
-  // console.log("categoryBreakdown.js");
+  const [dayTheme] = useContext(DayTheme);
+  const [currentMonthIndex] = useContext(DateContext);
+  const [noData, setNoData] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,39 +22,65 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
             },
           }
         );
-        setData(res.data);
+
+        const filteredData = res.data
+          .map((item) => {
+            const filteredTransactions = item.transactions.filter(
+              (transaction) => {
+                const transactionMonth = Number(transaction.date.slice(5, 7));
+                const transactionYear = Number(transaction.date.slice(0, 4));
+                const now = new Date();
+                return (
+                  transactionMonth === currentMonthIndex + 1 &&
+                  transactionYear === now.getFullYear()
+                );
+              }
+            );
+
+            return {
+              ...item,
+              transactions: filteredTransactions,
+            };
+          })
+          .filter((item) => item.transactions.length > 0);
+
+        console.log(
+          `Category breakdown filtered data: ${category}`,
+          filteredData
+        );
+        setData(filteredData);
       } catch (err) {
         console.error("Error fetching category breakdown", err);
       }
     };
 
     fetchData();
-  }, [category, refreshFlag]);
+  }, [category, refreshFlag, currentMonthIndex]);
 
-  //pass totals and budgets to App.js Context
   useEffect(() => {
-    if (data && data.length > 0) {
-      const totalSpent = data.reduce((acc, sub) => {
-        const subTotal = sub.transactions.reduce(
-          (sum, tx) => sum + (tx.amount || 0),
-          0
-        );
+    // if (data && data.length > 0) {
+    const totalSpent = data.reduce((acc, sub) => {
+      const subTotal = sub.transactions.reduce(
+        (sum, tx) => sum + (tx.amount || 0),
+        0
+      );
+      return acc + subTotal;
+    }, 0);
 
-        return acc + subTotal;
-      }, 0);
+    const totalBudget = data.reduce((acc, sub) => acc + (sub.budget || 0), 0);
 
-      const totalBudget = data.reduce((acc, sub) => acc + (sub.budget || 0), 0);
-
-      setTotal((prevTotal) => ({
-        ...prevTotal,
-        [`${category}Spent`]: totalSpent,
-        [`${category}Budget`]: totalBudget,
-      }));
-    }
-    // console.log("Category Breakdown UseEffect Ran");
+    setTotal((prevTotal) => ({
+      ...prevTotal,
+      [`${category}Spent`]: totalSpent,
+      [`${category}Budget`]: totalBudget,
+    }));
+    // }
   }, [data, category, setTotal]);
 
-  if (!data || data.length === 0) return <p>No data</p>;
+  if (!data || data.length === 0) {
+    // setNoData(true);
+    return <p className="text-center p-4">No data available.</p>;
+  }
 
   const totalSpent = data.reduce((acc, sub) => {
     const subTotal = sub.transactions.reduce((sum, tx) => sum + tx.amount, 0);
@@ -68,7 +90,7 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
   const totalBudget = data.reduce((acc, sub) => acc + (sub.budget || 0), 0);
 
   return (
-    <div className=" text-center lg:text-xl  xs:text-sm  font-medium p-2 flex flex-col sm:flex-row justify-around w-full ">
+    <div className="text-center lg:text-xl xs:text-sm font-medium p-2 flex flex-col sm:flex-row justify-around w-full">
       <p>
         📊 Monthly Budget: <br /> {formattedCurrency(totalBudget)}
       </p>
@@ -77,14 +99,16 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
         {formattedCurrency(totalSpent)}
       </p>
       <p>
-        Left to {getActionWord(category)}: <br />{" "}
+        Left to {getActionWord(category)}: <br />
         <span
-          className={`${
-            category === "expense" && totalBudget - totalSpent > 0
-              ? `my-animation ${dayTheme ? "text-green-500" : "text-white"}`
-              : totalBudget - totalSpent < 0
-              ? `my-animation ${dayTheme ? "text-green-500" : "text-white"}`
-              : `my-animation ${dayTheme ? "text-red-500" : "text-white"}`
+          className={`my-animation ${
+            totalBudget - totalSpent >= 0
+              ? dayTheme
+                ? "text-green-500"
+                : "text-white"
+              : dayTheme
+              ? "text-red-500"
+              : "text-white"
           }`}
         >
           {formattedCurrency(totalBudget - totalSpent)}

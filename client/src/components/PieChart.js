@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { TransactionsTotal } from "../App";
+import { TransactionsTotal, DayTheme } from "../App";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
@@ -10,6 +10,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const PieChart = ({ totals }) => {
   const [total, setTotal] = useContext(TransactionsTotal);
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
   const options = {
     responsive: true,
     plugins: {
@@ -17,8 +18,13 @@ const PieChart = ({ totals }) => {
         display: false,
         position: "bottom",
       },
+
       datalabels: {
         color: "#fff",
+        borderColor: "#fff",
+        borderWidth: 1,
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
+        borderRadius: 4,
         font: {
           weight: "bold",
           size: 14,

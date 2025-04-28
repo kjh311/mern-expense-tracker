@@ -1,39 +1,76 @@
 import { Accordion } from "react-bootstrap";
-import { TransactionsTotal, DayTheme } from "../App";
+import { TransactionsTotal, DayTheme, DateContext } from "../App";
 import PieChart from "./PieChart";
-import { useRef, useEffect, useContext } from "react";
+import { useRef, useEffect, useContext, useState } from "react";
 import { formattedCurrency } from "./FormattedCurrency";
 
-const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
+const Overview = ({
+  mainKey,
+  mainAccordionKey,
+  setMainAccordionKey,
+  currentMonthIndex,
+}) => {
   const [total] = useContext(TransactionsTotal);
   const isOpen = mainAccordionKey === mainKey;
   const mainAccordionRef = useRef(null);
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dayTheme] = useContext(DayTheme);
+
+  const [cashflow, setCashflow] = useState(0);
+  const [totalExpenses, setTotalExpenses] = useState(0);
+  const [totalBudget, setTotalBudget] = useState(0);
+  const [totalIncome, setTotalIncome] = useState(0);
 
   useEffect(() => {
-    if (isOpen && mainAccordionRef.current) {
-      const yOffset = -80;
-      const y =
-        mainAccordionRef.current.getBoundingClientRect().top +
-        window.pageYOffset +
-        yOffset;
+    if (total) {
+      // <- safe guard if total is null
+      const expenses =
+        (total.billsSpent || 0) +
+        (total.savingsSpent || 0) +
+        (total.expenseSpent || 0);
+      const income = total.incomeSpent || 0;
+      const budget =
+        (total.billsBudget || 0) +
+        (total.savingsBudget || 0) +
+        (total.expenseBudget || 0);
 
-      setTimeout(() => {
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }, 150);
+      setTotalExpenses(expenses);
+      setCashflow(income - expenses);
+      setTotalIncome(income);
+      setTotalBudget(budget);
     }
-  }, [isOpen]);
+  }, [total, currentMonthIndex]); // <= notice both in dependencies!
 
-  const totalExpenses =
-    total.billsSpent + total.savingsSpent + total.expenseSpent;
+  // useEffect(() => {
+  //   if (isOpen && mainAccordionRef.current) {
+  //     const yOffset = -80;
+  //     const y =
+  //       mainAccordionRef.current.getBoundingClientRect().top +
+  //       window.pageYOffset +
+  //       yOffset;
 
-  const cashflow =
-    total.incomeSpent -
-    (total.billsSpent + total.savingsSpent + total.expenseSpent);
-  const totalIncome = total.incomeSpent;
+  //     setTimeout(() => {
+  //       window.scrollTo({ top: y, behavior: "smooth" });
+  //     }, 150);
+  //   }
+  // }, [isOpen]);
+  // useEffect(() => {})
 
-  const totalBudget =
-    total.billsBudget + total.savingsBudget + total.expenseBudget;
+  // useEffect(() => {
+  //   console.log("Overview");
+  // }, [currentMonthIndex]);
+
+  // const totalExpenses =
+  //   total.billsSpent + total.savingsSpent + total.expenseSpent;
+
+  // const cashflow =
+  //   total.incomeSpent -
+  //   (total.billsSpent + total.savingsSpent + total.expenseSpent);
+  // const totalIncome = total.incomeSpent;
+
+  // const totalBudget =
+  //   total.billsBudget + total.savingsBudget + total.expenseBudget;
+
+  // const currentMonthIndex = new Date().getMonth();
 
   return (
     <div
