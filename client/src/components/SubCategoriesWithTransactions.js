@@ -53,7 +53,7 @@ const SubCategoriesWithTransactions = ({
         }
       );
       setData(res.data);
-      console.log("Fetch Expenses");
+      // console.log("Fetch Expenses");
       // setRefreshFlag((prev) => !prev);
     } catch (err) {
       console.error("Failed to fetch expenses", err);

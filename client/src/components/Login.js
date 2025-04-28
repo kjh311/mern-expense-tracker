@@ -54,9 +54,11 @@ const Login = ({ contentHeight }) => {
         localStorage.setItem("token", data.token);
         setLoggedIn(true);
         navigate("/dashboard");
-        setTriggerFadeOut(false);
+
         localStorage.setItem("expense-tracker-username", data.user.name);
+        setTriggerFadeOut(false);
       }, 300);
+
       if (!localStorage.getItem("Expense-Tracker-DayTheme")) {
         localStorage.setItem("Expense-Tracker-DayTheme", true);
         setDayTheme(true);
@@ -109,6 +111,7 @@ const Login = ({ contentHeight }) => {
               onChange={handleChange}
               placeholder={"Email"}
               required
+              // autoComplete={"email"}
             />
             <div className="password-input-container relative">
               <Input
@@ -118,6 +121,7 @@ const Login = ({ contentHeight }) => {
                 onChange={handleChange}
                 placeholder={"Password"}
                 required
+                // autoComplete={"current-password"}
               />
               <div
                 onClick={togglePassword}

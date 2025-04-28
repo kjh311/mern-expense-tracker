@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { DayTheme, LoggedInContext } from "../App";
@@ -53,7 +53,7 @@ const Home = ({ contentHeight }) => {
         />
         <span onClick={handleStartClick}>
           <Button
-            text={"Get Started"}
+            text={`${loggedIn ? "Dashboard" : "Get Started"}`}
             color={`${dayTheme ? "blue" : "purple"}`}
           />
         </span>
