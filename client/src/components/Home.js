@@ -4,7 +4,7 @@ import Button from "./Button";
 import { DayTheme, LoggedInContext } from "../App";
 import { Player } from "@lottiefiles/react-lottie-player";
 import moneyAnimation from "../assets/Money-Animation.json";
-import FadeWrapper from "./FadeWrapper"; // import FadeWrapper
+import FadeWrapper from "./FadeWrapper";
 import { FadeContext } from "./FadeContext";
 
 const Home = ({ contentHeight }) => {

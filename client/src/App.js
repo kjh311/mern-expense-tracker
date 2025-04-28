@@ -23,7 +23,7 @@ function App() {
     return stored === "true";
   });
 
-  console.log("Daytheme from appjs: ", dayTheme);
+  // console.log("Daytheme from appjs: ", dayTheme);
 
   const [total, setTotal] = useState({
     expenseSpent: 0,

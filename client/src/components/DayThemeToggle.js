@@ -13,9 +13,9 @@ const DayThemeToggle = () => {
     localStorage.setItem("Expense-Tracker-DayTheme", !dayTheme);
   };
 
-  useEffect(() => {
-    console.log("Daytheme from daytheme toggle: ", dayTheme);
-  }, [dayTheme]);
+  // useEffect(() => {
+  //   console.log("Daytheme from daytheme toggle: ", dayTheme);
+  // }, [dayTheme]);
 
   return (
     <button

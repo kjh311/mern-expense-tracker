@@ -5,6 +5,7 @@ import Input from "./Input";
 import Button from "./Button";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import FadeWrapper from "./FadeWrapper";
+import { FadeContext } from "./FadeContext";
 
 const Login = ({ contentHeight }) => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
@@ -16,7 +17,7 @@ const Login = ({ contentHeight }) => {
   });
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [triggerFadeOut, setTriggerFadeOut] = useState(false);
+  const { triggerFadeOut, setTriggerFadeOut } = useContext(FadeContext);
 
   const togglePassword = () => {
     setShowPassword((prev) => !prev);
@@ -53,6 +54,7 @@ const Login = ({ contentHeight }) => {
         localStorage.setItem("token", data.token);
         setLoggedIn(true);
         navigate("/dashboard");
+        setTriggerFadeOut(false);
         localStorage.setItem("expense-tracker-username", data.user.name);
       }, 300);
       if (!localStorage.getItem("Expense-Tracker-DayTheme")) {
@@ -60,7 +62,7 @@ const Login = ({ contentHeight }) => {
         setDayTheme(true);
       } else {
         // setDayTheme(localStorage.getItem("Expense-Tracker-DayTheme"));
-        console.log("Theme from login: ", dayTheme);
+        // console.log("Theme from login: ", dayTheme);
       }
     } catch (error) {
       console.error(error);
@@ -72,6 +74,7 @@ const Login = ({ contentHeight }) => {
     setTriggerFadeOut(true);
     setTimeout(() => {
       navigate("/register");
+      setTriggerFadeOut(false);
     }, 300);
   };
 

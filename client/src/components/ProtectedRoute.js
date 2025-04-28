@@ -6,7 +6,7 @@ import React from "react";
 const ProtectedRoute = ({ children }) => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
   const token = localStorage.getItem("token");
-  console.log("Protected route");
+  // console.log("Protected route");
 
   return token ? children : <Navigate to="/login" />;
 };

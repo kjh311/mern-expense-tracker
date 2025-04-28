@@ -55,7 +55,7 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
         [`${category}Budget`]: totalBudget,
       }));
     }
-    console.log("Category Breakdown UseEffect Ran");
+    // console.log("Category Breakdown UseEffect Ran");
   }, [data, category, setTotal]);
 
   if (!data || data.length === 0) return <p>No data</p>;

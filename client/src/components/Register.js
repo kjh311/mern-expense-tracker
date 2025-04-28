@@ -5,7 +5,8 @@ import Input from "./Input";
 import Button from "./Button";
 import { DayTheme } from "../App";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import FadeWrapper from "./FadeWrapper"; // Import the FadeWrapper component
+import FadeWrapper from "./FadeWrapper";
+import { FadeContext } from "./FadeContext";
 
 const Register = ({ contentHeight }) => {
   const [name, setName] = useState("");
@@ -14,7 +15,7 @@ const Register = ({ contentHeight }) => {
   const [message, setMessage] = useState("");
   const [dayTheme, setDayTheme] = useContext(DayTheme);
   const [showPassword, setShowPassword] = useState(false);
-  const [triggerFadeOut, setTriggerFadeOut] = useState(false);
+  const { triggerFadeOut, setTriggerFadeOut } = useContext(FadeContext);
   const navigate = useNavigate();
 
   const togglePassword = () => {
@@ -52,6 +53,7 @@ const Register = ({ contentHeight }) => {
     setTriggerFadeOut(true); // Trigger fade-out
     setTimeout(() => {
       navigate("/login"); // Navigate to login after fade-out
+      setTriggerFadeOut(false);
     }, 300);
   };
 
