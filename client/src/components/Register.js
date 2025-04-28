@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "./Input";
 import Button from "./Button";
 import { DayTheme } from "../App";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import FadeWrapper from "./FadeWrapper"; // Import the FadeWrapper component
 
 const Register = ({ contentHeight }) => {
   const [name, setName] = useState("");
@@ -13,6 +14,8 @@ const Register = ({ contentHeight }) => {
   const [message, setMessage] = useState("");
   const [dayTheme, setDayTheme] = useContext(DayTheme);
   const [showPassword, setShowPassword] = useState(false);
+  const [triggerFadeOut, setTriggerFadeOut] = useState(false);
+  const navigate = useNavigate();
 
   const togglePassword = () => {
     setShowPassword((prev) => !prev);
@@ -20,6 +23,7 @@ const Register = ({ contentHeight }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setTriggerFadeOut(true); // Trigger fade-out effect
 
     try {
       const response = await axios.post(
@@ -31,6 +35,11 @@ const Register = ({ contentHeight }) => {
         }
       );
       setMessage(response.data.message);
+
+      // Redirect after fade-out
+      setTimeout(() => {
+        navigate("/login");
+      }, 300); // Allow time for fade-out
     } catch (error) {
       setMessage(
         error.response ? error.response.data.error : "Something went wrong"
@@ -38,87 +47,88 @@ const Register = ({ contentHeight }) => {
     }
   };
 
+  const handleLoginClick = () => {
+    setTriggerFadeOut(true); // Trigger fade-out
+    setTimeout(() => {
+      navigate("/login"); // Navigate to login after fade-out
+    }, 300);
+  };
+
   return (
-    <div
-      style={{ minHeight: contentHeight }}
-      className={`register-container flex items-center justify-center ${
-        dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
-      }`}
-    >
+    <FadeWrapper triggerFadeOut={triggerFadeOut}>
+      {/* Wrap the component with FadeWrapper */}
       <div
-        className={`rounded-xl  p-8 w-full max-w-md transition-all duration-300 ${
-          dayTheme ? "day-theme-card" : "night-theme-card"
+        style={{ minHeight: contentHeight }}
+        className={`register-container flex items-center justify-center ${
+          dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
         }`}
       >
-        <h2
-          className={`text-2xl font-bold text-center mb-6 ${
-            dayTheme ? "login-day-theme-heading" : "login-night-theme-heading"
+        <div
+          className={`rounded-xl p-8 w-full max-w-md ${
+            dayTheme ? "day-theme-card" : "night-theme-card"
           }`}
         >
-          Create an Account
-        </h2>
-
-        <form
-          onSubmit={handleSubmit}
-          className={`transition-all duration-300 ${
-            dayTheme ? "register-form-day" : "register-form-night"
-          } space-y-4 flex justify-center flex-column`}
-        >
-          <Input
-            type={"text"}
-            placeholder={"Name"}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          <Input
-            type={"email"}
-            placeholder={"Email"}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <div className="password-input-container relative">
-            <Input
-              type={`${showPassword ? "text" : "password"}`}
-              placeholder={"Password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <div onClick={togglePassword} className="eye-icons">
-              {!showPassword ? <FaEyeSlash /> : <FaEye />}
-            </div>
-          </div>
-          <Button
-            type={"submit"}
-            text={"Register"}
-            color={dayTheme ? "blue" : "purple"}
-          />
-
-          {/* <button
-            type="submit"
-            className="w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition duration-200"
-          >
-            Register
-          </button> */}
-        </form>
-
-        {message && <p className="text-center mt-4 text-sm">{message}</p>}
-
-        <p className={`link-text`}>
-          Already have an account?
-          <Link
-            to="/login"
-            className={`ml-1 hover:underline text-center text-sm mt-4 ${
-              dayTheme ? "day-theme-link" : "night-theme-link"
+          <h2
+            className={`text-2xl font-bold text-center mb-6 ${
+              dayTheme ? "login-day-theme-heading" : "login-night-theme-heading"
             }`}
           >
-            Login
-          </Link>
-        </p>
+            Create an Account
+          </h2>
+
+          <form
+            onSubmit={handleSubmit}
+            className={`space-y-4 flex justify-center flex-column`}
+          >
+            <Input
+              type={"text"}
+              placeholder={"Name"}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+            <Input
+              type={"email"}
+              placeholder={"Email"}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <div className="password-input-container relative">
+              <Input
+                type={`${showPassword ? "text" : "password"}`}
+                placeholder={"Password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <div onClick={togglePassword} className="eye-icons">
+                {!showPassword ? <FaEyeSlash /> : <FaEye />}
+              </div>
+            </div>
+            <Button
+              type={"submit"}
+              text={"Register"}
+              color={dayTheme ? "blue" : "purple"}
+            />
+          </form>
+
+          {message && <p className="text-center mt-4 text-sm">{message}</p>}
+
+          <p className={`link-text`}>
+            Already have an account?
+            <span
+              className={`ml-1 hover:underline text-center text-sm mt-4 cursor-pointer ${
+                dayTheme ? "day-theme-link" : "night-theme-link"
+              }`}
+              onClick={handleLoginClick} // Trigger fade-out when clicking Login link
+            >
+              Login
+            </span>
+          </p>
+        </div>
       </div>
-    </div>
+    </FadeWrapper>
   );
 };
 

@@ -73,10 +73,10 @@ const UpdateSubcategory = ({
 
       {editModeSubcategory && (
         <div
-          className={`relative text-center p-4 outline m-2 rounded-xl w-100 transition-all duration-300 ${
+          className={`relative text-center p-4 outline m-2 rounded-xl w-100 my-animation ${
             dayTheme
-              ? `transition-all duration-300 accordion-body-day overview-accordion-body-${backgroundColor}`
-              : `transition-all duration-300 accordion-body-night overview-accordion-body-${backgroundColor}`
+              ? `my-animation accordion-body-day overview-accordion-body-${backgroundColor}`
+              : `my-animation accordion-body-night overview-accordion-body-${backgroundColor}`
           }`}
         >
           <button
@@ -87,9 +87,7 @@ const UpdateSubcategory = ({
           </button>
           <form onSubmit={handleSubcategoryUpdate} className="text-center">
             <label
-              className={`transition-all duration-300 ${
-                dayTheme ? "day-text" : "text-white"
-              }`}
+              className={`my-animation ${dayTheme ? "day-text" : "text-white"}`}
             >
               Subcategory Name:
             </label>
@@ -102,9 +100,7 @@ const UpdateSubcategory = ({
             />
             <br />
             <label
-              className={`transition-all duration-300 ${
-                dayTheme ? "day-text" : "text-white"
-              }`}
+              className={`my-animation ${dayTheme ? "day-text" : "text-white"}`}
             >
               Budget for the month:
             </label>

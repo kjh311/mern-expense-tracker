@@ -89,18 +89,14 @@ const UpdateTransaction = ({
             </button>
           </div>
           <h2
-            className={`transition-all duration-300 ${
-              dayTheme ? "day-text" : "text-white"
-            }`}
+            className={`my-animation ${dayTheme ? "day-text" : "text-white"}`}
           >
             Update transaction:
           </h2>
 
           <label
             htmlFor="descriptionInput"
-            className={`transition-all duration-300 ${
-              dayTheme ? "day-text" : "text-white"
-            }`}
+            className={`my-animation ${dayTheme ? "day-text" : "text-white"}`}
           >
             Description:
           </label>
@@ -113,9 +109,7 @@ const UpdateTransaction = ({
 
           <br />
           <label
-            className={`transition-all duration-300 ${
-              dayTheme ? "day-text" : "text-white"
-            }`}
+            className={`my-animation ${dayTheme ? "day-text" : "text-white"}`}
           >
             Amount:
           </label>
@@ -126,7 +120,7 @@ const UpdateTransaction = ({
           />
           <br />
           <label
-            className={`transition-all duration-300 m-2 ${
+            className={`my-animation m-2 ${
               dayTheme ? "day-text" : "text-white"
             }`}
           >
@@ -139,7 +133,7 @@ const UpdateTransaction = ({
           />
           <br />
           {/* <label
-            className={`transition-all duration-300 ${
+            className={`my-animation ${
               dayTheme ? "day-text" : "text-white"
             }`}
           >

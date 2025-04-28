@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DayTheme } from "../App";
 
 const Input = ({
   placeholder,
@@ -9,9 +10,13 @@ const Input = ({
   name,
   type,
 }) => {
+  const [dayTheme, setDayTheme] = useContext(DayTheme);
+
   return (
     <input
-      className=" text-black text-center placeholder-gray-400 w-full max-w-md border m-2  p-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+      className={`input-${
+        dayTheme ? "day" : "night"
+      } my-animation  text-center  w-full max-w-md  my-2  p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400`}
       type={type}
       value={value}
       placeholder={placeholder}

@@ -16,7 +16,7 @@ const Navbar = ({ ref }) => {
     <nav
       ref={ref}
       id="navbar"
-      className={`z-10 w-full sticky top-0 nav-bar relative transition-all duration-300 ${
+      className={`z-10 w-full sticky top-0 nav-bar relative my-animation ${
         dayTheme ? "day-nav text-white" : "night-nav text-blue-100"
       }`}
     >

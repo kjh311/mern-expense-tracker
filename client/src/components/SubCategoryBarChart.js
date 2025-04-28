@@ -102,7 +102,7 @@ const SubCategoryBarChart = ({ data, category }) => {
   };
 
   return (
-    <div className="my-8 transition-all duration-300 hidden sm:block">
+    <div className="my-8 my-animation hidden sm:block">
       <h3
         className="text-center text-2xl font-bold mb-4"
         style={{ color: textColor, transition: "color 0.3s ease" }}

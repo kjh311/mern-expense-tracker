@@ -24,7 +24,7 @@ const DayThemeToggle = () => {
       className=" day-theme-button relative w-10 h-10"
     >
       <Player
-        className={`theme-icon sun-icon absolute  transition-all duration-500 ease-in-out transform ${
+        className={`theme-icon sun-icon absolute  daytheme-icon-animation transform ${
           dayTheme
             ? "opacity-100 rotate-0 scale-100"
             : "opacity-0 rotate-180 scale-50"
@@ -35,7 +35,7 @@ const DayThemeToggle = () => {
         style={{ height: "75px", width: "75px" }}
       />
       <Player
-        className={`theme-icon moon-icon absolute  transition-all duration-500 ease-in-out transform ${
+        className={`theme-icon moon-icon absolute  daytheme-icon-animation transform ${
           dayTheme
             ? "opacity-0 rotate-0 scale-50"
             : "opacity-100 rotate-180 scale-80"
@@ -45,20 +45,6 @@ const DayThemeToggle = () => {
         src={moonAnimation}
         style={{ height: "60px", width: "60px" }}
       />
-      {/* <FaSun
-        className={`theme-icon text-yellow-400 text-3xl absolute top-0 left-0 transition-all duration-500 ease-in-out transform ${
-          dayTheme
-            ? "opacity-100 rotate-0 scale-100"
-            : "opacity-0 rotate-180 scale-90"
-        }`}
-      /> */}
-      {/* <FaMoon
-        className={`theme-icon  text-yellow-400 text-3xl absolute top-0 left-0 transition-all duration-500 ease-in-out transform ${
-          dayTheme
-            ? "opacity-0 rotate-0 scale-90"
-            : "opacity-100 rotate-180 scale-100"
-        }`}
-      /> */}
     </button>
   );
 };

@@ -56,16 +56,16 @@ const PostNewSubcategory = ({
   };
 
   return (
-    <AccordionItem eventKey="new" className={`transition-all duration-300 `}>
+    <AccordionItem eventKey="new" className={`my-animation `}>
       <AccordionHeader
         className={`${
           dayTheme ? "accordion-header-day" : "accordion-header-night"
-        } transition-all duration-300 w-full flex justify-center items-center
+        } my-animation w-full flex justify-center items-center
           ${PostNewTransactionHighestHeaderColors(category, dayTheme)}
            `}
       >
         <h2
-          className={`text-2xl text-shadow font-semibold  text-center w-full transition-all duration-300 ${
+          className={`text-2xl text-shadow font-semibold  text-center w-full my-animation ${
             dayTheme ? "day-text" : "text-white"
           }`}
         >
@@ -75,7 +75,7 @@ const PostNewSubcategory = ({
       <AccordionBody
         className={`${
           dayTheme ? "accordion-body-day" : "accordion-body-night"
-        } py-6 transition-all duration-300  ${PostNewTransactionHighestBodyColors(
+        } py-6 my-animation  ${PostNewTransactionHighestBodyColors(
           category,
           dayTheme
         )}

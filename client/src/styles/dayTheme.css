@@ -1,6 +1,43 @@
 @import url("./variables.css");
 
+/* app themes */
+.day-app {
+  background-color: var(--light-7);
+  transition: all 0.3s ease;
+}
+
+.night-app {
+  background-color: var(--dark-1);
+  transition: all 0.3s ease;
+}
+
 /* login themes */
+
+.input-day,
+.input-day::placeholder {
+  /* border: 1px solid black !important; */
+  transition: all 0.3s ease;
+  color: var(--blue-5);
+}
+
+.input-day {
+  border: 1px solid black !important;
+  transition: all 0.3s ease;
+}
+
+.input-night {
+  border: 1px solid rgba(255, 255, 255, 0) !important;
+  transition: all 0.3s ease;
+}
+
+.input-night::placeholder,
+.input-night {
+  /* box-shadow: 0 0 5px 2px white !important; */
+  /* background-color: var(--dark-6); */
+  /* border: 1px solid rgba(0, 0, 0, 0) !important; */
+  color: var(--dark-5);
+  transition: all 0.3s ease;
+}
 
 .login-container,
 .register-container {
@@ -14,14 +51,14 @@
 .login-day-theme-bg {
   /* background: linear-gradient(45deg, #3a3aed, #f9f2a9); */
   /* background-color: #81d7f1; */
-  background-color: var(--light-7);
+  /* background-color: var(--light-7); */
   transition: all 0.3s ease;
 }
 
 .login-night-theme-bg {
   /* background: linear-gradient(45deg, #050558, #c3c3f8);  */
   /* background-color: #050558; */
-  background-color: var(--dark-1);
+  /* background-color: var(--dark-1); */
   transition: all 0.3s ease;
 }
 

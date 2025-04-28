@@ -37,7 +37,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
 
   return (
     <div
-      className={` max-w-[1400px]  w-full  m-10  p-4 rounded transition-all duration-300 ${
+      className={` max-w-[1400px]  w-full  m-10  p-4 rounded my-animation ${
         dayTheme ? "overview-category-card-day" : "overview-category-card-night"
       }`}
     >
@@ -49,19 +49,19 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
         <Accordion.Item
           eventKey="main"
           ref={mainAccordionRef}
-          className={`transition-all duration-300 ${
+          className={`my-animation ${
             dayTheme ? "overview-item-day" : "overview-item-night"
           }`}
         >
           <Accordion.Header
-            className={`transition-all duration-300 ${
+            className={`my-animation ${
               dayTheme
                 ? "accordion-header-day-overview"
                 : "accordion-header-night-overview"
             }`}
           >
             <div
-              className={`flex flex-col items-center w-full transition-all duration-300 ${
+              className={`flex flex-col items-center w-full my-animation ${
                 dayTheme ? "day-text" : "text-white"
               }`}
             >
@@ -77,7 +77,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                   <span className="text-3xl">💵</span> Cashflow:
                   <br />
                   <span
-                    className={`transition-all duration-300 ${
+                    className={`my-animation ${
                       cashflow > 0 ? "text-blue-800" : "text-red-500"
                     }`}
                   >
@@ -85,7 +85,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                   </span>
                 </span>
                 <span
-                  className={`transition-all duration-300 ${
+                  className={`my-animation ${
                     dayTheme ? "day-text" : "text-white"
                   } font-semibold`}
                 >
@@ -93,7 +93,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                   <br /> {formattedCurrency(totalBudget)}
                 </span>
                 <span
-                  className={`transition-all duration-300 ${
+                  className={`my-animation ${
                     dayTheme ? "day-text" : "text-white"
                   } font-semibold`}
                 >
@@ -102,7 +102,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
                   {formattedCurrency(totalIncome)}
                 </span>
                 <span
-                  className={`transition-all duration-300 ${
+                  className={`my-animation ${
                     dayTheme ? "day-text" : "text-white"
                   } font-semibold`}
                 >
@@ -115,7 +115,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
           </Accordion.Header>
 
           <Accordion.Body
-            className={`transition-all duration-300 ${
+            className={`my-animation ${
               dayTheme
                 ? "overview-accordion-body-day"
                 : "overview-accordion-body-night"
@@ -123,7 +123,7 @@ const Overview = ({ mainKey, mainAccordionKey, setMainAccordionKey }) => {
           >
             <div className="p-4  rounded shadow-md">
               <h2
-                className={`text-xl font-bold mb-4 text-center transition-all duration-300 ${
+                className={`text-xl font-bold mb-4 text-center my-animation ${
                   dayTheme ? "day-text" : "text-white"
                 }`}
               >

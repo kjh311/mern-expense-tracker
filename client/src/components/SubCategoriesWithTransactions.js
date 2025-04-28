@@ -66,7 +66,7 @@ const SubCategoriesWithTransactions = ({
 
   return (
     <div
-      className={`category-card max-w-[1400px] myBorder w-full mx-auto ${backgroundColor} shadow-md m-2 p-4 transition-all duration-300 ${
+      className={`category-card max-w-[1400px] myBorder w-full mx-auto ${backgroundColor} shadow-md m-2 p-4 my-animation ${
         dayTheme ? "category-card-day" : "category-card-night"
       }`}
     >
@@ -76,12 +76,12 @@ const SubCategoriesWithTransactions = ({
       >
         <Accordion.Item
           eventKey="main"
-          className={`transition-all duration-300 ${
+          className={`my-animation ${
             dayTheme ? "accordion-item-day" : "accordion-item-night"
           }`}
         >
           <Accordion.Header
-            className={`transition-all duration-300 accordion-header-${
+            className={`my-animation accordion-header-${
               dayTheme ? "day" : "night"
             } ${
               dayTheme
@@ -90,7 +90,7 @@ const SubCategoriesWithTransactions = ({
             }`}
           >
             <div
-              className={`transition-all duration-300 flex flex-col items-center w-full ${
+              className={`my-animation flex flex-col items-center w-full ${
                 dayTheme ? "day-text" : "text-white"
               }`}
             >
@@ -105,10 +105,10 @@ const SubCategoriesWithTransactions = ({
           </Accordion.Header>
 
           <Accordion.Body
-            className={`transition-all duration-300 ${
+            className={`my-animation ${
               dayTheme
-                ? `transition-all duration-300 accordion-body-day overview-accordion-body-${backgroundColor}`
-                : `transition-all duration-300 accordion-body-night overview-accordion-body-${backgroundColor}`
+                ? `my-animation accordion-body-day overview-accordion-body-${backgroundColor}`
+                : `my-animation accordion-body-night overview-accordion-body-${backgroundColor}`
             }`}
           >
             <SubCategoryBarChart
@@ -121,7 +121,7 @@ const SubCategoriesWithTransactions = ({
               dayTheme={dayTheme}
             />
             <h2
-              className={`transition-all duration-300 text-center text-shadow ${
+              className={`my-animation text-center text-shadow ${
                 dayTheme ? "day-text" : "text-white"
               }`}
             >
@@ -136,12 +136,12 @@ const SubCategoriesWithTransactions = ({
                 <Accordion.Item
                   eventKey={idx.toString()}
                   key={sub._id}
-                  className={`mx-2 my-4 transition-all duration-300 ${
+                  className={`mx-2 my-4 my-animation ${
                     dayTheme ? "accordion-item-day" : "accordion-item-night"
                   }`}
                 >
                   <Accordion.Header
-                    className={`transition-all duration-300  accordion-header-${
+                    className={`my-animation  accordion-header-${
                       dayTheme ? "day" : "night"
                     } ${
                       dayTheme
@@ -150,7 +150,7 @@ const SubCategoriesWithTransactions = ({
                     }`}
                   >
                     <div
-                      className={`transition-all duration-300 flex flex-col w-full gap-4 px-2 ${
+                      className={`my-animation flex flex-col w-full gap-4 px-2 ${
                         dayTheme ? "day-text" : "text-white"
                       }`}
                     >
@@ -191,16 +191,16 @@ const SubCategoriesWithTransactions = ({
                                   0
                                 ) <
                               0
-                                ? `transition-all duration-300 ${
+                                ? `my-animation ${
                                     dayTheme ? "text-red-600" : "text-white"
                                   } font-bold`
-                                : `transition-all duration-300 ${
+                                : `my-animation ${
                                     dayTheme ? "text-green-600" : "text-white"
                                   }`
                             }`}
                           >
                             <span
-                              className={`transition-all duration-300 ${
+                              className={`my-animation ${
                                 dayTheme ? "day-text" : "text-white"
                               }`}
                             >
@@ -219,10 +219,10 @@ const SubCategoriesWithTransactions = ({
                     </div>
                   </Accordion.Header>
                   <Accordion.Body
-                    className={`transition-all duration-300 ${
+                    className={`my-animation ${
                       dayTheme
-                        ? `transition-all duration-300 accordion-body-day overview-higher-accordion-body-${backgroundColor}`
-                        : `transition-all duration-300 accordion-body-night overview-higher-accordion-body-${backgroundColor}`
+                        ? `my-animation accordion-body-day overview-higher-accordion-body-${backgroundColor}`
+                        : `my-animation accordion-body-night overview-higher-accordion-body-${backgroundColor}`
                     }`}
                   >
                     <div className="flex justify-around flex-wrap">
@@ -256,7 +256,7 @@ const SubCategoriesWithTransactions = ({
                     )}
 
                     <h2
-                      className={`transition-all duration-300 text-center text-shadow ${
+                      className={`my-animation text-center text-shadow ${
                         dayTheme ? "day-text" : "text-white"
                       }`}
                     >
@@ -284,10 +284,10 @@ const SubCategoriesWithTransactions = ({
                         {sub.transactions.map((tx) => (
                           <li
                             key={tx._id}
-                            className={`transaction-item relative  rounded-md my-3 p-3  transition-all duration-300 ease-in-out ${
+                            className={`transaction-item relative  rounded-md my-3 p-3  my-animation ease-in-out ${
                               dayTheme
-                                ? `transition-all duration-300 accordion-body-day overview-highest-accordion-body-${backgroundColor}`
-                                : `transition-all duration-300 accordion-body-night overview-highest-accordion-body-${backgroundColor}`
+                                ? `my-animation accordion-body-day overview-highest-accordion-body-${backgroundColor}`
+                                : `my-animation accordion-body-night overview-highest-accordion-body-${backgroundColor}`
                             }
                             ${
                               animatingId === tx._id
@@ -300,7 +300,7 @@ const SubCategoriesWithTransactions = ({
                               <>
                                 <div>
                                   <span
-                                    className={`font-semibold text-shadow text-base sm:text-lg lg:text-3xl block text-center sm:text-left transition-all duration-300 ${
+                                    className={`font-semibold text-shadow text-base sm:text-lg lg:text-3xl block text-center sm:text-left my-animation ${
                                       dayTheme ? "day-text" : "text-white"
                                     }`}
                                   >
@@ -309,7 +309,7 @@ const SubCategoriesWithTransactions = ({
                                 </div>
 
                                 <div
-                                  className={`flex flex-col sm:flex-row justify-around items-center mt-2 gap-1 lg:text-lg sm:text-sm transition-all duration-300 ${
+                                  className={`flex flex-col sm:flex-row justify-around items-center mt-2 gap-1 lg:text-lg sm:text-sm my-animation ${
                                     dayTheme ? "day-text" : "text-white"
                                   }`}
                                 >

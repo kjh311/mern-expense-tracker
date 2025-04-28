@@ -40,7 +40,7 @@ function App() {
   const [contentHeight, setContentHeight] = useState("100vh");
 
   return (
-    <div className="App">
+    <div className={`App ${dayTheme ? "day-app" : "night-app"}`}>
       <DayTheme.Provider value={[dayTheme, setDayTheme]}>
         <TransactionsTotal.Provider value={[total, setTotal]}>
           <LoggedInContext.Provider value={[loggedIn, setLoggedIn]}>

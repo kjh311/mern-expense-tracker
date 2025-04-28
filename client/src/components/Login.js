@@ -4,6 +4,7 @@ import { LoggedInContext, DayTheme } from "../App";
 import Input from "./Input";
 import Button from "./Button";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import FadeWrapper from "./FadeWrapper";
 
 const Login = ({ contentHeight }) => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
@@ -15,6 +16,7 @@ const Login = ({ contentHeight }) => {
   });
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [triggerFadeOut, setTriggerFadeOut] = useState(false);
 
   const togglePassword = () => {
     setShowPassword((prev) => !prev);
@@ -45,10 +47,14 @@ const Login = ({ contentHeight }) => {
 
       if (!data.token) return alert(data.message || "Login failed");
 
-      localStorage.setItem("token", data.token);
-      setLoggedIn(true);
-      navigate("/dashboard");
-      localStorage.setItem("expense-tracker-username", data.user.name);
+      setTriggerFadeOut(true);
+
+      setTimeout(() => {
+        localStorage.setItem("token", data.token);
+        setLoggedIn(true);
+        navigate("/dashboard");
+        localStorage.setItem("expense-tracker-username", data.user.name);
+      }, 300);
       if (!localStorage.getItem("Expense-Tracker-DayTheme")) {
         localStorage.setItem("Expense-Tracker-DayTheme", true);
         setDayTheme(true);
@@ -62,71 +68,85 @@ const Login = ({ contentHeight }) => {
     }
   };
 
+  const handleRegisterClick = () => {
+    setTriggerFadeOut(true);
+    setTimeout(() => {
+      navigate("/register");
+    }, 300);
+  };
+
   return (
-    <div
-      style={{ minHeight: contentHeight }}
-      className={`login-container  ${
-        dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
-      }`}
-    >
+    <FadeWrapper triggerFadeOut={triggerFadeOut}>
       <div
-        className={`login-card ${
-          dayTheme ? "day-theme-card" : "night-theme-card "
+        style={{ minHeight: contentHeight }}
+        className={`login-container  ${
+          dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
         }`}
       >
-        <h2
-          className={`login-heading ${
-            dayTheme ? "login-day-theme-heading" : "login-night-theme-heading"
+        <div
+          className={`login-card ${
+            dayTheme ? "day-theme-card" : "night-theme-card "
           }`}
         >
-          Login
-        </h2>
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4 flex justify-center flex-column form"
-        >
-          <Input
-            type={"email"}
-            name={"email"}
-            value={formData.email}
-            onChange={handleChange}
-            placeholder={"Email"}
-            required
-          />
-          <div className="password-input-container relative">
-            <Input
-              type={`${showPassword ? "text" : "password"}`}
-              name={"password"}
-              value={formData.password}
-              onChange={handleChange}
-              placeholder={"Password"}
-              required
-            />
-            <div onClick={togglePassword} className="eye-icons">
-              {!showPassword ? <FaEyeSlash /> : <FaEye />}
-            </div>
-          </div>
-          <Button
-            type={"submit"}
-            text={"Login"}
-            color={dayTheme ? "blue" : "purple"}
-          />
-        </form>
-        {message && <p className="text-center mt-4 text-sm">{message}</p>}
-
-        <p className={`link-text`}>
-          Don’t have an account?
-          <Link
-            to="/register"
-            className={`ml-1 hover:underline ${
-              dayTheme ? "day-theme-link" : "night-theme-link"
+          <h2
+            className={`login-heading ${
+              dayTheme ? "login-day-theme-heading" : "login-night-theme-heading"
             }`}
           >
-            Register
-          </Link>
-        </p>
+            Login
+          </h2>
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-4 flex justify-center flex-column form"
+          >
+            <Input
+              type={"email"}
+              name={"email"}
+              value={formData.email}
+              onChange={handleChange}
+              placeholder={"Email"}
+              required
+            />
+            <div className="password-input-container relative">
+              <Input
+                type={`${showPassword ? "text" : "password"}`}
+                name={"password"}
+                value={formData.password}
+                onChange={handleChange}
+                placeholder={"Password"}
+                required
+              />
+              <div
+                onClick={togglePassword}
+                className={`eye-icons ${
+                  dayTheme ? "eye-icon-day" : "eye-icon-night"
+                }`}
+              >
+                {!showPassword ? <FaEyeSlash /> : <FaEye />}
+              </div>
+            </div>
+            <Button
+              type={"submit"}
+              text={"Login"}
+              color={dayTheme ? "blue" : "purple"}
+            />
+          </form>
+          {message && <p className="text-center mt-4 text-sm">{message}</p>}
+
+          <p className={`link-text`}>
+            Don’t have an account?
+            <span
+              onClick={handleRegisterClick}
+              className={`ml-1 hover:underline cursor-pointer ${
+                dayTheme ? "day-theme-link" : "night-theme-link"
+              }`}
+            >
+              Register
+            </span>
+          </p>
+        </div>
       </div>
-    </div>
+    </FadeWrapper>
   );
 };
 

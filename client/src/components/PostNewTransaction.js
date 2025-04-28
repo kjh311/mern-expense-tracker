@@ -58,12 +58,12 @@ const PostNewTransaction = ({
       <Accordion className="mb-2 lg:w-50 sm:w-full">
         <AccordionItem
           eventKey="newTransaction"
-          className={`transition-all duration-300 ${
+          className={`my-animation ${
             dayTheme ? "overview-item-day" : "overview-item-night"
           }`}
         >
           <AccordionHeader
-            className={`transition-all duration-300  accordion-header-${
+            className={`my-animation  accordion-header-${
               dayTheme ? "day" : "night"
             } ${
               dayTheme
@@ -72,13 +72,13 @@ const PostNewTransaction = ({
             }`}
           >
             <h2
-              className={`transition-all duration-300 text-2xl text-shadow font-semibold text-center w-full ${
+              className={`my-animation text-2xl text-shadow font-semibold text-center w-full ${
                 dayTheme ? "day-text" : "text-white"
               }`}
             >
               Add New Transaction{" "}
               <span
-                className={`transition-all duration-300 text-3xl ${
+                className={`my-animation text-3xl ${
                   dayTheme ? "text-red-500" : "white"
                 }`}
               >
@@ -88,10 +88,10 @@ const PostNewTransaction = ({
           </AccordionHeader>
 
           <AccordionBody
-            className={`transition-all duration-300 ${
+            className={`my-animation ${
               dayTheme
-                ? `transition-all duration-300 accordion-body-day overview-highest-accordion-body-${backgroundColor}`
-                : `transition-all duration-300 accordion-body-night overview-highest-accordion-body-${backgroundColor}`
+                ? `my-animation accordion-body-day overview-highest-accordion-body-${backgroundColor}`
+                : `my-animation accordion-body-night overview-highest-accordion-body-${backgroundColor}`
             }`}
           >
             <form

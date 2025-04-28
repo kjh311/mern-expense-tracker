@@ -18,14 +18,14 @@ const Dashboard = ({ contentHeight }) => {
           dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
         }`}
       >
-        {userName && (
-          <h3
-            className={`text-center transition-all duration-300 ${
-              dayTheme ? "text-black" : "night-theme-link"
+        {userName !== "" && (
+          <h2
+            className={`text-center  my-animation ${
+              dayTheme ? "text-blue-800" : "night-theme-link"
             }`}
           >
-            Welcome {userName}!
-          </h3>
+            Welcome, {userName}!
+          </h2>
         )}
         <Overview
           mainKey="0"
