@@ -199,6 +199,21 @@ ul {
   transition: all 0.3s; */
 }
 
+/* .theme-icon {
+  left: -15px;
+  top: -15px;
+} */
+
+.sun-icon {
+  left: -17px;
+  top: -19px;
+}
+
+.moon-icon {
+  left: -12px;
+  top: -12px;
+}
+
 .subcategory-bar-chart {
   max-height: 200px;
   /* max-width: 50%; */
