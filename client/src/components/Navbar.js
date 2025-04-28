@@ -1,13 +1,15 @@
 import React, { useContext, forwardRef } from "react";
 import { LoggedInContext, DayTheme } from "../App";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logout from "./Logout";
 import DayThemeToggle from "./DayThemeToggle";
 import Button from "./Button";
+import { useFadeNavigate } from "../hooks/useFadeNavigate";
 
 const Navbar = ({ ref }) => {
   const [loggedIn] = useContext(LoggedInContext);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const fadeNavigate = useFadeNavigate();
 
   // console.log("Name: " + data.user.name);
   // console.log("Daytheme from Navbar: ", dayTheme);
@@ -21,14 +23,15 @@ const Navbar = ({ ref }) => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-around">
-        <Link
-          to="/"
+        <button
+          onClick={() => fadeNavigate("/")}
           className={`nav-bar-text text-2xl font-extrabold tracking-wide  transition ${
             dayTheme ? "text-white" : "night-footer-link"
           }`}
         >
+          {" "}
           Budget Tracker
-        </Link>
+        </button>
 
         <div>
           {loggedIn ? (

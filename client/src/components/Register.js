@@ -23,7 +23,6 @@ const Register = ({ contentHeight }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setTriggerFadeOut(true); // Trigger fade-out effect
 
     try {
       const response = await axios.post(
@@ -35,6 +34,8 @@ const Register = ({ contentHeight }) => {
         }
       );
       setMessage(response.data.message);
+
+      setTriggerFadeOut(true); // Trigger fade-out effect
 
       // Redirect after fade-out
       setTimeout(() => {
@@ -59,17 +60,17 @@ const Register = ({ contentHeight }) => {
       {/* Wrap the component with FadeWrapper */}
       <div
         style={{ minHeight: contentHeight }}
-        className={`register-container flex items-center justify-center ${
+        className={`my-animation register-container flex items-center justify-center ${
           dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
         }`}
       >
         <div
-          className={`rounded-xl p-8 w-full max-w-md ${
+          className={`my-animation rounded-xl p-8 w-full max-w-md ${
             dayTheme ? "day-theme-card" : "night-theme-card"
           }`}
         >
           <h2
-            className={`text-2xl font-bold text-center mb-6 ${
+            className={`my-animation text-2xl font-bold text-center mb-6 ${
               dayTheme ? "login-day-theme-heading" : "login-night-theme-heading"
             }`}
           >

@@ -10,6 +10,7 @@ import Home from "./components/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/Footer";
 import UpdateHeights from "./components/UpdateHeights";
+import { FadeProvider } from "./components/FadeContext";
 
 export const LoggedInContext = React.createContext();
 export const TransactionsTotal = React.createContext();
@@ -41,47 +42,49 @@ function App() {
 
   return (
     <div className={`App ${dayTheme ? "day-app" : "night-app"}`}>
-      <DayTheme.Provider value={[dayTheme, setDayTheme]}>
-        <TransactionsTotal.Provider value={[total, setTotal]}>
-          <LoggedInContext.Provider value={[loggedIn, setLoggedIn]}>
-            <Router>
-              <UpdateHeights
-                navbarRef={navbarRef}
-                footerRef={footerRef}
-                setContentHeight={setContentHeight}
-              />
-              <Navbar ref={navbarRef} />
-              <Routes>
-                <Route
-                  exact
-                  path="/"
-                  element={<Home contentHeight={contentHeight} />}
+      <FadeProvider>
+        <DayTheme.Provider value={[dayTheme, setDayTheme]}>
+          <TransactionsTotal.Provider value={[total, setTotal]}>
+            <LoggedInContext.Provider value={[loggedIn, setLoggedIn]}>
+              <Router>
+                <UpdateHeights
+                  navbarRef={navbarRef}
+                  footerRef={footerRef}
+                  setContentHeight={setContentHeight}
                 />
-                <Route
-                  exact
-                  path="/register"
-                  element={<Register contentHeight={contentHeight} />}
-                />
-                <Route
-                  exact
-                  path="/login"
-                  element={<Login contentHeight={contentHeight} />}
-                />
-                <Route
-                  exact
-                  path="/dashboard"
-                  element={
-                    <ProtectedRoute>
-                      <Dashboard contentHeight={contentHeight} />
-                    </ProtectedRoute>
-                  }
-                />
-              </Routes>
-            </Router>
-            <Footer ref={navbarRef} />
-          </LoggedInContext.Provider>
-        </TransactionsTotal.Provider>
-      </DayTheme.Provider>
+                <Navbar ref={navbarRef} />
+                <Routes>
+                  <Route
+                    exact
+                    path="/"
+                    element={<Home contentHeight={contentHeight} />}
+                  />
+                  <Route
+                    exact
+                    path="/register"
+                    element={<Register contentHeight={contentHeight} />}
+                  />
+                  <Route
+                    exact
+                    path="/login"
+                    element={<Login contentHeight={contentHeight} />}
+                  />
+                  <Route
+                    exact
+                    path="/dashboard"
+                    element={
+                      <ProtectedRoute>
+                        <Dashboard contentHeight={contentHeight} />
+                      </ProtectedRoute>
+                    }
+                  />
+                </Routes>
+              </Router>
+              <Footer ref={navbarRef} />
+            </LoggedInContext.Provider>
+          </TransactionsTotal.Provider>
+        </DayTheme.Provider>
+      </FadeProvider>
     </div>
   );
 }

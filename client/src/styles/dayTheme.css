@@ -247,8 +247,8 @@
 .accordion-header-day .accordion-button[aria-expanded="true"],
 .accordion-header-day .accordion-button[aria-expanded="false"],
 .overview-accordion-body-day {
-  border: 2px solid black !important;
-  outline: none !important;
+  outline: 2px solid black !important;
+  /* outline: none !important; */
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   /* background-color: white !important; */

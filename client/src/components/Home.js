@@ -5,6 +5,7 @@ import { DayTheme, LoggedInContext } from "../App";
 import { Player } from "@lottiefiles/react-lottie-player";
 import moneyAnimation from "../assets/Money-Animation.json";
 import FadeWrapper from "./FadeWrapper"; // import FadeWrapper
+import { FadeContext } from "./FadeContext";
 
 const Home = ({ contentHeight }) => {
   const [dayTheme, setDayTheme] = useContext(DayTheme);
@@ -13,7 +14,7 @@ const Home = ({ contentHeight }) => {
     localStorage.getItem("expense-tracker-username") || ""
   );
   const navigate = useNavigate();
-  const [triggerFadeOut, setTriggerFadeOut] = useState(false);
+  const { triggerFadeOut, setTriggerFadeOut } = useContext(FadeContext);
 
   const handleStartClick = () => {
     setTriggerFadeOut(true);
@@ -23,6 +24,7 @@ const Home = ({ contentHeight }) => {
       } else {
         navigate(loggedIn ? "/dashboard" : "/register");
       }
+      setTriggerFadeOut(false);
     }, 300);
   };
 
