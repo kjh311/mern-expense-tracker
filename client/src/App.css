@@ -211,12 +211,16 @@ ul {
 
 .sun-icon {
   left: -17px;
-  top: -19px;
+  top: -23px;
+  width: 75px;
+  height: 75px;
 }
 
 .moon-icon {
   left: -12px;
-  top: -12px;
+  top: -15px;
+  height: 60px;
+  width: 60px;
 }
 
 .subcategory-bar-chart {
@@ -272,4 +276,31 @@ ul {
 
 .rel-icon {
   fill: white;
+}
+
+@media only screen and (max-width: 640px) {
+  .sun-icon {
+    left: -17px;
+    top: -16px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .moon-icon {
+    left: -12px;
+    top: -12px;
+    height: 50px;
+    width: 50px;
+  }
+
+  .button-shadow:hover,
+  .button-glow:hover {
+    transform: scale(1);
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0);
+  }
+
+  .button-shadow:active,
+  .button-glow:active {
+    transform: scale(0.9);
+  }
 }

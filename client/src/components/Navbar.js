@@ -31,16 +31,15 @@ const Navbar = ({ ref }) => {
         dayTheme ? "day-nav text-white" : "night-nav text-blue-100"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-around">
+      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-start sm:justify-around">
         <button
           onClick={() => fadeNavigate("/")}
-          className={`nav-bar-text text-2xl font-extrabold tracking-wide  transition ${
+          className={`nav-bar-text text-xl px-2 sm:px-4 sm:text-2xl font-extrabold tracking-wide  transition ${
             dayTheme ? "text-white text-shadow" : "night-footer-link"
           }`}
         >
           {" "}
-          <span className={`daytheme ? "text-5xl" : "text-lg"`}>💸</span> Budget
-          Tracker
+          <span>💸</span> Budget Tracker
         </button>
 
         <div>

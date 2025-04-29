@@ -77,7 +77,7 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
                 const now = new Date();
                 return (
                   transactionMonth === currentMonthIndex + 1 &&
-                  transactionYear === now.getFullYear()
+                  transactionYear === currentYear
                 );
               }
             );
@@ -100,7 +100,7 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
     };
 
     fetchData();
-  }, [category, refreshFlag, currentMonthIndex]);
+  }, [category, refreshFlag, currentMonthIndex, currentYear]);
 
   useEffect(() => {
     // if (data && data.length > 0) {
