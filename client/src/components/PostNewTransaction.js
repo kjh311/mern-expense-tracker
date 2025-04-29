@@ -119,14 +119,14 @@ const PostNewTransaction = ({
               />
 
               <label
-                className={`my-animation m-2 ${
+                className={`my-animation  ${
                   dayTheme ? "day-text" : "text-white"
                 }`}
               >
                 Date:
               </label>
               <DatePicker
-                className="p-2 m-2 border text-center w-full"
+                className="p-2  border text-center w-full"
                 selected={dateInput}
                 onChange={(dateInput) => setDateInput(dateInput)}
               />

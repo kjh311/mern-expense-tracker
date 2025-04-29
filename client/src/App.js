@@ -23,11 +23,16 @@ function App() {
     const stored = localStorage.getItem("Expense-Tracker-DayTheme");
     return stored === "true";
   });
-  const [currentMonthIndex, setCurrentMonthIndex] = useState(
-    new Date().getMonth()
-  );
+  const now = new Date();
+  const [dateState, setDateState] = useState({
+    month: now.getMonth(), // 0-based
+    year: now.getFullYear(),
+  });
+  // const [currentMonthIndex, setCurrentMonthIndex] = useState(
+  //   new Date().getMonth()
+  // );
 
-  console.log("Current month index: ", currentMonthIndex);
+  // console.log("Current month index: ", currentMonthIndex);
 
   // console.log("Daytheme from appjs: ", dayTheme);
 
@@ -42,9 +47,9 @@ function App() {
     billsBudget: 0,
   });
 
-  useEffect(() => {
-    console.log(total);
-  }, [currentMonthIndex]);
+  // useEffect(() => {
+  //   console.log(total);
+  // }, [currentMonthIndex]);
 
   const navbarRef = useRef(null);
   const footerRef = useRef(null);
@@ -53,7 +58,7 @@ function App() {
   return (
     <div className={`App ${dayTheme ? "day-app" : "night-app"}`}>
       <FadeProvider>
-        <DateContext.Provider value={[currentMonthIndex, setCurrentMonthIndex]}>
+        <DateContext.Provider value={[dateState, setDateState]}>
           <DayTheme.Provider value={[dayTheme, setDayTheme]}>
             <TransactionsTotal.Provider value={[total, setTotal]}>
               <LoggedInContext.Provider value={[loggedIn, setLoggedIn]}>

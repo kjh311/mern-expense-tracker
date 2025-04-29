@@ -3,7 +3,7 @@ import SubCategoriesWithTransactions from "./SubCategoriesWithTransactions";
 import Overview from "./Overview";
 import { DayTheme, DateContext } from "../App";
 import { FadeContext } from "./FadeContext";
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+import MonthToggle from "./MonthToggle";
 
 const Dashboard = ({ contentHeight }) => {
   const [mainAccordionKey, setMainAccordionKey] = useState(null);
@@ -13,34 +13,13 @@ const Dashboard = ({ contentHeight }) => {
   const [dayTheme] = useContext(DayTheme);
   const { triggerFadeOut } = useContext(FadeContext);
   const [fadeClass, setFadeClass] = useState("fade-in");
-  const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
-
-  const months = [
-    "January",
-    "Febuary",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  // const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
+  const [dateState, setDateState] = useContext(DateContext);
+  const { month: currentMonthIndex, year: currentYear } = dateState;
 
   useEffect(() => {
     setFadeClass(triggerFadeOut ? "fade-out" : "fade-in");
   }, [triggerFadeOut]);
-
-  const handleLeftButton = () => {
-    setCurrentMonthIndex((prev) => Math.max(0, prev - 1));
-  };
-
-  const handleRightButton = () => {
-    setCurrentMonthIndex((prev) => Math.min(11, prev + 1));
-  };
 
   return (
     <div
@@ -50,39 +29,23 @@ const Dashboard = ({ contentHeight }) => {
       }`}
     >
       {userName && (
-        <h2
+        <h1
           className={`text-center my-animation ${
-            dayTheme ? "text-blue-800" : "night-theme-link"
+            dayTheme ? "day-text text-shadow" : "text-white"
           }`}
         >
           Welcome, {userName}!
-        </h2>
+        </h1>
       )}
 
-      <div
-        className={`my-animation flex items-center gap-2 ${
-          dayTheme ? "text-blue-800" : "night-theme-link"
-        }`}
-      >
-        <FaArrowAltCircleLeft
-          size={30}
-          onClick={handleLeftButton}
-          className="cursor-pointer mx-2"
-        />
-        {new Date().getFullYear()}
-        <h2>{months[currentMonthIndex]}</h2>
-        <FaArrowAltCircleRight
-          size={30}
-          onClick={handleRightButton}
-          className="cursor-pointer mx-2"
-        />
-      </div>
+      <MonthToggle />
 
       <Overview
         mainKey="0"
         mainAccordionKey={mainAccordionKey}
         setMainAccordionKey={setMainAccordionKey}
-        currentMonthIndex={currentMonthIndex}
+        // currentMonthIndex={currentMonthIndex}
+        dateState={dateState}
       />
 
       <SubCategoriesWithTransactions
@@ -92,7 +55,7 @@ const Dashboard = ({ contentHeight }) => {
         mainKey="1"
         mainAccordionKey={mainAccordionKey}
         setMainAccordionKey={setMainAccordionKey}
-        currentMonthIndex={currentMonthIndex}
+        dateState={dateState}
       />
       <br />
       <SubCategoriesWithTransactions

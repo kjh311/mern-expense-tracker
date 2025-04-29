@@ -2,6 +2,10 @@
 @import url("./styles/dayTheme.css");
 @import url("./styles/animations.css");
 
+* {
+  /* transition: all 0.3s ease-in-out; */
+}
+
 body {
   margin: 0;
 }
@@ -254,4 +258,18 @@ ul {
 
 .daytheme-icon-animation {
   transition: all 0.5s ease;
+}
+
+.month-arrow {
+  transform: scale(2);
+
+  /* position: absolute; */
+}
+
+.month-arrow:hover {
+  transform: scale(2.5);
+}
+
+.rel-icon {
+  fill: white;
 }

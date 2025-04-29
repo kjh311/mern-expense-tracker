@@ -21,6 +21,7 @@ import { AccordionBody, AccordionHeader, AccordionItem } from "react-bootstrap";
 import SubCategoryBarChart from "./SubCategoryBarChart";
 import { formattedCurrency } from "./FormattedCurrency";
 import { DayTheme } from "../App";
+import MonthToggle from "./MonthToggle";
 
 const SubCategoriesWithTransactions = ({
   name,
@@ -42,7 +43,9 @@ const SubCategoriesWithTransactions = ({
   const allTransactions = data.flatMap((sub) => sub.transactions);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
   const [refreshFlag, setRefreshFlag] = useState(false);
-  const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
+  // const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
+  const [dateState, setDateState] = useContext(DateContext);
+  const { month: currentMonthIndex, year: currentYear } = dateState;
 
   const fetchExpenses = useCallback(async () => {
     try {
@@ -58,29 +61,64 @@ const SubCategoriesWithTransactions = ({
       // const currentMonth = new Date().getMonth() + 1; // Remember: getMonth() is 0-indexed
 
       // FILTER BASED ON MONTH SELECTED
-      const filteredData = res.data
-        .map((item) => {
-          // Filter the transactions inside each category
-          const filteredTransactions = item.transactions.filter(
-            (transaction) => {
-              const transactionMonth = Number(transaction.date.slice(5, 7));
-              return transactionMonth === currentMonthIndex + 1;
-            }
+      // const filteredData = res.data.map((item) => {
+      //   // Filter the transactions inside each category
+      //   const filteredTransactions = item.transactions.filter((transaction) => {
+      //     const transactionMonth = Number(transaction.date.slice(5, 7));
+      //     return transactionMonth === currentMonthIndex + 1;
+      //   });
+
+      //   // Return the item with filtered transactions
+      //   return {
+      //     ...item,
+      //     transactions: filteredTransactions,
+      //   };
+      // });
+      // .filter((item) => item.transactions.length > 0);
+
+      // // console.log("FilterData: ", filteredData);
+      // // console.log("Data: ", Number(res.data[0].transactions[0].date.slice(5, 7)));
+      // console.log(`DATA: ${category}`, filteredData);
+
+      // const filteredData = res.data
+      //   .filter((item) => {
+      //     return (
+      //       item.month === currentMonthIndex + 1 && item.year === currentYear
+      //     );
+      //   })
+      //   .map((item) => {
+      //     const filteredTransactions = item.transactions.filter(
+      //       (transaction) => {
+      //         const transactionDate = new Date(transaction.date);
+      //         return (
+      //           transactionDate.getMonth() === currentMonthIndex &&
+      //           transactionDate.getFullYear() === currentYear
+      //         );
+      //       }
+      //     );
+
+      //     return {
+      //       ...item,
+      //       transactions: filteredTransactions,
+      //     };
+      //   });
+
+      const filteredData = res.data.map((item) => {
+        const filteredTransactions = item.transactions.filter((transaction) => {
+          const transactionDate = new Date(transaction.date);
+          return (
+            transactionDate.getMonth() === currentMonthIndex &&
+            transactionDate.getFullYear() === currentYear
           );
+        });
 
-          // Return the item with filtered transactions
-          return {
-            ...item,
-            transactions: filteredTransactions,
-          };
-        })
-        .filter((item) => item.transactions.length > 0);
+        return {
+          ...item,
+          transactions: filteredTransactions,
+        };
+      });
 
-      // console.log("FilterData: ", filteredData);
-      // console.log("Data: ", Number(res.data[0].transactions[0].date.slice(5, 7)));
-      console.log(`DATA: ${category}`, filteredData);
-
-      // console.log("Current month: ", currentMonthIndex});
+      //     // console.log("Current month: ", currentMonthIndex});
 
       // setData(res.data);
       setData(filteredData);
@@ -91,9 +129,9 @@ const SubCategoriesWithTransactions = ({
     }
   }, [category, currentMonthIndex]);
 
-  useEffect(() => {
-    fetchExpenses();
-  }, [fetchExpenses, currentMonthIndex]);
+  // useEffect(() => {
+  //   fetchExpenses();
+  // }, [fetchExpenses, currentMonthIndex]);
 
   return (
     <div
@@ -142,6 +180,7 @@ const SubCategoriesWithTransactions = ({
                 : `my-animation accordion-body-night overview-accordion-body-${backgroundColor}`
             }`}
           >
+            <MonthToggle />
             {data.length > 0 && (
               <SubCategoryBarChart
                 data={data.map((sub) => ({

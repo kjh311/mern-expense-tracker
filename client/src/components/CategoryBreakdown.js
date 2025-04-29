@@ -8,8 +8,53 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
   const [data, setData] = useState([]);
   const [total, setTotal] = useContext(TransactionsTotal);
   const [dayTheme] = useContext(DayTheme);
-  const [currentMonthIndex] = useContext(DateContext);
+  // const [currentMonthIndex] = useContext(DateContext);
+  const [dateState, setDateState] = useContext(DateContext);
+  const { month: currentMonthIndex, year: currentYear } = dateState;
+
   const [noData, setNoData] = useState(false);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await axios.get(`/api/...`); // Your API call
+
+  //       const filteredData = res.data
+  //         .filter((item) => {
+  //           return (
+  //             item.month === currentMonthIndex + 1 && item.year === currentYear
+  //           );
+  //         })
+  //         .map((item) => {
+  //           const filteredTransactions = item.transactions.filter(
+  //             (transaction) => {
+  //               const transactionDate = new Date(transaction.date);
+  //               return (
+  //                 transactionDate.getMonth() === currentMonthIndex &&
+  //                 transactionDate.getFullYear() === currentYear
+  //               );
+  //             }
+  //           );
+
+  //           return {
+  //             ...item,
+  //             transactions: filteredTransactions,
+  //           };
+  //         })
+  //         .filter((item) => item.transactions.length > 0);
+
+  //       console.log(
+  //         `Category breakdown filtered data: ${category}`,
+  //         filteredData
+  //       );
+  //       setData(filteredData);
+  //     } catch (err) {
+  //       console.error("Error fetching category breakdown", err);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [category, refreshFlag, currentMonthIndex, currentYear]);
 
   useEffect(() => {
     const fetchData = async () => {

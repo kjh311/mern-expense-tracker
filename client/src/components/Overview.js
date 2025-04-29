@@ -3,6 +3,7 @@ import { TransactionsTotal, DayTheme, DateContext } from "../App";
 import PieChart from "./PieChart";
 import { useRef, useEffect, useContext, useState } from "react";
 import { formattedCurrency } from "./FormattedCurrency";
+import MonthToggle from "./MonthToggle";
 
 const Overview = ({
   mainKey,
@@ -19,6 +20,7 @@ const Overview = ({
   const [totalExpenses, setTotalExpenses] = useState(0);
   const [totalBudget, setTotalBudget] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
+  // const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
 
   useEffect(() => {
     if (total) {
@@ -158,6 +160,7 @@ const Overview = ({
                 : "overview-accordion-body-night"
             }`}
           >
+            <MonthToggle />
             <div className="p-4  rounded shadow-md">
               <h2
                 className={`text-xl font-bold mb-4 text-center my-animation ${
@@ -166,7 +169,18 @@ const Overview = ({
               >
                 Overview Charts
               </h2>
-              <PieChart totals={total} />
+
+              {totalExpenses > 0 ? (
+                <PieChart totals={total} />
+              ) : (
+                <p
+                  className={`${
+                    dayTheme ? "day-text" : "text-white"
+                  } text-center my-animation`}
+                >
+                  No Data
+                </p>
+              )}
             </div>
           </Accordion.Body>
         </Accordion.Item>
