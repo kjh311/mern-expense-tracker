@@ -21,7 +21,9 @@ const PostNewSubcategory = ({
   const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
   const [dayTheme, setDayTheme] = useContext(DayTheme);
-  const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
+  // const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
+  const [dateState, setDateState] = useContext(DateContext);
+  const { month: currentMonthIndex, year: currentYear } = dateState;
 
   const handlePost = (e) => {
     e.preventDefault();
@@ -32,6 +34,14 @@ const PostNewSubcategory = ({
 
     const postSub = async () => {
       try {
+        console.log({
+          name,
+          categoryType: category,
+          budget,
+          month,
+          year,
+        });
+
         const res = await axios.post(
           "http://localhost:5000/api/subcategories",
           {

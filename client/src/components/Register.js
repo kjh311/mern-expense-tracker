@@ -97,7 +97,7 @@ const Register = ({ contentHeight }) => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <div className="password-input-container relative">
+            <div className="password-input-container relative m-0 p-0">
               <Input
                 type={`${showPassword ? "text" : "password"}`}
                 placeholder={"Password"}

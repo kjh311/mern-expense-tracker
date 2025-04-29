@@ -12,6 +12,7 @@ body {
 
 .App {
   min-height: 100vh;
+  min-width: 100vw;
   position: relative;
   padding-bottom: 70px;
   font-family: "Poetsen One", sans-serif;
@@ -278,16 +279,27 @@ ul {
   fill: white;
 }
 
+/* .home-heading {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: white;
+} */
+
+.flying-cash-animation {
+  width: 300px;
+  height: 300px;
+}
+
 @media only screen and (max-width: 640px) {
   .sun-icon {
-    left: -17px;
+    left: 0px;
     top: -16px;
     width: 60px;
     height: 60px;
   }
 
   .moon-icon {
-    left: -12px;
+    left: 5px;
     top: -12px;
     height: 50px;
     width: 50px;
@@ -302,5 +314,10 @@ ul {
   .button-shadow:active,
   .button-glow:active {
     transform: scale(0.9);
+  }
+
+  .flying-cash-animation {
+    width: 150px;
+    height: 150px;
   }
 }

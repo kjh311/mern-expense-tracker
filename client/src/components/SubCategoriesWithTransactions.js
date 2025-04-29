@@ -375,11 +375,7 @@ const SubCategoriesWithTransactions = ({
                     />
 
                     {sub.transactions.length === 0 ? (
-                      <p
-                        className={`${
-                          dayTheme ? "day-text" : "text-white"
-                        } italic`}
-                      >
+                      <p className={`text-white text-center italic`}>
                         No Transactions 📉
                       </p>
                     ) : (
