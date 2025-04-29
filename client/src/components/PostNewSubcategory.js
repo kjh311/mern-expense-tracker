@@ -5,7 +5,7 @@ import AccordionBody from "react-bootstrap/esm/AccordionBody";
 import axios from "axios";
 import Input from "./Input";
 import Button from "./Button";
-import { DayTheme } from "../App";
+import { DayTheme, DateContext } from "../App";
 import {
   PostNewTransactionHeaderColors,
   PostNewTransactionHighestBodyColors,
@@ -21,9 +21,14 @@ const PostNewSubcategory = ({
   const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
   const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
 
   const handlePost = (e) => {
     e.preventDefault();
+
+    const now = new Date();
+    const month = currentMonthIndex; // January is 0, so add 1
+    const year = now.getFullYear();
 
     const postSub = async () => {
       try {
@@ -33,6 +38,8 @@ const PostNewSubcategory = ({
             name,
             categoryType: category,
             budget,
+            month,
+            year,
           },
           {
             headers: {

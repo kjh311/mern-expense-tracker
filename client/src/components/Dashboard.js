@@ -59,15 +59,22 @@ const Dashboard = ({ contentHeight }) => {
         </h2>
       )}
 
-      <div className="flex items-center gap-2">
+      <div
+        className={`my-animation flex items-center gap-2 ${
+          dayTheme ? "text-blue-800" : "night-theme-link"
+        }`}
+      >
         <FaArrowAltCircleLeft
+          size={30}
           onClick={handleLeftButton}
-          className="cursor-pointer"
+          className="cursor-pointer mx-2"
         />
+        {new Date().getFullYear()}
         <h2>{months[currentMonthIndex]}</h2>
         <FaArrowAltCircleRight
+          size={30}
           onClick={handleRightButton}
-          className="cursor-pointer"
+          className="cursor-pointer mx-2"
         />
       </div>
 

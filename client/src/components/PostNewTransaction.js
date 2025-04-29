@@ -3,6 +3,8 @@ import Accordion from "react-bootstrap/Accordion";
 import AccordionItem from "react-bootstrap/esm/AccordionItem";
 import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
 import AccordionBody from "react-bootstrap/esm/AccordionBody";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Button from "./Button";
 import Input from "./Input";
@@ -19,6 +21,7 @@ const PostNewTransaction = ({
   const [amount, setAmount] = useState("");
   const [recurring, setRecurring] = useState(false);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dateInput, setDateInput] = useState(new Date());
 
   const handlePostTransaction = async (e) => {
     e.preventDefault();
@@ -31,6 +34,7 @@ const PostNewTransaction = ({
           amount,
           subcategory,
           recurring,
+          date: dateInput,
         },
         {
           headers: {
@@ -112,6 +116,19 @@ const PostNewTransaction = ({
                 placeholder={"Enter Amount Spent"}
                 onChange={(e) => setAmount(e.target.value)}
                 required
+              />
+
+              <label
+                className={`my-animation m-2 ${
+                  dayTheme ? "day-text" : "text-white"
+                }`}
+              >
+                Date:
+              </label>
+              <DatePicker
+                className="p-2 m-2 border text-center w-full"
+                selected={dateInput}
+                onChange={(dateInput) => setDateInput(dateInput)}
               />
 
               {/* <label className="flex items-center gap-2 text-sm text-gray-600">
