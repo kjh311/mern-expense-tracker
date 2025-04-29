@@ -35,11 +35,12 @@ const Navbar = ({ ref }) => {
         <button
           onClick={() => fadeNavigate("/")}
           className={`nav-bar-text text-2xl font-extrabold tracking-wide  transition ${
-            dayTheme ? "text-white" : "night-footer-link"
+            dayTheme ? "text-white text-shadow" : "night-footer-link"
           }`}
         >
           {" "}
-          Budget Tracker
+          <span className={`daytheme ? "text-5xl" : "text-lg"`}>💸</span> Budget
+          Tracker
         </button>
 
         <div>

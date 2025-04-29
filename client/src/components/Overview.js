@@ -160,7 +160,7 @@ const Overview = ({
                 : "overview-accordion-body-night"
             }`}
           >
-            <MonthToggle />
+            <MonthToggle color={`${dayTheme ? "day-text" : "text-white"}`} />
             <div className="p-4  rounded shadow-md">
               <h2
                 className={`text-xl font-bold mb-4 text-center my-animation ${

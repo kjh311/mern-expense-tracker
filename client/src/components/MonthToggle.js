@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { DayTheme, DateContext } from "../App";
 
-const MonthToggle = () => {
+const MonthToggle = ({ color }) => {
   //   const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
   const [dateState, setDateState] = useContext(DateContext);
   const { month: currentMonthIndex, year: currentYear } = dateState;
@@ -31,6 +31,7 @@ const MonthToggle = () => {
       if (newMonth < 0) {
         newMonth = 11; // December
         newYear -= 1;
+        console.log("Year", newYear);
       }
       return { month: newMonth, year: newYear };
     });
@@ -55,9 +56,7 @@ const MonthToggle = () => {
           dayTheme ? "drop-shadow(1px 1px 1px rgba(0, 0, 0, 1))" : ""
         }`,
       }}
-      className={`my-animation flex items-center gap-2 justify-center ${
-        dayTheme ? "day-text " : "text-white"
-      }`}
+      className={`my-animation flex items-center gap-2 justify-center ${color}`}
     >
       <FaArrowAltCircleLeft
         onClick={handleLeftButton}

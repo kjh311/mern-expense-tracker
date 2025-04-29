@@ -61,6 +61,29 @@ const SubCategoriesWithTransactions = ({
       // const currentMonth = new Date().getMonth() + 1; // Remember: getMonth() is 0-indexed
 
       // FILTER BASED ON MONTH SELECTED
+      const filteredData = res.data.map((item) => {
+        const filteredTransactions = (item.transactions || []).filter(
+          (transaction) => {
+            const date = new Date(transaction.date);
+            return (
+              date.getMonth() === currentMonthIndex &&
+              date.getFullYear() === currentYear
+            );
+          }
+        );
+
+        return {
+          ...item,
+          transactions: filteredTransactions,
+        };
+      });
+
+      console.log(
+        "Filtered Subcategories with Current Month Transactions:",
+        filteredData
+      );
+      setData(filteredData);
+
       // const filteredData = res.data.map((item) => {
       //   // Filter the transactions inside each category
       //   const filteredTransactions = item.transactions.filter((transaction) => {
@@ -74,7 +97,6 @@ const SubCategoriesWithTransactions = ({
       //     transactions: filteredTransactions,
       //   };
       // });
-      // .filter((item) => item.transactions.length > 0);
 
       // // console.log("FilterData: ", filteredData);
       // // console.log("Data: ", Number(res.data[0].transactions[0].date.slice(5, 7)));
@@ -103,25 +125,30 @@ const SubCategoriesWithTransactions = ({
       //     };
       //   });
 
-      const filteredData = res.data.map((item) => {
-        const filteredTransactions = item.transactions.filter((transaction) => {
-          const transactionDate = new Date(transaction.date);
-          return (
-            transactionDate.getMonth() === currentMonthIndex &&
-            transactionDate.getFullYear() === currentYear
-          );
-        });
+      // const filteredData = res.data.map((item) => {
+      //   const filteredTransactions = (item.transactions || []).filter(
+      //     (transaction) => {
+      //       const transactionDate = new Date(transaction.date);
+      //       return (
+      //         transactionDate.getMonth() === currentMonthIndex &&
+      //         transactionDate.getFullYear() === currentYear
+      //       );
+      //     }
+      //   );
 
-        return {
-          ...item,
-          transactions: filteredTransactions,
-        };
-      });
+      //   return {
+      //     ...item,
+      //     transactions: filteredTransactions,
+      //   };
+      // });
+
+      // // Set the full list of subcategories, each with only the current month's transactions
+      // setData(filteredData);
 
       //     // console.log("Current month: ", currentMonthIndex});
 
-      // setData(res.data);
-      setData(filteredData);
+      // setData(filteredData);
+      // setData(filteredData);
       // console.log("Fetch Expenses");
       // setRefreshFlag((prev) => !prev);
     } catch (err) {
@@ -129,9 +156,9 @@ const SubCategoriesWithTransactions = ({
     }
   }, [category, currentMonthIndex]);
 
-  // useEffect(() => {
-  //   fetchExpenses();
-  // }, [fetchExpenses, currentMonthIndex]);
+  useEffect(() => {
+    fetchExpenses();
+  }, [fetchExpenses, currentMonthIndex, currentYear]);
 
   return (
     <div
@@ -180,7 +207,7 @@ const SubCategoriesWithTransactions = ({
                 : `my-animation accordion-body-night overview-accordion-body-${backgroundColor}`
             }`}
           >
-            <MonthToggle />
+            <MonthToggle color={`${dayTheme ? "day-text" : "text-white"}`} />
             {data.length > 0 && (
               <SubCategoryBarChart
                 data={data.map((sub) => ({

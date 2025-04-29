@@ -31,14 +31,14 @@ const Dashboard = ({ contentHeight }) => {
       {userName && (
         <h1
           className={`text-center my-animation ${
-            dayTheme ? "day-text text-shadow" : "text-white"
+            dayTheme ? "text-white text-shadow" : "text-white"
           }`}
         >
           Welcome, {userName}!
         </h1>
       )}
 
-      <MonthToggle />
+      <MonthToggle color={"text-white"} />
 
       <Overview
         mainKey="0"

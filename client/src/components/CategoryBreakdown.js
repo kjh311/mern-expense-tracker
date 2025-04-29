@@ -137,7 +137,7 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
   return (
     <div className="text-center lg:text-xl xs:text-sm font-medium p-2 flex flex-col sm:flex-row justify-around w-full">
       <p>
-        📊 Monthly Budget: <br /> {formattedCurrency(totalBudget)}
+        Monthly Budget: <br /> {formattedCurrency(totalBudget)}
       </p>
       <p>
         Total {getActionWordPassedTense(category)} this month: <br />
