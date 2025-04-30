@@ -249,7 +249,7 @@
 .accordion-header-day .accordion-button[aria-expanded="true"],
 .accordion-header-day .accordion-button[aria-expanded="false"],
 .overview-accordion-body-day {
-  outline: 2px solid black !important;
+  /* border: 2px solid black !important; */
   /* outline: none !important; */
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
@@ -419,7 +419,7 @@
 .accordion-header-night .accordion-button[aria-expanded="false"],
 .accordion-header-night,
 .accordion-body-night {
-  outline: 2px solid white !important;
+  /* outline: 2px solid white !important; */
   box-shadow: 0 0 5px 2px white !important;
   transition: all 0.3s ease;
   /* background-color: #013745 !important; */
@@ -427,7 +427,7 @@
 
 .accordion-body-day {
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.7);
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
 .accordion-header-night-overview .accordion-button[aria-expanded="true"],
@@ -459,7 +459,7 @@
 .overview-accordion-body-night {
   background-color: var(--blue-4) !important;
   transition: all 0.3s ease;
-  border: 2px solid white !important;
+  /* border: 2px solid white !important; */
 }
 
 .overview-accordion-body-night-red {

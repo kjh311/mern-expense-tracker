@@ -184,7 +184,7 @@ const Overview = ({
                       dayTheme ? "day-text" : "text-white"
                     } text-center my-animation`}
                   >
-                    No Data
+                    No Data for Chart
                   </p>
                 )}
 
