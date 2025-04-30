@@ -78,10 +78,10 @@ const SubCategoriesWithTransactions = ({
         };
       });
 
-      console.log(
-        "Filtered Subcategories with Current Month Transactions:",
-        filteredData
-      );
+      // console.log(
+      //   "Filtered Subcategories with Current Month Transactions:",
+      //   filteredData
+      // );
       setData(filteredData);
 
       // const filteredData = res.data.map((item) => {
@@ -224,12 +224,21 @@ const SubCategoriesWithTransactions = ({
             )}
 
             <h2
-              className={`my-animation text-center text-shadow ${
+              className={`my-animation text-center text-shadow mb-3 ${
                 dayTheme ? "day-text" : "text-white"
               }`}
             >
               Categories:
             </h2>
+
+            <PostNewSubcategory
+              fetchExpenses={fetchExpenses}
+              category={category}
+              activeKey={activeKey}
+              setActiveKey={setActiveKey}
+              setRefreshFlag={setRefreshFlag}
+            />
+
             <Accordion
               activeKey={activeKey}
               onSelect={(eventKey) => setActiveKey(eventKey)}
@@ -353,6 +362,10 @@ const SubCategoriesWithTransactions = ({
                       />
                     </div>
 
+                    <MonthToggle
+                      color={`${dayTheme ? "day-text" : "text-white"}`}
+                    />
+
                     {/* LINE CHART */}
                     {sub.transactions.length > 0 && (
                       <ExpenseLineChart transactions={sub.transactions} />
@@ -375,7 +388,11 @@ const SubCategoriesWithTransactions = ({
                     />
 
                     {sub.transactions.length === 0 ? (
-                      <p className={`text-white text-center italic`}>
+                      <p
+                        className={`${
+                          dayTheme ? "day-text" : "text-white"
+                        } text-center italic my-animation`}
+                      >
                         No Transactions 📉
                       </p>
                     ) : (
@@ -450,14 +467,6 @@ const SubCategoriesWithTransactions = ({
                   </Accordion.Body>
                 </Accordion.Item>
               ))}
-
-              <PostNewSubcategory
-                fetchExpenses={fetchExpenses}
-                category={category}
-                activeKey={activeKey}
-                setActiveKey={setActiveKey}
-                setRefreshFlag={setRefreshFlag}
-              />
             </Accordion>
           </Accordion.Body>
         </Accordion.Item>

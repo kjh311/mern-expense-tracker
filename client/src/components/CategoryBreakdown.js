@@ -89,10 +89,10 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
           })
           .filter((item) => item.transactions.length > 0);
 
-        console.log(
-          `Category breakdown filtered data: ${category}`,
-          filteredData
-        );
+        // console.log(
+        //   `Category breakdown filtered data: ${category}`,
+        //   filteredData
+        // );
         setData(filteredData);
       } catch (err) {
         console.error("Error fetching category breakdown", err);

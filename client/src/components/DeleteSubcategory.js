@@ -14,7 +14,7 @@ const DeleteSubcategory = ({
 }) => {
   const handleDeleteSubcategory = async () => {
     // event.stopPropagation();
-    if (window.confirm("Delete this subcategory?")) {
+    if (window.confirm("Delete this Category?")) {
       //   setAnimatingId(id);
 
       //   setTimeout(async () => {
@@ -47,7 +47,7 @@ const DeleteSubcategory = ({
   return (
     <Button
       type={"submit"}
-      text={"Delete SubCategory"}
+      text={"Delete Category"}
       onClick={handleDeleteSubcategory}
       color={"red"}
     >

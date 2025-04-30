@@ -142,7 +142,7 @@
   background-color: var(--dark-3);
 
   transition: all 0.3s ease;
-  box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 5px 10px rgba(255, 255, 255, 0.7);
 }
 
 /* FOOTER */
@@ -224,6 +224,8 @@
 .day-text {
   /* color: #0081a8; */
   color: var(--light-5);
+  /* color: var(--blue-5); */
+  /* color: black; */
   transition: all 0.3s ease;
 }
 

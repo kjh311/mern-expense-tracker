@@ -66,7 +66,7 @@ const UpdateSubcategory = ({
           id="update-subcategory"
           type={"submit"}
           onClick={handleEdit}
-          text={"Update SubCategory"}
+          text={"Update Category"}
           color={dayTheme ? "blue" : "purple"}
         />
       )}
@@ -116,7 +116,7 @@ const UpdateSubcategory = ({
             <Button
               // style={{ color: "white" }}
               type={"submit"}
-              text={"Update SubCategory"}
+              text={"Update Category"}
               color={dayTheme ? "blue" : "purple"}
             />
           </form>

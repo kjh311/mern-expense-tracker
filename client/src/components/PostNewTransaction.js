@@ -119,7 +119,7 @@ const PostNewTransaction = ({
               />
 
               <label
-                className={`my-animation  ${
+                className={`my-animation text-xl ${
                   dayTheme ? "day-text" : "text-white"
                 }`}
               >

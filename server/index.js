@@ -7,6 +7,7 @@ const expensesRoutes = require("./routes/expenses"); // adjust path if needed
 const subcategoriesRoute = require("./routes/subcategories");
 const transactionRoutes = require("./routes/transactions");
 const budgetRoutes = require("./routes/budget");
+const cashflowRoute = require("./routes/cashflow");
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use("/api/expenses", expensesRoutes);
 app.use("/api/subcategories", subcategoriesRoute);
 app.use("/api/transactions", transactionRoutes);
 app.use("/api/budget", budgetRoutes);
+app.use("/api/cashflow", cashflowRoute);
 
 // connect to mongoDB
 mongoose
@@ -28,6 +30,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log(`✅ Connected to DB: ${mongoose.connection.name}`))
+  // .then(() => console.log({ userId }))
   .catch((err) => console.error(err));
 
 app.get("/", (req, res) => {

@@ -4,6 +4,7 @@ import PieChart from "./PieChart";
 import { useRef, useEffect, useContext, useState } from "react";
 import { formattedCurrency } from "./FormattedCurrency";
 import MonthToggle from "./MonthToggle";
+import GetMonthlyCashFlows from "./GetMonthlyCashFlows";
 
 const Overview = ({
   mainKey,
@@ -181,6 +182,8 @@ const Overview = ({
                   No Data
                 </p>
               )}
+
+              <GetMonthlyCashFlows />
             </div>
           </Accordion.Body>
         </Accordion.Item>
