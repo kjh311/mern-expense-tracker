@@ -30,7 +30,7 @@ const Dashboard = ({ contentHeight }) => {
     >
       {userName && (
         <h1
-          className={`text-center my-animation ${
+          className={`text-center my-animation text-xl sm:text-4xl ${
             dayTheme ? "text-white text-shadow" : "text-white"
           }`}
         >

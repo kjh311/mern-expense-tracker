@@ -17,7 +17,7 @@ const Input = ({
     <input
       className={`input-${
         dayTheme ? "day" : "night"
-      } my-animation  text-center  w-full max-w-md  my-2  p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400`}
+      } my-animation  text-center  w-full max-w-md  my-2  sm:p-3 p-1 sm:text-lg text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400`}
       type={type}
       value={value}
       placeholder={placeholder}

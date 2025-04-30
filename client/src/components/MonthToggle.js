@@ -56,19 +56,19 @@ const MonthToggle = ({ color }) => {
           dayTheme ? "drop-shadow(1px 1px 1px rgba(0, 0, 0, 1))" : ""
         }`,
       }}
-      className={`my-animation flex items-center gap-2 justify-center ${color}`}
+      className={`my-animation flex items-center gap-1 sm:gap-2 justify-center ${color}`}
     >
       <FaArrowAltCircleLeft
         onClick={handleLeftButton}
-        className="cursor-pointer mx-4 month-arrow my-animation"
+        className="cursor-pointer mx-3 month-arrow my-animation"
       />
 
-      <h2>
+      <h2 className="text-xl sm:text-4xl text-center current-month">
         {months[currentMonthIndex]}, {currentYear}
       </h2>
       <FaArrowAltCircleRight
         onClick={handleRightButton}
-        className="cursor-pointer mx-4 month-arrow my-animation"
+        className="cursor-pointer mx-3 month-arrow my-animation"
       />
     </div>
   );

@@ -76,7 +76,7 @@ const PostNewTransaction = ({
             }`}
           >
             <h2
-              className={`my-animation text-2xl text-shadow font-semibold text-center w-full ${
+              className={`my-animation sm:text-2xl text-sm text-shadow font-semibold text-center w-full ${
                 dayTheme ? "day-text" : "text-white"
               }`}
             >
@@ -105,7 +105,7 @@ const PostNewTransaction = ({
               <Input
                 type={"text"}
                 value={description}
-                placeholder={"Enter Description"}
+                placeholder={"Description"}
                 onChange={(e) => setDescription(e.target.value)}
                 required
               />
@@ -113,7 +113,7 @@ const PostNewTransaction = ({
               <Input
                 type={"number"}
                 value={amount}
-                placeholder={"Enter Amount Spent"}
+                placeholder={"Amount Spent"}
                 onChange={(e) => setAmount(e.target.value)}
                 required
               />

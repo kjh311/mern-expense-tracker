@@ -84,7 +84,7 @@ const PostNewSubcategory = ({
            `}
         >
           <h2
-            className={`text-2xl text-shadow font-semibold  text-center w-full my-animation ${
+            className={`sm:text-2xl text-sm text-shadow font-semibold  text-center w-full my-animation ${
               dayTheme ? "day-text" : "text-white"
             }`}
           >
@@ -113,7 +113,7 @@ const PostNewSubcategory = ({
           >
             <Input
               type={"text"}
-              placeholder={"Enter Name of Category"}
+              placeholder={"Name of Category"}
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -122,7 +122,7 @@ const PostNewSubcategory = ({
             <Input
               type={"number"}
               value={budget}
-              placeholder={"Enter Monthly Budget"}
+              placeholder={"Monthly Budget"}
               required
               onChange={(e) => setBudget(parseFloat(e.target.value) || 0)}
             />

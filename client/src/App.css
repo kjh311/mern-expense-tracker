@@ -176,8 +176,8 @@ ul {
 }
 
 .pie-chart {
-  max-width: 500px !important;
-  max-height: 500px;
+  max-width: 300px !important;
+  max-height: 300px;
 }
 
 .line-chart {
@@ -267,12 +267,18 @@ ul {
 
 .month-arrow {
   transform: scale(2);
-
-  /* position: absolute; */
+  margin-top: -3px;
+  transition: all 0.2s ease;
 }
 
 .month-arrow:hover {
   transform: scale(2.5);
+  transition: all 0.1s ease;
+}
+
+.month-arrow:active {
+  transform: scale(2.3);
+  transition: all 0.1s ease;
 }
 
 .rel-icon {
@@ -293,6 +299,12 @@ ul {
 .zero-percent {
   top: 10px;
   font-size: 20px;
+}
+
+.break {
+  word-break: break-word;
+  hyphens: auto !important;
+  overflow-wrap: anywhere;
 }
 
 @media only screen and (max-width: 640px) {
@@ -324,5 +336,32 @@ ul {
   .flying-cash-animation {
     width: 150px;
     height: 150px;
+  }
+
+  .month-arrow {
+    margin-top: -5px;
+    transform: scale(1.7);
+  }
+
+  .month-arrow:hover {
+    transform: scale(1.7);
+  }
+  .month-arrow:active {
+    transform: scale(1.5);
+  }
+
+  button.accordion-button.collapsed::after {
+    transform: scale(1.5);
+  }
+  button.accordion-button:not(.collapsed)::after {
+    transform: rotate(-180deg) scale(1.5);
+  }
+
+  .accordion-button {
+    padding: 10px !important;
+  }
+
+  .line-chart {
+    display: none !important;
   }
 }

@@ -137,7 +137,7 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
 
   return (
     <span className="w-100">
-      <div className="text-center lg:text-xl xs:text-sm font-medium p-2 flex flex-col sm:flex-row justify-around w-full">
+      <div className="sm:text-center text-start lg:text-xl text-md font-medium p-2 flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-center w-full">
         <p>
           Monthly Budget: <br /> {formattedCurrency(totalBudget)}
         </p>

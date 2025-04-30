@@ -78,7 +78,7 @@ const Overview = ({
 
   return (
     <div
-      className={` max-w-[1400px]  w-full  m-10  p-4 rounded my-animation ${
+      className={` max-w-[1400px]  w-full  m-4 sm:m-10  p-4 rounded my-animation ${
         dayTheme ? "overview-category-card-day" : "overview-category-card-night"
       }`}
     >
@@ -107,10 +107,10 @@ const Overview = ({
                   dayTheme ? "day-text" : "text-white"
                 }`}
               >
-                <h2 className="text-center lg:text-4xl xs:text-2xl font-bold text-shadow m-4">
-                  💼 Monthly Overview
+                <h2 className="text-center lg:text-4xl text-lg font-bold text-shadow sm:m-4 m-2 ">
+                  💼 MONTHLY OVERVIEW
                 </h2>
-                <div className="my-animation text-center flex  flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
+                <div className="my-animation sm:text-center text-left flex  flex-col sm:flex-row justify-around items-start sm:items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
                   <span
                     className={`my-animation ${
                       dayTheme ? "day-text" : "text-white"
@@ -120,7 +120,7 @@ const Overview = ({
                     <br />
                     <span
                       className={`my-animation ${
-                        cashflow > 0 ? "text-blue-800" : "text-red-500"
+                        cashflow > 0 ? "text-blue-800" : "text-white"
                       }`}
                     >
                       {formattedCurrency(cashflow)}
@@ -167,14 +167,14 @@ const Overview = ({
           >
             <MonthToggle color={`${dayTheme ? "day-text" : "text-white"}`} />
             <>
-              <div className="p-4  rounded shadow-md">
-                <h2
-                  className={`text-xl font-bold mb-4 text-center my-animation ${
+              <div className="p-4  rounded shadow-md flex justify-center flex-col items-center">
+                {/* <h2
+                  className={`text-xl font-bold mb-1 sm:mb-4 text-center my-animation ${
                     dayTheme ? "day-text" : "text-white"
                   }`}
                 >
-                  Overview Charts
-                </h2>
+                  Overview Chart
+                </h2> */}
 
                 {totalExpenses > 0 ? (
                   <PieChart totals={total} />
@@ -188,7 +188,7 @@ const Overview = ({
                   </p>
                 )}
 
-                <GetMonthlyCashFlows />
+                {/* <GetMonthlyCashFlows /> */}
               </div>
             </>
           </Accordion.Body>

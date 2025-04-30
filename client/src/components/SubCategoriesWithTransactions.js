@@ -191,7 +191,7 @@ const SubCategoriesWithTransactions = ({
                 dayTheme ? "day-text" : "text-white"
               }`}
             >
-              <h2 className="text-center lg:text-4xl xs:text-2xl font-bold text-shadow m-4">
+              <h2 className="text-center sm:text-4xl text-2xl font-bold text-shadow m-1 sm:m-4">
                 {name}
               </h2>
               <CategoryBreakdown
@@ -225,7 +225,7 @@ const SubCategoriesWithTransactions = ({
             )}
 
             <h2
-              className={`my-animation text-center text-shadow mb-3 ${
+              className={`my-animation text-center text-shadow mb-3 text-md sm:text-4xl ${
                 dayTheme ? "day-text" : "text-white"
               }`}
             >
@@ -268,15 +268,15 @@ const SubCategoriesWithTransactions = ({
                       }`}
                     >
                       {/* NAME */}
-                      <div className="flex justify-center items-center w-full">
-                        <span className="sm:text-4xl text-2xl  text-shadow">
+                      <div className="flex justify-center  items-center w-full">
+                        <span className="sm:text-4xl text-2xl break  text-shadow">
                           {sub.name} 🏷️
                         </span>
                       </div>
 
                       <>
                         {/* TOTAL SPENT, BUDGET, and LEFT TO SPEND/ EARN */}
-                        <div className="text-center flex flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
+                        <div className="text-start sm:text-center flex flex-col sm:flex-row justify-around  w-full gap-2 sm:gap-4 smtext-xl text-sm">
                           {/* Total Spent */}
                           <span className="">
                             💵 Total {getActionWordPassedTense(category)}:
@@ -347,7 +347,7 @@ const SubCategoriesWithTransactions = ({
                         : `my-animation accordion-body-night overview-higher-accordion-body-${backgroundColor}`
                     }`}
                   >
-                    <div className="flex justify-around flex-wrap">
+                    <div className="flex justify-around flex-wrap gap-2 mb-2">
                       {!editModeSubcategory && (
                         <DeleteSubcategory
                           id={sub._id}
@@ -410,7 +410,7 @@ const SubCategoriesWithTransactions = ({
                         {sub.transactions.map((tx) => (
                           <li
                             key={tx._id}
-                            className={`transaction-item relative  rounded-md my-3 p-3  my-animation ease-in-out ${
+                            className={`transaction-item relative rounded-md my-3 p-3  my-animation ease-in-out ${
                               dayTheme
                                 ? `my-animation accordion-body-day overview-highest-accordion-body-${backgroundColor}`
                                 : `my-animation accordion-body-night overview-highest-accordion-body-${backgroundColor}`
@@ -426,7 +426,7 @@ const SubCategoriesWithTransactions = ({
                               <>
                                 <div>
                                   <span
-                                    className={`font-semibold text-shadow text-base sm:text-lg lg:text-3xl block text-center sm:text-left my-animation ${
+                                    className={`font-semibold pr-8 sm:pr-0  break text-shadow text-base sm:text-lg lg:text-3xl block text-left sm:text-center my-animation ${
                                       dayTheme ? "day-text" : "text-white"
                                     }`}
                                   >
@@ -435,7 +435,7 @@ const SubCategoriesWithTransactions = ({
                                 </div>
 
                                 <div
-                                  className={`flex flex-col sm:flex-row justify-around items-center mt-2 gap-1 lg:text-lg sm:text-sm my-animation ${
+                                  className={`flex flex-col sm:flex-row justify-around items-start sm:items-center mt-2 gap-1 lg:text-lg sm:text-sm my-animation ${
                                     dayTheme ? "day-text" : "text-white"
                                   }`}
                                 >

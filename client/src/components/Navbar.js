@@ -34,7 +34,7 @@ const Navbar = ({ ref }) => {
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-start sm:justify-around">
         <button
           onClick={() => fadeNavigate("/")}
-          className={`nav-bar-text text-xl px-4 sm:px-6 sm:text-2xl font-extrabold tracking-wide  transition ${
+          className={`nav-bar-text text-xl pr-4 sm:px-6 sm:text-2xl font-extrabold tracking-wide  transition ${
             dayTheme ? "text-white text-shadow" : "night-footer-link"
           }`}
         >
