@@ -5,6 +5,7 @@ import { useRef, useEffect, useContext, useState } from "react";
 import { formattedCurrency } from "./FormattedCurrency";
 import MonthToggle from "./MonthToggle";
 import GetMonthlyCashFlows from "./GetMonthlyCashFlows";
+import ProgressBarComponent from "./ProgressBarComponent";
 
 const Overview = ({
   mainKey,
@@ -100,57 +101,60 @@ const Overview = ({
                 : "accordion-header-night-overview"
             }`}
           >
-            <div
-              className={`flex flex-col items-center w-full my-animation ${
-                dayTheme ? "day-text" : "text-white"
-              }`}
-            >
-              <h2 className="text-center lg:text-4xl xs:text-2xl font-bold text-shadow m-4">
-                💼 Monthly Overview
-              </h2>
-              <div className="my-animation text-center flex  flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
-                <span
-                  className={`my-animation ${
-                    dayTheme ? "day-text" : "text-white"
-                  } font-semibold`}
-                >
-                  <span className="my-animation text-3xl">💵</span> Cashflow:
-                  <br />
+            <div className="w-100">
+              <div
+                className={`flex flex-col mb-2 items-center w-full my-animation ${
+                  dayTheme ? "day-text" : "text-white"
+                }`}
+              >
+                <h2 className="text-center lg:text-4xl xs:text-2xl font-bold text-shadow m-4">
+                  💼 Monthly Overview
+                </h2>
+                <div className="my-animation text-center flex  flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
                   <span
                     className={`my-animation ${
-                      cashflow > 0 ? "text-blue-800" : "text-red-500"
-                    }`}
+                      dayTheme ? "day-text" : "text-white"
+                    } font-semibold`}
                   >
-                    {formattedCurrency(cashflow)}
+                    <span className="my-animation text-3xl">💵</span> Cashflow:
+                    <br />
+                    <span
+                      className={`my-animation ${
+                        cashflow > 0 ? "text-blue-800" : "text-red-500"
+                      }`}
+                    >
+                      {formattedCurrency(cashflow)}
+                    </span>
                   </span>
-                </span>
-                <span
-                  className={`my-animation ${
-                    dayTheme ? "day-text" : "text-white"
-                  } font-semibold`}
-                >
-                  <span className="text-3xl">📊</span> Total Spending Budget:
-                  <br /> {formattedCurrency(totalBudget)}
-                </span>
-                <span
-                  className={`my-animation ${
-                    dayTheme ? "day-text" : "text-white"
-                  } font-semibold`}
-                >
-                  <span className="text-3xl">💰</span> Total Income:
-                  <br />
-                  {formattedCurrency(totalIncome)}
-                </span>
-                <span
-                  className={`my-animation ${
-                    dayTheme ? "day-text" : "text-white"
-                  } font-semibold`}
-                >
-                  <span className="text-3xl">💸</span> Total Expenses:
-                  <br />
-                  {formattedCurrency(totalExpenses)}
-                </span>
+                  <span
+                    className={`my-animation ${
+                      dayTheme ? "day-text" : "text-white"
+                    } font-semibold`}
+                  >
+                    <span className="text-3xl">📊</span> Total Spending Budget:
+                    <br /> {formattedCurrency(totalBudget)}
+                  </span>
+                  <span
+                    className={`my-animation ${
+                      dayTheme ? "day-text" : "text-white"
+                    } font-semibold`}
+                  >
+                    <span className="text-3xl">💰</span> Total Income:
+                    <br />
+                    {formattedCurrency(totalIncome)}
+                  </span>
+                  <span
+                    className={`my-animation ${
+                      dayTheme ? "day-text" : "text-white"
+                    } font-semibold`}
+                  >
+                    <span className="text-3xl">💸</span> Total Expenses:
+                    <br />
+                    {formattedCurrency(totalExpenses)}
+                  </span>
+                </div>
               </div>
+              <ProgressBarComponent whole={totalBudget} part={totalExpenses} />
             </div>
           </Accordion.Header>
 
@@ -162,29 +166,31 @@ const Overview = ({
             }`}
           >
             <MonthToggle color={`${dayTheme ? "day-text" : "text-white"}`} />
-            <div className="p-4  rounded shadow-md">
-              <h2
-                className={`text-xl font-bold mb-4 text-center my-animation ${
-                  dayTheme ? "day-text" : "text-white"
-                }`}
-              >
-                Overview Charts
-              </h2>
-
-              {totalExpenses > 0 ? (
-                <PieChart totals={total} />
-              ) : (
-                <p
-                  className={`${
+            <>
+              <div className="p-4  rounded shadow-md">
+                <h2
+                  className={`text-xl font-bold mb-4 text-center my-animation ${
                     dayTheme ? "day-text" : "text-white"
-                  } text-center my-animation`}
+                  }`}
                 >
-                  No Data
-                </p>
-              )}
+                  Overview Charts
+                </h2>
 
-              <GetMonthlyCashFlows />
-            </div>
+                {totalExpenses > 0 ? (
+                  <PieChart totals={total} />
+                ) : (
+                  <p
+                    className={`${
+                      dayTheme ? "day-text" : "text-white"
+                    } text-center my-animation`}
+                  >
+                    No Data
+                  </p>
+                )}
+
+                <GetMonthlyCashFlows />
+              </div>
+            </>
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>

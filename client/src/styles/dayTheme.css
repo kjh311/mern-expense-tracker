@@ -658,3 +658,16 @@
   /* background-color: #146158; */
   background-color: var(--green-2);
 }
+
+.progress {
+  height: 2rem !important;
+  font-size: 20px !important;
+}
+
+.night-progress {
+  border: 2px solid white !important;
+}
+
+.day-progress {
+  border: 2px solid black !important;
+}

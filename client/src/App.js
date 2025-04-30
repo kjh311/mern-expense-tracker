@@ -11,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/Footer";
 import UpdateHeights from "./components/UpdateHeights";
 import { FadeProvider } from "./components/FadeContext";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const LoggedInContext = React.createContext();
 export const TransactionsTotal = React.createContext();

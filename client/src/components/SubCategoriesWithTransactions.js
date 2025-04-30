@@ -22,6 +22,7 @@ import SubCategoryBarChart from "./SubCategoryBarChart";
 import { formattedCurrency } from "./FormattedCurrency";
 import { DayTheme } from "../App";
 import MonthToggle from "./MonthToggle";
+import ProgressBarComponent from "./ProgressBarComponent";
 
 const SubCategoriesWithTransactions = ({
   name,
@@ -273,61 +274,70 @@ const SubCategoriesWithTransactions = ({
                         </span>
                       </div>
 
-                      {/* TOTAL SPENT, BUDGET, and LEFT TO SPEND/ EARN */}
-                      <div className="text-center flex flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
-                        {/* Total Spent */}
-                        <span className="">
-                          💵 Total {getActionWordPassedTense(category)}:
-                          {formattedCurrency(
-                            sub.transactions.reduce(
-                              (sum, tx) => sum + tx.amount,
-                              0
-                            )
-                          )}
-                        </span>
-
-                        {/* Budget */}
-                        {sub.budget && (
-                          <span className=" ">
-                            💰 Budget: {formattedCurrency(sub.budget)}
-                          </span>
-                        )}
-
-                        {/* Left to Spend/Earn */}
-                        {sub.budget && (
-                          <span
-                            className={`${
-                              sub.budget -
-                                sub.transactions.reduce(
-                                  (sum, tx) => sum + tx.amount,
-                                  0
-                                ) <
-                              0
-                                ? `my-animation ${
-                                    dayTheme ? "text-red-600" : "text-white"
-                                  } font-bold`
-                                : `my-animation ${
-                                    dayTheme ? "text-green-600" : "text-white"
-                                  }`
-                            }`}
-                          >
-                            <span
-                              className={`my-animation ${
-                                dayTheme ? "day-text" : "text-white"
-                              }`}
-                            >
-                              🏦 Left to {getActionWord(category)}:
-                            </span>{" "}
+                      <>
+                        {/* TOTAL SPENT, BUDGET, and LEFT TO SPEND/ EARN */}
+                        <div className="text-center flex flex-col sm:flex-row justify-around items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
+                          {/* Total Spent */}
+                          <span className="">
+                            💵 Total {getActionWordPassedTense(category)}:
                             {formattedCurrency(
-                              sub.budget -
-                                sub.transactions.reduce(
-                                  (sum, tx) => sum + tx.amount,
-                                  0
-                                )
+                              sub.transactions.reduce(
+                                (sum, tx) => sum + tx.amount,
+                                0
+                              )
                             )}
                           </span>
-                        )}
-                      </div>
+
+                          {/* Budget */}
+                          {sub.budget && (
+                            <span className=" ">
+                              💰 Budget: {formattedCurrency(sub.budget)}
+                            </span>
+                          )}
+
+                          {/* Left to Spend/Earn */}
+                          {sub.budget && (
+                            <span
+                              className={`${
+                                sub.budget -
+                                  sub.transactions.reduce(
+                                    (sum, tx) => sum + tx.amount,
+                                    0
+                                  ) <
+                                0
+                                  ? `my-animation ${
+                                      dayTheme ? "text-red-600" : "text-white"
+                                    } font-bold`
+                                  : `my-animation ${
+                                      dayTheme ? "text-green-600" : "text-white"
+                                    }`
+                              }`}
+                            >
+                              <span
+                                className={`my-animation ${
+                                  dayTheme ? "day-text" : "text-white"
+                                }`}
+                              >
+                                🏦 Left to {getActionWord(category)}:
+                              </span>{" "}
+                              {formattedCurrency(
+                                sub.budget -
+                                  sub.transactions.reduce(
+                                    (sum, tx) => sum + tx.amount,
+                                    0
+                                  )
+                              )}
+                            </span>
+                          )}
+                        </div>
+                        <ProgressBarComponent
+                          whole={sub.budget}
+                          part={sub.transactions.reduce(
+                            (sum, tx) => sum + tx.amount,
+                            0
+                          )}
+                        />
+                      </>
                     </div>
                   </Accordion.Header>
                   <Accordion.Body

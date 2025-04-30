@@ -290,6 +290,11 @@ ul {
   height: 300px;
 }
 
+.zero-percent {
+  top: 10px;
+  font-size: 20px;
+}
+
 @media only screen and (max-width: 640px) {
   .sun-icon {
     left: 0px;

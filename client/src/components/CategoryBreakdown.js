@@ -3,6 +3,7 @@ import axios from "axios";
 import { TransactionsTotal, DayTheme, DateContext } from "../App";
 import { formattedCurrency } from "./FormattedCurrency";
 import { getActionWord, getActionWordPassedTense } from "./ActionWords";
+import ProgressBarComponent from "./ProgressBarComponent";
 
 const CategoryBreakdown = ({ category, refreshFlag }) => {
   const [data, setData] = useState([]);
@@ -135,31 +136,34 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
   const totalBudget = data.reduce((acc, sub) => acc + (sub.budget || 0), 0);
 
   return (
-    <div className="text-center lg:text-xl xs:text-sm font-medium p-2 flex flex-col sm:flex-row justify-around w-full">
-      <p>
-        Monthly Budget: <br /> {formattedCurrency(totalBudget)}
-      </p>
-      <p>
-        Total {getActionWordPassedTense(category)} this month: <br />
-        {formattedCurrency(totalSpent)}
-      </p>
-      <p>
-        Left to {getActionWord(category)}: <br />
-        <span
-          className={`my-animation ${
-            totalBudget - totalSpent >= 0
-              ? dayTheme
-                ? "text-green-500"
+    <span className="w-100">
+      <div className="text-center lg:text-xl xs:text-sm font-medium p-2 flex flex-col sm:flex-row justify-around w-full">
+        <p>
+          Monthly Budget: <br /> {formattedCurrency(totalBudget)}
+        </p>
+        <p>
+          Total {getActionWordPassedTense(category)} this month: <br />
+          {formattedCurrency(totalSpent)}
+        </p>
+        <p>
+          Left to {getActionWord(category)}: <br />
+          <span
+            className={`my-animation ${
+              totalBudget - totalSpent >= 0
+                ? dayTheme
+                  ? "text-green-500"
+                  : "text-white"
+                : dayTheme
+                ? "text-red-500"
                 : "text-white"
-              : dayTheme
-              ? "text-red-500"
-              : "text-white"
-          }`}
-        >
-          {formattedCurrency(totalBudget - totalSpent)}
-        </span>
-      </p>
-    </div>
+            }`}
+          >
+            {formattedCurrency(totalBudget - totalSpent)}
+          </span>
+        </p>
+      </div>
+      <ProgressBarComponent whole={totalBudget} part={totalSpent} />
+    </span>
   );
 };
 
