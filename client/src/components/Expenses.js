@@ -10,12 +10,11 @@ const Expenses = () => {
     const fetchExpenses = async () => {
       const token = localStorage.getItem("token");
       if (!token) {
-        navigate("/login"); // Redirect to login if no token
+        navigate("/login");
         return;
       }
 
       try {
-        // const response = await fetch("api/expenses", {
         const response = await fetch("api/expenses", {
           method: "GET",
           headers: {
@@ -23,7 +22,7 @@ const Expenses = () => {
           },
         });
         const data = await response.json();
-        console.log(data); // Log the response data here
+        console.log(data);
         if (response.ok) {
           console.log("EXPENESES");
           setExpenses(data);

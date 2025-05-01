@@ -1,10 +1,9 @@
 import { Accordion } from "react-bootstrap";
-import { TransactionsTotal, DayTheme, DateContext } from "../App";
+import { TransactionsTotal, DayTheme } from "../App";
 import PieChart from "./PieChart";
 import { useRef, useEffect, useContext, useState } from "react";
 import { formattedCurrency } from "./FormattedCurrency";
 import MonthToggle from "./MonthToggle";
-import GetMonthlyCashFlows from "./GetMonthlyCashFlows";
 import ProgressBarComponent from "./ProgressBarComponent";
 
 const Overview = ({
@@ -17,16 +16,13 @@ const Overview = ({
   const isOpen = mainAccordionKey === mainKey;
   const mainAccordionRef = useRef(null);
   const [dayTheme] = useContext(DayTheme);
-
   const [cashflow, setCashflow] = useState(0);
   const [totalExpenses, setTotalExpenses] = useState(0);
   const [totalBudget, setTotalBudget] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
-  // const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
 
   useEffect(() => {
     if (total) {
-      // <- safe guard if total is null
       const expenses =
         (total.billsSpent || 0) +
         (total.savingsSpent || 0) +
@@ -42,39 +38,7 @@ const Overview = ({
       setTotalIncome(income);
       setTotalBudget(budget);
     }
-  }, [total, currentMonthIndex]); // <= notice both in dependencies!
-
-  // useEffect(() => {
-  //   if (isOpen && mainAccordionRef.current) {
-  //     const yOffset = -80;
-  //     const y =
-  //       mainAccordionRef.current.getBoundingClientRect().top +
-  //       window.pageYOffset +
-  //       yOffset;
-
-  //     setTimeout(() => {
-  //       window.scrollTo({ top: y, behavior: "smooth" });
-  //     }, 150);
-  //   }
-  // }, [isOpen]);
-  // useEffect(() => {})
-
-  // useEffect(() => {
-  //   console.log("Overview");
-  // }, [currentMonthIndex]);
-
-  // const totalExpenses =
-  //   total.billsSpent + total.savingsSpent + total.expenseSpent;
-
-  // const cashflow =
-  //   total.incomeSpent -
-  //   (total.billsSpent + total.savingsSpent + total.expenseSpent);
-  // const totalIncome = total.incomeSpent;
-
-  // const totalBudget =
-  //   total.billsBudget + total.savingsBudget + total.expenseBudget;
-
-  // const currentMonthIndex = new Date().getMonth();
+  }, [total, currentMonthIndex]);
 
   return (
     <div
@@ -168,14 +132,6 @@ const Overview = ({
             <MonthToggle color={`${dayTheme ? "day-text" : "text-white"}`} />
             <>
               <div className="p-4  rounded shadow-md flex justify-center flex-col items-center">
-                {/* <h2
-                  className={`text-xl font-bold mb-1 sm:mb-4 text-center my-animation ${
-                    dayTheme ? "day-text" : "text-white"
-                  }`}
-                >
-                  Overview Chart
-                </h2> */}
-
                 {totalExpenses > 0 ? (
                   <PieChart totals={total} />
                 ) : (

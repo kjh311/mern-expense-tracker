@@ -8,7 +8,7 @@ import {
   Legend,
   Tooltip,
 } from "chart.js";
-import ChartDataLabels from "chartjs-plugin-datalabels"; // <-- import datalabels
+import ChartDataLabels from "chartjs-plugin-datalabels";
 import { DayTheme } from "../App";
 
 ChartJS.register(
@@ -23,7 +23,7 @@ ChartJS.register(
 const SubCategoryBarChart = ({ data, category }) => {
   const [dayTheme] = useContext(DayTheme);
 
-  const textColor = dayTheme ? "black" : "white"; // for labels and numbers
+  const textColor = dayTheme ? "black" : "white";
 
   const chartData = {
     labels: data.map((d) => d.name),
@@ -31,12 +31,12 @@ const SubCategoryBarChart = ({ data, category }) => {
       {
         label: "Total Spent",
         data: data.map((d) => d.spent),
-        backgroundColor: "rgba(75, 192, 192, 1)", // full teal
+        backgroundColor: "rgba(75, 192, 192, 1)",
       },
       {
         label: "Budget",
         data: data.map((d) => d.budget),
-        backgroundColor: "rgba(153, 102, 255, 1)", // full purple
+        backgroundColor: "rgba(153, 102, 255, 1)",
       },
     ],
   };
@@ -70,7 +70,7 @@ const SubCategoryBarChart = ({ data, category }) => {
         align: "end",
         backgroundColor: `${dayTheme ? "rgb(0,129,168,1)" : "rgba(0,0,0,0.8)"}`,
         borderColor: dayTheme ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.6)",
-        borderWidth: 1, // thickness of the border
+        borderWidth: 1,
         borderRadius: 4,
         formatter: function (value) {
           return `$${value.toFixed(2)}`;
@@ -113,7 +113,7 @@ const SubCategoryBarChart = ({ data, category }) => {
         className="subcategory-bar-chart"
         data={chartData}
         options={options}
-        plugins={[ChartDataLabels]} // <-- attach the datalabels plugin
+        plugins={[ChartDataLabels]}
       />
     </div>
   );

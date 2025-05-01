@@ -1,13 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { DayTheme, DateContext } from "../App";
 
 const MonthToggle = ({ color }) => {
-  //   const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
   const [dateState, setDateState] = useContext(DateContext);
   const { month: currentMonthIndex, year: currentYear } = dateState;
-
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dayTheme] = useContext(DayTheme);
 
   const months = [
     "January",
@@ -29,7 +27,7 @@ const MonthToggle = ({ color }) => {
       let newMonth = prev.month - 1;
       let newYear = prev.year;
       if (newMonth < 0) {
-        newMonth = 11; // December
+        newMonth = 11;
         newYear -= 1;
         console.log("Year", newYear);
       }
@@ -42,7 +40,7 @@ const MonthToggle = ({ color }) => {
       let newMonth = prev.month + 1;
       let newYear = prev.year;
       if (newMonth > 11) {
-        newMonth = 0; // January
+        newMonth = 0;
         newYear += 1;
       }
       return { month: newMonth, year: newYear };

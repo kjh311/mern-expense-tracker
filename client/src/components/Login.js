@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LoggedInContext, DayTheme } from "../App";
 import Input from "./Input";
 import Button from "./Button";
@@ -8,7 +8,7 @@ import FadeWrapper from "./FadeWrapper";
 import { FadeContext } from "./FadeContext";
 
 const Login = ({ contentHeight }) => {
-  const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
+  const [setLoggedIn] = useContext(LoggedInContext);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -44,7 +44,6 @@ const Login = ({ contentHeight }) => {
       }
 
       const data = await response.json();
-      // console.log("Name: " + data.user.name);
 
       if (!data.token) return alert(data.message || "Login failed");
 
@@ -63,8 +62,6 @@ const Login = ({ contentHeight }) => {
         localStorage.setItem("Expense-Tracker-DayTheme", true);
         setDayTheme(true);
       } else {
-        // setDayTheme(localStorage.getItem("Expense-Tracker-DayTheme"));
-        // console.log("Theme from login: ", dayTheme);
       }
     } catch (error) {
       console.error(error);
@@ -111,7 +108,6 @@ const Login = ({ contentHeight }) => {
               onChange={handleChange}
               placeholder={"Email"}
               required
-              // autoComplete={"email"}
             />
             <div className="password-input-container relative">
               <Input
@@ -121,7 +117,6 @@ const Login = ({ contentHeight }) => {
                 onChange={handleChange}
                 placeholder={"Password"}
                 required
-                // autoComplete={"current-password"}
               />
               <div
                 onClick={togglePassword}

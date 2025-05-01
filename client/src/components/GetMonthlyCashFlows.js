@@ -6,7 +6,7 @@ import CashflowChart from "./CashflowChart";
 export const AuthContext = React.createContext();
 
 const GetMonthlyCashFlows = () => {
-  const [data, setData] = useState([]);
+  const [setData] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {

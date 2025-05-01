@@ -13,10 +13,6 @@ const DayThemeToggle = () => {
     localStorage.setItem("Expense-Tracker-DayTheme", !dayTheme);
   };
 
-  // useEffect(() => {
-  //   console.log("Daytheme from daytheme toggle: ", dayTheme);
-  // }, [dayTheme]);
-
   return (
     <button
       onClick={handleClick}
@@ -32,7 +28,6 @@ const DayThemeToggle = () => {
         autoplay
         loop
         src={sunAnimation}
-        // style={{ height: "75px", width: "75px" }}
       />
       <Player
         className={`theme-icon moon-icon absolute  daytheme-icon-animation transform ${
@@ -43,7 +38,6 @@ const DayThemeToggle = () => {
         autoplay
         loop
         src={moonAnimation}
-        // style={{ height: "60px", width: "60px" }}
       />
     </button>
   );

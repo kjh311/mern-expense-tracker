@@ -6,11 +6,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
-// ChartJS.register(ArcElement, Tooltip, Legend);
-
 const PieChart = ({ totals }) => {
-  const [total, setTotal] = useContext(TransactionsTotal);
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
   const options = {
     responsive: true,
     plugins: {

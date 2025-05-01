@@ -13,49 +13,7 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
   const [dateState, setDateState] = useContext(DateContext);
   const { month: currentMonthIndex, year: currentYear } = dateState;
 
-  const [noData, setNoData] = useState(false);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await axios.get(`/api/...`); // Your API call
-
-  //       const filteredData = res.data
-  //         .filter((item) => {
-  //           return (
-  //             item.month === currentMonthIndex + 1 && item.year === currentYear
-  //           );
-  //         })
-  //         .map((item) => {
-  //           const filteredTransactions = item.transactions.filter(
-  //             (transaction) => {
-  //               const transactionDate = new Date(transaction.date);
-  //               return (
-  //                 transactionDate.getMonth() === currentMonthIndex &&
-  //                 transactionDate.getFullYear() === currentYear
-  //               );
-  //             }
-  //           );
-
-  //           return {
-  //             ...item,
-  //             transactions: filteredTransactions,
-  //           };
-  //         })
-  //         .filter((item) => item.transactions.length > 0);
-
-  //       console.log(
-  //         `Category breakdown filtered data: ${category}`,
-  //         filteredData
-  //       );
-  //       setData(filteredData);
-  //     } catch (err) {
-  //       console.error("Error fetching category breakdown", err);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [category, refreshFlag, currentMonthIndex, currentYear]);
+  // const [noData, setNoData] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -90,10 +48,6 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
           })
           .filter((item) => item.transactions.length > 0);
 
-        // console.log(
-        //   `Category breakdown filtered data: ${category}`,
-        //   filteredData
-        // );
         setData(filteredData);
       } catch (err) {
         console.error("Error fetching category breakdown", err);
@@ -104,7 +58,6 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
   }, [category, refreshFlag, currentMonthIndex, currentYear]);
 
   useEffect(() => {
-    // if (data && data.length > 0) {
     const totalSpent = data.reduce((acc, sub) => {
       const subTotal = sub.transactions.reduce(
         (sum, tx) => sum + (tx.amount || 0),
@@ -124,7 +77,6 @@ const CategoryBreakdown = ({ category, refreshFlag }) => {
   }, [data, category, setTotal]);
 
   if (!data || data.length === 0) {
-    // setNoData(true);
     return <p className="text-center p-4">No data available.</p>;
   }
 

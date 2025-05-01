@@ -30,7 +30,6 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log(`✅ Connected to DB: ${mongoose.connection.name}`))
-  // .then(() => console.log({ userId }))
   .catch((err) => console.error(err));
 
 app.get("/", (req, res) => {

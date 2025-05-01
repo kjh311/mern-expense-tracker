@@ -23,6 +23,9 @@ const PostNewTransaction = ({
   const [dayTheme, setDayTheme] = useContext(DayTheme);
   const [dateInput, setDateInput] = useState(new Date());
 
+  const disableButton = amount === "" || description === "";
+  console.log("Disabled: ", disableButton);
+
   const handlePostTransaction = async (e) => {
     e.preventDefault();
 
@@ -75,20 +78,22 @@ const PostNewTransaction = ({
                 : `accordion-header-higher-${backgroundColor}`
             }`}
           >
-            <h2
-              className={`my-animation sm:text-2xl text-sm text-shadow font-semibold text-center w-full ${
-                dayTheme ? "day-text" : "text-white"
-              }`}
-            >
-              Add New Transaction{" "}
-              <span
-                className={`my-animation text-3xl ${
-                  dayTheme ? "text-red-500" : "white"
+            <span className="flex justify-start sm:justify-center">
+              <h2
+                className={`my-animation sm:text-2xl text-sm text-shadow font-semibold  w-full ${
+                  dayTheme ? "day-text" : "text-white"
                 }`}
               >
-                +
-              </span>
-            </h2>
+                Add New Transaction{" "}
+                <span
+                  className={`my-animation text-3xl ${
+                    dayTheme ? "text-red-500" : "white"
+                  }`}
+                >
+                  +
+                </span>
+              </h2>
+            </span>
           </AccordionHeader>
 
           <AccordionBody
@@ -131,19 +136,11 @@ const PostNewTransaction = ({
                 onChange={(dateInput) => setDateInput(dateInput)}
               />
 
-              {/* <label className="flex items-center gap-2 text-sm text-gray-600">
-                <input
-                  type="checkbox"
-                  checked={recurring}
-                  onChange={(e) => setRecurring(e.target.checked)}
-                />
-                Recurring Transaction
-              </label> */}
-
               <Button
                 type={"submit"}
                 text={"Submit"}
                 color={dayTheme ? "blue" : "red"}
+                // disabled={disableButton}
               />
             </form>
           </AccordionBody>

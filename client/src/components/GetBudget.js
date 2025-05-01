@@ -34,7 +34,6 @@ const GetBudget = ({ category }) => {
               className="text-2xl font-bold text-indigo-600 m-4"
               key={budget._id}
             >
-              {/* <p>Category: {budget.category}</p> */}
               <p>Budget: ${budget.amount}</p>
             </h2>
           ))

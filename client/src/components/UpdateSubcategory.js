@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import Button from "./Button";
 import { IoCloseCircle } from "react-icons/io5";
-import { formattedCurrency } from "./FormattedCurrency";
 import { DayTheme } from "../App";
 
 const UpdateSubcategory = ({
@@ -114,7 +113,6 @@ const UpdateSubcategory = ({
             <br />
             <br />
             <Button
-              // style={{ color: "white" }}
               type={"submit"}
               text={"Update Category"}
               color={dayTheme ? "blue" : "purple"}

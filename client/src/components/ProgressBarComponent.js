@@ -14,7 +14,6 @@ const ProgressBarComponent = ({ whole, part }) => {
     setExclamation("");
     setPulse(false);
     setPercentage(((part / whole) * 100).toFixed(0));
-    // console.log("percent: ", percentage);
 
     if (percentage < 25) {
       setVariant("success");

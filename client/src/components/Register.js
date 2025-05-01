@@ -36,12 +36,12 @@ const Register = ({ contentHeight }) => {
       );
       setMessage(response.data.message);
 
-      setTriggerFadeOut(true); // Trigger fade-out effect
+      setTriggerFadeOut(true);
 
       // Redirect after fade-out
       setTimeout(() => {
         navigate("/login");
-      }, 300); // Allow time for fade-out
+      }, 300);
     } catch (error) {
       setMessage(
         error.response ? error.response.data.error : "Something went wrong"
@@ -50,16 +50,15 @@ const Register = ({ contentHeight }) => {
   };
 
   const handleLoginClick = () => {
-    setTriggerFadeOut(true); // Trigger fade-out
+    setTriggerFadeOut(true);
     setTimeout(() => {
-      navigate("/login"); // Navigate to login after fade-out
+      navigate("/login");
       setTriggerFadeOut(false);
     }, 300);
   };
 
   return (
     <FadeWrapper triggerFadeOut={triggerFadeOut}>
-      {/* Wrap the component with FadeWrapper */}
       <div
         style={{ minHeight: contentHeight }}
         className={`my-animation register-container flex items-center justify-center ${
@@ -124,7 +123,7 @@ const Register = ({ contentHeight }) => {
               className={`ml-1 hover:underline text-center text-sm mt-4 cursor-pointer ${
                 dayTheme ? "day-theme-link" : "night-theme-link"
               }`}
-              onClick={handleLoginClick} // Trigger fade-out when clicking Login link
+              onClick={handleLoginClick}
             >
               Login
             </span>

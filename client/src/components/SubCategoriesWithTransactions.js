@@ -237,7 +237,7 @@ const SubCategoriesWithTransactions = ({
               category={category}
               activeKey={activeKey}
               setActiveKey={setActiveKey}
-              setRefreshFlag={setRefreshFlag}
+              // setRefreshFlag={setRefreshFlag}
             />
 
             <Accordion

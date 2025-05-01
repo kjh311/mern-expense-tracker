@@ -17,12 +17,10 @@ const DeleteTransaction = ({
 
   const handleDeleteTransaction = async () => {
     if (window.confirm("Delete this transaction?")) {
-      // Set the transaction to animating state
       setAnimatingId(txId);
 
       setTimeout(async () => {
         try {
-          // Perform the delete operation
           const res = await axios.delete(
             `http://localhost:5000/api/transactions/${id}`,
             {
@@ -36,13 +34,12 @@ const DeleteTransaction = ({
           await fetchExpenses();
           setRefreshFlag((prev) => !prev);
 
-          // After delete, reset the animatingId to stop animation
           setAnimatingId(null);
         } catch (err) {
           console.error("Failed to delete transaction:", err.message);
-          setAnimatingId(null); // Reset animating state in case of error
+          setAnimatingId(null);
         }
-      }, 500); // Ensure the animation lasts long enough before deletion
+      }, 500);
     }
   };
 

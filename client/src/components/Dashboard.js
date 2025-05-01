@@ -13,7 +13,6 @@ const Dashboard = ({ contentHeight }) => {
   const [dayTheme] = useContext(DayTheme);
   const { triggerFadeOut } = useContext(FadeContext);
   const [fadeClass, setFadeClass] = useState("fade-in");
-  // const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
   const [dateState, setDateState] = useContext(DateContext);
   const { month: currentMonthIndex, year: currentYear } = dateState;
 
@@ -44,7 +43,6 @@ const Dashboard = ({ contentHeight }) => {
         mainKey="0"
         mainAccordionKey={mainAccordionKey}
         setMainAccordionKey={setMainAccordionKey}
-        // currentMonthIndex={currentMonthIndex}
         dateState={dateState}
       />
 

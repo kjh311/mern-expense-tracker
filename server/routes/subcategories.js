@@ -6,7 +6,6 @@ const Transaction = require("../models/Transaction");
 
 // POST NEW SUBCATEGORY
 
-// * UserID or user?? *
 router.post("/", verifyToken, async (req, res) => {
   const { categoryType, name, budget, month, year } = req.body;
 
@@ -29,7 +28,6 @@ router.post("/", verifyToken, async (req, res) => {
 
 // GET ALL SUBCATEGORIES
 
-// * UserID or user?? *
 router.get("/", verifyToken, async (req, res) => {
   try {
     const subs = await Subcategory.find({ user: req.userId });

@@ -8,7 +8,6 @@ import Input from "./Input";
 import Button from "./Button";
 import { DayTheme, DateContext } from "../App";
 import {
-  PostNewTransactionHeaderColors,
   PostNewTransactionHighestBodyColors,
   PostNewTransactionHighestHeaderColors,
 } from "./ActionWords";
@@ -21,16 +20,15 @@ const PostNewSubcategory = ({
 }) => {
   const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
-  // const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
-  const [dateState, setDateState] = useContext(DateContext);
+  const [dayTheme] = useContext(DayTheme);
+  const [dateState] = useContext(DateContext);
   const { month: currentMonthIndex, year: currentYear } = dateState;
 
   const handlePost = (e) => {
     e.preventDefault();
 
     const now = new Date();
-    const month = currentMonthIndex; // January is 0, so add 1
+    const month = currentMonthIndex;
     const year = now.getFullYear();
 
     const postSub = async () => {
@@ -83,20 +81,22 @@ const PostNewSubcategory = ({
           ${PostNewTransactionHighestHeaderColors(category, dayTheme)}
            `}
         >
-          <h2
-            className={`sm:text-2xl text-sm text-shadow font-semibold  text-center w-full my-animation ${
-              dayTheme ? "day-text" : "text-white"
-            }`}
-          >
-            Add New Category{" "}
-            <span
-              className={`my-animation text-3xl ${
-                dayTheme ? "text-red-500" : "text-white"
+          <span className="flex justify-start sm:justify-center">
+            <h2
+              className={`sm:text-2xl text-sm text-shadow font-semibold  w-full my-animation ${
+                dayTheme ? "day-text" : "text-white"
               }`}
             >
-              +
-            </span>
-          </h2>
+              Add New Category{" "}
+              <span
+                className={`my-animation text-3xl ${
+                  dayTheme ? "text-red-500" : "text-white"
+                }`}
+              >
+                +
+              </span>
+            </h2>
+          </span>
         </AccordionHeader>
         <AccordionBody
           className={`${

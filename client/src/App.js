@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -26,16 +26,9 @@ function App() {
   });
   const now = new Date();
   const [dateState, setDateState] = useState({
-    month: now.getMonth(), // 0-based
+    month: now.getMonth(),
     year: now.getFullYear(),
   });
-  // const [currentMonthIndex, setCurrentMonthIndex] = useState(
-  //   new Date().getMonth()
-  // );
-
-  // console.log("Current month index: ", currentMonthIndex);
-
-  // console.log("Daytheme from appjs: ", dayTheme);
 
   const [total, setTotal] = useState({
     expenseSpent: 0,
@@ -47,10 +40,6 @@ function App() {
     savingsBudget: 0,
     billsBudget: 0,
   });
-
-  // useEffect(() => {
-  //   console.log(total);
-  // }, [currentMonthIndex]);
 
   const navbarRef = useRef(null);
   const footerRef = useRef(null);

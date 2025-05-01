@@ -1,6 +1,5 @@
-import React, { useContext, forwardRef, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { LoggedInContext, DayTheme } from "../App";
-import { Link, useNavigate } from "react-router-dom";
 import Logout from "./Logout";
 import DayThemeToggle from "./DayThemeToggle";
 import Button from "./Button";
@@ -9,7 +8,7 @@ import { useLocation } from "react-router-dom";
 
 const Navbar = ({ ref }) => {
   const [loggedIn] = useContext(LoggedInContext);
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dayTheme] = useContext(DayTheme);
   const fadeNavigate = useFadeNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
@@ -17,11 +16,7 @@ const Navbar = ({ ref }) => {
 
   useEffect(() => {
     setCurrentPathState(currentPath);
-    // console.log("pathname: ", currentPath);
   }, [currentPath]);
-
-  // console.log("Name: " + data.user.name);
-  // console.log("Daytheme from Navbar: ", dayTheme);
 
   return (
     <nav

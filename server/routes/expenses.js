@@ -1,6 +1,6 @@
 const express = require("express");
 const Expense = require("../models/Expense");
-const verifyToken = require("../middleware/verifyToken"); // Ensure this is imported correctly
+const verifyToken = require("../middleware/verifyToken");
 
 const router = express.Router();
 
@@ -16,8 +16,8 @@ router.post("/", verifyToken, async (req, res) => {
     const { amount, description, subcategory, date } = req.body;
 
     const expense = new Expense({
-      user: req.userId, // ✅ correct field
-      amount: parseFloat(amount), // ensure it's a number
+      user: req.userId,
+      amount: parseFloat(amount),
       description,
       subcategory,
       date: date ? new Date(date) : Date.now(),
@@ -26,7 +26,7 @@ router.post("/", verifyToken, async (req, res) => {
     await expense.save();
     res.status(201).json({ message: "Expense created successfully", expense });
   } catch (error) {
-    console.error("Error creating expense:", error); // Add this line
+    console.error("Error creating expense:", error);
     res.status(500).json({ message: "Server error", error });
   }
 });

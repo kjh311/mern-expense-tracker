@@ -1,10 +1,13 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @import url("./styles/variables.css");
 @import url("./styles/dayTheme.css");
 @import url("./styles/animations.css");
-
-* {
-  /* transition: all 0.3s ease-in-out; */
-}
 
 body {
   margin: 0;
@@ -20,10 +23,6 @@ body {
   font-style: normal;
 }
 
-.dashboard {
-  /* background-color: #f1faee; */
-}
-
 .footer {
   position: absolute;
   bottom: 0;
@@ -32,12 +31,6 @@ body {
 
 .text-stroke {
   -webkit-text-stroke: 1px black;
-}
-
-.nav-bar {
-  /* background-color: #0081a7; */
-
-  /* border-bottom: 2px solid black; */
 }
 
 .nav-bar-text {
@@ -55,42 +48,35 @@ body {
 }
 
 .accordion-button::after {
+  -webkit-transform: scale(2);
+  -ms-transform: scale(2);
   transform: scale(2);
-  /* font-weight: bold !important; */
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
   transition: transform 0.3s ease;
-}
-
-.accordion-button:hover::after,
-button.accordion-button:not(.collapsed):hover::after {
-  /* transform: scale(2.5) !important;
-  transition: transform 0.3s ease; */
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 button.accordion-button:not(.collapsed)::after {
+  -webkit-transform: rotate(-180deg) scale(2);
+  -ms-transform: rotate(-180deg) scale(2);
   transform: rotate(-180deg) scale(2);
   font-weight: 900 !important;
 }
 
 .accordion-header:hover,
 .accordion-button:hover {
-  /* background-color: #bfdbfe !important; */
-  /* outline: 3px solid black !important; */
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-}
-
-.accordion-button:hover {
-  /* background-color: #f7adb2 !important; */
 }
 
 .accordion-header,
 .accordion-button {
-  /* outline: 3px solid rgba(0, 0, 0, 0) !important; */
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-}
-
-.accordion-item,
-.transaction-item {
-  /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7) !important; */
 }
 
 ul {
@@ -101,13 +87,10 @@ ul {
 }
 
 .animate-button-blue {
-  /* background-color: #0081a8; */
   background-color: var(--light-3);
-  /* color: white; */
 }
 
 .animate-button-blue:hover {
-  /* background-color: #0081a8; */
   background-color: var(--light-2);
 }
 
@@ -120,12 +103,10 @@ ul {
 }
 
 .animate-button-purple:hover {
-  /* background-color: #390099; */
   background-color: var(--dark-5);
 }
 
 .animate-button-purple {
-  /* background-color: #c084fc; */
   background-color: var(--dark-6);
   color: white;
 }
@@ -136,7 +117,10 @@ ul {
 }
 
 .button-shadow:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
   transform: scale(1.1);
+  -webkit-box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
   border: 2px solid black;
 }
@@ -147,8 +131,11 @@ ul {
 }
 
 .button-glow:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
   transform: scale(1.1);
   border: 2px solid white;
+  -webkit-box-shadow: 0 0 15px 5px white !important;
   box-shadow: 0 0 15px 5px white !important;
 }
 
@@ -158,20 +145,27 @@ ul {
 
 .register-form-day + p {
   color: #0081a8 !important;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
 .register-form-night + p {
   color: white !important;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
 .animate-button:active {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
   transform: scale(1);
-  /* box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7); */
 }
 
 .react-icon:hover {
+  -webkit-transform: scale(1.4);
+  -ms-transform: scale(1.4);
   transform: scale(1.4);
 }
 
@@ -186,10 +180,6 @@ ul {
   margin-bottom: 40px;
 }
 
-/* #update-subcategory {
-  margin-top: 20px !important;
-} */
-
 .day-theme-button {
   position: absolute;
   right: 15px;
@@ -197,18 +187,9 @@ ul {
 }
 
 .outer-glow {
+  -webkit-box-shadow: 0 0 15px 5px white !important;
   box-shadow: 0 0 15px 5px white !important;
 }
-
-.theme-icon:hover {
-  /* transform: scale(1.2);
-  transition: all 0.3s; */
-}
-
-/* .theme-icon {
-  left: -15px;
-  top: -15px;
-} */
 
 .sun-icon {
   left: -17px;
@@ -226,17 +207,14 @@ ul {
 
 .subcategory-bar-chart {
   max-height: 200px;
-  /* max-width: 50%; */
 }
-
-/* .password-input-container{
-
-} */
 
 .eye-icons {
   position: absolute;
   top: 50%;
   right: 10px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   cursor: pointer;
   font-size: 20px;
@@ -245,51 +223,61 @@ ul {
 
 .eye-icon-day {
   color: #666;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .eye-icon-night {
   color: var(--dark-5);
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
-/* .home-container {
-  height: 100dvh;
-} */
-
 .my-animation {
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .daytheme-icon-animation {
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 
 .month-arrow {
+  -webkit-transform: scale(2);
+  -ms-transform: scale(2);
   transform: scale(2);
   margin-top: -3px;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
 .month-arrow:hover {
+  -webkit-transform: scale(2.5);
+  -ms-transform: scale(2.5);
   transform: scale(2.5);
+  -webkit-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
   transition: all 0.1s ease;
 }
 
 .month-arrow:active {
+  -webkit-transform: scale(2.3);
+  -ms-transform: scale(2.3);
   transform: scale(2.3);
+  -webkit-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
   transition: all 0.1s ease;
 }
 
 .rel-icon {
   fill: white;
 }
-
-/* .home-heading {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: white;
-} */
 
 .flying-cash-animation {
   width: 300px;
@@ -303,6 +291,8 @@ ul {
 
 .break {
   word-break: break-word;
+  -webkit-hyphens: auto !important;
+  -ms-hyphens: auto !important;
   hyphens: auto !important;
   overflow-wrap: anywhere;
 }
@@ -324,12 +314,17 @@ ul {
 
   .button-shadow:hover,
   .button-glow:hover {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
+    -webkit-box-shadow: 5px 10px 20px rgba(0, 0, 0, 0);
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0);
   }
 
   .button-shadow:active,
   .button-glow:active {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
     transform: scale(0.9);
   }
 
@@ -340,20 +335,30 @@ ul {
 
   .month-arrow {
     margin-top: -5px;
+    -webkit-transform: scale(1.7);
+    -ms-transform: scale(1.7);
     transform: scale(1.7);
   }
 
   .month-arrow:hover {
+    -webkit-transform: scale(1.7);
+    -ms-transform: scale(1.7);
     transform: scale(1.7);
   }
   .month-arrow:active {
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
     transform: scale(1.5);
   }
 
   button.accordion-button.collapsed::after {
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
     transform: scale(1.5);
   }
   button.accordion-button:not(.collapsed)::after {
+    -webkit-transform: rotate(-180deg) scale(1.5);
+    -ms-transform: rotate(-180deg) scale(1.5);
     transform: rotate(-180deg) scale(1.5);
   }
 

@@ -9,7 +9,7 @@ const Input = ({
   minLength,
   name,
   type,
-  // autoComplete,
+  required,
 }) => {
   const [dayTheme, setDayTheme] = useContext(DayTheme);
 
@@ -24,6 +24,7 @@ const Input = ({
       onChange={onChange}
       maxLength={maxLength}
       minLength={minLength}
+      required={required}
       name={name}
       autoComplete="on"
     />

@@ -4,7 +4,6 @@ import {
   Chart as ChartJS,
   LineElement,
   PointElement,
-  LineController,
   CategoryScale,
   LinearScale,
   Tooltip,
@@ -14,7 +13,6 @@ import {
 import { Line } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import { formattedCurrency } from "./FormattedCurrency";
 import { DayTheme } from "../App";
 
 ChartJS.register(

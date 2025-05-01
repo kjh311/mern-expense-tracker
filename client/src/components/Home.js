@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { DayTheme, LoggedInContext } from "../App";
 import { Player } from "@lottiefiles/react-lottie-player";
@@ -8,9 +8,9 @@ import FadeWrapper from "./FadeWrapper";
 import { FadeContext } from "./FadeContext";
 
 const Home = ({ contentHeight }) => {
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
-  const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
-  const [localStorageName, setLocalStorageName] = useState(
+  const [dayTheme] = useContext(DayTheme);
+  const [loggedIn] = useContext(LoggedInContext);
+  const [localStorageName] = useState(
     localStorage.getItem("expense-tracker-username") || ""
   );
   const navigate = useNavigate();
@@ -50,7 +50,6 @@ const Home = ({ contentHeight }) => {
           loop
           src={moneyAnimation}
           className="flying-cash-animation mb-2"
-          // style={{ height: "300px", width: "300px" }}
         />
         <span onClick={handleStartClick}>
           <Button
@@ -61,19 +60,6 @@ const Home = ({ contentHeight }) => {
       </div>
     </FadeWrapper>
   );
-};
-
-const styles = {
-  heading: {
-    fontSize: "3rem",
-    marginBottom: "1rem",
-    color: "white",
-  },
-  subheading: {
-    fontSize: "1.5rem",
-    marginBottom: "2rem",
-    color: "white",
-  },
 };
 
 export default Home;

@@ -83,7 +83,7 @@ export const PostNewTransactionHighestHeaderColors = (category, dayTheme) => {
       color = "orange";
       break;
     default:
-      color = "gray"; // fallback color
+      color = "gray";
   }
 
   return `accordion-header-highest-${dayTheme ? "day" : "night"}-${color}`;
@@ -106,7 +106,7 @@ export const PostNewTransactionBodyColors = (category, dayTheme) => {
       color = "orange";
       break;
     default:
-      color = "gray"; // fallback color
+      color = "gray";
   }
 
   return `overview-accordion-body-${dayTheme ? "day" : "night"}-${color}`;
@@ -129,7 +129,7 @@ export const PostNewTransactionHighestBodyColors = (category, dayTheme) => {
       color = "orange";
       break;
     default:
-      color = "gray"; // fallback color
+      color = "gray";
   }
 
   return `overview-highest-accordion-body-${

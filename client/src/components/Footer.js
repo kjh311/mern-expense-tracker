@@ -2,7 +2,7 @@ import React, { useContext, forwardRef } from "react";
 import { DayTheme } from "../App";
 
 const Footer = ({ ref }) => {
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dayTheme] = useContext(DayTheme);
 
   return (
     <footer
