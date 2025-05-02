@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { LoggedInContext, DayTheme } from "../App";
+import { LoggedInContext, DayTheme, DateContext } from "../App";
 import { jwtDecode } from "jwt-decode";
 import Button from "./Button";
 import { FadeContext } from "./FadeContext";
 
 const Logout = () => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
+  const [dateState, setDateState] = useContext(DateContext);
   const [dayTheme] = useContext(DayTheme);
   const { setTriggerFadeOut } = useContext(FadeContext);
   const navigate = useNavigate();
@@ -21,6 +22,10 @@ const Logout = () => {
 
       navigate("/");
       setTriggerFadeOut(false);
+
+      //reset current month/year
+      const now = new Date();
+      setDateState({ month: now.getMonth(), year: now.getFullYear() });
     }, 300);
   };
 
