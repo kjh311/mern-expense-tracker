@@ -20,6 +20,7 @@ const Overview = ({
   const [totalExpenses, setTotalExpenses] = useState(0);
   const [totalBudget, setTotalBudget] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
+  console.log("cashflow: ", cashflow);
 
   useEffect(() => {
     if (total) {
@@ -83,9 +84,14 @@ const Overview = ({
                     <span className="my-animation text-3xl">💵</span> Cashflow:
                     <br />
                     <span
-                      className={`my-animation ${
-                        cashflow > 0 ? "text-blue-800" : "text-white"
-                      }`}
+                      className={`${cashflow < 0 && "pulse"} my-animation ${
+                        cashflow > 0
+                          ? dayTheme
+                            ? "day-text"
+                            : "text-white"
+                          : "text-red-500"
+                      }
+                      `}
                     >
                       {formattedCurrency(cashflow)}
                     </span>

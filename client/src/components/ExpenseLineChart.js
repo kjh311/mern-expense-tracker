@@ -57,7 +57,7 @@ const ExpenseLineChart = ({ transactions }) => {
       },
     },
     animation: {
-      duration: 1500,
+      duration: 300,
       easing: "easeOutQuart",
     },
     elements: {
@@ -84,11 +84,10 @@ const ExpenseLineChart = ({ transactions }) => {
         display: true,
         align: "middle",
         borderColor: dayTheme ? "#333" : "#fff",
-        borderWidth: 1, // thickness of the border
+        borderWidth: 1,
         borderRadius: 4,
         anchor: "end",
-        backgroundColor: dayTheme ? "rgba(0,129,168,1)" : "rgba(0, 0, 0, 0.7)", // translucent bg
-        borderRadius: 4,
+        backgroundColor: dayTheme ? "rgba(0,129,168,1)" : "rgba(0, 0, 0, 0.7)",
         padding: {
           top: 2,
           bottom: 2,
@@ -134,9 +133,6 @@ const ExpenseLineChart = ({ transactions }) => {
             )}`;
           },
         },
-        // bodyColor: fontColor,
-        // titleColor: fontColor,
-        // backgroundColor: dayTheme ? "#fff" : "#222",
         bodyFont: {
           size: 14,
         },

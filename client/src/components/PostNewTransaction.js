@@ -24,7 +24,7 @@ const PostNewTransaction = ({
   const [dateInput, setDateInput] = useState(new Date());
 
   const disableButton = amount === "" || description === "";
-  console.log("Disabled: ", disableButton);
+  // console.log("Disabled: ", disableButton);
 
   const handlePostTransaction = async (e) => {
     e.preventDefault();

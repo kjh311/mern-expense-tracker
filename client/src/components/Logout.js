@@ -6,7 +6,7 @@ import Button from "./Button";
 import { FadeContext } from "./FadeContext";
 
 const Logout = () => {
-  const [setLoggedIn] = useContext(LoggedInContext);
+  const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
   const [dayTheme] = useContext(DayTheme);
   const { setTriggerFadeOut } = useContext(FadeContext);
   const navigate = useNavigate();

@@ -8,7 +8,7 @@ import FadeWrapper from "./FadeWrapper";
 import { FadeContext } from "./FadeContext";
 
 const Login = ({ contentHeight }) => {
-  const [setLoggedIn] = useContext(LoggedInContext);
+  const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
