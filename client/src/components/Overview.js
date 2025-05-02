@@ -20,7 +20,7 @@ const Overview = ({
   const [totalExpenses, setTotalExpenses] = useState(0);
   const [totalBudget, setTotalBudget] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
-  console.log("cashflow: ", cashflow);
+  // console.log("cashflow: ", cashflow);
 
   useEffect(() => {
     if (total) {

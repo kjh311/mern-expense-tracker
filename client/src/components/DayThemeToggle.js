@@ -13,6 +13,8 @@ const DayThemeToggle = () => {
     localStorage.setItem("Expense-Tracker-DayTheme", !dayTheme);
   };
 
+  // console.log("DayTheme toggle");
+
   return (
     <button
       onClick={handleClick}

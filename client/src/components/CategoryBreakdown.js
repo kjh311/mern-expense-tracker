@@ -1,61 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
 import { TransactionsTotal, DayTheme, DateContext } from "../App";
 import { formattedCurrency } from "./FormattedCurrency";
 import { getActionWord, getActionWordPassedTense } from "./ActionWords";
 import ProgressBarComponent from "./ProgressBarComponent";
 
-const CategoryBreakdown = ({ category, refreshFlag }) => {
-  const [data, setData] = useState([]);
+const CategoryBreakdown = ({
+  category,
+  refreshFlag,
+  currentMonthIndex,
+  currentYear,
+  fetchExpenses,
+  data,
+}) => {
   const [total, setTotal] = useContext(TransactionsTotal);
   const [dayTheme] = useContext(DayTheme);
-  // const [currentMonthIndex] = useContext(DateContext);
-  const [dateState, setDateState] = useContext(DateContext);
-  const { month: currentMonthIndex, year: currentYear } = dateState;
-
-  // const [noData, setNoData] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:5000/api/subcategories/${category}-with-transactions`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-
-        const filteredData = res.data
-          .map((item) => {
-            const filteredTransactions = item.transactions.filter(
-              (transaction) => {
-                const transactionMonth = Number(transaction.date.slice(5, 7));
-                const transactionYear = Number(transaction.date.slice(0, 4));
-                const now = new Date();
-                return (
-                  transactionMonth === currentMonthIndex + 1 &&
-                  transactionYear === currentYear
-                );
-              }
-            );
-
-            return {
-              ...item,
-              transactions: filteredTransactions,
-            };
-          })
-          .filter((item) => item.transactions.length > 0);
-
-        setData(filteredData);
-      } catch (err) {
-        console.error("Error fetching category breakdown", err);
-      }
-    };
-
-    fetchData();
-  }, [category, refreshFlag, currentMonthIndex, currentYear]);
+  // const [dateState, setDateState] = useContext(DateContext);
 
   useEffect(() => {
     const totalSpent = data.reduce((acc, sub) => {
