@@ -5,7 +5,7 @@ import { DayTheme, DateContext } from "../App";
 import { FadeContext } from "./FadeContext";
 import MonthToggle from "./MonthToggle";
 
-const Dashboard = ({ contentHeight }) => {
+const Dashboard = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
   const [mainAccordionKey, setMainAccordionKey] = useState(null);
   const [userName] = useState(
     localStorage.getItem("expense-tracker-username") || ""
@@ -54,6 +54,8 @@ const Dashboard = ({ contentHeight }) => {
         mainAccordionKey={mainAccordionKey}
         setMainAccordionKey={setMainAccordionKey}
         dateState={dateState}
+        refreshFlag={refreshFlag}
+        setRefreshFlag={setRefreshFlag}
       />
       <br />
       <SubCategoriesWithTransactions
@@ -63,6 +65,8 @@ const Dashboard = ({ contentHeight }) => {
         mainKey="2"
         mainAccordionKey={mainAccordionKey}
         setMainAccordionKey={setMainAccordionKey}
+        refreshFlag={refreshFlag}
+        setRefreshFlag={setRefreshFlag}
       />
       <br />
       <SubCategoriesWithTransactions
@@ -72,6 +76,8 @@ const Dashboard = ({ contentHeight }) => {
         mainKey="3"
         mainAccordionKey={mainAccordionKey}
         setMainAccordionKey={setMainAccordionKey}
+        refreshFlag={refreshFlag}
+        setRefreshFlag={setRefreshFlag}
       />
       <br />
       <SubCategoriesWithTransactions
@@ -81,6 +87,8 @@ const Dashboard = ({ contentHeight }) => {
         mainKey="4"
         mainAccordionKey={mainAccordionKey}
         setMainAccordionKey={setMainAccordionKey}
+        refreshFlag={refreshFlag}
+        setRefreshFlag={setRefreshFlag}
       />
     </div>
   );

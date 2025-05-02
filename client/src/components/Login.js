@@ -7,14 +7,11 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import FadeWrapper from "./FadeWrapper";
 import { FadeContext } from "./FadeContext";
 
-const Login = ({ contentHeight }) => {
+const Login = ({ contentHeight, formData, setFormData }) => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const { triggerFadeOut, setTriggerFadeOut } = useContext(FadeContext);

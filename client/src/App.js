@@ -41,9 +41,15 @@ function App() {
     billsBudget: 0,
   });
 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
   const navbarRef = useRef(null);
   const footerRef = useRef(null);
   const [contentHeight, setContentHeight] = useState("100vh");
+  const [refreshFlag, setRefreshFlag] = useState(false);
 
   return (
     <div className={`App ${dayTheme ? "day-app" : "night-app"}`}>
@@ -68,19 +74,37 @@ function App() {
                     <Route
                       exact
                       path="/register"
-                      element={<Register contentHeight={contentHeight} />}
+                      element={
+                        <Register
+                          contentHeight={contentHeight}
+                          formData={formData}
+                          setFormData={setFormData}
+                          refreshFlag={refreshFlag}
+                          setRefreshFlag={setRefreshFlag}
+                        />
+                      }
                     />
                     <Route
                       exact
                       path="/login"
-                      element={<Login contentHeight={contentHeight} />}
+                      element={
+                        <Login
+                          contentHeight={contentHeight}
+                          formData={formData}
+                          setFormData={setFormData}
+                        />
+                      }
                     />
                     <Route
                       exact
                       path="/dashboard"
                       element={
                         <ProtectedRoute>
-                          <Dashboard contentHeight={contentHeight} />
+                          <Dashboard
+                            contentHeight={contentHeight}
+                            refreshFlag={refreshFlag}
+                            setRefreshFlag={setRefreshFlag}
+                          />
                         </ProtectedRoute>
                       }
                     />

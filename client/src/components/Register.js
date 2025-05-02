@@ -7,8 +7,9 @@ import { DayTheme } from "../App";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import FadeWrapper from "./FadeWrapper";
 import { FadeContext } from "./FadeContext";
+import DemoLogin from "./DemoLogin";
 
-const Register = ({ contentHeight }) => {
+const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +41,7 @@ const Register = ({ contentHeight }) => {
 
       // Redirect after fade-out
       setTimeout(() => {
-        navigate("/login");
+        navigate("/dashboard");
       }, 300);
     } catch (error) {
       setMessage(
@@ -128,6 +129,11 @@ const Register = ({ contentHeight }) => {
               Login
             </span>
           </p>
+
+          <DemoLogin
+            refreshFlag={refreshFlag}
+            setRefreshFlag={setRefreshFlag}
+          />
         </div>
       </div>
     </FadeWrapper>

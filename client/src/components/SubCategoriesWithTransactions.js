@@ -31,6 +31,8 @@ const SubCategoriesWithTransactions = ({
   mainKey,
   mainAccordionKey,
   setMainAccordionKey,
+  refreshFlag,
+  setRefreshFlag,
   // currentMonthIndex,
 }) => {
   const [data, setData] = useState([]);
@@ -43,7 +45,7 @@ const SubCategoriesWithTransactions = ({
   const isOpen = mainAccordionKey === mainKey;
   const allTransactions = data.flatMap((sub) => sub.transactions);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
-  const [refreshFlag, setRefreshFlag] = useState(false);
+
   // const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
   const [dateState, setDateState] = useContext(DateContext);
   const { month: currentMonthIndex, year: currentYear } = dateState;
@@ -83,7 +85,7 @@ const SubCategoriesWithTransactions = ({
     } catch (err) {
       console.error("Failed to fetch expenses", err);
     }
-  }, [category, currentMonthIndex, currentYear]);
+  }, [category, currentMonthIndex, currentYear, refreshFlag]);
 
   useEffect(() => {
     fetchExpenses();
