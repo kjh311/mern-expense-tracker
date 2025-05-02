@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "./Input";
 import Button from "./Button";
-import { DayTheme } from "../App";
+import { DayTheme, LoggedInContext } from "../App";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import FadeWrapper from "./FadeWrapper";
 import { FadeContext } from "./FadeContext";
@@ -17,6 +17,7 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
   const [dayTheme, setDayTheme] = useContext(DayTheme);
   const [showPassword, setShowPassword] = useState(false);
   const { triggerFadeOut, setTriggerFadeOut } = useContext(FadeContext);
+  const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
   const navigate = useNavigate();
 
   const togglePassword = () => {
@@ -35,9 +36,16 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
           password,
         }
       );
-      setMessage(response.data.message);
 
+      const { token, user, message } = response.data;
+
+      // Save token and user info
+      localStorage.setItem("token", token);
+      localStorage.setItem("expense-tracker-username", user.name);
+
+      setMessage(message);
       setTriggerFadeOut(true);
+      setLoggedIn(true);
 
       // Redirect after fade-out
       setTimeout(() => {
@@ -45,7 +53,9 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
       }, 300);
     } catch (error) {
       setMessage(
-        error.response ? error.response.data.error : "Something went wrong"
+        error.response?.data?.error ||
+          error.response?.data?.message ||
+          "Something went wrong"
       );
     }
   };

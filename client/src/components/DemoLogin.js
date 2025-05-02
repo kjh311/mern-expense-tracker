@@ -21,7 +21,7 @@ const DemoLogin = ({ refreshFlag, setRefreshFlag }) => {
       });
 
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("expense-tracker-username", "");
+      localStorage.setItem("expense-tracker-username", "Demo User");
       setRefreshFlag(true);
       setLoggedIn(true);
       console.log("refreshFlag", refreshFlag);
@@ -35,8 +35,8 @@ const DemoLogin = ({ refreshFlag, setRefreshFlag }) => {
 
   return (
     <>
-      <br />
-      <div className="flex justify-center">
+      <div className="flex justify-center items-center w-100 flex-col">
+        <p>Or:</p>
         <Button
           text={"Demo Login"}
           color={dayTheme ? "blue" : "purple"}

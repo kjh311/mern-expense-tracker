@@ -101,6 +101,15 @@ const Overview = ({
                       dayTheme ? "day-text" : "text-white"
                     } font-semibold`}
                   >
+                    <span className="text-3xl">💸</span> Total Expenses:
+                    <br />
+                    {formattedCurrency(totalExpenses)}
+                  </span>
+                  <span
+                    className={`my-animation ${
+                      dayTheme ? "day-text" : "text-white"
+                    } font-semibold`}
+                  >
                     <span className="text-3xl">📊</span> Total Spending Budget:
                     <br /> {formattedCurrency(totalBudget)}
                   </span>
@@ -112,15 +121,6 @@ const Overview = ({
                     <span className="text-3xl">💰</span> Total Income:
                     <br />
                     {formattedCurrency(totalIncome)}
-                  </span>
-                  <span
-                    className={`my-animation ${
-                      dayTheme ? "day-text" : "text-white"
-                    } font-semibold`}
-                  >
-                    <span className="text-3xl">💸</span> Total Expenses:
-                    <br />
-                    {formattedCurrency(totalExpenses)}
                   </span>
                 </div>
               </div>

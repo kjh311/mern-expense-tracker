@@ -118,7 +118,7 @@ const PostNewTransaction = ({
               <Input
                 type={"number"}
                 value={amount}
-                placeholder={"Amount Spent"}
+                placeholder={"Amount $$"}
                 onChange={(e) => setAmount(e.target.value)}
                 required
               />

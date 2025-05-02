@@ -6,8 +6,15 @@ import Button from "./Button";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import FadeWrapper from "./FadeWrapper";
 import { FadeContext } from "./FadeContext";
+import DemoLogin from "./DemoLogin";
 
-const Login = ({ contentHeight, formData, setFormData }) => {
+const Login = ({
+  contentHeight,
+  formData,
+  setFormData,
+  refreshFlag,
+  setRefreshFlag,
+}) => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
   const navigate = useNavigate();
@@ -142,6 +149,12 @@ const Login = ({ contentHeight, formData, setFormData }) => {
             >
               Register
             </span>
+            <br />
+            <br />
+            <DemoLogin
+              refreshFlag={refreshFlag}
+              setRefreshFlag={setRefreshFlag}
+            />
           </p>
         </div>
       </div>

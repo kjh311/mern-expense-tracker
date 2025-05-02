@@ -92,6 +92,8 @@ function App() {
                           contentHeight={contentHeight}
                           formData={formData}
                           setFormData={setFormData}
+                          refreshFlag={refreshFlag}
+                          setRefreshFlag={setRefreshFlag}
                         />
                       }
                     />
