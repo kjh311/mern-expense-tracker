@@ -49,7 +49,7 @@ const ProgressBarComponent = ({ whole, part }) => {
           dayTheme ? "day-text" : "text-white"
         }`}
       >
-        {percentage}% spent{exclamation}
+        {percentage}% of budget{exclamation}
       </span>
     </div>
   );

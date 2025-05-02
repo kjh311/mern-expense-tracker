@@ -369,4 +369,8 @@ ul {
   .line-chart {
     display: none !important;
   }
+
+  .accordion-body {
+    padding: 15px 5px !important;
+  }
 }

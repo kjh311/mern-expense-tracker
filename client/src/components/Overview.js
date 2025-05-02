@@ -43,7 +43,7 @@ const Overview = ({
 
   return (
     <div
-      className={` max-w-[1400px]  w-full  m-4 sm:m-10  p-4 rounded my-animation ${
+      className={` max-w-[1400px]  w-full  m-4 p-3  sm:p-4 rounded my-animation ${
         dayTheme ? "overview-category-card-day" : "overview-category-card-night"
       }`}
     >
@@ -81,26 +81,6 @@ const Overview = ({
                       dayTheme ? "day-text" : "text-white"
                     } font-semibold`}
                   >
-                    <span className="my-animation text-3xl">💵</span> Cashflow:
-                    <br />
-                    <span
-                      className={`${cashflow < 0 && "pulse"} my-animation ${
-                        cashflow > 0
-                          ? dayTheme
-                            ? "day-text"
-                            : "text-white"
-                          : "text-red-500"
-                      }
-                      `}
-                    >
-                      {formattedCurrency(cashflow)}
-                    </span>
-                  </span>
-                  <span
-                    className={`my-animation ${
-                      dayTheme ? "day-text" : "text-white"
-                    } font-semibold`}
-                  >
                     <span className="text-3xl">💸</span> Total Expenses:
                     <br />
                     {formattedCurrency(totalExpenses)}
@@ -121,6 +101,26 @@ const Overview = ({
                     <span className="text-3xl">💰</span> Total Income:
                     <br />
                     {formattedCurrency(totalIncome)}
+                  </span>
+                  <span
+                    className={`my-animation ${
+                      dayTheme ? "day-text" : "text-white"
+                    } font-semibold`}
+                  >
+                    <span className="my-animation text-3xl">💵</span> Cashflow:
+                    <br />
+                    <span
+                      className={`${cashflow < 0 && "pulse"} my-animation ${
+                        cashflow > 0
+                          ? dayTheme
+                            ? "day-text"
+                            : "text-white"
+                          : "text-red-500"
+                      }
+                      `}
+                    >
+                      {formattedCurrency(cashflow)}
+                    </span>
                   </span>
                 </div>
               </div>

@@ -93,7 +93,7 @@ const SubCategoriesWithTransactions = ({
 
   return (
     <div
-      className={`category-card max-w-[1400px] myBorder w-full mx-auto ${backgroundColor} shadow-md m-2 p-4 my-animation ${
+      className={`category-card max-w-[1400px] myBorder w-full mx-auto ${backgroundColor} shadow-md m-1 p-3 sm:m-2 sm:p-4 my-animation ${
         dayTheme ? "category-card-day" : "category-card-night"
       }`}
     >
@@ -135,7 +135,7 @@ const SubCategoriesWithTransactions = ({
           </Accordion.Header>
 
           <Accordion.Body
-            className={`my-animation ${
+            className={` ${
               dayTheme
                 ? `my-animation accordion-body-day overview-accordion-body-${backgroundColor}`
                 : `my-animation accordion-body-night overview-accordion-body-${backgroundColor}`
@@ -209,7 +209,7 @@ const SubCategoriesWithTransactions = ({
 
                       <>
                         {/* TOTAL SPENT, BUDGET, and LEFT TO SPEND/ EARN */}
-                        <div className="text-start sm:text-center flex flex-col sm:flex-row justify-around  w-full gap-2 sm:gap-4 smtext-xl text-sm">
+                        <div className="text-start sm:text-center flex flex-col sm:flex-row justify-around  w-full gap-2 sm:gap-4 sm:text-xl text-sm">
                           {/* Total Spent */}
                           <span className="">
                             💵 Total {getActionWordPassedTense(category)}:
@@ -274,7 +274,7 @@ const SubCategoriesWithTransactions = ({
                     </div>
                   </Accordion.Header>
                   <Accordion.Body
-                    className={`my-animation ${
+                    className={` ${
                       dayTheme
                         ? `my-animation accordion-body-day overview-higher-accordion-body-${backgroundColor}`
                         : `my-animation accordion-body-night overview-higher-accordion-body-${backgroundColor}`
