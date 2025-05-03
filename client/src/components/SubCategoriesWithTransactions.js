@@ -46,6 +46,32 @@ const SubCategoriesWithTransactions = ({
   const allTransactions = data.flatMap((sub) => sub.transactions);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
 
+  const myRefMain = useRef(null);
+  // const executeScroll = () => myRefMain.current.scrollIntoView();
+
+  // const executeScroll = () => {
+  //   myRef.current.scrollIntoView();
+  // };
+  const executeScroll = () => {
+    setTimeout(() => {
+      console.log("Scroll");
+
+      myRefMain.current.scrollIntoView({
+        // top: "-100px",
+        behavior: "smooth",
+        block: "nearest",
+        inline: "nearest",
+      });
+      // if (ref && ref.current) {
+      //   ref.current.scrollIntoView({
+      //     behavior: "smooth",
+      //     block: "start",
+      //     inline: "nearest",
+      //   });
+      // }
+    }, "200");
+  };
+
   // const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
   const [dateState, setDateState] = useContext(DateContext);
   const { month: currentMonthIndex, year: currentYear } = dateState;
@@ -100,6 +126,7 @@ const SubCategoriesWithTransactions = ({
       <Accordion
         activeKey={isOpen ? "main" : null}
         onSelect={() => setMainAccordionKey(isOpen ? null : mainKey)}
+        onClick={executeScroll}
       >
         <Accordion.Item
           eventKey="main"
@@ -135,6 +162,7 @@ const SubCategoriesWithTransactions = ({
           </Accordion.Header>
 
           <Accordion.Body
+            ref={myRefMain}
             className={` ${
               dayTheme
                 ? `my-animation accordion-body-day overview-accordion-body-${backgroundColor}`

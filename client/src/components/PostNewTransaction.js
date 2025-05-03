@@ -62,7 +62,7 @@ const PostNewTransaction = ({
 
   return (
     <div className="flex justify-center">
-      <Accordion className="mb-2 lg:w-50 sm:w-full">
+      <Accordion className="mb-2 mx-2  lg:w-50 w-full">
         <AccordionItem
           eventKey="newTransaction"
           className={`my-animation ${
@@ -70,7 +70,7 @@ const PostNewTransaction = ({
           }`}
         >
           <AccordionHeader
-            className={`my-animation  accordion-header-${
+            className={`my-animation text-center flex justify-center items-center w-100 accordion-header-${
               dayTheme ? "day" : "night"
             } ${
               dayTheme
@@ -78,9 +78,9 @@ const PostNewTransaction = ({
                 : `accordion-header-higher-${backgroundColor}`
             }`}
           >
-            <span className="flex justify-start sm:justify-center">
+            <span className="flex justify-center items-center text-center w-full ">
               <h2
-                className={`my-animation sm:text-2xl text-sm text-shadow font-semibold  w-full ${
+                className={`sm:text-2xl text-sm text-shadow font-semibold  w-full my-animation ${
                   dayTheme ? "day-text" : "text-white"
                 }`}
               >

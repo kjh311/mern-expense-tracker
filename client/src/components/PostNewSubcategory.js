@@ -75,13 +75,13 @@ const PostNewSubcategory = ({
     <Accordion className="mx-2">
       <AccordionItem eventKey="new" className={`my-animation `}>
         <AccordionHeader
-          className={`${
+          className={`my-animation text-center flex justify-center items-center  ${
             dayTheme ? "accordion-header-day" : "accordion-header-night"
           } my-animation w-full flex justify-center items-center
           ${PostNewTransactionHighestHeaderColors(category, dayTheme)}
            `}
         >
-          <span className="flex justify-start sm:justify-center">
+          <span className="flex justify-center items-center text-center w-full">
             <h2
               className={`sm:text-2xl text-sm text-shadow font-semibold  w-full my-animation ${
                 dayTheme ? "day-text" : "text-white"

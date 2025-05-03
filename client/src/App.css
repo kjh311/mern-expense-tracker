@@ -297,6 +297,10 @@ ul {
   overflow-wrap: anywhere;
 }
 
+.collapsing {
+  transition: height 0s ease !important; /* Adjust the duration and timing function as desired */
+}
+
 @media only screen and (max-width: 640px) {
   .sun-icon {
     left: 0px;

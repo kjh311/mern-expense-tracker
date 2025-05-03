@@ -22,14 +22,7 @@ const DemoLogin = ({ refreshFlag, setRefreshFlag }) => {
         password: "password123",
       });
 
-      //   localStorage.setItem("token", res.data.token);
-
-      //   setLoggedIn(true);
-      //   console.log("refreshFlag", refreshFlag);
       setTriggerFadeOut(true);
-
-      // Redirect to the app (adjust based on your routing)
-      //   navigate("/dashboard");
 
       setTimeout(() => {
         setRefreshFlag(true);

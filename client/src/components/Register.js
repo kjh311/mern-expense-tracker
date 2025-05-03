@@ -50,6 +50,7 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
       // Redirect after fade-out
       setTimeout(() => {
         navigate("/dashboard");
+        setTriggerFadeOut(false);
       }, 300);
     } catch (error) {
       setMessage(
