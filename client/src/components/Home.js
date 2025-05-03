@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { DayTheme, LoggedInContext } from "../App";
@@ -15,6 +15,10 @@ const Home = ({ contentHeight }) => {
   );
   const navigate = useNavigate();
   const { triggerFadeOut, setTriggerFadeOut } = useContext(FadeContext);
+
+  // useEffect(() => {
+  //   setTriggerFadeOut(true);
+  // }, []);
 
   const handleStartClick = () => {
     setTriggerFadeOut(true);

@@ -5,6 +5,8 @@ import DayThemeToggle from "./DayThemeToggle";
 import Button from "./Button";
 import { useFadeNavigate } from "../hooks/useFadeNavigate";
 import { useLocation } from "react-router-dom";
+import { FadeContext } from "./FadeContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ ref }) => {
   const [loggedIn] = useContext(LoggedInContext);
@@ -13,6 +15,18 @@ const Navbar = ({ ref }) => {
   const location = useLocation();
   const currentPath = location.pathname;
   const [currentPathState, setCurrentPathState] = useState(currentPath);
+  const { setTriggerFadeOut } = useContext(FadeContext);
+  const navigate = useNavigate();
+
+  // navigate home
+  const handleNavHome = () => {
+    setTriggerFadeOut(true);
+
+    setTimeout(() => {
+      setTriggerFadeOut(false);
+      navigate("/");
+    }, 100);
+  };
 
   useEffect(() => {
     setCurrentPathState(currentPath);
@@ -29,7 +43,7 @@ const Navbar = ({ ref }) => {
     >
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-start sm:justify-around">
         <button
-          onClick={() => fadeNavigate("/")}
+          onClick={handleNavHome}
           className={`nav-bar-text text-xl pr-4 sm:px-6 sm:text-2xl font-extrabold tracking-wide  transition ${
             dayTheme ? "text-white text-shadow" : "night-footer-link"
           }`}

@@ -16,8 +16,11 @@ const FadeWrapper = ({ children }) => {
 
   const handleAnimationEnd = () => {
     if (fadeClass === "fade-out") {
+      // setTimeout(() => {
       setFadeClass("fade-in");
       setTriggerFadeOut(false);
+      // }, 4000);
+
       if (pendingPath) {
         navigate(pendingPath);
         setPendingPath(null);

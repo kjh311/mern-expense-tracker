@@ -62,7 +62,7 @@ const PostNewTransaction = ({
 
   return (
     <div className="flex justify-center">
-      <Accordion className="mb-2 mx-2  lg:w-50 w-full">
+      <Accordion className="mb-2   lg:w-50 w-full">
         <AccordionItem
           eventKey="newTransaction"
           className={`my-animation ${
