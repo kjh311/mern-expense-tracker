@@ -7,7 +7,7 @@ export const FadeProvider = ({ children }) => {
   const [pendingPath, setPendingPath] = useState(null);
 
   useEffect(() => {
-    console.log("TriggerFadeOut from FadeProvider: ", triggerFadeOut);
+    // console.log("TriggerFadeOut from FadeProvider: ", triggerFadeOut);
   }, [triggerFadeOut]);
 
   return (
