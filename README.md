@@ -16,7 +16,8 @@
 
 <!-- <img src="https://kjh311.github.io/mern-expense-tracker/Day-Mobile.png" alt="Mobile day" width="400"/> -->
 
-![alt text](/client/public/Day-Mobile.png) { max-width: 400px; }
+![alt mobile](/client/public/Day-Mobile.png)
+<img src="/client/public/Day-Mobile.png" width="400" >
 
 ### Mobile Night Theme:
 
