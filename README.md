@@ -9,13 +9,13 @@
 
 ### Desktop:
 
-![alt text](/public/Desktop1.png)
+![alt text](/client/public/Desktop1.png)
 ![alt text](/public/Desktop2.png)
 
 ### Mobile Day Theme:
 
-<img src="https://kjh311.github.io/react-habit-tracker/Day-Mobile.png" alt="Mobile day" width="400"/>
+<img src="https://kjh311.github.io/mern-expense-tracker/Day-Mobile.png" alt="Mobile day" width="400"/>
 
 ### Mobile Night Theme:
 
-<img src="https://kjh311.github.io/react-habit-tracker/Night-Mobile.png" alt="Mobile Night" width="400"/>
+<img src="https://kjh311.github.io/mern-expense-tracker/Night-Mobile.png" alt="Mobile Night" width="400"/>
