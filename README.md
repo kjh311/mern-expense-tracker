@@ -7,9 +7,12 @@
 3. Day/Night Theme. Theme persists between rerenders.
 4. Login / Register using JWTs.
 
-### Desktop:
+### Desktop Day Theme:
 
 ![alt text](/client/public/Desktop1.png)
+
+### Desktop Night Theme:
+
 ![alt text](/client/public/Desktop2.png)
 
 ### Mobile Day Theme:
