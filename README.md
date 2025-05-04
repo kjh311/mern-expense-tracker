@@ -10,7 +10,7 @@
 ### Desktop:
 
 ![alt text](/client/public/Desktop1.png)
-![alt text](/public/Desktop2.png)
+![alt text](/client/public/Desktop2.png)
 
 ### Mobile Day Theme:
 
