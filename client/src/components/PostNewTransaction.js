@@ -16,6 +16,8 @@ const PostNewTransaction = ({
   setRefreshFlag,
   fetchExpenses,
   backgroundColor,
+  maxLength,
+  minLength,
 }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
@@ -113,6 +115,8 @@ const PostNewTransaction = ({
                 placeholder={"Description"}
                 onChange={(e) => setDescription(e.target.value)}
                 required
+                maxLength={maxLength}
+                minLength={minLength}
               />
 
               <Input
@@ -121,6 +125,7 @@ const PostNewTransaction = ({
                 placeholder={"Amount $$"}
                 onChange={(e) => setAmount(e.target.value)}
                 required
+                minLength={minLength}
               />
 
               <label

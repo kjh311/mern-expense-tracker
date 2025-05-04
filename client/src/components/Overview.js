@@ -5,6 +5,7 @@ import { useRef, useEffect, useContext, useState } from "react";
 import { formattedCurrency } from "./FormattedCurrency";
 import MonthToggle from "./MonthToggle";
 import ProgressBarComponent from "./ProgressBarComponent";
+// import React, { useRef } from "react";
 
 const Overview = ({
   mainKey,
@@ -20,7 +21,20 @@ const Overview = ({
   const [totalExpenses, setTotalExpenses] = useState(0);
   const [totalBudget, setTotalBudget] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
+  const myRefMain = useRef(null);
   // console.log("cashflow: ", cashflow);
+
+  const executeScroll = () => {
+    setTimeout(() => {
+      console.log("Scroll");
+
+      myRefMain.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "nearest",
+      });
+    }, "200");
+  };
 
   useEffect(() => {
     if (total) {
@@ -48,6 +62,7 @@ const Overview = ({
       }`}
     >
       <Accordion
+        onClick={executeScroll}
         className="accordion-day"
         activeKey={isOpen ? "main" : null}
         onSelect={() => setMainAccordionKey(isOpen ? null : mainKey)}
@@ -68,14 +83,14 @@ const Overview = ({
           >
             <div className="w-100">
               <div
-                className={`flex flex-col mb-2 items-center w-full my-animation ${
+                className={`flex flex-col mb-2  items-center w-full my-animation ${
                   dayTheme ? "day-text" : "text-white"
                 }`}
               >
                 <h2 className="text-center lg:text-4xl text-lg font-bold text-shadow sm:m-4 m-2 ">
                   💼 MONTHLY OVERVIEW
                 </h2>
-                <div className="my-animation sm:text-center text-left flex  flex-col sm:flex-row justify-around items-start sm:items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
+                <div className="my-animation sm:text-center text-left flex  flex-col sm:flex-row justify-evenly items-start sm:items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">
                   <span
                     className={`my-animation ${
                       dayTheme ? "day-text" : "text-white"
@@ -129,6 +144,7 @@ const Overview = ({
           </Accordion.Header>
 
           <Accordion.Body
+            ref={myRefMain}
             className={`my-animation ${
               dayTheme
                 ? "overview-accordion-body-day"

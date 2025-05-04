@@ -44,19 +44,21 @@ const DeleteTransaction = ({
   };
 
   return (
-    <button
-      onClick={handleDeleteTransaction}
-      className={` ${
-        animatingId === txId ? "opacity-0 translate-y-[-10px]" : ""
-      }`}
-    >
-      <FaTrash
-        className={`react-icon ${
-          dayTheme ? "text-red-500" : "text-white"
-        } transition-all duration-200 absolute top-4 right-2`}
-        size={25}
-      />
-    </button>
+    <>
+      <button
+        onClick={handleDeleteTransaction}
+        className={` ${
+          animatingId === txId ? "opacity-0 translate-y-[-10px]" : ""
+        }`}
+      >
+        <FaTrash
+          className={`react-icon ${
+            dayTheme ? "text-red-500" : "text-white"
+          } transition-all duration-200 absolute top-4 right-2`}
+          size={25}
+        />
+      </button>
+    </>
   );
 };
 

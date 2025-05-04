@@ -25,7 +25,7 @@ const Navbar = ({ ref }) => {
     setTimeout(() => {
       setTriggerFadeOut(false);
       navigate("/");
-    }, 100);
+    }, 0);
   };
 
   useEffect(() => {

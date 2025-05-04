@@ -9,8 +9,8 @@ const UpdateSubcategory = ({
   categoryType,
   name,
   budget,
-  editModeSubcategory,
-  setEditModeSubcategory,
+  // editModeSubcategory,
+  // setEditModeSubcategory,
   fetchExpenses,
   setRefreshFlag,
   backgroundColor,
@@ -19,6 +19,7 @@ const UpdateSubcategory = ({
   const [nameInput, setNameInput] = useState(name);
   const [budgetInput, setBudgetInput] = useState(fixedBudget);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [editModeSubcategory, setEditModeSubcategory] = useState(false);
 
   const handleEdit = (e) => {
     e.stopPropagation();

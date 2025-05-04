@@ -48,13 +48,13 @@ const CategoryBreakdown = ({
 
   return (
     <span className="w-100">
-      <div className="sm:text-center text-start lg:text-xl text-md font-medium p-2 flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-center w-full">
-        <p>
-          Monthly Budget: <br /> {formattedCurrency(totalBudget)}
-        </p>
+      <div className="sm:text-center text-start lg:text-xl text-md font-medium p-2 flex flex-col sm:flex-row justify-start sm:justify-evenly items-start sm:items-center w-full">
         <p>
           Total {getActionWordPassedTense(category)} this month: <br />
           {formattedCurrency(totalSpent)}
+        </p>
+        <p>
+          Monthly Budget: <br /> {formattedCurrency(totalBudget)}
         </p>
         <p>
           Left to {getActionWord(category)}: <br />

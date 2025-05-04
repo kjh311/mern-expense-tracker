@@ -45,8 +45,9 @@ const DemoLogin = ({ refreshFlag, setRefreshFlag }) => {
 
   return (
     <FadeWrapper triggerFadeOut={triggerFadeOut}>
-      <span className="flex justify-center items-center w-100 flex-col">
-        <p>Or:</p>
+      <span className="flex justify-center items-center w-100 flex-col ">
+        <span className="mb-1">Or:</span>
+        {/* <br /> */}
         <Button
           text={"Demo Login"}
           color={dayTheme ? "blue" : "purple"}

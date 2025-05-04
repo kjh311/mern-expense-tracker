@@ -23,6 +23,7 @@ import { formattedCurrency } from "./FormattedCurrency";
 import { DayTheme } from "../App";
 import MonthToggle from "./MonthToggle";
 import ProgressBarComponent from "./ProgressBarComponent";
+// import { executeScroll } from "./ExcecuteScroll";
 
 const SubCategoriesWithTransactions = ({
   name,
@@ -39,7 +40,7 @@ const SubCategoriesWithTransactions = ({
   const [activeKey, setActiveKey] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
   const [animatingId, setAnimatingId] = useState(null);
-  const [editModeTransaction, setEditModeTransaction] = useState(false);
+  // const [editModeTransaction, setEditModeTransaction] = useState(false);
   const [total, setTotal] = useContext(TransactionsTotal);
   const [editModeSubcategory, setEditModeSubcategory] = useState(false);
   const isOpen = mainAccordionKey === mainKey;
@@ -47,28 +48,16 @@ const SubCategoriesWithTransactions = ({
   const [dayTheme, setDayTheme] = useContext(DayTheme);
 
   const myRefMain = useRef(null);
-  // const executeScroll = () => myRefMain.current.scrollIntoView();
 
-  // const executeScroll = () => {
-  //   myRef.current.scrollIntoView();
-  // };
   const executeScroll = () => {
     setTimeout(() => {
       console.log("Scroll");
 
       myRefMain.current.scrollIntoView({
-        // top: "-100px",
         behavior: "smooth",
         block: "nearest",
         inline: "nearest",
       });
-      // if (ref && ref.current) {
-      //   ref.current.scrollIntoView({
-      //     behavior: "smooth",
-      //     block: "start",
-      //     inline: "nearest",
-      //   });
-      // }
     }, "200");
   };
 
@@ -326,8 +315,8 @@ const SubCategoriesWithTransactions = ({
                         categoryType={category}
                         name={sub.name}
                         budget={sub.budget}
-                        editModeSubcategory={editModeSubcategory}
-                        setEditModeSubcategory={setEditModeSubcategory}
+                        // editModeSubcategory={editModeSubcategory}
+                        // setEditModeSubcategory={setEditModeSubcategory}
                         setRefreshFlag={setRefreshFlag}
                         backgroundColor={backgroundColor}
                       />
@@ -356,13 +345,14 @@ const SubCategoriesWithTransactions = ({
                       setRefreshFlag={setRefreshFlag}
                       fetchExpenses={fetchExpenses}
                       backgroundColor={backgroundColor}
+                      // maxLength={40}
                     />
 
                     {sub.transactions.length === 0 ? (
                       <p
                         className={`${
                           dayTheme ? "day-text" : "text-white"
-                        } text-center italic my-animation`}
+                        } text-center italic my-animation no-transactions`}
                       >
                         No Transactions 📉
                       </p>
@@ -371,7 +361,7 @@ const SubCategoriesWithTransactions = ({
                         {sub.transactions.map((tx) => (
                           <li
                             key={tx._id}
-                            className={`transaction-item relative rounded-md my-3 p-3  my-animation ease-in-out ${
+                            className={`transaction-item relative rounded-2xl my-3 p-3  my-animation ease-in-out ${
                               dayTheme
                                 ? `my-animation accordion-body-day overview-highest-accordion-body-${backgroundColor}`
                                 : `my-animation accordion-body-night overview-highest-accordion-body-${backgroundColor}`
@@ -383,53 +373,58 @@ const SubCategoriesWithTransactions = ({
                             }`}
                           >
                             {/* Top: Description */}
-                            {!editModeTransaction && (
-                              <>
-                                <div>
-                                  <span
-                                    className={`font-semibold pr-8 sm:pr-0  break text-shadow text-base sm:text-lg lg:text-3xl block text-left sm:text-center my-animation ${
-                                      dayTheme ? "day-text" : "text-white"
-                                    }`}
-                                  >
-                                    {tx.description} 🛒
-                                  </span>
-                                </div>
-
-                                <div
-                                  className={`flex flex-col sm:flex-row justify-around items-start sm:items-center mt-2 gap-1 lg:text-lg sm:text-sm my-animation ${
+                            {/* {!editModeTransaction && ( */}
+                            <>
+                              <div>
+                                <span
+                                  className={`font-semibold pr-8 sm:pr-0  break text-shadow text-base sm:text-lg lg:text-3xl block text-left sm:text-center my-animation ${
                                     dayTheme ? "day-text" : "text-white"
                                   }`}
                                 >
-                                  <span className="  ">
-                                    {formattedCurrency(tx.amount)}
-                                  </span>
-                                  <span className="  ">
-                                    {new Date(tx.date).toLocaleDateString()} 📅
-                                  </span>
-                                </div>
+                                  {tx.description} 🛒
+                                </span>
+                              </div>
 
-                                <DeleteTransaction
-                                  id={tx._id}
-                                  fetchExpenses={fetchExpenses}
-                                  deletingId={deletingId}
-                                  setDeletingId={setDeletingId}
-                                  txId={tx._id}
-                                  setAnimatingId={setAnimatingId}
-                                  setRefreshFlag={setRefreshFlag}
-                                />
-                              </>
-                            )}
+                              <div
+                                className={`flex flex-col sm:flex-row justify-around items-start sm:items-center mt-2 gap-1 lg:text-lg sm:text-sm my-animation ${
+                                  dayTheme ? "day-text" : "text-white"
+                                }`}
+                              >
+                                <span className="  ">
+                                  {formattedCurrency(tx.amount)}
+                                </span>
+                                <span className="  ">
+                                  {new Date(tx.date).toLocaleDateString()} 📅
+                                </span>
+                              </div>
+
+                              {/* <DeleteTransaction
+                                id={tx._id}
+                                fetchExpenses={fetchExpenses}
+                                deletingId={deletingId}
+                                setDeletingId={setDeletingId}
+                                txId={tx._id}
+                                setAnimatingId={setAnimatingId}
+                                setRefreshFlag={setRefreshFlag}
+                              /> */}
+                            </>
+                            {/* )} */}
                             <UpdateTransaction
-                              id={tx._id}
+                              updateId={tx._id}
                               fetchExpenses={fetchExpenses}
                               date={tx.date}
                               amount={tx.amount}
                               description={tx.description}
                               subcategory={tx.subcategory}
                               recurring={tx.recurring}
-                              editModeTransaction={editModeTransaction}
-                              setEditModeTransaction={setEditModeTransaction}
+                              // editModeTransaction={editModeTransaction}
+                              // setEditModeTransaction={setEditModeTransaction}
                               setRefreshFlag={setRefreshFlag}
+                              deletingId={deletingId}
+                              setDeletingId={setDeletingId}
+                              txId={tx._id}
+                              id={tx._id}
+                              setAnimatingId={setAnimatingId}
                             />
                           </li>
                         ))}
