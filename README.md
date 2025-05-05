@@ -3,7 +3,7 @@
 ## Mern Stack
 
 1. Full Crud Expense / Budget / Income / Bills Tracker.
-2. Persists data to MongoDB.
+2. React JS, Express JS, Node JS, MongoDB.
 3. Day/Night Theme. Theme persists between rerenders.
 4. Login / Register using JWTs.
 
