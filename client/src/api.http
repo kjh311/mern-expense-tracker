@@ -10,6 +10,7 @@ Content-Type: application/json
   "password": "yourPassword"
 }
 
+
 ### Login with registered user
 POST http://localhost:5000/api/auth/login
 Content-Type: application/json
