@@ -31,7 +31,8 @@ const UpdateSubcategory = ({
 
     try {
       const res = await axios.put(
-        `http://${process.env.REACT_APP_API_URL}/api/subcategories/${id}`,
+        `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${id}`,
+        // `http://${process.env.REACT_APP_API_URL}/api/subcategories/${id}`,
         {
           budget: budgetInput,
           name: nameInput,

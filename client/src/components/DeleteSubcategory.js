@@ -8,7 +8,8 @@ const DeleteSubcategory = ({ id, fetchExpenses, setRefreshFlag }) => {
     if (window.confirm("Delete this Category?")) {
       try {
         const res = await axios.delete(
-          `http://${process.env.REACT_APP_API_URL}/api/subcategories/${id}`,
+          `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${id}`,
+          // http://${process.env.REACT_APP_API_URL}/api/subcategories/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

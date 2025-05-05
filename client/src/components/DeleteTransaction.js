@@ -22,7 +22,8 @@ const DeleteTransaction = ({
       setTimeout(async () => {
         try {
           const res = await axios.delete(
-            `http://${process.env.REACT_APP_API_URL}/api/transactions/${id}`,
+            `https://mern-expense-tracker-t3dj.onrender.com/api/transactions/${id}`,
+            // `http://${process.env.REACT_APP_API_URL}/api/transactions/${id}`,
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,

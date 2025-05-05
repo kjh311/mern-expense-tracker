@@ -33,7 +33,8 @@ const PostNewTransaction = ({
 
     try {
       const res = await axios.post(
-        `http://${process.env.REACT_APP_API_URL}/api/transactions`,
+        `https://mern-expense-tracker-t3dj.onrender.com/api/transactions`,
+        // `http://${process.env.REACT_APP_API_URL}/api/transactions`,
         {
           description,
           amount,

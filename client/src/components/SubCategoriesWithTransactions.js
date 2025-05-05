@@ -68,7 +68,8 @@ const SubCategoriesWithTransactions = ({
   const fetchExpenses = useCallback(async () => {
     try {
       const res = await axios.get(
-        `http://${process.env.REACT_APP_API_URL}/api/subcategories/${category}-with-transactions`,
+        `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${category}-with-transactions`,
+        // `http://${process.env.REACT_APP_API_URL}/api/subcategories/${category}-with-transactions`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

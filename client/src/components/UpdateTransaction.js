@@ -42,7 +42,8 @@ const UpdateTransaction = ({
 
     try {
       const res = await axios.put(
-        `http://${process.env.REACT_APP_API_URL}/api/transactions/${updateId}`,
+        `https://mern-expense-tracker-t3dj.onrender.com/api/transactions/${updateId}`,
+        // `http://${process.env.REACT_APP_API_URL}/api/transactions/${updateId}`,
         {
           description: descriptionInput,
           amount: amountInput,
