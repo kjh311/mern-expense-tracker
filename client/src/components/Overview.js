@@ -98,7 +98,9 @@ const Overview = ({
                   >
                     <span className="text-3xl">💸</span> Total Expenses:
                     <br />
-                    {formattedCurrency(totalExpenses)}
+                    <span className="ml-12 sm:ml-0">
+                      {formattedCurrency(totalExpenses)}
+                    </span>
                   </span>
                   <span
                     className={`my-animation ${
@@ -106,7 +108,10 @@ const Overview = ({
                     } font-semibold`}
                   >
                     <span className="text-3xl">📊</span> Total Spending Budget:
-                    <br /> {formattedCurrency(totalBudget)}
+                    <br />
+                    <span className="ml-12 sm:ml-0">
+                      {formattedCurrency(totalBudget)}
+                    </span>
                   </span>
                   <span
                     className={`my-animation ${
@@ -115,7 +120,9 @@ const Overview = ({
                   >
                     <span className="text-3xl">💰</span> Total Income:
                     <br />
-                    {formattedCurrency(totalIncome)}
+                    <span className="ml-12 sm:ml-0">
+                      {formattedCurrency(totalIncome)}
+                    </span>
                   </span>
                   <span
                     className={`my-animation ${
@@ -134,7 +141,9 @@ const Overview = ({
                       }
                       `}
                     >
-                      {formattedCurrency(cashflow)}
+                      <span className="ml-12 sm:ml-0">
+                        {formattedCurrency(cashflow)}
+                      </span>
                     </span>
                   </span>
                 </div>

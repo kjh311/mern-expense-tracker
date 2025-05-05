@@ -46,6 +46,8 @@ function App() {
     password: "",
   });
 
+  console.log("API URL:", process.env.REACT_APP_API_URL);
+
   const navbarRef = useRef(null);
   const footerRef = useRef(null);
   const [contentHeight, setContentHeight] = useState("100vh");

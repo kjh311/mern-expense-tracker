@@ -80,13 +80,15 @@ const ExpenseLineChart = ({ transactions }) => {
           color: fontColor,
         },
       },
+      responsive: true,
+      maintainAspectRatio: false,
       datalabels: {
         display: true,
         align: "middle",
         borderColor: dayTheme ? "#333" : "#fff",
         borderWidth: 1,
         borderRadius: 4,
-        anchor: "end",
+        anchor: "middle",
         backgroundColor: dayTheme ? "rgba(0,129,168,1)" : "rgba(0, 0, 0, 0.7)",
         padding: {
           top: 2,

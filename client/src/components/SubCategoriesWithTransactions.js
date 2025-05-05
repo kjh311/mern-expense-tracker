@@ -68,7 +68,7 @@ const SubCategoriesWithTransactions = ({
   const fetchExpenses = useCallback(async () => {
     try {
       const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/subcategories/${category}-with-transactions`,
+        `http://${process.env.REACT_APP_API_URL}/api/subcategories/${category}-with-transactions`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -228,8 +228,10 @@ const SubCategoriesWithTransactions = ({
                         {/* TOTAL SPENT, BUDGET, and LEFT TO SPEND/ EARN */}
                         <div className="text-start sm:text-center flex flex-col sm:flex-row justify-around  w-full gap-2 sm:gap-4 sm:text-xl text-sm">
                           {/* Total Spent */}
-                          <span className="">
-                            💵 Total {getActionWordPassedTense(category)}:
+                          <span className="text-center">
+                            💵 Total
+                            {getActionWordPassedTense(category)}:
+                            <br />
                             {formattedCurrency(
                               sub.transactions.reduce(
                                 (sum, tx) => sum + tx.amount,
@@ -240,15 +242,16 @@ const SubCategoriesWithTransactions = ({
 
                           {/* Budget */}
                           {sub.budget && (
-                            <span className=" ">
-                              💰 Budget: {formattedCurrency(sub.budget)}
+                            <span className="text-center">
+                              💰 Budget: <br />
+                              {formattedCurrency(sub.budget)}
                             </span>
                           )}
 
                           {/* Left to Spend/Earn */}
                           {sub.budget && (
                             <span
-                              className={`${
+                              className={`text-center ${
                                 sub.budget -
                                   sub.transactions.reduce(
                                     (sum, tx) => sum + tx.amount,
@@ -264,19 +267,20 @@ const SubCategoriesWithTransactions = ({
                               }`}
                             >
                               <span
-                                className={`my-animation ${
+                                className={`my-animation text-center${
                                   dayTheme ? "day-text" : "text-white"
                                 }`}
                               >
                                 🏦 Left to {getActionWord(category)}:
-                              </span>{" "}
-                              {formattedCurrency(
-                                sub.budget -
-                                  sub.transactions.reduce(
-                                    (sum, tx) => sum + tx.amount,
-                                    0
-                                  )
-                              )}
+                                <br />
+                                {formattedCurrency(
+                                  sub.budget -
+                                    sub.transactions.reduce(
+                                      (sum, tx) => sum + tx.amount,
+                                      0
+                                    )
+                                )}
+                              </span>
                             </span>
                           )}
                         </div>
@@ -331,12 +335,17 @@ const SubCategoriesWithTransactions = ({
                       <ExpenseLineChart transactions={sub.transactions} />
                     )}
 
+                    <br />
+
                     <h2
                       className={`my-animation text-center text-shadow ${
                         dayTheme ? "day-text" : "text-white"
                       }`}
                     >
-                      Transactions:
+                      📉{" "}
+                      {sub.transactions.length === 0
+                        ? "No Transactions"
+                        : "Transactions:"}
                     </h2>
                     <br />
 
@@ -348,15 +357,7 @@ const SubCategoriesWithTransactions = ({
                       // maxLength={40}
                     />
 
-                    {sub.transactions.length === 0 ? (
-                      <p
-                        className={`${
-                          dayTheme ? "day-text" : "text-white"
-                        } text-center italic my-animation no-transactions`}
-                      >
-                        No Transactions 📉
-                      </p>
-                    ) : (
+                    {sub.transactions.length !== 0 && (
                       <ul className="space-y-2">
                         {sub.transactions.map((tx) => (
                           <li

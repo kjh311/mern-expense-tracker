@@ -49,14 +49,15 @@ const CategoryBreakdown = ({
   return (
     <span className="w-100">
       <div className="sm:text-center text-start lg:text-xl text-md font-medium p-2 flex flex-col sm:flex-row justify-start sm:justify-evenly items-start sm:items-center w-full">
-        <p>
+        <p className="text-center">
           Total {getActionWordPassedTense(category)} this month: <br />
-          {formattedCurrency(totalSpent)}
+          <span className="ml-4 sm:ml-0">{formattedCurrency(totalSpent)}</span>
         </p>
-        <p>
-          Monthly Budget: <br /> {formattedCurrency(totalBudget)}
+        <p className="text-center">
+          Monthly Budget: <br />{" "}
+          <span className="ml-4 sm:ml-0">{formattedCurrency(totalBudget)}</span>
         </p>
-        <p>
+        <p className="text-center">
           Left to {getActionWord(category)}: <br />
           <span
             className={`my-animation ${
@@ -69,7 +70,9 @@ const CategoryBreakdown = ({
                 : "text-white"
             }`}
           >
-            {formattedCurrency(totalBudget - totalSpent)}
+            <span className="ml-4 sm:ml-0">
+              {formattedCurrency(totalBudget - totalSpent)}
+            </span>
           </span>
         </p>
       </div>
