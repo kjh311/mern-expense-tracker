@@ -15,22 +15,17 @@ const UpdateTransaction = ({
   amount,
   description,
   recurring,
-  // editModeTransaction,
-  // setEditModeTransaction,
   fetchExpenses,
   setRefreshFlag,
-  deletingId,
-  setDeletingId,
   txId,
   id,
-  tx,
   setAnimatingId,
 }) => {
   const [amountInput, setAmountInput] = useState(amount);
   const [descriptionInput, setDescriptionInput] = useState(description);
-  const [recurringInput, setRecurringInput] = useState(recurring);
+  const [recurringInput] = useState(recurring);
   const [dateInput, setDateInput] = useState(date);
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dayTheme] = useContext(DayTheme);
   const [editModeTransaction, setEditModeTransaction] = useState(false);
 
   const handleEdit = () => {

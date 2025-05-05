@@ -30,7 +30,6 @@ const Navbar = ({ ref }) => {
 
   useEffect(() => {
     setCurrentPathState(currentPath);
-    // console.log("LoggedIn: ", loggedIn);
   }, [currentPath]);
 
   return (

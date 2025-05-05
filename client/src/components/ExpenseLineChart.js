@@ -30,7 +30,7 @@ const ExpenseLineChart = ({ transactions }) => {
   const sorted = [...transactions].sort(
     (a, b) => new Date(a.date) - new Date(b.date)
   );
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dayTheme] = useContext(DayTheme);
 
   const data = {
     labels: sorted.map((tx) => new Date(tx.date).toLocaleDateString()),

@@ -11,19 +11,16 @@ import PostNewSubcategory from "./PostNewSubcategory";
 import PostNewTransaction from "./PostNewTransaction";
 import CategoryBreakdown from "./CategoryBreakdown";
 import { getActionWord, getActionWordPassedTense } from "./ActionWords";
-import DeleteTransaction from "./DeleteTransaction";
 import UpdateTransaction from "./UpdateTransaction";
 import DeleteSubcategory from "./DeleteSubcategory";
 import UpdateSubcategory from "./UpdateSubcategory";
 import { TransactionsTotal, DateContext } from "../App";
 import ExpenseLineChart from "./ExpenseLineChart";
-import { AccordionBody, AccordionHeader, AccordionItem } from "react-bootstrap";
 import SubCategoryBarChart from "./SubCategoryBarChart";
 import { formattedCurrency } from "./FormattedCurrency";
 import { DayTheme } from "../App";
 import MonthToggle from "./MonthToggle";
 import ProgressBarComponent from "./ProgressBarComponent";
-// import { executeScroll } from "./ExcecuteScroll";
 
 const SubCategoriesWithTransactions = ({
   name,
@@ -40,19 +37,15 @@ const SubCategoriesWithTransactions = ({
   const [activeKey, setActiveKey] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
   const [animatingId, setAnimatingId] = useState(null);
-  // const [editModeTransaction, setEditModeTransaction] = useState(false);
-  const [total, setTotal] = useContext(TransactionsTotal);
   const [editModeSubcategory, setEditModeSubcategory] = useState(false);
-  const isOpen = mainAccordionKey === mainKey;
-  const allTransactions = data.flatMap((sub) => sub.transactions);
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
+  // const isOpen = mainAccordionKey === mainKey;
+  // const allTransactions = data.flatMap((sub) => sub.transactions);
+  const [dayTheme] = useContext(DayTheme);
 
   const myRefMain = useRef(null);
 
   const executeScroll = () => {
     setTimeout(() => {
-      // console.log("Scroll");
-
       myRefMain.current.scrollIntoView({
         behavior: "smooth",
         block: "nearest",
@@ -61,7 +54,6 @@ const SubCategoriesWithTransactions = ({
     }, "200");
   };
 
-  // const [currentMonthIndex, setCurrentMonthIndex] = useContext(DateContext);
   const [dateState, setDateState] = useContext(DateContext);
   const { month: currentMonthIndex, year: currentYear } = dateState;
 

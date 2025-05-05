@@ -1,5 +1,4 @@
 import React from "react";
-import { FaTrash } from "react-icons/fa";
 import axios from "axios";
 import Button from "./Button";
 

@@ -29,7 +29,6 @@ const MonthToggle = ({ color }) => {
       if (newMonth < 0) {
         newMonth = 11;
         newYear -= 1;
-        // console.log("Year", newYear);
       }
       return { month: newMonth, year: newYear };
     });

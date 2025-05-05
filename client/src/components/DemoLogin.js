@@ -6,7 +6,7 @@ import axios from "axios";
 import FadeWrapper from "./FadeWrapper";
 import { FadeContext } from "./FadeContext";
 
-const DemoLogin = ({ refreshFlag, setRefreshFlag }) => {
+const DemoLogin = ({ setRefreshFlag }) => {
   const [dayTheme, setDayTheme] = useContext(DayTheme);
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
   const navigate = useNavigate();

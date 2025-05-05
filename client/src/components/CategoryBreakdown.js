@@ -1,17 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { TransactionsTotal, DayTheme, DateContext } from "../App";
 import { formattedCurrency } from "./FormattedCurrency";
 import { getActionWord, getActionWordPassedTense } from "./ActionWords";
 import ProgressBarComponent from "./ProgressBarComponent";
 
-const CategoryBreakdown = ({
-  category,
-  refreshFlag,
-  currentMonthIndex,
-  currentYear,
-  fetchExpenses,
-  data,
-}) => {
+const CategoryBreakdown = ({ category, data }) => {
   const [total, setTotal] = useContext(TransactionsTotal);
   const [dayTheme] = useContext(DayTheme);
   // const [dateState, setDateState] = useContext(DateContext);

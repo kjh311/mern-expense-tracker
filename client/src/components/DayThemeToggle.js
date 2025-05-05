@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
-import { FaSun, FaMoon } from "react-icons/fa";
+import React, { useContext } from "react";
 import { DayTheme } from "../App";
 import { Player } from "@lottiefiles/react-lottie-player";
 import sunAnimation from "../assets/Sun-Animation.json";
@@ -12,8 +11,6 @@ const DayThemeToggle = () => {
     setDayTheme(!dayTheme);
     localStorage.setItem("Expense-Tracker-DayTheme", !dayTheme);
   };
-
-  // console.log("DayTheme toggle");
 
   return (
     <button

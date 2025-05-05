@@ -9,7 +9,6 @@ import axios from "axios";
 import Button from "./Button";
 import Input from "./Input";
 import { DayTheme } from "../App";
-import { getActionWord, getActionWordPassedTense } from "./ActionWords";
 
 const PostNewTransaction = ({
   subcategory,
@@ -22,11 +21,10 @@ const PostNewTransaction = ({
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [recurring, setRecurring] = useState(false);
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dayTheme] = useContext(DayTheme);
   const [dateInput, setDateInput] = useState(new Date());
 
   const disableButton = amount === "" || description === "";
-  // console.log("Disabled: ", disableButton);
 
   const handlePostTransaction = async (e) => {
     e.preventDefault();

@@ -5,7 +5,6 @@ import { DayTheme, DateContext } from "../App";
 import { FadeContext } from "./FadeContext";
 import MonthToggle from "./MonthToggle";
 import FadeWrapper from "./FadeWrapper";
-// import { FadeContext } from "./FadeContext";
 
 const Dashboard = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
   const [mainAccordionKey, setMainAccordionKey] = useState(null);
@@ -13,16 +12,8 @@ const Dashboard = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
     localStorage.getItem("expense-tracker-username") || ""
   );
   const [dayTheme] = useContext(DayTheme);
-  const { triggerFadeOut, setTriggerFadeOut } = useContext(FadeContext);
-  // const [fadeClass, setFadeClass] = useState("fade-in");
-  const [dateState, setDateState] = useContext(DateContext);
-  const { month: currentMonthIndex, year: currentYear } = dateState;
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setFadeClass(triggerFadeOut ? "fade-out" : "fade-in");
-  //   }, 3000);
-  // }, [triggerFadeOut]);
+  const { triggerFadeOut } = useContext(FadeContext);
+  const [dateState] = useContext(DateContext);
 
   return (
     <FadeWrapper triggerFadeOut={triggerFadeOut}>

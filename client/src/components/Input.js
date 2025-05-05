@@ -11,7 +11,7 @@ const Input = ({
   type,
   required,
 }) => {
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dayTheme] = useContext(DayTheme);
 
   return (
     <input

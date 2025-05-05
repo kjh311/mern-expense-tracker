@@ -1,4 +1,4 @@
-import React, { useContext, forwardRef } from "react";
+import React, { useContext } from "react";
 import { DayTheme } from "../App";
 
 const Footer = ({ ref }) => {

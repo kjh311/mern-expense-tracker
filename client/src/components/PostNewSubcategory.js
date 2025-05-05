@@ -12,24 +12,13 @@ import {
   PostNewTransactionHighestHeaderColors,
 } from "./ActionWords";
 
-const PostNewSubcategory = ({
-  fetchExpenses,
-  category,
-  activeKey,
-  setActiveKey,
-}) => {
+const PostNewSubcategory = ({ fetchExpenses, category, setActiveKey }) => {
   const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
   const [dayTheme] = useContext(DayTheme);
-  const [dateState] = useContext(DateContext);
-  // const { month: currentMonthIndex, year: currentYear } = dateState;
 
   const handlePost = (e) => {
     e.preventDefault();
-
-    // const now = new Date();
-    // const month = currentMonthIndex;
-    // const year = now.getFullYear();
 
     const postSub = async () => {
       try {

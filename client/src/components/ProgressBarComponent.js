@@ -6,7 +6,7 @@ import { IoTrendingUp } from "react-icons/io5";
 const ProgressBarComponent = ({ whole, part }) => {
   const [percentage, setPercentage] = useState(null);
   const [variant, setVariant] = useState("");
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dayTheme] = useContext(DayTheme);
   const [exclamation, setExclamation] = useState("");
   const [pulse, setPulse] = useState(false);
 

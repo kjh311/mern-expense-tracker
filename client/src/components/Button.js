@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { DayTheme } from "../App";
 
 const Button = ({ type, text, onClick, color, disabled }) => {
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dayTheme] = useContext(DayTheme);
 
   return (
     <>

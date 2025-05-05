@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Input from "./Input";
 import Button from "./Button";
 import { DayTheme, LoggedInContext } from "../App";
@@ -14,7 +14,7 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [dayTheme, setDayTheme] = useContext(DayTheme);
+  const [dayTheme] = useContext(DayTheme);
   const [showPassword, setShowPassword] = useState(false);
   const { triggerFadeOut, setTriggerFadeOut } = useContext(FadeContext);
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);

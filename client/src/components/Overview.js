@@ -5,7 +5,6 @@ import { useRef, useEffect, useContext, useState } from "react";
 import { formattedCurrency } from "./FormattedCurrency";
 import MonthToggle from "./MonthToggle";
 import ProgressBarComponent from "./ProgressBarComponent";
-// import React, { useRef } from "react";
 
 const Overview = ({
   mainKey,
@@ -22,7 +21,6 @@ const Overview = ({
   const [totalBudget, setTotalBudget] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
   const myRefMain = useRef(null);
-  // console.log("cashflow: ", cashflow);
 
   const executeScroll = () => {
     setTimeout(() => {

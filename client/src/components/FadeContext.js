@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 export const FadeContext = React.createContext();
 
@@ -6,9 +6,7 @@ export const FadeProvider = ({ children }) => {
   const [triggerFadeOut, setTriggerFadeOut] = useState(false);
   const [pendingPath, setPendingPath] = useState(null);
 
-  useEffect(() => {
-    // console.log("TriggerFadeOut from FadeProvider: ", triggerFadeOut);
-  }, [triggerFadeOut]);
+  useEffect(() => {}, [triggerFadeOut]);
 
   return (
     <FadeContext.Provider
