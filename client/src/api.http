@@ -20,6 +20,7 @@ Content-Type: application/json
   "password": "yourPassword"
 }
 
+
 ### Add Expense
 POST http://localhost:5000/api/expenses
 Content-Type: application/json
