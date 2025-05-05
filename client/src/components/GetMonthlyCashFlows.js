@@ -24,7 +24,7 @@ const GetMonthlyCashFlows = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log("Cashflows: ", res.data);
+        // console.log("Cashflows: ", res.data);
         setData(res.data);
       } catch (err) {
         console.error("Error fetching CashFlows", err);

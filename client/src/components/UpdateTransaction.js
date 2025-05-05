@@ -42,7 +42,7 @@ const UpdateTransaction = ({
 
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/transactions/${updateId}`,
+        `http://${process.env.REACT_APP_API_URL}/api/transactions/${updateId}`,
         {
           description: descriptionInput,
           amount: amountInput,
@@ -108,7 +108,9 @@ const UpdateTransaction = ({
             </button>
           </div>
           <h2
-            className={`my-animation ${dayTheme ? "day-text" : "text-white"}`}
+            className={`pb-3 my-animation ${
+              dayTheme ? "day-text" : "text-white"
+            }`}
           >
             Update transaction:
           </h2>
@@ -119,6 +121,7 @@ const UpdateTransaction = ({
           >
             Description:
           </label>
+          <br />
           <Input
             type={"text"}
             name={"descriptionInput"}
@@ -127,17 +130,21 @@ const UpdateTransaction = ({
           />
 
           <br />
+          <br />
           <label
             className={`my-animation ${dayTheme ? "day-text" : "text-white"}`}
           >
-            Amount:
+            Amount $$:
           </label>
+          <br />
+
           <Input
             type={"number"}
             value={amountInput}
             onChange={(e) => setAmountInput(e.target.value)}
           />
           <br />
+          {/* <br /> */}
           <label
             className={`my-animation m-2 ${
               dayTheme ? "day-text" : "text-white"
@@ -145,25 +152,15 @@ const UpdateTransaction = ({
           >
             Date:
           </label>
+          <br />
           <DatePicker
-            className="p-2 m-2 border text-center w-full"
+            className="p-2 m-2 date-picker border text-center w-full"
             selected={dateInput}
             onChange={(dateInput) => setDateInput(dateInput)}
           />
           <br />
-          {/* <label
-            className={`my-animation ${
-              dayTheme ? "day-text" : "text-white"
-            }`}
-          >
-            Recurring:{" "}
-          </label>
-          <input
-            type="checkbox"
-            value={recurringInput}
-            onChange={(e) => setRecurringInput(e.target.value)}
-          /> */}
-          <br />
+
+          {/* <br /> */}
           <br />
           <Button type={"submit"} text={"Update"} color={"blue"} />
         </form>

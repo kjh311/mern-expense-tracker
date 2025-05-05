@@ -8,7 +8,7 @@ const DeleteSubcategory = ({ id, fetchExpenses, setRefreshFlag }) => {
     if (window.confirm("Delete this Category?")) {
       try {
         const res = await axios.delete(
-          `http://localhost:5000/api/subcategories/${id}`,
+          `http://${process.env.REACT_APP_API_URL}/api/subcategories/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

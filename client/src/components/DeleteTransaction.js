@@ -22,7 +22,7 @@ const DeleteTransaction = ({
       setTimeout(async () => {
         try {
           const res = await axios.delete(
-            `http://localhost:5000/api/transactions/${id}`,
+            `http://${process.env.REACT_APP_API_URL}/api/transactions/${id}`,
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,

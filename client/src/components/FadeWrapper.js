@@ -29,9 +29,9 @@ const FadeWrapper = ({ children }) => {
   };
 
   return (
-    <div className={fadeClass} onAnimationEnd={handleAnimationEnd}>
+    <span className={fadeClass} onAnimationEnd={handleAnimationEnd}>
       {children}
-    </div>
+    </span>
   );
 };
 

@@ -1,0 +1,76 @@
+/* Add this to your styles.css or a scoped CSS module */
+
+.date-picker {
+  border-radius: 10px;
+}
+
+/* .date-picker */
+
+.react-datepicker {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+  border: 1px solid #ccc !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  overflow: hidden !important;
+}
+
+.react-datepicker__header {
+  background-color: #5390da !important; /* Indigo-600 */
+  color: white !important;
+  padding: 10px 0 !important;
+  border-bottom: none !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+}
+
+.react-datepicker__day-names {
+  display: flex !important;
+  justify-content: space-around !important;
+  padding: 8px 0 !important;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  margin: 0.1rem !important;
+  width: 2.2rem !important;
+  height: 2.2rem !important;
+  line-height: 2.2rem !important;
+  border-radius: 50% !important;
+  text-align: center !important;
+  font-size: 0.9rem !important;
+  transition: background-color 0.3s, color 0.3s !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: #e0e7ff !important; /* Indigo-100 */
+  color: #1e40af !important; /* Indigo-900 */
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #6366f1 !important; /* Indigo-500 */
+  color: white !important;
+}
+
+.react-datepicker__day--today {
+  font-weight: bold !important;
+  border: 1px solid #4f46e5 !important;
+}
+
+.react-datepicker__triangle {
+  display: none !important; /* Hide the default triangle */
+}
+
+.react-datepicker__navigation {
+  top: 12px !important;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: white !important;
+}

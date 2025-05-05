@@ -51,7 +51,7 @@ const SubCategoriesWithTransactions = ({
 
   const executeScroll = () => {
     setTimeout(() => {
-      console.log("Scroll");
+      // console.log("Scroll");
 
       myRefMain.current.scrollIntoView({
         behavior: "smooth",
@@ -68,7 +68,7 @@ const SubCategoriesWithTransactions = ({
   const fetchExpenses = useCallback(async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/subcategories/${category}-with-transactions`,
+        `http://${process.env.REACT_APP_API_URL}/api/subcategories/${category}-with-transactions`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -88,7 +88,7 @@ const SubCategoriesWithTransactions = ({
           }
         );
 
-        console.log("FetchExpenses");
+        // console.log("FetchExpenses");
 
         return {
           ...item,
@@ -113,9 +113,8 @@ const SubCategoriesWithTransactions = ({
       }`}
     >
       <Accordion
-        activeKey={isOpen ? "main" : null}
-        onSelect={() => setMainAccordionKey(isOpen ? null : mainKey)}
-        onClick={executeScroll}
+      // activeKey={isOpen ? "main" : null}
+      // onSelect={() => setMainAccordionKey(isOpen ? null : mainKey)}
       >
         <Accordion.Item
           eventKey="main"
@@ -124,6 +123,7 @@ const SubCategoriesWithTransactions = ({
           }`}
         >
           <Accordion.Header
+            // onClick={executeScroll}
             className={`my-animation accordion-header-${
               dayTheme ? "day" : "night"
             } ${
@@ -377,7 +377,7 @@ const SubCategoriesWithTransactions = ({
                             <>
                               <div>
                                 <span
-                                  className={`font-semibold pr-8 sm:pr-0  break text-shadow text-base sm:text-lg lg:text-3xl block text-left sm:text-center my-animation ${
+                                  className={`font-semibold pr-8 sm:pr-0  break  text-base sm:text-lg lg:text-3xl block text-left sm:text-center my-animation ${
                                     dayTheme ? "day-text" : "text-white"
                                   }`}
                                 >

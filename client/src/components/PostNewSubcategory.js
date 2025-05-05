@@ -42,7 +42,7 @@ const PostNewSubcategory = ({
         });
 
         const res = await axios.post(
-          "http://localhost:5000/api/subcategories",
+          "${process.env.REACT_APP_API_URL}/api/subcategories",
           {
             name,
             categoryType: category,
@@ -122,7 +122,7 @@ const PostNewSubcategory = ({
             <Input
               type={"number"}
               value={budget}
-              placeholder={"Monthly Budget"}
+              placeholder={"Monthly Budget $$"}
               required
               onChange={(e) => setBudget(parseFloat(e.target.value) || 0)}
             />

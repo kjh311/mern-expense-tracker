@@ -26,7 +26,7 @@ const Logout = () => {
       //reset current month/year
       const now = new Date();
       setDateState({ month: now.getMonth(), year: now.getFullYear() });
-    }, 500);
+    }, 200);
   };
 
   useEffect(() => {

@@ -33,7 +33,7 @@ const PostNewTransaction = ({
 
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/transactions`,
+        `http://${process.env.REACT_APP_API_URL}/api/transactions`,
         {
           description,
           amount,
@@ -82,7 +82,7 @@ const PostNewTransaction = ({
           >
             <span className="flex justify-center items-center text-center w-full ">
               <h2
-                className={`sm:text-2xl text-sm text-shadow font-semibold  w-full my-animation ${
+                className={`sm:text-2xl text-sm font-semibold  w-full my-animation ${
                   dayTheme ? "day-text" : "text-white"
                 }`}
               >
@@ -136,7 +136,7 @@ const PostNewTransaction = ({
                 Date:
               </label>
               <DatePicker
-                className="p-2  border text-center w-full"
+                className="p-2  date-picker text-center w-full"
                 selected={dateInput}
                 onChange={(dateInput) => setDateInput(dateInput)}
               />

@@ -5,9 +5,10 @@
 * Browsers: last 4 version
 */
 
-@import url("./styles/variables.css");
-@import url("./styles/dayTheme.css");
-@import url("./styles/animations.css");
+@import url("./variables.css");
+@import url("./dayTheme.css");
+@import url("./animations.css");
+@import url("./react-calendar.css");
 
 body {
   margin: 0;
@@ -298,7 +299,9 @@ ul {
 }
 
 .collapsing {
-  transition: height 0s ease !important; /* Adjust the duration and timing function as desired */
+  -webkit-transition: height 0.1s ease !important;
+  -o-transition: height 0.1s ease !important;
+  transition: height 0.1s ease !important;
 }
 
 .no-transactions {

@@ -24,7 +24,7 @@ const Expenses = () => {
         const data = await response.json();
         console.log(data);
         if (response.ok) {
-          console.log("EXPENESES");
+          // console.log("EXPENESES");
           setExpenses(data);
         } else {
           console.error(data.message);

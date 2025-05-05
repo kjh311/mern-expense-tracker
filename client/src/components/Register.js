@@ -29,7 +29,7 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        `http://${process.env.REACT_APP_API_URL}/api/auth/register`,
         {
           name,
           email,
