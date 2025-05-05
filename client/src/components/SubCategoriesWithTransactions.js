@@ -68,7 +68,7 @@ const SubCategoriesWithTransactions = ({
   const fetchExpenses = useCallback(async () => {
     try {
       const res = await axios.get(
-        `http://${process.env.REACT_APP_API_URL}/api/subcategories/${category}-with-transactions`,
+        `${process.env.REACT_APP_API_URL}/api/subcategories/${category}-with-transactions`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

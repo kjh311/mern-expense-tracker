@@ -7,7 +7,7 @@ const Transaction = require("../models/Transaction");
 // POST NEW SUBCATEGORY
 
 router.post("/", verifyToken, async (req, res) => {
-  const { categoryType, name, budget, month, year } = req.body;
+  const { categoryType, name, budget } = req.body;
 
   try {
     const newSubcategory = new Subcategory({
@@ -15,8 +15,6 @@ router.post("/", verifyToken, async (req, res) => {
       categoryType,
       name,
       budget,
-      month,
-      year,
     });
 
     const saved = await newSubcategory.save();

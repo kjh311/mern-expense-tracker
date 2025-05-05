@@ -61,6 +61,11 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
     }
   };
 
+  const capitalizeFirstLetter = (e) => {
+    let string = e.target.value;
+    setName(string.charAt(0).toUpperCase() + string.slice(1));
+  };
+
   const handleLoginClick = () => {
     setTriggerFadeOut(true);
     setTimeout(() => {
@@ -98,7 +103,7 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
               type={"text"}
               placeholder={"Name"}
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={capitalizeFirstLetter}
               required
             />
             <Input
