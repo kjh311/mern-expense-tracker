@@ -14,6 +14,7 @@ app.use(
 );
 
 // app.options("*", cors());
+//delete
 
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
