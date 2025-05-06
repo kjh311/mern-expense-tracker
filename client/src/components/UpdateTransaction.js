@@ -35,8 +35,7 @@ const UpdateTransaction = ({
   const url =
     process.env.NODE_ENV === "development"
       ? `http://localhost:5000/api/transactions/${updateId}`
-      : // : `https://mern-expense-tracker-t3dj.onrender.com/api/transactions/${updateId}`;
-        `https://mern-expense-tracker-production-b291.up.railway.app/api/transactions/${updateId}`;
+      : `https://mern-expense-tracker-production-b291.up.railway.app/api/transactions/${updateId}`;
 
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
