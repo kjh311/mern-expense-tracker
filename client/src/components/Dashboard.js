@@ -13,8 +13,12 @@ const Dashboard = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
     localStorage.getItem("expense-tracker-username") || ""
   );
   const [dayTheme] = useContext(DayTheme);
-  const { triggerFadeOut } = useContext(FadeContext);
+  const { triggerFadeOut, setTriggerFadeOut } = useContext(FadeContext);
   const [dateState] = useContext(DateContext);
+
+  // useEffect(() => {
+  //   setTriggerFadeOut(false);
+  // }, []);
 
   return (
     <FadeWrapper triggerFadeOut={triggerFadeOut}>

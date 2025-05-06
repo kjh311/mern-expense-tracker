@@ -5,9 +5,8 @@ const cors = require("cors");
 app.use(
   cors({
     origin: [
-      "http://localhost:5000",
+      "http://localhost:3000",
       "https://budget-tracker-mern.netlify.app",
-      "mern-expense-tracker-production-b291.up.railway.app",
     ],
     credentials: true,
   })
