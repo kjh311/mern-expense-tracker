@@ -71,7 +71,7 @@ const PostNewSubcategory = ({ fetchExpenses, category, setActiveKey }) => {
           ${PostNewTransactionHighestHeaderColors(category, dayTheme)}
            `}
         >
-          <span className="flex justify-center items-center text-center w-full">
+          <span className="flex justify-start  items-center  w-full">
             <h2
               className={`sm:text-2xl text-sm text-shadow font-semibold  w-full my-animation ${
                 dayTheme ? "day-text" : "text-white"

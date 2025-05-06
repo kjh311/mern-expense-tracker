@@ -83,13 +83,14 @@ const PostNewTransaction = ({
                 : `accordion-header-higher-${backgroundColor}`
             }`}
           >
-            <span className="flex justify-center items-center text-center w-full ">
+            <span className="flex justify-start items-center pl-4 w-full ">
               <h2
                 className={`sm:text-2xl text-sm font-semibold  w-full my-animation ${
                   dayTheme ? "day-text" : "text-white"
                 }`}
               >
-                Add New Transaction{" "}
+                Add New
+                <br /> Transaction{" "}
                 <span
                   className={`my-animation text-3xl ${
                     dayTheme ? "text-red-500" : "white"
