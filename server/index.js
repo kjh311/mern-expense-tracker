@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const app = express();
 const cors = require("cors");
 app.use(
   cors({
@@ -17,7 +18,6 @@ const budgetRoutes = require("./routes/budget");
 
 dotenv.config();
 
-const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
