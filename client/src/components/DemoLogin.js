@@ -12,19 +12,22 @@ const DemoLogin = ({ setRefreshFlag }) => {
   const navigate = useNavigate();
   const { triggerFadeOut, setTriggerFadeOut } = useContext(FadeContext);
 
+  const url =
+    process.env.NODE_ENV === "development"
+      ? `http://localhost:5000/api/auth/login"`
+      : // : `https://mern-expense-tracker-t3dj.onrender.com/api/auth/login`;
+        `mern-expense-tracker-production-b291.up.railway.app/api/auth/login`;
+
   const handleDemoLogin = async () => {
     try {
       // const res = await axios.post("http://localhost:5000/api/auth/login", {
-      const res = await axios.post(
-        `https://mern-expense-tracker-t3dj.onrender.com/api/auth/login`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          email: "demo@example.com",
-          password: "password123",
-        }
-      );
+      const res = await axios.post(url, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        email: "demo@example.com",
+        password: "password123",
+      });
 
       setTriggerFadeOut(true);
 

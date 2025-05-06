@@ -28,7 +28,8 @@ const UpdateSubcategory = ({
   const url =
     process.env.NODE_ENV === "development"
       ? `http://localhost:5000/api/subcategories/${id}`
-      : `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${id}`;
+      : // : `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${id}`;
+        `mern-expense-tracker-production-b291.up.railway.app/api/subcategories/${id}`;
 
   const handleSubcategoryUpdate = async (e) => {
     e.preventDefault();

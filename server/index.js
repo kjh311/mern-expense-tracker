@@ -2,12 +2,16 @@ const express = require("express");
 const dotenv = require("dotenv");
 const app = express();
 const cors = require("cors");
-// app.use(
-//   cors({
-//     origin: "https://budget-tracker-mern.netlify.app",
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5000",
+      "https://budget-tracker-mern.netlify.app",
+      "mern-expense-tracker-production-b291.up.railway.app",
+    ],
+    credentials: true,
+  })
+);
 
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");

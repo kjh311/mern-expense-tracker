@@ -31,20 +31,22 @@ const Login = ({
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const url =
+    process.env.NODE_ENV === "development"
+      ? `http://localhost:5000/api/auth/login"`
+      : // : `https://mern-expense-tracker-t3dj.onrender.com/api/auth/login`;
+        `mern-expense-tracker-production-b291.up.railway.app/api/auth/login`;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `https://mern-expense-tracker-t3dj.onrender.com/api/auth/login`,
-        {
-          // const response = await fetch(`http://localhost:5000/api/auth/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       if (!response.ok) {
         setMessage("Login request failed");
