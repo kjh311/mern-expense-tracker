@@ -1,6 +1,12 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+app.use(
+  cors({
+    origin: "https://mern-expense-tracker-t3dj.onrender.com", // or '*', but not recommended for production
+    credentials: true,
+  })
+);
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const expensesRoutes = require("./routes/expenses"); // adjust path if needed

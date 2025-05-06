@@ -3,9 +3,18 @@
 ## Mern Stack
 
 1. Full Crud Expense / Budget / Income / Bills Tracker.
-2. React JS, Express JS, Node JS, MongoDB.
+2. Persists data to MongoDB.
 3. Day/Night Theme. Theme persists between rerenders.
 4. Login / Register using JWTs.
+5. Technologies:
+   - React JS
+   - Express JS
+   - Node JS
+   - MongoDB
+   - Trailwind
+   - Axios
+   - Chart JS
+   - Javascript Web Tokens
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3c16c6ea-8f0a-407c-bea4-f4f1ff4b446a/deploy-status)](https://app.netlify.com/sites/budget-tracker-mern/deploys)
 
@@ -17,10 +26,12 @@
 
 ![alt text](/client/public/Desktop2.png)
 
+<p float="left>
 ### Mobile Day Theme:
 
-<img src="/client/public/Day-Mobile.png" width="400" >
+<img src="/client/public/Day-Mobile.png" width="350" >
 
 ### Mobile Night Theme:
 
-<img src="/client/public/Night-Mobile.png" width="400" >
+<img src="/client/public/Night-Mobile.png" width="350" >
+</p>
