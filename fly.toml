@@ -1,20 +1,31 @@
-# fly.toml app configuration file generated for mern-expense-tracker-icy-frog-6846 on 2025-05-06T10:18:59-06:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
+app = "mern-expense-tracker"
 
-app = 'mern-expense-tracker-icy-frog-6846'
-primary_region = 'den'
+[build]
+    dockerfile = "server/Dockerfile"
+    context = "server"
 
-[http_service]
+[env]
+  PORT = "8080"
+
+[experimental]
+  auto_rollback = true
+
+[processes]
+  app = "node server/index.js"
+
+[[services]]
   internal_port = 8080
-  force_https = true
-  auto_stop_machines = 'stop'
-  auto_start_machines = true
-  min_machines_running = 0
-  processes = ['app']
+  protocol = "tcp"
+  processes = ["app"]  # 👈 This links the service to the "app" process
 
-[[vm]]
-  memory = '1gb'
-  cpu_kind = 'shared'
-  cpus = 1
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    interval = "10s"
+    timeout = "2s"
