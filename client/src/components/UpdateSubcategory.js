@@ -3,6 +3,7 @@ import axios from "axios";
 import Button from "./Button";
 import { IoCloseCircle } from "react-icons/io5";
 import { DayTheme } from "../App";
+import Input from "./Input";
 
 const UpdateSubcategory = ({
   id,
@@ -80,7 +81,7 @@ const UpdateSubcategory = ({
         >
           <button
             onClick={handleClose}
-            className={`react-icon text-white text-4xl transition-all duration-200 absolute top-2 right-2`}
+            className={`react-icon text-white text-4xl transition-all duration-200 absolute top-2 right-1 sm:right-2`}
           >
             <IoCloseCircle />
           </button>
@@ -91,9 +92,9 @@ const UpdateSubcategory = ({
               Subcategory Name:
             </label>
             <br />
-            <input
-              className="text-center p-2 m-2 rounded outline"
-              type="text"
+            <Input
+              // className="text-center py-2 m-2 rounded outline"
+              type={"text"}
               value={nameInput}
               onChange={(e) => setNameInput(e.target.value)}
             />
@@ -104,10 +105,10 @@ const UpdateSubcategory = ({
               Budget for the month:
             </label>
             <br />
-            <input
-              type="number"
+            <Input
+              type={"number"}
               value={budgetInput}
-              className="text-center p-2 m-2 outline rounded"
+              // className="text-center py-2 m-2 outline rounded"
               onChange={(e) => setBudgetInput(e.target.value)}
             />
             <br />

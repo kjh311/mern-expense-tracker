@@ -14,17 +14,14 @@ const DemoLogin = ({ setRefreshFlag }) => {
 
   const handleDemoLogin = async () => {
     try {
-      // const res = await axios.post("http://localhost:5000/api/auth/login", {
-      const res = await axios.post(
-        `https://mern-expense-tracker-t3dj.onrender.com/api/auth/login`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          email: "demo@example.com",
-          password: "password123",
-        }
-      );
+      const res = await axios.post("http://localhost:5000/api/auth/login", {
+        // const res = await axios.post(`https://mern-expense-tracker-t3dj.onrender.com/api/auth/login`,{
+        headers: {
+          "Content-Type": "application/json",
+        },
+        email: "demo@example.com",
+        password: "password123",
+      });
 
       setTriggerFadeOut(true);
 

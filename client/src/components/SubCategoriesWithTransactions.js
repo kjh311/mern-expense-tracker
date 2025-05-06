@@ -60,8 +60,8 @@ const SubCategoriesWithTransactions = ({
   const fetchExpenses = useCallback(async () => {
     try {
       const res = await axios.get(
-        `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${category}-with-transactions`,
-        // `http://${process.env.REACT_APP_API_URL}/api/subcategories/${category}-with-transactions`,
+        // `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${category}-with-transactions`,
+        `http://${process.env.REACT_APP_API_URL}/api/subcategories/${category}-with-transactions`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -221,30 +221,33 @@ const SubCategoriesWithTransactions = ({
                         {/* TOTAL SPENT, BUDGET, and LEFT TO SPEND/ EARN */}
                         <div className="text-start sm:text-center flex flex-col sm:flex-row justify-around  w-full gap-2 sm:gap-4 sm:text-xl text-sm">
                           {/* Total Spent */}
-                          <span className="text-center">
-                            💵 Total
-                            {getActionWordPassedTense(category)}:
+                          <span className="">
+                            💵 Total {getActionWordPassedTense(category)}:
                             <br />
-                            {formattedCurrency(
-                              sub.transactions.reduce(
-                                (sum, tx) => sum + tx.amount,
-                                0
-                              )
-                            )}
+                            <span className="ml-4 sm:ml-0">
+                              {formattedCurrency(
+                                sub.transactions.reduce(
+                                  (sum, tx) => sum + tx.amount,
+                                  0
+                                )
+                              )}
+                            </span>
                           </span>
 
                           {/* Budget */}
                           {sub.budget && (
-                            <span className="text-center">
+                            <span className="">
                               💰 Budget: <br />
-                              {formattedCurrency(sub.budget)}
+                              <span className="ml-4 sm:ml-0">
+                                {formattedCurrency(sub.budget)}
+                              </span>
                             </span>
                           )}
 
                           {/* Left to Spend/Earn */}
                           {sub.budget && (
                             <span
-                              className={`text-center ${
+                              className={` ${
                                 sub.budget -
                                   sub.transactions.reduce(
                                     (sum, tx) => sum + tx.amount,
@@ -266,13 +269,15 @@ const SubCategoriesWithTransactions = ({
                               >
                                 🏦 Left to {getActionWord(category)}:
                                 <br />
-                                {formattedCurrency(
-                                  sub.budget -
-                                    sub.transactions.reduce(
-                                      (sum, tx) => sum + tx.amount,
-                                      0
-                                    )
-                                )}
+                                <span className="ml-4 sm:ml-0">
+                                  {formattedCurrency(
+                                    sub.budget -
+                                      sub.transactions.reduce(
+                                        (sum, tx) => sum + tx.amount,
+                                        0
+                                      )
+                                  )}
+                                </span>
                               </span>
                             </span>
                           )}
