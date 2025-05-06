@@ -1,7 +1,8 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const app = express();
 const cors = require("cors");
+const app = express();
+
 app.use(
   cors({
     origin: [
@@ -11,6 +12,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.options("*", cors());
 
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
@@ -23,7 +26,6 @@ dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expensesRoutes);
