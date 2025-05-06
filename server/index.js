@@ -8,6 +8,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://budget-tracker-mern.netlify.app",
+      "https://mern-expense-tracker.fly.dev",
     ],
     credentials: true,
   })

@@ -61,7 +61,8 @@ const SubCategoriesWithTransactions = ({
     process.env.NODE_ENV === "development"
       ? `http://localhost:5000/api/subcategories/${category}-with-transactions`
       : //  : `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${category}-with-transactions`;
-        `https://mern-expense-tracker-production-b291.up.railway.app/api/subcategories/${category}-with-transactions`;
+        // `https://mern-expense-tracker-production-b291.up.railway.app/api/subcategories/${category}-with-transactions`;
+        `https://mern-expense-tracker.fly.dev/api/subcategories/${category}-with-transactions`;
 
   const fetchExpenses = useCallback(async () => {
     try {

@@ -30,7 +30,8 @@ const PostNewTransaction = ({
     process.env.NODE_ENV === "development"
       ? `http://localhost:5000/api/transactions`
       : // : `https://mern-expense-tracker-t3dj.onrender.com/api/transactions`;
-        `https://mern-expense-tracker-production-b291.up.railway.app/api/transactions`;
+        // `https://mern-expense-tracker-production-b291.up.railway.app/api/transactions`;
+        `https://mern-expense-tracker.fly.dev/api/transactions`;
 
   const handlePostTransaction = async (e) => {
     e.preventDefault();
