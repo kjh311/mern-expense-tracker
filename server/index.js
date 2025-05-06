@@ -4,17 +4,16 @@ const app = express();
 const cors = require("cors");
 app.use(
   cors({
-    origin: "https://mern-expense-tracker-t3dj.onrender.com", // or '*', but not recommended for production
+    origin: "https://budget-tracker-mern.netlify.app",
     credentials: true,
   })
 );
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
-const expensesRoutes = require("./routes/expenses"); // adjust path if needed
+const expensesRoutes = require("./routes/expenses");
 const subcategoriesRoute = require("./routes/subcategories");
 const transactionRoutes = require("./routes/transactions");
 const budgetRoutes = require("./routes/budget");
-// const cashflowRoute = require("./routes/cashflow");
 
 dotenv.config();
 
@@ -27,7 +26,6 @@ app.use("/api/expenses", expensesRoutes);
 app.use("/api/subcategories", subcategoriesRoute);
 app.use("/api/transactions", transactionRoutes);
 app.use("/api/budget", budgetRoutes);
-// app.use("/api/cashflow", cashflowRoute);
 
 // connect to mongoDB
 mongoose
