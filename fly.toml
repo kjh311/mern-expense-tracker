@@ -11,7 +11,7 @@ app = "mern-expense-tracker"
   auto_rollback = true
 
 [processes]
-  app = "node server/index.js"
+  app = "node index.js"
 
 [[services]]
   internal_port = 8080
