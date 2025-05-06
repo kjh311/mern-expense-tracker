@@ -37,11 +37,11 @@ const Home = ({ contentHeight }) => {
         } home-container text-center flex flex-column justify-center align-center`}
         style={{ minHeight: contentHeight }}
       >
-        <h1 className="home-heading text-4xl sm:text-6xl text-white p-4">
+        <h1 className="home-heading text-2xl sm:text-6xl text-white p-4">
           Welcome to Budget Tracker
           {localStorageName !== "" && `, ${localStorageName}`}!
         </h1>
-        <p className="text-center text-xl sm:text-4xl text-white mx-10 ">
+        <p className="text-center text-lg sm:text-4xl text-white mx-10 ">
           Stay on top of your expenses, savings, bills, and income all in one
           place.
         </p>

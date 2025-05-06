@@ -90,7 +90,7 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
           }`}
         >
           <h2
-            className={`my-animation text-2xl font-bold text-center mb-6 ${
+            className={`my-animation text-lg sm:text-2xl font-bold text-center mb-2 sm:mb-6 ${
               dayTheme ? "login-day-theme-heading" : "login-night-theme-heading"
             }`}
           >

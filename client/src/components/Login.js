@@ -98,13 +98,13 @@ const Login = ({
             dayTheme ? "day-theme-card" : "night-theme-card "
           }`}
         >
-          <h2
-            className={`login-heading ${
+          <p
+            className={`login-heading text-sm sm:text-xl ${
               dayTheme ? "login-day-theme-heading" : "login-night-theme-heading"
             }`}
           >
             Login
-          </h2>
+          </p>
           <form
             onSubmit={handleSubmit}
             className="space-y-4 flex justify-center flex-column form"
