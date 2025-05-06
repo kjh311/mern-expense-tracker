@@ -46,7 +46,7 @@ function App() {
     password: "",
   });
 
-  console.log("NODE: ", process.env.NODE_ENV);
+  // console.log("NODE: ", process.env.NODE_ENV);
 
   const navbarRef = useRef(null);
   const footerRef = useRef(null);
