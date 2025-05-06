@@ -26,12 +26,11 @@
 
 ![alt text](/client/public/Desktop2.png)
 
+### Mobile Day Theme: | ### Mobile Night Theme:
+
 <p float="left>
-### Mobile Day Theme:
 
 <img src="/client/public/Day-Mobile.png" width="350" >
-
-### Mobile Night Theme:
 
 <img src="/client/public/Night-Mobile.png" width="350" >
 </p>
