@@ -9,6 +9,7 @@
 @import url("./dayTheme.css");
 @import url("./animations.css");
 @import url("./react-calendar.css");
+@import url("./loader.css");
 
 body {
   margin: 0;

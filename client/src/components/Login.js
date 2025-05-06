@@ -14,6 +14,8 @@ const Login = ({
   setFormData,
   refreshFlag,
   setRefreshFlag,
+  loading,
+  setLoading,
 }) => {
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
   const [dayTheme, setDayTheme] = useContext(DayTheme);
@@ -41,6 +43,7 @@ const Login = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -64,6 +67,7 @@ const Login = ({
         localStorage.setItem("token", data.token);
         setLoggedIn(true);
         navigate("/dashboard");
+        setLoading(false);
 
         localStorage.setItem("expense-tracker-username", data.user.name);
         setTriggerFadeOut(false);
@@ -77,6 +81,7 @@ const Login = ({
     } catch (error) {
       console.error(error);
       alert("An error occurred. Please try again.");
+      setLoading(false);
     }
   };
 
@@ -138,11 +143,17 @@ const Login = ({
                 {!showPassword ? <FaEyeSlash /> : <FaEye />}
               </div>
             </div>
-            <Button
-              type={"submit"}
-              text={"Login"}
-              color={dayTheme ? "blue" : "purple"}
-            />
+            {!loading ? (
+              <Button
+                type={"submit"}
+                text={"Login"}
+                color={dayTheme ? "blue" : "purple"}
+              />
+            ) : (
+              <div className="w-100 flex justify-center mt-4 mb-2">
+                <span className="loader"></span>
+              </div>
+            )}
           </form>
           {message && <p className="text-center mt-4 text-sm">{message}</p>}
 
@@ -158,10 +169,14 @@ const Login = ({
             </span>
             <br />
             <br />
-            <DemoLogin
-              refreshFlag={refreshFlag}
-              setRefreshFlag={setRefreshFlag}
-            />
+            {!loading && (
+              <DemoLogin
+                refreshFlag={refreshFlag}
+                setRefreshFlag={setRefreshFlag}
+                loading={loading}
+                setLoading={setLoading}
+              />
+            )}
           </p>
         </div>
       </div>

@@ -9,7 +9,13 @@ import FadeWrapper from "./FadeWrapper";
 import { FadeContext } from "./FadeContext";
 import DemoLogin from "./DemoLogin";
 
-const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
+const Register = ({
+  contentHeight,
+  refreshFlag,
+  setRefreshFlag,
+  loading,
+  setLoading,
+}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -50,11 +56,13 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
       setMessage(message);
       setTriggerFadeOut(true);
       setLoggedIn(true);
+      setLoading(true);
 
       // Redirect after fade-out
       setTimeout(() => {
         navigate("/dashboard");
         setTriggerFadeOut(false);
+        setLoading(false);
       }, 300);
     } catch (error) {
       setMessage(
@@ -62,6 +70,7 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
           error.response?.data?.message ||
           "Something went wrong"
       );
+      setLoading(false);
     }
   };
 
@@ -129,11 +138,17 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
                 {!showPassword ? <FaEyeSlash /> : <FaEye />}
               </div>
             </div>
-            <Button
-              type={"submit"}
-              text={"Register"}
-              color={dayTheme ? "blue" : "purple"}
-            />
+            {!loading ? (
+              <Button
+                type={"submit"}
+                text={"Register"}
+                color={dayTheme ? "blue" : "purple"}
+              />
+            ) : (
+              <div className="w-100 flex justify-center mt-4 mb-2">
+                <span className="loader"></span>
+              </div>
+            )}
           </form>
 
           {message && <p className="text-center mt-4 text-sm">{message}</p>}
@@ -150,10 +165,12 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
             </span>
           </p>
 
-          <DemoLogin
-            refreshFlag={refreshFlag}
-            setRefreshFlag={setRefreshFlag}
-          />
+          {!loading && (
+            <DemoLogin
+              refreshFlag={refreshFlag}
+              setRefreshFlag={setRefreshFlag}
+            />
+          )}
         </div>
       </div>
     </FadeWrapper>

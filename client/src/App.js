@@ -20,6 +20,7 @@ export const DateContext = React.createContext();
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
+  const [loading, setLoading] = useState(false);
   const [dayTheme, setDayTheme] = useState(() => {
     const stored = localStorage.getItem("Expense-Tracker-DayTheme");
     return stored === "true";
@@ -83,6 +84,8 @@ function App() {
                           setFormData={setFormData}
                           refreshFlag={refreshFlag}
                           setRefreshFlag={setRefreshFlag}
+                          loading={loading}
+                          setLoading={setLoading}
                         />
                       }
                     />
@@ -96,6 +99,8 @@ function App() {
                           setFormData={setFormData}
                           refreshFlag={refreshFlag}
                           setRefreshFlag={setRefreshFlag}
+                          loading={loading}
+                          setLoading={setLoading}
                         />
                       }
                     />

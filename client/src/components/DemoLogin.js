@@ -6,7 +6,7 @@ import axios from "axios";
 import FadeWrapper from "./FadeWrapper";
 import { FadeContext } from "./FadeContext";
 
-const DemoLogin = ({ setRefreshFlag }) => {
+const DemoLogin = ({ setRefreshFlag, loading, setLoading }) => {
   const [dayTheme, setDayTheme] = useContext(DayTheme);
   const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ const DemoLogin = ({ setRefreshFlag }) => {
 
   const handleDemoLogin = async () => {
     try {
+      setLoading(true);
       const res = await axios.post(url, {
         headers: {
           "Content-Type": "application/json",
@@ -36,6 +37,7 @@ const DemoLogin = ({ setRefreshFlag }) => {
         localStorage.setItem("token", res.data.token);
         setLoggedIn(true);
         navigate("/dashboard");
+        setLoading(false);
 
         localStorage.setItem("expense-tracker-username", "Demo User");
         setTriggerFadeOut(false);
@@ -47,6 +49,7 @@ const DemoLogin = ({ setRefreshFlag }) => {
       }
     } catch (err) {
       console.error("Demo login failed", err);
+      setLoading(false);
     }
   };
 
