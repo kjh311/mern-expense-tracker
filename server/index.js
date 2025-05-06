@@ -13,7 +13,7 @@ app.use(
   })
 );
 
-app.options("*", cors());
+// app.options("*", cors());
 
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
