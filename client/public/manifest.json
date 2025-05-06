@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "money.svg",
+      "src": "coin2.svg",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "money.svg",
+      "src": "coin2.svg",
       "type": "image/png",
       "sizes": "512x512"
     }
