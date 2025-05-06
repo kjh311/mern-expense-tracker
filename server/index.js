@@ -8,6 +8,7 @@ app.use(
     credentials: true,
   })
 );
+
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const expensesRoutes = require("./routes/expenses");
