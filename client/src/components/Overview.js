@@ -24,7 +24,7 @@ const Overview = ({
 
   const executeScroll = () => {
     setTimeout(() => {
-      console.log("Scroll");
+      // console.log("Scroll");
 
       myRefMain.current.scrollIntoView({
         behavior: "smooth",
@@ -85,7 +85,7 @@ const Overview = ({
                   dayTheme ? "day-text" : "text-white"
                 }`}
               >
-                <h2 className="text-center lg:text-4xl text-lg font-bold text-shadow sm:m-4 m-2 ">
+                <h2 className="text-center sm:text-4xl text-2xl font-bold text-shadow sm:m-4 m-2 ">
                   💼 MONTHLY OVERVIEW
                 </h2>
                 <div className="my-animation sm:text-center text-left flex  flex-col sm:flex-row justify-evenly items-start sm:items-center w-full gap-2 sm:gap-4 lg:text-xl xs:text-sm">

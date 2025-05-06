@@ -99,8 +99,10 @@ const SubCategoriesWithTransactions = ({
   }, [category, currentMonthIndex, currentYear, refreshFlag]);
 
   useEffect(() => {
+    // setTimeout(() => {
     fetchExpenses();
-  }, [fetchExpenses, currentMonthIndex, currentYear]);
+    // },3000)
+  }, [currentMonthIndex, currentYear]);
 
   return (
     <div
