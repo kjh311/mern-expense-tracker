@@ -34,7 +34,7 @@ const UpdateTransaction = ({
 
   const url =
     process.env.NODE_ENV === "development"
-      ? `http://${process.env.REACT_APP_API_URL}/api/transactions/${updateId}`
+      ? `http://localhost:5000/api/transactions/${updateId}`
       : `https://mern-expense-tracker-t3dj.onrender.com/api/transactions/${updateId}`;
 
   const handleUpdateSubmit = async (e) => {

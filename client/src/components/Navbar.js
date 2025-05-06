@@ -40,10 +40,10 @@ const Navbar = ({ ref }) => {
         dayTheme ? "day-nav text-white" : "night-nav text-blue-100"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-start sm:justify-around">
+      <div className="max-w-6xl mx-auto px-2 py-3 flex items-center justify-start sm:justify-around">
         <button
           onClick={handleNavHome}
-          className={`nav-bar-text text-xl pr-4 sm:px-6 sm:text-2xl font-extrabold tracking-wide  transition ${
+          className={`nav-bar-text text-lg pr-4 sm:px-6 sm:text-2xl font-extrabold tracking-wide  transition ${
             dayTheme ? "text-white text-shadow" : "night-footer-link"
           }`}
         >

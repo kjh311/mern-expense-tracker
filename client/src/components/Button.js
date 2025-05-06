@@ -28,7 +28,7 @@ const Button = ({ type, text, onClick, color, disabled }) => {
           }
           
 
-          font-semibold py-1 px-3 lg:py-2 lg:px-6 rounded-md my-animation `}
+          font-semibold text-sm sm:text-lg py-1 px-3 lg:py-2 lg:px-6 rounded-md my-animation `}
       >
         {text}
       </button>

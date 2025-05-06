@@ -17,7 +17,7 @@ const DeleteTransaction = ({
 
   const url =
     process.env.NODE_ENV === "development"
-      ? `http://${process.env.REACT_APP_API_URL}/api/transactions/${id}`
+      ? `http://localhost:5000/api/transactions/${id}`
       : `https://mern-expense-tracker-t3dj.onrender.com/api/transactions/${id}`;
 
   const handleDeleteTransaction = async () => {

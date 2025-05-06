@@ -5,6 +5,7 @@ import { DayTheme, DateContext } from "../App";
 import { FadeContext } from "./FadeContext";
 import MonthToggle from "./MonthToggle";
 import FadeWrapper from "./FadeWrapper";
+import ScrollToTop from "./ScrollToTop";
 
 const Dashboard = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
   const [mainAccordionKey, setMainAccordionKey] = useState(null);
@@ -17,6 +18,7 @@ const Dashboard = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
 
   return (
     <FadeWrapper triggerFadeOut={triggerFadeOut}>
+      <ScrollToTop />
       <div
         style={{ minHeight: contentHeight }}
         className={`p-4 flex items-center flex-column 

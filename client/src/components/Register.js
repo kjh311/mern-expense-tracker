@@ -24,19 +24,20 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
     setShowPassword((prev) => !prev);
   };
 
+  const url =
+    process.env.NODE_ENV === "development"
+      ? `http://localhost:5000/api/auth/register`
+      : `https://mern-expense-tracker-t3dj.onrender.com/api/auth/register`;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        `https://mern-expense-tracker-t3dj.onrender.com/api/auth/register`,
-        // `http://${process.env.REACT_APP_API_URL}/api/auth/register`,
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      const response = await axios.post(url, {
+        name,
+        email,
+        password,
+      });
 
       const { token, user, message } = response.data;
 

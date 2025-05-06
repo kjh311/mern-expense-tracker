@@ -28,7 +28,7 @@ const PostNewTransaction = ({
 
   const url =
     process.env.NODE_ENV === "development"
-      ? `http://${process.env.REACT_APP_API_URL}/api/transactions`
+      ? `http://localhost:5000/api/transactions`
       : `https://mern-expense-tracker-t3dj.onrender.com/api/transactions`;
 
   const handlePostTransaction = async (e) => {

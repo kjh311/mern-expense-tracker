@@ -59,7 +59,7 @@ const SubCategoriesWithTransactions = ({
 
   const url =
     process.env.NODE_ENV === "development"
-      ? `http://${process.env.REACT_APP_API_URL}/api/subcategories/${category}-with-transactions`
+      ? `http://localhost:5000/api/subcategories/${category}-with-transactions`
       : `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${category}-with-transactions`;
 
   const fetchExpenses = useCallback(async () => {

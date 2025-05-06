@@ -27,7 +27,7 @@ const UpdateSubcategory = ({
 
   const url =
     process.env.NODE_ENV === "development"
-      ? `http://${process.env.REACT_APP_API_URL}/api/subcategories/${id}`
+      ? `http://localhost:5000/api/subcategories/${id}`
       : `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${id}`;
 
   const handleSubcategoryUpdate = async (e) => {
@@ -77,7 +77,7 @@ const UpdateSubcategory = ({
 
       {editModeSubcategory && (
         <div
-          className={`relative text-center p-4 outline m-2 rounded-xl w-100 my-animation ${
+          className={`relative text-center py-4 px-2 outline m-2 rounded-xl w-100 my-animation ${
             dayTheme
               ? `my-animation accordion-body-day overview-accordion-body-${backgroundColor}`
               : `my-animation accordion-body-night overview-accordion-body-${backgroundColor}`
@@ -91,7 +91,9 @@ const UpdateSubcategory = ({
           </button>
           <form onSubmit={handleSubcategoryUpdate} className="text-center">
             <label
-              className={`my-animation ${dayTheme ? "day-text" : "text-white"}`}
+              className={`my-animation mt-3 sm:mt-0 ${
+                dayTheme ? "day-text" : "text-white"
+              }`}
             >
               Subcategory Name:
             </label>

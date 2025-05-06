@@ -46,7 +46,7 @@ function App() {
     password: "",
   });
 
-  // console.log("API URL:", process.env.REACT_APP_API_URL);
+  console.log("NODE: ", process.env.NODE_ENV);
 
   const navbarRef = useRef(null);
   const footerRef = useRef(null);
