@@ -32,13 +32,17 @@ const UpdateTransaction = ({
     setEditModeTransaction(true);
   };
 
+  const url =
+    process.env.NODE_ENV === "development"
+      ? `http://${process.env.REACT_APP_API_URL}/api/transactions/${updateId}`
+      : `https://mern-expense-tracker-t3dj.onrender.com/api/transactions/${updateId}`;
+
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const res = await axios.put(
-        `https://mern-expense-tracker-t3dj.onrender.com/api/transactions/${updateId}`,
-        // `http://${process.env.REACT_APP_API_URL}/api/transactions/${updateId}`,
+        url,
         {
           description: descriptionInput,
           amount: amountInput,

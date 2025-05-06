@@ -57,17 +57,18 @@ const SubCategoriesWithTransactions = ({
   const [dateState, setDateState] = useContext(DateContext);
   const { month: currentMonthIndex, year: currentYear } = dateState;
 
+  const url =
+    process.env.NODE_ENV === "development"
+      ? `http://${process.env.REACT_APP_API_URL}/api/subcategories/${category}-with-transactions`
+      : `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${category}-with-transactions`;
+
   const fetchExpenses = useCallback(async () => {
     try {
-      const res = await axios.get(
-        // `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${category}-with-transactions`,
-        `http://${process.env.REACT_APP_API_URL}/api/subcategories/${category}-with-transactions`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+      const res = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
 
       // FILTER BASED ON MONTH SELECTED
       const filteredData = res.data.map((item) => {

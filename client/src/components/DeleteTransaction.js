@@ -15,22 +15,23 @@ const DeleteTransaction = ({
 }) => {
   const [dayTheme, setDayTheme] = useContext(DayTheme);
 
+  const url =
+    process.env.NODE_ENV === "development"
+      ? `http://${process.env.REACT_APP_API_URL}/api/transactions/${id}`
+      : `https://mern-expense-tracker-t3dj.onrender.com/api/transactions/${id}`;
+
   const handleDeleteTransaction = async () => {
     if (window.confirm("Delete this transaction?")) {
       setAnimatingId(txId);
 
       setTimeout(async () => {
         try {
-          const res = await axios.delete(
-            `https://mern-expense-tracker-t3dj.onrender.com/api/transactions/${id}`,
-            // `http://${process.env.REACT_APP_API_URL}/api/transactions/${id}`,
-            {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-                "Content-Type": "application/json",
-              },
-            }
-          );
+          const res = await axios.delete(url, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Content-Type": "application/json",
+            },
+          });
           console.log("Deleted:", res.data);
           await fetchExpenses();
           setRefreshFlag((prev) => !prev);

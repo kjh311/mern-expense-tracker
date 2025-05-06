@@ -28,9 +28,13 @@ const PostNewSubcategory = ({ fetchExpenses, category, setActiveKey }) => {
           budget,
         });
 
+        const url =
+          process.env.NODE_ENV === "development"
+            ? `http://${process.env.REACT_APP_API_URL}/api/subcategories`
+            : `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories`;
+
         const res = await axios.post(
-          `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories`,
-          // `http://${process.env.REACT_APP_API_URL}/api/subcategories`,
+          url,
           {
             name,
             categoryType: category,

@@ -25,13 +25,17 @@ const UpdateSubcategory = ({
     setEditModeSubcategory(true);
   };
 
+  const url =
+    process.env.NODE_ENV === "development"
+      ? `http://${process.env.REACT_APP_API_URL}/api/subcategories/${id}`
+      : `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${id}`;
+
   const handleSubcategoryUpdate = async (e) => {
     e.preventDefault();
 
     try {
       const res = await axios.put(
-        `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${id}`,
-        // `http://${process.env.REACT_APP_API_URL}/api/subcategories/${id}`,
+        url,
         {
           budget: budgetInput,
           name: nameInput,

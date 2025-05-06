@@ -26,13 +26,17 @@ const PostNewTransaction = ({
 
   const disableButton = amount === "" || description === "";
 
+  const url =
+    process.env.NODE_ENV === "development"
+      ? `http://${process.env.REACT_APP_API_URL}/api/transactions`
+      : `https://mern-expense-tracker-t3dj.onrender.com/api/transactions`;
+
   const handlePostTransaction = async (e) => {
     e.preventDefault();
 
     try {
       const res = await axios.post(
-        `https://mern-expense-tracker-t3dj.onrender.com/api/transactions`,
-        // `http://${process.env.REACT_APP_API_URL}/api/transactions`,
+        url,
         {
           description,
           amount,
