@@ -5,7 +5,7 @@ import Button from "./Button";
 const DeleteSubcategory = ({ id, fetchExpenses, setRefreshFlag }) => {
   const url =
     process.env.NODE_ENV === "development"
-      ? ` http://localhost:5000/api/subcategories/${id}`
+      ? ` http://localhost:8080/api/subcategories/${id}`
       : // : `https://mern-expense-tracker-t3dj.onrender.com/api/subcategories/${id}`;
         // `https://mern-expense-tracker-production-b291.up.railway.app/api/subcategories/${id}`;
         `https://https://mern-expense-tracker.fly.dev/api/subcategories/${id}`;

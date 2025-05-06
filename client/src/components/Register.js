@@ -26,7 +26,7 @@ const Register = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
 
   const url =
     process.env.NODE_ENV === "development"
-      ? `http://localhost:5000/api/auth/register`
+      ? `http://localhost:8080/api/auth/register`
       : // : `https://mern-expense-tracker-t3dj.onrender.com/api/auth/register`;
         // `https://mern-expense-tracker-production-b291.up.railway.app/api/auth/register`;
         `https://https://mern-expense-tracker.fly.dev/api/auth/register`;

@@ -19,4 +19,4 @@ COPY server/. .
 EXPOSE 8080
 
 # Define the command to run your app
-CMD ["node", "index.js"]
+CMD ["node", "server/index.js"]
