@@ -169,6 +169,8 @@ const Register = ({
             <DemoLogin
               refreshFlag={refreshFlag}
               setRefreshFlag={setRefreshFlag}
+              loading={loading}
+              setLoading={setLoading}
             />
           )}
         </div>

@@ -35,12 +35,12 @@ const Login = ({
 
   const url =
     process.env.NODE_ENV === "development"
-      ? `http://localhost:8081/api/auth/login`
+      ? `http://localhost:8080/api/auth/login`
       : `https://mern-expense-tracker-v5y1.onrender.com/api/auth/login`;
   //: `https://mern-expense-tracker-production-b291.up.railway.app/api/auth/login`;
   // : `https://mern-expense-tracker.fly.dev/api/auth/login`;
 
-  const handleSubmit = async (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
@@ -57,7 +57,10 @@ const Login = ({
         throw new Error("Login request failed");
       }
 
+      console.log("Login response status:", response.status);
       const data = await response.json();
+      console.log("Login response data:", data);
+      console.log("JWT_SECRET exists?", !!process.env.JWT_SECRET);
 
       if (!data.token) return alert(data.message || "Login failed");
 
@@ -114,7 +117,7 @@ const Login = ({
             Login
           </p>
           <form
-            onSubmit={handleSubmit}
+            onSubmit={handleLoginSubmit}
             className="space-y-4 flex justify-center flex-column form"
           >
             <Input

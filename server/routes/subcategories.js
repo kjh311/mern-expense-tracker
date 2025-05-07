@@ -17,6 +17,10 @@ router.post("/", verifyToken, async (req, res) => {
       budget,
     });
 
+    if (!req.userId) {
+      return res.status(400).json({ message: "Missing userId from Token" });
+    }
+
     const saved = await newSubcategory.save();
     res.json(saved);
   } catch (err) {
