@@ -48,6 +48,11 @@ app.get("/", (req, res) => {
   res.send("API is running!!!");
 });
 
+//Ping Render to keep from cold sleep
+app.get("/api/ping", (req, res) => {
+  res.send("pong");
+});
+
 app.listen(PORT, "0.0.0.0", () =>
   console.log(`Server is running on port ${PORT}`)
 );
