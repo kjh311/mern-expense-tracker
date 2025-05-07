@@ -11,4 +11,4 @@ jobs:
 
     steps:
       - name: Curl your Render app
-        run: curl -s https://your-render-app.onrender.com/api/health || true
+        run: curl -s https://mern-expense-tracker-v5y1.onrender.com/api/ || true
