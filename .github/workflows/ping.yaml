@@ -3,7 +3,7 @@ name: Keep Render App Awake
 on:
   schedule:
     - cron: '*/5 * * * *'  # every 5 minutes
-  workflow_dispatch:      # allows manual triggering
+  workflow_dispatch:        # allows manual triggering
 
 jobs:
   ping:
@@ -11,4 +11,4 @@ jobs:
 
     steps:
       - name: Curl your Render app
-        run: curl -s https://mern-expense-tracker-v5y1.onrender.com/api/ || true
+        run: curl --silent --show-error --fail https://mern-expense-tracker-v5y1.onrender.com/api/ || true
