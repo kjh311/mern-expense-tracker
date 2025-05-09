@@ -8,7 +8,8 @@ import { useLocation } from "react-router-dom";
 import { FadeContext } from "./FadeContext";
 import { useNavigate } from "react-router-dom";
 import QuickTransactionModal from "./QuickTransactionModal";
-import { useSearchParams } from "react-router-dom";
+// import { useSearchParams } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 const Navbar = ({ ref, refreshFlag, setRefreshFlag }) => {
   const [loggedIn] = useContext(LoggedInContext);
@@ -20,7 +21,8 @@ const Navbar = ({ ref, refreshFlag, setRefreshFlag }) => {
   const { setTriggerFadeOut } = useContext(FadeContext);
   const navigate = useNavigate();
   const svgUrl = `${window.location.origin}/path-night.svg`;
-  const [searchParams] = useSearchParams();
+  // const [searchParams] = useSearchParams();
+  // const location = useLocation();
   const [showModal, setShowModal] = useState(false);
 
   // navigate home
@@ -38,10 +40,10 @@ const Navbar = ({ ref, refreshFlag, setRefreshFlag }) => {
   }, [currentPath]);
 
   useEffect(() => {
-    if (searchParams.get("modal") === "quick") {
+    if (location.hash === "#modal=quick") {
       setShowModal(true);
     }
-  }, [searchParams]);
+  }, [location]);
 
   return (
     <nav
