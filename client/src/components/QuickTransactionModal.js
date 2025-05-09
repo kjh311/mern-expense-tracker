@@ -21,6 +21,7 @@ const QuickTransactionModal = ({ setRefreshFlag, showModal, setShowModal }) => {
   const [description, setDescription] = useState("");
   //   const { month: currentMonthIndex, year: currentYear } = dateState;
   const [recurring, setRecurring] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
   //   console.log("showmodal: ", showModal);
 
@@ -93,6 +94,10 @@ const QuickTransactionModal = ({ setRefreshFlag, showModal, setShowModal }) => {
       // Clear form
       setDescription("");
       setAmount("");
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 3000);
       // setRecurring(false);
       //   await fetchExpenses();
       await setRefreshFlag((prev) => !prev);
@@ -236,6 +241,11 @@ const QuickTransactionModal = ({ setRefreshFlag, showModal, setShowModal }) => {
                 // onClick={handleQuickPostTransaction}
                 color={dayTheme ? "blue" : "purple"}
               ></Button>
+
+              <div className={`fade-message ${showMessage ? "show" : ""}`}>
+                <br />
+                Transaction Added
+              </div>
             </form>
           </div>
         </div>

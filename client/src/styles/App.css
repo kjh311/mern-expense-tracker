@@ -329,6 +329,18 @@ ul {
   background-repeat: no-repeat;
 }
 
+.fade-message {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+  height: 0;
+}
+
+.fade-message.show {
+  opacity: 1;
+  height: auto;
+}
+
 @media only screen and (max-width: 640px) {
   .sun-icon {
     left: 0px;

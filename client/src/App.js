@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 import UpdateHeights from "./components/UpdateHeights";
 import { FadeProvider } from "./components/FadeContext";
 import "bootstrap/dist/css/bootstrap.min.css";
-import QuickTransactionModal from "./components/QuickTransactionModal";
+// import QuickTransactionPage from "./pages/QuickTransactionPage";
 
 export const LoggedInContext = React.createContext();
 export const TransactionsTotal = React.createContext();
@@ -112,7 +112,7 @@ function App() {
                         />
                       }
                     />
-                    <Route path="/quick" element={<QuickTransactionModal />} />
+                    {/* <Route path="/quick" element={<QuickTransactionPage />} /> */}
                     <Route
                       exact
                       path="/dashboard"
