@@ -19,7 +19,7 @@ const DayThemeToggle = () => {
       className=" day-theme-button relative w-10 h-10"
     >
       <Player
-        className={`theme-icon sun-icon absolute  daytheme-icon-animation transform ${
+        className={`z-0 theme-icon sun-icon absolute  daytheme-icon-animation transform ${
           dayTheme
             ? "opacity-100 rotate-0 scale-100"
             : "opacity-0 rotate-180 scale-50"

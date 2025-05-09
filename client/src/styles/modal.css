@@ -1,0 +1,61 @@
+@import url("./variables.css");
+
+.quick-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quick-modal {
+  /* background: black !important; */
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90% !important;
+  max-width: 400px !important;
+  border: 2px solid white;
+  -webkit-box-shadow: 0 0 15px 5px white !important;
+  box-shadow: 0 0 15px 5px white !important;
+}
+
+.quick-modal-day {
+  background-color: var(--blue-4);
+}
+
+.quick-modal-night {
+  background-color: var(--dark-4);
+}
+
+.quick-modal-amount-day,
+.quick-modal-amount-day::placeholder {
+  color: var(--light-5) !important;
+}
+
+.quick-modal-amount-night {
+}
+
+.quick-modal h3 {
+  margin-top: 0;
+}
+
+.quick-modal label {
+  display: block !important;
+  margin-bottom: 0.5rem;
+}
+
+.quick-modal input,
+.quick-modal select {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.quick-modal-actions {
+  display: flex;
+  justify-content: space-between;
+}

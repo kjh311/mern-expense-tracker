@@ -12,7 +12,7 @@ const Footer = ({ ref }) => {
         dayTheme ? "day-footer" : "night-footer"
       } py-4 px-2 mt-10 shadow-inner`}
     >
-      <div className="max-w-4xl mx-auto text-center text-sm sm:text-base">
+      <div className=" mx-auto text-center text-sm sm:text-base">
         &copy; {new Date().getFullYear()}{" "}
         <a
           className={`link ${

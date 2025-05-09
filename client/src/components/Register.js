@@ -96,7 +96,7 @@ const Register = ({
         }`}
       >
         <div
-          className={`my-animation rounded-xl p-8 w-full max-w-md ${
+          className={`my-animation rounded-xl p-8 w-full  ${
             dayTheme ? "day-theme-card" : "night-theme-card"
           }`}
         >

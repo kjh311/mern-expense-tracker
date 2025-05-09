@@ -14,13 +14,14 @@ import { getActionWord, getActionWordPassedTense } from "./ActionWords";
 import UpdateTransaction from "./UpdateTransaction";
 import DeleteSubcategory from "./DeleteSubcategory";
 import UpdateSubcategory from "./UpdateSubcategory";
-import { TransactionsTotal, DateContext } from "../App";
+import { TransactionsTotal, DateContext, DataContext } from "../App";
 import ExpenseLineChart from "./ExpenseLineChart";
 import SubCategoryBarChart from "./SubCategoryBarChart";
 import { formattedCurrency } from "./FormattedCurrency";
 import { DayTheme } from "../App";
 import MonthToggle from "./MonthToggle";
 import ProgressBarComponent from "./ProgressBarComponent";
+import QuickTransactionModal from "./QuickTransactionModal";
 
 const SubCategoriesWithTransactions = ({
   name,
@@ -32,7 +33,10 @@ const SubCategoriesWithTransactions = ({
   refreshFlag,
   setRefreshFlag,
   // currentMonthIndex,
+  // data,
+  // setData,
 }) => {
+  // const [data, setData] = useContext(DataContext);
   const [data, setData] = useState([]);
   const [activeKey, setActiveKey] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
@@ -102,14 +106,16 @@ const SubCategoriesWithTransactions = ({
     // setTimeout(() => {
     fetchExpenses();
     // },3000)
-  }, [currentMonthIndex, currentYear]);
+  }, [currentMonthIndex, currentYear, refreshFlag]);
 
   return (
     <div
-      className={`category-card max-w-[1400px] myBorder w-full mx-auto ${backgroundColor} shadow-md m-1 p-3 sm:m-2 sm:p-4 my-animation ${
+      className={`category-card  max-w-[1400px] myBorder w-full mx-auto ${backgroundColor} shadow-md m-1 p-3 sm:m-2 sm:p-4 my-animation ${
         dayTheme ? "category-card-day" : "category-card-night"
       }`}
     >
+      {/* <QuickTransactionModal /> */}
+
       <Accordion
       // activeKey={isOpen ? "main" : null}
       // onSelect={() => setMainAccordionKey(isOpen ? null : mainKey)}

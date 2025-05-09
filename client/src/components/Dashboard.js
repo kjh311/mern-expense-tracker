@@ -6,6 +6,7 @@ import { FadeContext } from "./FadeContext";
 import MonthToggle from "./MonthToggle";
 import FadeWrapper from "./FadeWrapper";
 import ScrollToTop from "./ScrollToTop";
+import QuickTransactionModal from "./QuickTransactionModal";
 
 const Dashboard = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
   const [mainAccordionKey, setMainAccordionKey] = useState(null);
@@ -25,7 +26,7 @@ const Dashboard = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
       <ScrollToTop />
       <div
         style={{ minHeight: contentHeight }}
-        className={`p-4 flex items-center flex-column 
+        className={`p-4 flex items-center flex-column relative
        
         ${dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"}`}
       >
@@ -38,6 +39,8 @@ const Dashboard = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
             Welcome, {userName}!
           </h1>
         )}
+
+        {/* <QuickTransactionModal /> */}
 
         <MonthToggle color={"text-white"} />
 

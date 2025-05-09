@@ -35,6 +35,8 @@ app.use("/api/subcategories", subcategoriesRoute);
 app.use("/api/transactions", transactionRoutes);
 app.use("/api/budget", budgetRoutes);
 
+// serviceWorkerRegistration.register();
+
 // connect to mongoDB
 mongoose
   .connect(process.env.MONGO_URI, {

@@ -10,6 +10,7 @@
 @import url("./animations.css");
 @import url("./react-calendar.css");
 @import url("./loader.css");
+@import url("./modal.css");
 
 body {
   margin: 0;
@@ -23,6 +24,7 @@ body {
   font-family: "Poetsen One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  /* max-width: 1200px; */
 }
 
 .footer {
@@ -40,7 +42,7 @@ body {
 }
 
 .sub-categories {
-  max-width: 1400px;
+  /* max-width: 1400px; */
   margin: 0 auto;
 }
 
@@ -310,6 +312,21 @@ ul {
   padding: 5px;
   margin-top: 25px;
   border-radius: 10px;
+}
+
+.nav-svg-after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100px;
+  aspect-ratio: 5 / 3;
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%);
+  background-image: var(--svg-url); /* Use background-image instead */
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 @media only screen and (max-width: 640px) {

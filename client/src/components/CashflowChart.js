@@ -78,7 +78,7 @@ const CashflowChart = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto p-4 bg-white shadow rounded">
+    <div className="w-full  mx-auto p-4 bg-white shadow rounded">
       <h2 className="text-xl font-semibold mb-4">Monthly Cashflow</h2>
       <Line data={chartData} options={options} />
     </div>

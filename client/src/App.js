@@ -12,14 +12,17 @@ import Footer from "./components/Footer";
 import UpdateHeights from "./components/UpdateHeights";
 import { FadeProvider } from "./components/FadeContext";
 import "bootstrap/dist/css/bootstrap.min.css";
+import QuickTransactionModal from "./components/QuickTransactionModal";
 
 export const LoggedInContext = React.createContext();
 export const TransactionsTotal = React.createContext();
 export const DayTheme = React.createContext();
 export const DateContext = React.createContext();
+// export const DataContext = React.createContext();
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
+  // const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [dayTheme, setDayTheme] = useState(() => {
     const stored = localStorage.getItem("Expense-Tracker-DayTheme");
@@ -57,6 +60,7 @@ function App() {
   return (
     <div className={`App ${dayTheme ? "day-app" : "night-app"}`}>
       <FadeProvider>
+        {/* <DataContext.Provider value={[data, setData]}> */}
         <DateContext.Provider value={[dateState, setDateState]}>
           <DayTheme.Provider value={[dayTheme, setDayTheme]}>
             <TransactionsTotal.Provider value={[total, setTotal]}>
@@ -67,7 +71,11 @@ function App() {
                     footerRef={footerRef}
                     setContentHeight={setContentHeight}
                   />
-                  <Navbar ref={navbarRef} />
+                  <Navbar
+                    ref={navbarRef}
+                    refreshFlag={refreshFlag}
+                    setRefreshFlag={setRefreshFlag}
+                  />
                   <Routes>
                     <Route
                       exact
@@ -104,6 +112,7 @@ function App() {
                         />
                       }
                     />
+                    <Route path="/quick" element={<QuickTransactionModal />} />
                     <Route
                       exact
                       path="/dashboard"
@@ -114,6 +123,7 @@ function App() {
                             refreshFlag={refreshFlag}
                             setRefreshFlag={setRefreshFlag}
                           />
+                          ;
                         </ProtectedRoute>
                       }
                     />
@@ -124,6 +134,7 @@ function App() {
             </TransactionsTotal.Provider>
           </DayTheme.Provider>
         </DateContext.Provider>
+        {/* </DataContext.Provider> */}
       </FadeProvider>
     </div>
   );
