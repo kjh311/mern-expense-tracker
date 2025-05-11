@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 import QuickTransactionModal from "./QuickTransactionModal";
 // import { useSearchParams } from "react-router-dom";
 // import { useLocation } from "react-router-dom";
-import HamburgerDropdown from "./HamburgerDropdown";
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+// import HamburgerDropdown from "./HamburgerDropdown";
+import { Nav, Navbar } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -24,8 +24,9 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
   const [currentPathState, setCurrentPathState] = useState(currentPath);
   const { setTriggerFadeOut } = useContext(FadeContext);
   const navigate = useNavigate();
-  const svgUrl = `${window.location.origin}/path-night.svg`;
+  // const svgUrl = `${window.location.origin}/path-night.svg`;
   const [showModal, setShowModal] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   // navigate home
   const handleNavHome = () => {
@@ -43,13 +44,19 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
 
   useEffect(() => {
     if (location.hash === "#modal=quick") {
+      setExpanded(!expanded);
       setShowModal(true);
     }
   }, [location]);
 
+  const toggleNavbar = () => {
+    setExpanded(!expanded);
+  };
+
   return (
     <>
       <Navbar
+        expanded={expanded}
         collapseOnSelect
         expand="lg"
         ref={ref}
@@ -70,7 +77,9 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
           </button>
           <DayThemeToggle />
         </Navbar.Brand>
+
         <Navbar.Toggle
+          onClick={toggleNavbar}
           aria-controls="responsive-navbar-nav"
           className={`${
             dayTheme
