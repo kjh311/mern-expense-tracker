@@ -98,7 +98,6 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
         </Navbar.Brand>
 
         <Navbar.Toggle
-          // onClick={toggleNavbar}
           ref={toggleRef}
           aria-controls="responsive-navbar-nav"
           className={`${
@@ -126,7 +125,7 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
           </svg>
         </Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav " ref={ref}>
-          <Nav className="mr-auto flex justify-around w-100 ">
+          <Nav className="mr-auto flex justify-evenly w-100 ">
             <Nav.Item className="nav-item">
               {loggedIn && (
                 <QuickTransactionModal
