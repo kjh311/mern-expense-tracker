@@ -7,7 +7,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import Input from "./Input";
 import axios from "axios";
 
-const QuickTransactionModal = ({ setRefreshFlag, showModal, setShowModal }) => {
+const QuickTransactionModal = ({
+  setRefreshFlag,
+  showModal,
+  setShowModal,
+  expanded,
+  setExpanded,
+}) => {
   //   const [showModal, setShowModal] = useState(false);
   const [data, setData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -52,6 +58,7 @@ const QuickTransactionModal = ({ setRefreshFlag, showModal, setShowModal }) => {
 
   const handleClose = () => {
     setShowModal(false);
+    setExpanded(false);
   };
 
   const quickTransactionPostUrl =
@@ -158,7 +165,9 @@ const QuickTransactionModal = ({ setRefreshFlag, showModal, setShowModal }) => {
 
             <form onSubmit={handleQuickTransactionSubmit}>
               <select
-                className={`${dayTheme ? "day-text" : "text-gray-900"}`}
+                className={`quick-select ${
+                  dayTheme ? "quick-select-day" : "quick-select-night"
+                }`}
                 value={selectedCategory}
                 required
                 onChange={(e) => {
@@ -176,7 +185,9 @@ const QuickTransactionModal = ({ setRefreshFlag, showModal, setShowModal }) => {
               </select>
 
               <select
-                className={`${dayTheme ? "day-text" : "text-gray-900"} p-2`}
+                className={`quick-select ${
+                  dayTheme ? "quick-select-day" : "quick-select-night"
+                } p-2`}
                 value={selectedSubCategory}
                 onChange={(e) => {
                   const selectedName = e.target.value;
@@ -206,11 +217,6 @@ const QuickTransactionModal = ({ setRefreshFlag, showModal, setShowModal }) => {
               </select>
 
               <Input
-                className={`${
-                  dayTheme
-                    ? "quick-modal-amount-day"
-                    : "quick-modal-amount-night"
-                }`}
                 type={"text"}
                 value={description}
                 placeholder={"Description"}
@@ -219,11 +225,6 @@ const QuickTransactionModal = ({ setRefreshFlag, showModal, setShowModal }) => {
               />
 
               <Input
-                className={`${
-                  dayTheme
-                    ? "quick-modal-amount-day"
-                    : "quick-modal-amount-night"
-                }`}
                 type={"number"}
                 value={amount}
                 placeholder={"Amount $$"}
@@ -233,7 +234,7 @@ const QuickTransactionModal = ({ setRefreshFlag, showModal, setShowModal }) => {
 
               <DatePicker
                 className={`p-2  date-picker text-center w-full ${
-                  dayTheme ? "day-text" : "text-gray-900"
+                  dayTheme ? "quick-select-day" : "quick-select-night"
                 }`}
                 selected={dateInput}
                 onChange={(dateInput) => setDateInput(dateInput)}

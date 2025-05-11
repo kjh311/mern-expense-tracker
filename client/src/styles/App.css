@@ -377,6 +377,10 @@ ul {
   stroke: 2px solid black;
 }
 
+.quick-select {
+  border-radius: 5px;
+}
+
 @media only screen and (max-width: 640px) {
   .sun-icon {
     left: -15px;

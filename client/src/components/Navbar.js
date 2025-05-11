@@ -27,6 +27,7 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
   // const svgUrl = `${window.location.origin}/path-night.svg`;
   const [showModal, setShowModal] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const navbarRef = ref;
 
   // navigate home
   const handleNavHome = () => {
@@ -44,19 +45,36 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
 
   useEffect(() => {
     if (location.hash === "#modal=quick") {
-      setExpanded(!expanded);
-      setShowModal(true);
+      setExpanded(true);
+      setTimeout(() => {
+        setShowModal(true);
+      }, 50);
     }
   }, [location]);
 
-  const toggleNavbar = () => {
-    setExpanded(!expanded);
+  // const toggleNavbar = () => {
+  //   setExpanded(!expanded);
+  //   console.log("expanded: ", expanded);
+  // };
+
+  const handleClickOutside = (event) => {
+    if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+      setExpanded(false);
+    }
   };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
       <Navbar
         expanded={expanded}
+        onToggle={() => setExpanded((prev) => !prev)}
         collapseOnSelect
         expand="lg"
         ref={ref}
@@ -79,7 +97,7 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
         </Navbar.Brand>
 
         <Navbar.Toggle
-          onClick={toggleNavbar}
+          // onClick={toggleNavbar}
           aria-controls="responsive-navbar-nav"
           className={`${
             dayTheme
@@ -105,7 +123,7 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
             )}
           </svg>
         </Navbar.Toggle>
-        <Navbar.Collapse id="responsive-navbar-nav ">
+        <Navbar.Collapse id="responsive-navbar-nav " ref={ref}>
           <Nav className="mr-auto flex justify-around w-100 ">
             <Nav.Item className="nav-item">
               {loggedIn && (
@@ -114,6 +132,8 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
                   setRefreshFlag={setRefreshFlag}
                   showModal={showModal}
                   setShowModal={setShowModal}
+                  expanded={expanded}
+                  setExpanded={setExpanded}
                 />
               )}
             </Nav.Item>
