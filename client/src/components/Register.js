@@ -94,7 +94,7 @@ const Register = ({
 
       <div
         style={{ minHeight: contentHeight }}
-        className={`my-animation register-container ${
+        className={`my-animation login-container  ${
           dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
         }`}
       >
@@ -113,7 +113,7 @@ const Register = ({
 
           <form
             onSubmit={handleSubmit}
-            className={`space-y-4 flex justify-center flex-column`}
+            className={`space-y-4 flex justify-center flex-column `}
           >
             <Input
               type={"text"}
@@ -142,11 +142,13 @@ const Register = ({
               </div>
             </div>
             {!loading ? (
-              <Button
-                type={"submit"}
-                text={"Register"}
-                color={dayTheme ? "blue" : "purple"}
-              />
+              <span className="flex justify-center login-button-span">
+                <Button
+                  type={"submit"}
+                  text={"Register"}
+                  color={dayTheme ? "blue" : "purple"}
+                />
+              </span>
             ) : (
               <div className="w-100 flex justify-center mt-4 mb-2">
                 <span className="loader"></span>

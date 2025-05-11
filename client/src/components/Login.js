@@ -149,7 +149,7 @@ const Login = ({
               </div>
             </div>
             {!loading ? (
-              <span className="flex justify-center">
+              <span className="flex justify-center login-button-span">
                 <Button
                   type={"submit"}
                   text={"Login"}
