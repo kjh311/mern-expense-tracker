@@ -98,6 +98,8 @@ const Login = ({
 
   return (
     <FadeWrapper triggerFadeOut={triggerFadeOut}>
+      <br />
+      <br />
       <div
         style={{ minHeight: contentHeight }}
         className={`login-container  ${
@@ -105,7 +107,7 @@ const Login = ({
         }`}
       >
         <div
-          className={`login-card ${
+          className={`login-card pt-3 pb-2 ${
             dayTheme ? "day-theme-card" : "night-theme-card "
           }`}
         >
@@ -139,7 +141,7 @@ const Login = ({
               />
               <div
                 onClick={togglePassword}
-                className={`eye-icons ${
+                className={`eye-icons  ${
                   dayTheme ? "eye-icon-day" : "eye-icon-night"
                 }`}
               >
@@ -147,11 +149,13 @@ const Login = ({
               </div>
             </div>
             {!loading ? (
-              <Button
-                type={"submit"}
-                text={"Login"}
-                color={dayTheme ? "blue" : "purple"}
-              />
+              <span className="flex justify-center">
+                <Button
+                  type={"submit"}
+                  text={"Login"}
+                  color={dayTheme ? "blue" : "purple"}
+                />
+              </span>
             ) : (
               <div className="w-100 flex justify-center mt-4 mb-2">
                 <span className="loader"></span>

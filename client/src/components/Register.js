@@ -89,14 +89,17 @@ const Register = ({
 
   return (
     <FadeWrapper triggerFadeOut={triggerFadeOut}>
+      <br />
+      <br />
+
       <div
         style={{ minHeight: contentHeight }}
-        className={`my-animation register-container flex items-center justify-center ${
+        className={`my-animation register-container ${
           dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"
         }`}
       >
         <div
-          className={`my-animation rounded-xl p-8 w-full  ${
+          className={`my-animation rounded-xl pt-3 pb-3 login-card   ${
             dayTheme ? "day-theme-card" : "night-theme-card"
           }`}
         >

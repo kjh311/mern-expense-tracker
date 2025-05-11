@@ -24,9 +24,10 @@ const Dashboard = ({ contentHeight, refreshFlag, setRefreshFlag }) => {
   return (
     <FadeWrapper triggerFadeOut={triggerFadeOut}>
       <ScrollToTop />
+
       <div
         style={{ minHeight: contentHeight }}
-        className={`p-4 flex items-center flex-column relative
+        className={`dash-board p-4 flex items-center flex-column relative
        
         ${dayTheme ? "login-day-theme-bg" : "login-night-theme-bg"}`}
       >

@@ -186,8 +186,8 @@ ul {
 
 .day-theme-button {
   position: absolute;
-  right: 15px;
-  top: 20px;
+  /* right: 15px; */
+  top: 5px;
 }
 
 .outer-glow {
@@ -196,18 +196,28 @@ ul {
 }
 
 .sun-icon {
-  left: -17px;
-  top: -23px;
+  left: -20px;
+  top: -5px;
   width: 75px;
   height: 75px;
 }
 
 .moon-icon {
   left: -12px;
-  top: -15px;
+  top: 2px;
   height: 60px;
   width: 60px;
 }
+
+#navbar {
+  position: fixed;
+  padding: 15px;
+}
+
+/* #login-button,
+#logout-button {
+  width: 100% !important;
+} */
 
 .subcategory-bar-chart {
   max-height: 200px;
@@ -341,19 +351,45 @@ ul {
   height: auto;
 }
 
+.dash-board {
+  margin-top: 70px;
+}
+
+.navbar-toggler,
+.navbar-toggler-icon {
+  /* color: white !important;
+  fill: white !important;
+  stroke: white !important;
+  stroke-width: 2px !important; */
+}
+
+.responsive-navbar-nav-toggle-night {
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.responsive-navbar-nav-toggle-day {
+  border: 1px solid rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.navbar-toggler-icon {
+  stroke: 2px solid black;
+}
+
 @media only screen and (max-width: 640px) {
   .sun-icon {
-    left: 0px;
-    top: -19px;
-    width: 60px;
-    height: 60px;
+    left: -15px;
+    top: -3px;
+    width: 50px;
+    height: 50px;
   }
 
   .moon-icon {
-    left: 5px;
-    top: -12px;
-    height: 50px;
-    width: 50px;
+    left: -12px;
+    top: 2px;
+    height: 40px;
+    width: 40px;
   }
 
   .button-shadow:hover,
@@ -416,5 +452,30 @@ ul {
 
   .accordion-body {
     padding: 15px 5px !important;
+  }
+
+  #navbar {
+    padding: 5px;
+  }
+
+  .dash-board {
+    margin-top: 40px;
+  }
+
+  .quick-transaction-button,
+  .logout-button,
+  .login-button {
+    /* float: right !important; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-item {
+    margin-top: 10px;
+  }
+
+  .navbar-nav {
+    padding-bottom: 8px;
   }
 }

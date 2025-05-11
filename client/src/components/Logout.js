@@ -40,11 +40,13 @@ const Logout = () => {
   }, []);
 
   return (
-    <Button
-      onClick={handleLogout}
-      text={"Logout"}
-      color={dayTheme ? "white" : "purple"}
-    />
+    <span className="logout-button">
+      <Button
+        onClick={handleLogout}
+        text={"Logout"}
+        color={dayTheme ? "white" : "purple"}
+      />
+    </span>
   );
 };
 

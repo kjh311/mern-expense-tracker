@@ -121,16 +121,20 @@ const QuickTransactionModal = ({ setRefreshFlag, showModal, setShowModal }) => {
   };
 
   return (
-    <div
-      className={`flex justify-center flex-column   ${
-        dayTheme ? "day-text" : "night-text"
-      }`}
-    >
-      <Button
+    <div className={`   ${dayTheme ? "day-text" : "night-text"}`}>
+      <span className="quick-transaction-button">
+        <Button
+          onClick={() => setShowModal(true)}
+          text={"Quick Transaction"}
+          color={dayTheme ? "white" : "purple"}
+        />
+      </span>
+      {/* <button
         onClick={() => setShowModal(true)}
-        text={"Quick Transaction"}
         color={dayTheme ? "white" : "purple"}
-      />
+      >
+        Quick Transaction
+      </button> */}
       {showModal && (
         <div
           className={`quick-modal-backdrop text-center z-10  ${

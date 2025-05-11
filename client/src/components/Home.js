@@ -25,7 +25,7 @@ const Home = ({ contentHeight }) => {
         navigate(loggedIn ? "/dashboard" : "/register");
       }
       setTriggerFadeOut(false);
-    }, 300);
+    }, 100);
   };
 
   return (
@@ -37,6 +37,9 @@ const Home = ({ contentHeight }) => {
         } home-container text-center flex flex-column justify-center align-center`}
         style={{ minHeight: contentHeight }}
       >
+        <br />
+        <br />
+        <br />
         <h1 className="home-heading text-2xl sm:text-6xl text-white p-4">
           Welcome to Budget Tracker
           {localStorageName !== "" && `, ${localStorageName}`}!
