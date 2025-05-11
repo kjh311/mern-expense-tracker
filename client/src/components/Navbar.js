@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { LoggedInContext, DayTheme } from "../App";
 import Logout from "./Logout";
 import DayThemeToggle from "./DayThemeToggle";
@@ -20,14 +20,15 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
   const [dayTheme] = useContext(DayTheme);
   const fadeNavigate = useFadeNavigate();
   const location = useLocation();
-  const currentPath = location.pathname;
-  const [currentPathState, setCurrentPathState] = useState(currentPath);
+  // const currentPath = location.pathname;
+  // const [currentPathState, setCurrentPathState] = useState(currentPath);
   const { setTriggerFadeOut } = useContext(FadeContext);
   const navigate = useNavigate();
   // const svgUrl = `${window.location.origin}/path-night.svg`;
   const [showModal, setShowModal] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const navbarRef = ref;
+  const toggleRef = useRef(null);
 
   // navigate home
   const handleNavHome = () => {
@@ -39,9 +40,9 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
     }, 0);
   };
 
-  useEffect(() => {
-    setCurrentPathState(currentPath);
-  }, [currentPath]);
+  // useEffect(() => {
+  //   setCurrentPathState(currentPath);
+  // }, [currentPath]);
 
   useEffect(() => {
     if (location.hash === "#modal=quick") {
@@ -52,13 +53,13 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
     }
   }, [location]);
 
-  // const toggleNavbar = () => {
-  //   setExpanded(!expanded);
-  //   console.log("expanded: ", expanded);
-  // };
-
   const handleClickOutside = (event) => {
-    if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+    if (
+      navbarRef.current &&
+      !navbarRef.current.contains(event.target) &&
+      toggleRef.current &&
+      !toggleRef.current.contains(event.target)
+    ) {
       setExpanded(false);
     }
   };
@@ -98,6 +99,7 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
 
         <Navbar.Toggle
           // onClick={toggleNavbar}
+          ref={toggleRef}
           aria-controls="responsive-navbar-nav"
           className={`${
             dayTheme
