@@ -371,7 +371,7 @@ const SubCategoriesWithTransactions = ({
                         {sub.transactions.map((tx) => (
                           <li
                             key={tx._id}
-                            className={`transaction-item relative rounded-2xl my-3 p-3  my-animation ease-in-out ${
+                            className={`transaction-item relative rounded-2xl my-3 p-1  my-animation ease-in-out ${
                               dayTheme
                                 ? `my-animation accordion-body-day overview-highest-accordion-body-${backgroundColor}`
                                 : `my-animation accordion-body-night overview-highest-accordion-body-${backgroundColor}`
@@ -396,7 +396,7 @@ const SubCategoriesWithTransactions = ({
                               </div>
 
                               <div
-                                className={`flex flex-col sm:flex-row justify-around items-start sm:items-center mt-2 gap-1 lg:text-lg sm:text-sm my-animation ${
+                                className={`flex flex-col sm:flex-row justify-around items-start sm:items-center   lg:text-lg sm:text-sm my-animation ${
                                   dayTheme ? "day-text" : "text-white"
                                 }`}
                               >

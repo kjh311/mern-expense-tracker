@@ -385,6 +385,20 @@ ul {
   width: 50%;
 }
 
+.transaction-item {
+  /* height: 90px !important; */
+}
+
+.transaction-update-icon {
+  right: 60px;
+  bottom: 23px;
+}
+
+.transaction-delete-icon {
+  right: 20px;
+  bottom: 23px;
+}
+
 @media only screen and (max-width: 640px) {
   .sun-icon {
     left: -15px;
@@ -485,5 +499,19 @@ ul {
 
   .navbar-nav {
     padding-bottom: 8px;
+  }
+
+  .transaction-item {
+    /* max-height: 100px !important; */
+  }
+
+  .transaction-update-icon {
+    right: 7px;
+    bottom: 50px;
+  }
+
+  .transaction-delete-icon {
+    right: 10px;
+    bottom: 10px;
   }
 }

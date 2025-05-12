@@ -76,12 +76,13 @@ const UpdateTransaction = ({
   return (
     <>
       {!editModeTransaction && (
-        <>
+        <span className="flex flex-row">
           <button onClick={handleEdit}>
             <FaEdit
-              className={`react-icon ${
+              className={`react-icon transaction-update-icon ${
                 dayTheme ? "text-blue-500" : "text-white"
-              } transition-all duration-200 absolute bottom-4 right-2`}
+              } transition-all duration-200 absolute `}
+              // } transition-all duration-200 absolute bottom-4 right-2`}
               size={25}
             />
           </button>
@@ -94,7 +95,7 @@ const UpdateTransaction = ({
             setAnimatingId={setAnimatingId}
             setRefreshFlag={setRefreshFlag}
           />
-        </>
+        </span>
       )}
 
       {editModeTransaction && (

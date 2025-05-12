@@ -56,9 +56,10 @@ const DeleteTransaction = ({
         }`}
       >
         <FaTrash
-          className={`react-icon ${
+          className={`react-icon transaction-delete-icon ${
             dayTheme ? "text-red-500" : "text-white"
-          } transition-all duration-200 absolute top-4 right-2`}
+          } transition-all duration-200 absolute `}
+          // } transition-all duration-200 absolute top-4 right-2`}
           size={25}
         />
       </button>
