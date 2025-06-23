@@ -8,6 +8,13 @@ const ExportCSV = () => {
   const { month: currentMonthIndex, year: currentYear } = dateState;
   const [dayTheme] = useContext(DayTheme);
 
+  const urlExport =
+    process.env.NODE_ENV === "development"
+      ? `http://localhost:8080/api/export/monthly-data?month=${currentMonthIndex}&year=${currentYear}`
+      : `https://mern-expense-tracker-v5y1.onrender.com/api/export/monthly-data?month=${currentMonthIndex}&year=${currentYear}`;
+  //: `https://mern-expense-tracker-production-b291.up.railway.app/api/auth/login`;
+  // : `https://mern-expense-tracker.fly.dev/api/auth/login`;
+
   const handleExportCSV = async () => {
     try {
       // 1. Get the authentication token from localStorage
@@ -22,15 +29,12 @@ const ExportCSV = () => {
       }
 
       // Make an API call to your backend export endpoint
-      const response = await axios.get(
-        `/api/export/monthly-data?month=${currentMonthIndex}&year=${currentYear}`,
-        {
-          responseType: "blob",
-          headers: {
-            Authorization: `Bearer ${token}`, // <--- ADD THIS LINE
-          },
-        }
-      );
+      const response = await axios.get(urlExport, {
+        responseType: "blob",
+        headers: {
+          Authorization: `Bearer ${token}`, // <--- ADD THIS LINE
+        },
+      });
 
       // Create a Blob from the response data
       const blob = new Blob([response.data], { type: "text/csv" });
