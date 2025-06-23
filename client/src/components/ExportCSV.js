@@ -12,8 +12,6 @@ const ExportCSV = () => {
     process.env.NODE_ENV === "development"
       ? `http://localhost:8080/api/export/monthly-data?month=${currentMonthIndex}&year=${currentYear}`
       : `https://mern-expense-tracker-v5y1.onrender.com/api/export/monthly-data?month=${currentMonthIndex}&year=${currentYear}`;
-  //: `https://mern-expense-tracker-production-b291.up.railway.app/api/auth/login`;
-  // : `https://mern-expense-tracker.fly.dev/api/auth/login`;
 
   const handleExportCSV = async () => {
     try {
@@ -71,7 +69,7 @@ const ExportCSV = () => {
     <div>
       <Button
         onClick={handleExportCSV}
-        text={"Export to CSV"}
+        text={"Export current month to CSV"}
         color={dayTheme ? "white" : "purple"}
       ></Button>
     </div>
