@@ -132,9 +132,13 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
               )}
             </Nav.Item>
             <br />
-            <Nav.Item className="flex justify-center nav-item">
-              <ExportCSV />
-            </Nav.Item>
+            {loggedIn ? (
+              <Nav.Item className="flex justify-center nav-item">
+                <ExportCSV />
+              </Nav.Item>
+            ) : (
+              ""
+            )}
             <br />
             <Nav.Item className="flex justify-center nav-item">
               {loggedIn ? (
