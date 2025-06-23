@@ -16,6 +16,7 @@ const PostNewSubcategory = ({ fetchExpenses, category, setActiveKey }) => {
   const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
   const [dayTheme] = useContext(DayTheme);
+  const [showMessage, setShowMessage] = useState(false);
 
   const handlePost = (e) => {
     e.preventDefault();
@@ -51,7 +52,12 @@ const PostNewSubcategory = ({ fetchExpenses, category, setActiveKey }) => {
         );
 
         console.log("Subcategory posted:", res.data);
+        setShowMessage(true);
+        setTimeout(() => {
+          setShowMessage(false);
+        }, 3000);
         await fetchExpenses();
+
         setActiveKey(null);
       } catch (err) {
         console.error(
@@ -121,11 +127,16 @@ const PostNewSubcategory = ({ fetchExpenses, category, setActiveKey }) => {
               required
               onChange={(e) => setBudget(parseFloat(e.target.value) || 0)}
             />
+
             <Button
               type={"submit"}
               color={dayTheme ? "white" : "purple"}
               text={"Submit"}
             />
+
+            <div className={`fade-message ${showMessage ? "show" : ""}`}>
+              Subcategory Added
+            </div>
           </form>
         </AccordionBody>
       </AccordionItem>

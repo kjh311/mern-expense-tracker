@@ -23,6 +23,7 @@ const PostNewTransaction = ({
   const [recurring, setRecurring] = useState(false);
   const [dayTheme] = useContext(DayTheme);
   const [dateInput, setDateInput] = useState(new Date());
+  const [showMessage, setShowMessage] = useState(false);
 
   const disableButton = amount === "" || description === "";
 
@@ -60,6 +61,10 @@ const PostNewTransaction = ({
       setDescription("");
       setAmount("");
       setRecurring(false);
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 3000);
       await fetchExpenses();
       setRefreshFlag((prev) => !prev);
     } catch (err) {
@@ -153,6 +158,9 @@ const PostNewTransaction = ({
                 color={dayTheme ? "blue" : "red"}
                 // disabled={disableButton}
               />
+              <div className={`fade-message ${showMessage ? "show" : ""}`}>
+                Transaction Added
+              </div>
             </form>
           </AccordionBody>
         </AccordionItem>
