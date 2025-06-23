@@ -1,6 +1,6 @@
 # Expense / Income Tracker
 
-## Demo:
+### Demo:
 
 https://budget-tracker-mern.netlify.app/
 

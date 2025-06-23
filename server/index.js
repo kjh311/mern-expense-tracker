@@ -23,6 +23,7 @@ const expensesRoutes = require("./routes/expenses");
 const subcategoriesRoute = require("./routes/subcategories");
 const transactionRoutes = require("./routes/transactions");
 const budgetRoutes = require("./routes/budget");
+const exportRoutes = require("./routes/exportRoutes");
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.use("/api/expenses", expensesRoutes);
 app.use("/api/subcategories", subcategoriesRoute);
 app.use("/api/transactions", transactionRoutes);
 app.use("/api/budget", budgetRoutes);
+app.use("/api/export", exportRoutes);
 
 // serviceWorkerRegistration.register();
 

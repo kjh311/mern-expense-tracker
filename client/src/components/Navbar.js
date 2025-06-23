@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 import { FadeContext } from "./FadeContext";
 import { useNavigate } from "react-router-dom";
 import QuickTransactionModal from "./QuickTransactionModal";
+import ExportCSV from "./ExportCSV"; // Make sure ExportCSV is used if imported
 // import { useSearchParams } from "react-router-dom";
 // import { useLocation } from "react-router-dom";
 // import HamburgerDropdown from "./HamburgerDropdown";
@@ -20,11 +21,8 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
   const [dayTheme] = useContext(DayTheme);
   const fadeNavigate = useFadeNavigate();
   const location = useLocation();
-  // const currentPath = location.pathname;
-  // const [currentPathState, setCurrentPathState] = useState(currentPath);
   const { setTriggerFadeOut } = useContext(FadeContext);
   const navigate = useNavigate();
-  // const svgUrl = `${window.location.origin}/path-night.svg`;
   const [showModal, setShowModal] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const navbarRef = ref;
@@ -33,20 +31,15 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
   // navigate home
   const handleNavHome = () => {
     setTriggerFadeOut(true);
-
     setTimeout(() => {
       setTriggerFadeOut(false);
       navigate("/");
     }, 0);
   };
 
-  // useEffect(() => {
-  //   setCurrentPathState(currentPath);
-  // }, [currentPath]);
-
   useEffect(() => {
     if (location.hash === "#modal=quick") {
-      setExpanded(true);
+      setExpanded(true); // Keep expanded when modal opens via hash
       setTimeout(() => {
         setShowModal(true);
       }, 50);
@@ -76,8 +69,8 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
       <Navbar
         expanded={expanded}
         onToggle={() => setExpanded((prev) => !prev)}
-        collapseOnSelect
-        expand="lg"
+        collapseOnSelect // You can keep this, but with expand={false} it won't matter as much for auto-collapse on selection
+        expand={false} // <--- CHANGE THIS LINE
         ref={ref}
         id="navbar"
         className={`z-10  w-full sticky top-0 z-50 fixed  nav-bar relative my-animation ${
@@ -126,7 +119,7 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
         </Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav " ref={ref}>
           <Nav className="mr-auto flex justify-evenly w-100 ">
-            <Nav.Item className="nav-item">
+            <Nav.Item className="flex justify-center nav-item">
               {loggedIn && (
                 <QuickTransactionModal
                   refreshFlag={refreshFlag}
@@ -138,7 +131,11 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
                 />
               )}
             </Nav.Item>
-            {/* <br /> */}
+            <br />
+            <Nav.Item className="flex justify-center nav-item">
+              <ExportCSV />
+            </Nav.Item>
+            <br />
             <Nav.Item className="flex justify-center nav-item">
               {loggedIn ? (
                 <Logout />
@@ -151,7 +148,10 @@ const MyNavbar = ({ ref, refreshFlag, setRefreshFlag }) => {
                 />
               )}
             </Nav.Item>
-            {/* <br /> */}
+            {/* If you intend to use ExportCSV, you'd render it here */}
+            {/* <Nav.Item className="flex justify-center nav-item">
+              {loggedIn && <ExportCSV />}
+            </Nav.Item> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
